@@ -1,0 +1,22 @@
+{
+  "root": true,
+  "plugins": [
+    "prettier",
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "max-len": [
+      2,
+      100
+    ],
+    "prettier/prettier": "warn"
+  }
+}
