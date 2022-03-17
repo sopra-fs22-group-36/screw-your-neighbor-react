@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react",
+    "sourceMap": true
+  },
+  "include": [
+    "src"
+  ]
+}
