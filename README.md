@@ -1,3 +1,7 @@
+<h1 align="center">
+   <img src="./src/img/icon.png" width="auto" height="500">
+</h1>
+
 # Screw your neighbor react client
 
 By group 36 of the course "Software Praktikum"@UZH in FS 22.
