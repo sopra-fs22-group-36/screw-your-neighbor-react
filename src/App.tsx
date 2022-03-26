@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { api } from "./api/api"
+import AppRouter from "./components/routing/routers/AppRouter"
 
-function App() {
+const App = () => {
   const [backendMessage, setBackendMessage] = useState(null)
 
   useEffect(() => {
@@ -21,10 +22,9 @@ function App() {
   })
   return (
     <div>
-      <header>Hello from Sopra group 36</header>
-      <div>{backendMessage || "loading"}</div>
+        <AppRouter/>
     </div>
   )
 }
 
-export default App
+export default App;
