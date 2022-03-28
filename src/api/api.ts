@@ -1,4 +1,4 @@
-import axios from "axios"
+import { AppClient } from "../generated"
 
 const isProduction = process.env.NODE_ENV === "production"
 
@@ -9,9 +9,8 @@ const getDomain = () => {
   return isProduction ? prodUrl : devUrl
 }
 
-const api = axios.create({
-  baseURL: getDomain(),
-  headers: { "Content-Type": "application/json" },
+const api = new AppClient({
+  BASE: getDomain(),
 })
 
 const handleError = (error) => {
@@ -44,4 +43,5 @@ const handleError = (error) => {
     return error.message
   }
 }
+
 export { api, handleError }
