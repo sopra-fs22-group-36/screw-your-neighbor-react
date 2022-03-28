@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { api } from "./api/api"
+import "./styles/index.scss"
 import AppRouter from "./components/routing/routers/AppRouter"
 
 const App = () => {
