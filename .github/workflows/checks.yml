@@ -24,6 +24,8 @@ jobs:
 
       - run: npm ci
 
+      - run: npm run openapi-generate
+
       - run: npm run lint-check
 
   unit-tests:
@@ -45,6 +47,8 @@ jobs:
             ${{ runner.os }}-node-
 
       - run: npm ci
+
+      - run: npm run openapi-generate
 
       - run: npm run build
 

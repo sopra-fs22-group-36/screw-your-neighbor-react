@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "jsx": "react",
     "sourceMap": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "target": "ES2015"
   },
   "include": [
     "src"

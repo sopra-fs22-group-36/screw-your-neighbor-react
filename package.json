@@ -11,6 +11,7 @@
     "@mui/icons-material": "5.5.1",
     "@mui/material": "5.5.2",
     "axios": "0.26.1",
+    "form-data": "4.0.0",
     "prop-types": "15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -31,6 +32,7 @@
     "eslint": "8.12.0",
     "eslint-plugin-prettier": "4.0.0",
     "lint-staged": "12.3.6",
+    "openapi-typescript-codegen": "0.20.1",
     "prettier": "2.6.0",
     "react-scripts": "5.0.0",
     "typescript": "4.6.2"
@@ -40,7 +42,8 @@
     "build": "node_modules/react-scripts/bin/react-scripts.js build",
     "test": "node_modules/react-scripts/bin/react-scripts.js test",
     "lint": "node_modules/eslint/bin/eslint.js --fix .",
-    "lint-check": "node_modules/eslint/bin/eslint.js ."
+    "lint-check": "node_modules/eslint/bin/eslint.js .",
+    "openapi-generate": "node_modules/openapi-typescript-codegen/bin/index.js -c axios --name AppClient --input ./screw-your-neighbor-server-openapi.json --output ./src/generated"
   },
   "browserslist": {
     "production": [
