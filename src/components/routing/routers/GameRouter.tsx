@@ -1,11 +1,11 @@
-import React from "react";
-import {Navigate, Route} from "react-router-dom";
-import Lobby from "../../views/Lobby";
-import PropTypes from 'prop-types';
+import React from "react"
+import {Navigate, Route} from "react-router-dom"
+import Lobby from "../../views/Lobby"
+import PropTypes from 'prop-types'
 
-
-const GameRouter = props => {
+const GameRouter = (props) => {
   /**
+   * We may don't need that forward push to dashboard
    */
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -13,7 +13,7 @@ const GameRouter = props => {
         <Lobby/>
       </Route>
       <Route path={`${props.base}`}>
-        <Navigate to={`${props.base}/dashboard`}/>
+        <Navigate to={`${props.base}/dashboard`} />
       </Route>
     </div>
   );
@@ -26,4 +26,4 @@ GameRouter.propTypes = {
   base: PropTypes.string
 }
 
-export default GameRouter;
+export default GameRouter
