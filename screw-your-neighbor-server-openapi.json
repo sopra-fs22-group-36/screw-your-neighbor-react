@@ -107,7 +107,7 @@
         }
       }
     },
-    "/games/{id}": {
+    "/games/{id}?projection=embed": {
       "get": {
         "tags": [
           "game-entity-controller"
@@ -545,7 +545,7 @@
         }
       }
     },
-    "/participations/{id}": {
+    "/participations/{id}?projection=embed": {
       "get": {
         "tags": [
           "participation-entity-controller"
@@ -1431,6 +1431,20 @@
               "CLOSED"
             ]
           },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "participations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EntityModelParticipation"
+                }
+              }
+            }
+          },
+          "nextGame": {
+            "$ref": "#/components/schemas/EntityModelGame"
+          },
           "_links": {
             "$ref": "#/components/schemas/Links"
           }
@@ -1505,6 +1519,12 @@
           "participationNumber": {
             "type": "integer",
             "format": "int32"
+          },
+          "player" : {
+            "$ref": "#/components/schemas/EntityModelPlayer"
+          },
+          "game" : {
+            "$ref": "#/components/schemas/EntityModelGame"
           },
           "_links": {
             "$ref": "#/components/schemas/Links"
@@ -1593,6 +1613,12 @@
           "participationNumber": {
             "type": "integer",
             "format": "int32"
+          },
+          "player" : {
+            "$ref": "#/components/schemas/EntityModelPlayer"
+          },
+          "game" : {
+            "$ref": "#/components/schemas/EntityModelGame"
           }
         }
       },
