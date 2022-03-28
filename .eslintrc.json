@@ -13,6 +13,7 @@
   ],
   "parser": "@typescript-eslint/parser",
   "rules": {
+    "quotes": "off",
     "max-len": [
       2,
       200
