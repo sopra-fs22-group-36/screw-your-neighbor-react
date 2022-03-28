@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react"
+import BaseContainer from "../ui/BaseContainer"
 
 const Register = props => {
     return(
-        <p>Hallo Welt</p>
+        <BaseContainer>
+            <h1>Register page</h1>
+        </BaseContainer>
     )
 };
 
