@@ -1,6 +1,6 @@
 import Round from "./Round"
 import Hand from "./Hand"
-import ScoreAnnoucement from "./ScoreAnnouncement"
+import ScoreAnnouncement from "./ScoreAnnouncement"
 
 /**
  * Match model
@@ -9,7 +9,7 @@ class Match {
   id: number
   matchNumber: string
   numberOfPlayedCards: number
-  scoreAnnouncements: Array<ScoreAnnoucement>
+  scoreAnnouncements: Array<ScoreAnnouncement>
   rounds: Array<Round>
   hands: Array<Hand>
 
