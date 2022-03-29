@@ -13,6 +13,7 @@
   ],
   "parser": "@typescript-eslint/parser",
   "rules": {
+    "linebreak-style": ["error", "unix"],
     "quotes": "off",
     "max-len": [
       2,
