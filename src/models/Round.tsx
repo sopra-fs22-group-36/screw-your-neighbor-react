@@ -10,7 +10,7 @@ class Round {
   winner: Player
   turns: Array<Turn>
 
-  constructor(data={}) {
+  constructor(data = {}) {
     this.id = null
     this.roundNumber = null
     this.winner = null

@@ -6,10 +6,10 @@ class Player {
   name: string
   sessionID: number
 
-  constructor(data={}) {
-    this.id = null;
-    this.name = null;
-    this.sessionID = null;
+  constructor(data = {}) {
+    this.id = null
+    this.name = null
+    this.sessionID = null
     Object.assign(this, data)
   }
 }
