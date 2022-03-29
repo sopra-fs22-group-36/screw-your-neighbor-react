@@ -8,7 +8,7 @@ class Hand {
   participation: Participation
   cards: Array<Card>
 
-  constructor(data={}){
+  constructor(data = {}) {
     this.cards = null
     this.participation = null
     Object.assign(this, data)

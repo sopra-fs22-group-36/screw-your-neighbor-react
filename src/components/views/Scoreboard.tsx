@@ -3,8 +3,8 @@ import BaseContainer from "../ui/BaseContainer"
 
 /**
  * After a complete game is played this view gone display
- * @param props 
- * @returns 
+ * @param props
+ * @returns
  */
 const Scoreboard = (props) => {
   return (

@@ -6,7 +6,7 @@ class Card {
   suit: Suit
   rank: Rank
 
-  constructor(data={}) {
+  constructor(data = {}) {
     this.id = null
     this.rank = null
     this.suit = null
