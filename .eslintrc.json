@@ -16,8 +16,11 @@
     "linebreak-style": ["error", "unix"],
     "quotes": "off",
     "max-len": [
-      2,
-      200
+      "warn",
+      {
+        "code": 120,
+        "ignoreComments": true
+      }
     ],
     "prettier/prettier": [
       "warn",
