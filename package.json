@@ -36,11 +36,11 @@
     "typescript": "4.6.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "lint": "eslint --fix .",
-    "lint-check": "eslint ."
+    "start": "node_modules/react-scripts/bin/react-scripts.js start",
+    "build": "node_modules/react-scripts/bin/react-scripts.js build",
+    "test": "node_modules/react-scripts/bin/react-scripts.js test",
+    "lint": "node_modules/eslint/bin/eslint.js --fix .",
+    "lint-check": "node_modules/eslint/bin/eslint.js ."
   },
   "browserslist": {
     "production": [
