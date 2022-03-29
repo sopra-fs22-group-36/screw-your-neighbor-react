@@ -3,8 +3,8 @@ import BaseContainer from "../ui/BaseContainer"
 
 /**
  * The main game page inside the Jass-Stube includes a table with all players
- * @param props 
- * @returns 
+ * @param props
+ * @returns
  */
 const Game = (props) => {
   return (

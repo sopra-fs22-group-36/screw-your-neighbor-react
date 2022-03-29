@@ -1,6 +1,6 @@
 import Round from "./Round"
 import Hand from "./Hand"
-import ScoreAnnoucement from "./ScoreAnnouncement";
+import ScoreAnnoucement from "./ScoreAnnouncement"
 
 /**
  * Match model
@@ -13,7 +13,7 @@ class Match {
   rounds: Array<Round>
   hands: Array<Hand>
 
-  constructor(data={}) {
+  constructor(data = {}) {
     this.id = null
     this.matchNumber = null
     this.numberOfPlayedCards = null

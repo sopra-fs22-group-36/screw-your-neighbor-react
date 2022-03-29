@@ -9,7 +9,7 @@ class Turn {
   round: Round
   card: Card
 
-  constructor(data={}) {
+  constructor(data = {}) {
     this.id = null
     this.round = null
     this.card = null

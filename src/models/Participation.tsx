@@ -11,7 +11,7 @@ class Participation {
   player: Player
   game: Game
 
-  constructor (data={}) {
+  constructor(data = {}) {
     this.id = null
     this.active = null
     this.playerOrder = null

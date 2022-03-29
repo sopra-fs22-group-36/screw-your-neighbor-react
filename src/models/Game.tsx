@@ -4,14 +4,14 @@ import Match from "./Match"
 /**
  * Game model
  */
- class Game {
+class Game {
   id: number
   name: string
   state: GameState
   players: Array<Player>
   matches: Array<Match>
 
-  constructor (data={}){
+  constructor(data = {}) {
     this.id = null
     this.name = null
     this.state = null
@@ -19,6 +19,6 @@ import Match from "./Match"
     this.matches = null
     Object.assign(this, data)
   }
- }
+}
 
 export default Game

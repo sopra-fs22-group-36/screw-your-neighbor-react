@@ -4,13 +4,13 @@ import Participation from "./Participation"
 /**
  * ScoreAnnouncement model
  */
-class ScoreAnnoucement{
+class ScoreAnnoucement {
   id: number
   announcedScore: number
   participaiton: Participation
   match: Match
 
-  constructor(data={}) {
+  constructor(data = {}) {
     this.id = null
     this.announcedScore = null
     this.participaiton = null
