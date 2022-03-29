@@ -19,7 +19,7 @@ import "../../styles/ui/Box.scss"
 const Register = (props) => {
   // Get the existing path
   const navigate = useNavigate()
-  const [name, setName] = useState(null)
+  const [name, setName] = useState("")
   // user for text field change to update the name
   const handleChange = (e) => {
     setName(e.target.value)
