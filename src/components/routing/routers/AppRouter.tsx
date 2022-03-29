@@ -1,6 +1,5 @@
 import React from "react"
-import GameRouter from "../../routing/routers/GameRouter"
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { RegisterGuard } from "../routeProtectors/RegisterGuard"
 import { LobbyGuard } from "../routeProtectors/LobbyGuard"
 import Register from "../../views/Register"
