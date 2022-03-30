@@ -8,9 +8,9 @@ import Button from "@mui/material/Button"
 import SendIcon from "@mui/icons-material/Send"
 import { TextField } from "@mui/material"
 import Box from "@mui/material/Box"
-
+import "../../styles/fonts.scss"
 import "../../styles/ui/Box.scss"
-
+import "../../styles/ui/images.scss"
 /**
  * Landing page where a user can be registered
  * @param props
@@ -47,8 +47,13 @@ const Register = (props) => {
   }
 
   return (
+    <div>
     <BaseContainer>
-      <h1>Register page</h1>
+      <h1 className="font-title">Welcome to "Screw your neighbour"</h1>
+    </BaseContainer>
+      <br/>
+      <BaseContainer>
+      <h4> Register by entering your name in the field below and pressing "Take me to the Lobby"</h4>
       <Box className="Box">
         <TextField
           helperText="Please enter your player name"
@@ -63,10 +68,12 @@ const Register = (props) => {
           endIcon={<SendIcon />}
           onClick={() => doRegister()}
         >
-          Send
+          TAKE ME TO THE LOBBY
         </Button>
       </Box>
     </BaseContainer>
+      <img src="https://cdn.pixabay.com/photo/2017/10/12/10/17/jass-cards-2844130_960_720.png" alt="Jasskarten" className="img" ></img>
+    </div>
   )
 }
 

@@ -1,0 +1,9 @@
+//class to stlye images on the website (mainly cards)
+.img {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto; //TODO: STOP PAGE FROM SCROLLING
+  bottom:0;
+  width: 75%;
+  opacity: 0.5;
+}
