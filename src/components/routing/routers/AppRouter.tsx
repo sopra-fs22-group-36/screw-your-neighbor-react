@@ -5,6 +5,7 @@ import { LobbyGuard } from "../routeProtectors/LobbyGuard"
 import Register from "../../views/Register"
 import Lobby from "../../views/Lobby"
 import Sandbox from "../../views/Sandbox"
+import { Paths } from "./Paths"
 
 /**
  */
@@ -12,24 +13,27 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/register" />} />
         <Route
-          path="/lobby"
+          path={Paths.HOME}
+          element={<Navigate to={Paths.CREATE_PLAYER} />}
+        />
+        <Route
+          path={Paths.LOBBY}
           element={
             <LobbyGuard>
-              <Lobby base="/lobby" />
+              <Lobby />
             </LobbyGuard>
           }
         />
         <Route
-          path="/register"
+          path={Paths.CREATE_PLAYER}
           element={
             <RegisterGuard>
-              <Register base="/register" />
+              <Register />
             </RegisterGuard>
           }
         />
-        <Route path="/sandbox" element={<Sandbox />} />
+        <Route path={Paths.SANDBOX} element={<Sandbox />} />
       </Routes>
     </BrowserRouter>
   )
