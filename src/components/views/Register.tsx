@@ -1,11 +1,14 @@
+import React, { useEffect, useState } from "react"
+import { usePlayers } from "../../hooks/api/usePlayers"
 import React, { useState } from "react"
 import BaseContainer from "../ui/BaseContainer"
 import Footer from "../ui/Footer"
 import Player from "../../models/Player"
 import { useNavigate } from "react-router-dom"
-import { api, handleError } from "../../api/api"
+import { Paths } from "../routing/routers/Paths"
 
 import Button from "@mui/material/Button"
+import BaseContainer from "../ui/BaseContainer"
 import SendIcon from "@mui/icons-material/Send"
 import { TextField } from "@mui/material"
 import Box from "@mui/material/Box"
@@ -13,41 +16,25 @@ import "../../styles/fonts.scss"
 import "../../styles/ui/Box.scss"
 import "../../styles/ui/Divs.scss"
 import "../../styles/ui/images.scss"
-/**
- * Landing page where a user can be registered
- * @param props
- * @returns
- */
-const Register = (props) => {
-  // Get the existing path
+
+const Register = () => {
   const navigate = useNavigate()
   const [name, setName] = useState("")
-  // user for text field change to update the name
-  const handleChange = (e) => {
+  const changeName = (e) => {
     setName(e.target.value)
   }
 
-  /**
-   * Send the player registeration to the endpoint
-   */
-  const doRegister = async () => {
-    try {
-      const requestBody = JSON.stringify({ name })
-      const response = await api.post("/players", requestBody)
+  const { loading, createPlayer, startPollPlayers } = usePlayers()
 
-      // Get the returned user and update a new object.
-      const player = new Player(response.data)
-
-      // Store the token into the local storage.
-      localStorage.setItem("id", `${player.id}`)
-
-      // Register successfully worked --> navigate to the route /game in the GameRouter
-      navigate("/lobby")
-    } catch (error) {
-      alert(`Something went wrong during the register: \n${handleError(error)}`)
-      console.log(error)
-    }
+  const submit = async () => {
+    await createPlayer(name)
+    navigate(Paths.LOBBY)
   }
+
+  useEffect(() => {
+    const playersSubscription = startPollPlayers()
+    return () => playersSubscription.cancel()
+  })
 
   return (
     <div className="div-box">
@@ -67,13 +54,14 @@ const Register = (props) => {
             id="demo-helper-text-aligned"
             label="player name"
             value={name}
-            onChange={handleChange}
+            onChange={changeName}
           />
           <p></p>
           <Button
+            disabled={loading}
             variant="contained"
             endIcon={<SendIcon />}
-            onClick={() => doRegister()}
+            onClick={submit}
           >
             TAKE ME TO THE LOBBY
           </Button>
