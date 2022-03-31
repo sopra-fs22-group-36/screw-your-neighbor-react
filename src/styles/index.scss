@@ -8,9 +8,9 @@ body {
   margin: 0;
   font-family: $fontDefault;
   background: rgb(151,0,0);
-  background: linear-gradient(180deg,  #700c0c, #ff0000, #700c0c);//background gradient
-  background-size : 400% 400%;
-  animation : Gradient 60s ease infinite; 
+  background: linear-gradient(0deg,  #700c00, #ff0000, #700c00 );//background gradient
+  background-size : 600% 600%;
+  animation : Gradient 25s ease infinite;
 }
 
 /* Animate Background*/

@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import BaseContainer from "../ui/BaseContainer"
+import Footer from "../ui/Footer"
 import Player from "../../models/Player"
 import { useNavigate } from "react-router-dom"
 import { api, handleError } from "../../api/api"
@@ -47,7 +48,7 @@ const Register = (props) => {
   }
 
   return (
-    <div>
+    <div className="div-box">
       <BaseContainer>
         <h1 className="font-title">Welcome to "Screw your neighbour"</h1>
       </BaseContainer>
@@ -76,11 +77,9 @@ const Register = (props) => {
           </Button>
         </Box>
       </BaseContainer>
-      <img
-        src="https://cdn.pixabay.com/photo/2017/10/12/10/17/jass-cards-2844130_960_720.png"
-        alt="Jasskarten"
-        className="img"
-      ></img>
+      <Footer/>
+      <div className="background-img">
+    </div>
     </div>
   )
 }
