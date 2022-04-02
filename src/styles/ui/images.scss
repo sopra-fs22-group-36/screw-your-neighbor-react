@@ -7,7 +7,7 @@
   // width:auto,  height: 90% of the container
   background-size: auto 90%;
   background-position-x: Min(100px, calc(100vw - 1820px));
-  background-position-y: 100%;
+  background-position-y: 200%;
   bottom: 0;
   overflow: hidden;
   opacity: 0.6;
@@ -15,10 +15,5 @@
   //Die rotation hat es irgendwie nicht gern
   //transform: rotate(-35deg);
 
-}
-.div-box{ //stlye for the "mother div"
-  overflow: hidden;
-  bottom: 0;
-  height: calc(100vh);
 }
 

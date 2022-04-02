@@ -11,6 +11,7 @@ import { TextField } from "@mui/material"
 import Box from "@mui/material/Box"
 import "../../styles/fonts.scss"
 import "../../styles/ui/Box.scss"
+import "../../styles/ui/Divs.scss"
 import "../../styles/ui/images.scss"
 /**
  * Landing page where a user can be registered
@@ -31,8 +32,8 @@ const Register = (props) => {
    */
   const doRegister = async () => {
     try {
-      const requestBody = JSON.stringify({ name })
-      const response = await api.post("/players", requestBody)
+      const requestBody = JSON.stringify({name})
+      const response = await api.post('/players', requestBody)
 
       // Get the returned user and update a new object.
       const player = new Player(response.data)
@@ -41,9 +42,10 @@ const Register = (props) => {
       localStorage.setItem("id", `${player.id}`)
 
       // Register successfully worked --> navigate to the route /game in the GameRouter
-      navigate("/game")
+      navigate("/lobby")
     } catch (error) {
       alert(`Something went wrong during the register: \n${handleError(error)}`)
+    console.log(error)
     }
   }
 

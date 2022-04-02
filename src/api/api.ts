@@ -1,19 +1,23 @@
 import axios from "axios"
 
-const isProduction = process.env.NODE_ENV === "production"
+
+export const isProduction = () => {
+  return process.env.NODE_ENV === "production";
+};
 
 const getDomain = () => {
-  const prodUrl = "https://screw-your-neighbor-server.herokuapp.com"
-  const devUrl = "http://localhost:8080"
+  const prodUrl = "https://screw-your-neighbor-server.herokuapp.com";
+  const devUrl = 'http://localhost:8080';
 
-  return isProduction ? prodUrl : devUrl
+  return isProduction() ? prodUrl : devUrl
 }
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: getDomain(),
-})
+  headers: { 'Content-Type': 'application/json' }
+});
 
-const handleError = (error) => {
+export const handleError = (error) => {
   const response = error.response
 
   // catch 4xx and 5xx status codes
@@ -44,4 +48,3 @@ const handleError = (error) => {
   }
 }
 
-export { api, handleError }
