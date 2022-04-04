@@ -11,7 +11,7 @@ import "../../styles/ui/Divs.scss"
 import "../../styles/ui/Lists.scss"
 import "../../styles/ui/images.scss"
 
-const Lobby = observer((props) => {
+const Lobby = observer(() => {
   const navigate = useNavigate()
   const { startPollPlayers, players } = usePlayers()
 
