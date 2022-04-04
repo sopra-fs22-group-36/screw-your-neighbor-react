@@ -1,15 +1,24 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { observer } from "mobx-react-lite"
 import Footer from "../ui/Footer"
 import BaseContainer from "../ui/BaseContainer"
 import { useNavigate } from "react-router-dom"
-import { handleError } from "../../api/api"
+import { usePlayers } from "../../hooks/api/usePlayers"
+import { Paths } from "../routing/routers/Paths"
+import { Grid } from "@mui/material"
 import "../../styles/ui/Button.scss"
 import "../../styles/ui/Divs.scss"
 import "../../styles/ui/Lists.scss"
 import "../../styles/ui/images.scss"
 
-const Lobby = (props) => {
+const Lobby = observer((props) => {
   const navigate = useNavigate()
+  const { startPollPlayers, players } = usePlayers()
+
+  useEffect(() => {
+    const playersSubscription = startPollPlayers()
+    return () => playersSubscription.cancel()
+  })
   /* code for later!
   const Room = ({room}) => (
         <div className="">
@@ -24,37 +33,11 @@ const Lobby = (props) => {
       localStorage.removeItem("id")
 
       // Register successfully worked --> navigate to the route /game in the GameRouter
-      navigate("/register")
+      navigate(Paths.CREATE_PLAYER)
       console.log("logged out")
     } catch (error) {
-      alert(`Something went wrong during the register: \n${handleError(error)}`)
       console.log(error)
     }
-  }
-
-  let content = (
-    <img
-      src="https://grrrls.at/wp-content/uploads/2020/01/no-image.jpg"
-      alt="Lamp"
-      width="32"
-      height="32"
-    ></img>
-  ) //placeholder
-  if (localStorage.getItem("id") != null) {
-    content = (
-      <div className="div-rooms">
-        <div className="roomlist">
-          <div className="roomlistitem">Room 1</div>
-          <div className="roomlistitem">Room 2</div>
-          <div className="roomlistitem">Room 3</div>
-          <div className="roomlistitem">Room 4</div>
-        </div>
-
-        <button className="button" onClick={() => doLogout()}>
-          Logout
-        </button>
-      </div>
-    )
   }
 
   return (
@@ -62,16 +45,40 @@ const Lobby = (props) => {
       <BaseContainer>
         <h1 className="font-title">Lobby</h1>
       </BaseContainer>
-      <br />
-      <BaseContainer>
-        <h3>Choose one of the Rooms to join</h3>
-        {content}
-      </BaseContainer>
+      <Grid container spacing={2}>
+        <Grid item xs={9}>
+          <BaseContainer>
+            <h3>Choose one of the Rooms to join</h3>
+            <div className="div-rooms">
+              <div className="roomlist">
+                <div className="roomlistitem">Room 1</div>
+                <div className="roomlistitem">Room 2</div>
+                <div className="roomlistitem">Room 3</div>
+                <div className="roomlistitem">Room 4</div>
+              </div>
+
+              <button className="button" onClick={() => doLogout()}>
+                Logout
+              </button>
+            </div>
+          </BaseContainer>
+        </Grid>
+        <Grid item xs={2}>
+          <BaseContainer>
+            <h3>Available players</h3>
+            <ul>
+              {players.map((value) => (
+                <li key={value._links.self.href}>{value.name}</li>
+              ))}
+            </ul>
+          </BaseContainer>
+        </Grid>
+      </Grid>
 
       <Footer />
       <div className="background-img"></div>
     </div>
   )
-}
+})
 
 export default Lobby
