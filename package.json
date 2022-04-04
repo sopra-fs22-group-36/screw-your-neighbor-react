@@ -44,6 +44,7 @@
     "build": "npm run openapi-generate && npm run build-react",
     "build-react": "node_modules/react-scripts/bin/react-scripts.js build",
     "test": "node_modules/react-scripts/bin/react-scripts.js test",
+    "ci-test": "node_modules/react-scripts/bin/react-scripts.js test --coverage --watchAll=false",
     "lint": "node_modules/eslint/bin/eslint.js --fix .",
     "lint-check": "node_modules/eslint/bin/eslint.js .",
     "openapi-generate": "node_modules/openapi-typescript-codegen/bin/index.js -c axios --name AppClient --input ./screw-your-neighbor-server-openapi.json --output ./src/generated"
@@ -58,6 +59,23 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts",
+      "!src/**/*.test.{ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!src/generated/"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/src/generated"
     ]
   }
 }

@@ -86,6 +86,27 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.14.1'
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm ci
+
+      - run: npm run openapi-generate
+
+      #continue even if build fails that we have the feedback from sonar
+      - run: npm run build || true
+
+      #continue even if build fails that we have the feedback from sonar
+      - run: npm run ci-test || true
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.6
         env:
