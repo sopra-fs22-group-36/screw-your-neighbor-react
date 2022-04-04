@@ -27,10 +27,12 @@ export function usePlayers() {
   }
 
   const startPollPlayers = () => {
-    playerStore.playersSubscription = setInterval(refreshPlayers, 500)
+    playerStore.playersSubscriptions.addSubscription(
+      setInterval(refreshPlayers, 500)
+    )
     return {
       cancel() {
-        playerStore.clearPlayerSubscription()
+        playerStore.playersSubscriptions.removeSubscription()
       },
     }
   }
