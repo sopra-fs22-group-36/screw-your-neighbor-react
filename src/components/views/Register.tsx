@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import BaseContainer from "../ui/BaseContainer"
+import Footer from "../ui/Footer"
 import Player from "../../models/Player"
 import { useNavigate } from "react-router-dom"
 import { api, handleError } from "../../api/api"
@@ -10,6 +11,7 @@ import { TextField } from "@mui/material"
 import Box from "@mui/material/Box"
 import "../../styles/fonts.scss"
 import "../../styles/ui/Box.scss"
+import "../../styles/ui/Divs.scss"
 import "../../styles/ui/images.scss"
 /**
  * Landing page where a user can be registered
@@ -40,14 +42,15 @@ const Register = (props) => {
       localStorage.setItem("id", `${player.id}`)
 
       // Register successfully worked --> navigate to the route /game in the GameRouter
-      navigate("/game")
+      navigate("/lobby")
     } catch (error) {
       alert(`Something went wrong during the register: \n${handleError(error)}`)
+      console.log(error)
     }
   }
 
   return (
-    <div>
+    <div className="div-box">
       <BaseContainer>
         <h1 className="font-title">Welcome to "Screw your neighbour"</h1>
       </BaseContainer>
@@ -76,11 +79,8 @@ const Register = (props) => {
           </Button>
         </Box>
       </BaseContainer>
-      <img
-        src="https://cdn.pixabay.com/photo/2017/10/12/10/17/jass-cards-2844130_960_720.png"
-        alt="Jasskarten"
-        className="img"
-      ></img>
+      <Footer />
+      <div className="background-img"></div>
     </div>
   )
 }

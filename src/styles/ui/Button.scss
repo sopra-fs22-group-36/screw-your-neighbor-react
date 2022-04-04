@@ -1,0 +1,29 @@
+
+.button {
+  &:hover {
+    transform: translateY(-2px);
+  }
+  &:disabled {
+    cursor: default;
+    opacity: 0.4;
+    &:hover {
+      transform: none;
+    }
+  }
+
+
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  text-align: center;
+  height: 35px;
+  border: black;
+
+  border-radius: 20%;
+  cursor: pointer;
+  opacity: 1;
+  color: whitesmoke;
+  background-color: darkblue;
+  transition: all 0.3s ease;
+}

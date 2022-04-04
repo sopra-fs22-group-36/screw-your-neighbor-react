@@ -11,6 +11,7 @@ const getDomain = () => {
 
 const api = axios.create({
   baseURL: getDomain(),
+  headers: { "Content-Type": "application/json" },
 })
 
 const handleError = (error) => {
@@ -43,5 +44,4 @@ const handleError = (error) => {
     return error.message
   }
 }
-
 export { api, handleError }
