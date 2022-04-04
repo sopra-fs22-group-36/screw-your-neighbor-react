@@ -11,6 +11,10 @@ const getDomain = () => {
 
 const api = new AppClient({
   BASE: getDomain(),
+  WITH_CREDENTIALS: true,
+  HEADERS: {
+    "Content-Type": "application/json",
+  },
 })
 
 export { api }

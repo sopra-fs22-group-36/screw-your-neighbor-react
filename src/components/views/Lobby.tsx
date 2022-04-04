@@ -3,7 +3,10 @@ import { observer } from "mobx-react-lite"
 import Footer from "../ui/Footer"
 import BaseContainer from "../ui/BaseContainer"
 import { useNavigate } from "react-router-dom"
+import { useGames } from "../../hooks/api/useGames"
 import { usePlayers } from "../../hooks/api/usePlayers"
+import { CreateGame } from "../ui/CreateGame"
+import { RoomRow } from "../ui/RoomRow"
 import { Paths } from "../routing/routers/Paths"
 import { Grid } from "@mui/material"
 import "../../styles/ui/Button.scss"
@@ -14,10 +17,13 @@ import "../../styles/ui/images.scss"
 const Lobby = observer(() => {
   const navigate = useNavigate()
   const { startPollPlayers, players } = usePlayers()
+  const { startPollGames, games } = useGames()
 
   useEffect(() => {
     const playersSubscription = startPollPlayers()
-    return () => playersSubscription.cancel()
+    const gamesSubscription = startPollGames()
+    return () =>
+      [playersSubscription, gamesSubscription].forEach((sub) => sub.cancel())
   })
   /* code for later!
   const Room = ({room}) => (
@@ -51,11 +57,12 @@ const Lobby = observer(() => {
             <h3>Choose one of the Rooms to join</h3>
             <div className="div-rooms">
               <div className="roomlist">
-                <div className="roomlistitem">Room 1</div>
-                <div className="roomlistitem">Room 2</div>
-                <div className="roomlistitem">Room 3</div>
-                <div className="roomlistitem">Room 4</div>
+                {games.map((game) => (
+                  <RoomRow key={game._links.self.href} game={game} />
+                ))}
               </div>
+
+              <CreateGame />
 
               <button className="button" onClick={() => doLogout()}>
                 Logout

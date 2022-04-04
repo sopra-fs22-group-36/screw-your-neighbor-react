@@ -5,6 +5,7 @@ import { LobbyGuard } from "../routeProtectors/LobbyGuard"
 import Register from "../../views/Register"
 import Lobby from "../../views/Lobby"
 import Sandbox from "../../views/Sandbox"
+import Game from "../../views/Game"
 import { Paths } from "./Paths"
 
 /**
@@ -25,6 +26,7 @@ const AppRouter = () => {
             </LobbyGuard>
           }
         />
+        <Route path={Paths.GAME} element={<Game />} />
         <Route
           path={Paths.CREATE_PLAYER}
           element={
