@@ -1,10 +1,11 @@
 import { EntityModelPlayer } from "../generated"
 import { action, makeObservable, observable } from "mobx"
+import { KeepOnlyOneInterval } from "../util/KeepOnlyOneInterval"
 
 export class PlayerStore {
   @observable me: EntityModelPlayer
   @observable players: Array<EntityModelPlayer>
-  private _playersSubscription?: NodeJS.Timer
+  private _playersSubscriptions = new KeepOnlyOneInterval()
 
   constructor() {
     this.me = null
@@ -22,16 +23,7 @@ export class PlayerStore {
     this.players = players
   }
 
-  set playersSubscription(value: NodeJS.Timer) {
-    if (this._playersSubscription) {
-      clearInterval(value)
-      return
-    }
-    this._playersSubscription = value
-  }
-
-  clearPlayerSubscription() {
-    clearInterval(this._playersSubscription)
-    this._playersSubscription = null
+  get playersSubscriptions(): KeepOnlyOneInterval {
+    return this._playersSubscriptions
   }
 }
