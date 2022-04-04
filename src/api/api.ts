@@ -9,12 +9,12 @@ const getDomain = () => {
   return isProduction ? prodUrl : devUrl
 }
 
- const api = axios.create({
+const api = axios.create({
   baseURL: getDomain(),
   headers: { "Content-Type": "application/json" },
 })
 
- const handleError = (error) => {
+const handleError = (error) => {
   const response = error.response
 
   // catch 4xx and 5xx status codes
