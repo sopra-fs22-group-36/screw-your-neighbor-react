@@ -2,7 +2,7 @@ import React from "react"
 import Footer from "../ui/Footer"
 import BaseContainer from "../ui/BaseContainer"
 import { useNavigate } from "react-router-dom"
-import { api, handleError } from "../../api/api"
+import { handleError } from "../../api/api"
 import "../../styles/ui/Button.scss"
 import "../../styles/ui/Divs.scss"
 import "../../styles/ui/Lists.scss"
@@ -34,7 +34,7 @@ const Lobby = (props) => {
 
   let content = (
     <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF_oKbJzKbF3cywcrD2WlY4s1bs9x-TxgQilDVrwIhevomVZ8akEn2zKDURwuLb3xM0m8&usqp=CAU"
+      src="https://grrrls.at/wp-content/uploads/2020/01/no-image.jpg"
       alt="Lamp"
       width="32"
       height="32"
