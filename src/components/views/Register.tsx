@@ -17,11 +17,18 @@ import "../../styles/ui/images.scss"
 const Register = () => {
   const navigate = useNavigate()
   const [name, setName] = useState("")
+  const [sessionFetched, setSessionFetched] = useState(false)
   const changeName = (e) => {
     setName(e.target.value)
   }
 
-  const { loading, createPlayer, startPollPlayers } = usePlayers()
+  const {
+    loading,
+    createPlayer,
+    startPollPlayers,
+    fetchingSession,
+    hasCurrentSession,
+  } = usePlayers()
 
   const submit = async () => {
     await createPlayer(name)
@@ -29,9 +36,24 @@ const Register = () => {
   }
 
   useEffect(() => {
+    if (!sessionFetched) {
+      //TODO add cancel possibility
+      hasCurrentSession()
+        .then((value) => {
+          if (value) {
+            navigate(Paths.LOBBY)
+          }
+        })
+        .finally(() => setSessionFetched(true))
+      return
+    }
     const playersSubscription = startPollPlayers()
     return () => playersSubscription.cancel()
-  })
+  }, [hasCurrentSession, navigate, sessionFetched, startPollPlayers])
+
+  if (fetchingSession) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className="div-box">
