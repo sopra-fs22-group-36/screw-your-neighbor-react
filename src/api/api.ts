@@ -1,21 +1,20 @@
 import axios from "axios"
 
-
 export const isProduction = () => {
-  return process.env.NODE_ENV === "production";
-};
+  return process.env.NODE_ENV === "production"
+}
 
 const getDomain = () => {
-  const prodUrl = "https://screw-your-neighbor-server.herokuapp.com";
-  const devUrl = 'http://localhost:8080';
+  const prodUrl = "https://screw-your-neighbor-server.herokuapp.com"
+  const devUrl = "http://localhost:8080"
 
   return isProduction() ? prodUrl : devUrl
 }
 
 export const api = axios.create({
   baseURL: getDomain(),
-  headers: { 'Content-Type': 'application/json' }
-});
+  headers: { "Content-Type": "application/json" },
+})
 
 export const handleError = (error) => {
   const response = error.response
@@ -47,4 +46,3 @@ export const handleError = (error) => {
     return error.message
   }
 }
-

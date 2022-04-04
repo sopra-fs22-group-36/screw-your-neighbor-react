@@ -32,8 +32,8 @@ const Register = (props) => {
    */
   const doRegister = async () => {
     try {
-      const requestBody = JSON.stringify({name})
-      const response = await api.post('/players', requestBody)
+      const requestBody = JSON.stringify({ name })
+      const response = await api.post("/players", requestBody)
 
       // Get the returned user and update a new object.
       const player = new Player(response.data)
@@ -45,7 +45,7 @@ const Register = (props) => {
       navigate("/lobby")
     } catch (error) {
       alert(`Something went wrong during the register: \n${handleError(error)}`)
-    console.log(error)
+      console.log(error)
     }
   }
 
@@ -79,9 +79,8 @@ const Register = (props) => {
           </Button>
         </Box>
       </BaseContainer>
-      <Footer/>
-      <div className="background-img">
-    </div>
+      <Footer />
+      <div className="background-img"></div>
     </div>
   )
 }
