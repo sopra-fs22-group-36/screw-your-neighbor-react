@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { usePlayers } from "../../hooks/api/usePlayers"
-import React, { useState } from "react"
-import BaseContainer from "../ui/BaseContainer"
 import Footer from "../ui/Footer"
-import Player from "../../models/Player"
 import { useNavigate } from "react-router-dom"
 import { Paths } from "../routing/routers/Paths"
 
