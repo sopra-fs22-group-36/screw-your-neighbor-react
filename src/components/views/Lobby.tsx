@@ -16,7 +16,7 @@ import "../../styles/ui/images.scss"
 
 const Lobby = observer(() => {
   const navigate = useNavigate()
-  const { startPollPlayers, players } = usePlayers()
+  const { startPollPlayers, players, logout } = usePlayers()
   const { startPollGames, games } = useGames()
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Lobby = observer(() => {
     const gamesSubscription = startPollGames()
     return () =>
       [playersSubscription, gamesSubscription].forEach((sub) => sub.cancel())
-  })
+  }, [startPollGames, startPollPlayers])
   /* code for later!
   const Room = ({room}) => (
         <div className="">
@@ -35,15 +35,8 @@ const Lobby = observer(() => {
 */
 
   const doLogout = async () => {
-    try {
-      localStorage.removeItem("id")
-
-      // Register successfully worked --> navigate to the route /game in the GameRouter
-      navigate(Paths.CREATE_PLAYER)
-      console.log("logged out")
-    } catch (error) {
-      console.log(error)
-    }
+    await logout()
+    navigate(Paths.CREATE_PLAYER)
   }
 
   return (

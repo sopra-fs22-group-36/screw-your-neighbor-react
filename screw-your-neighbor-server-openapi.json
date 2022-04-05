@@ -11,6 +11,178 @@
     }
   ],
   "paths": {
+    "/cards": {
+      "get": {
+        "tags": [
+          "card-entity-controller"
+        ],
+        "description": "get-card",
+        "operationId": "getCollectionResource-card-get_1",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelEntityModelCard"
+                }
+              },
+              "application/x-spring-data-compact+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelEntityModelCard"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "card-entity-controller"
+        ],
+        "description": "create-card",
+        "operationId": "postCollectionResource-card-post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelCard"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cards/{id}": {
+      "get": {
+        "tags": [
+          "card-entity-controller"
+        ],
+        "description": "get-card",
+        "operationId": "getItemResource-card-get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelCard"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "card-entity-controller"
+        ],
+        "description": "patch-card",
+        "operationId": "patchItemResource-card-patch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelCard"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
     "/games": {
       "get": {
         "tags": [
@@ -103,6 +275,38 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/games/search/findAllByName": {
+      "get": {
+        "tags": [
+          "game-search-controller"
+        ],
+        "operationId": "executeSearch-game-get",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelEntityModelGame"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
@@ -1170,7 +1374,7 @@
         }
       }
     },
-    "/profile/games": {
+    "/profile/cards": {
       "get": {
         "tags": [
           "profile-controller"
@@ -1200,7 +1404,7 @@
         }
       }
     },
-    "/profile/participations": {
+    "/profile/games": {
       "get": {
         "tags": [
           "profile-controller"
@@ -1230,7 +1434,7 @@
         }
       }
     },
-    "/profile/players": {
+    "/profile/participations": {
       "get": {
         "tags": [
           "profile-controller"
@@ -1253,6 +1457,69 @@
               "application/schema+json": {
                 "schema": {
                   "$ref": "#/components/schemas/JsonSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile/players": {
+      "get": {
+        "tags": [
+          "profile-controller"
+        ],
+        "operationId": "descriptor_1_1_4",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/alps+json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/schema+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": [
+          "auth-controller"
+        ],
+        "operationId": "logout",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/session": {
+      "get": {
+        "tags": [
+          "auth-controller"
+        ],
+        "operationId": "getCurrentSession",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Player"
                 }
               }
             }
@@ -1363,14 +1630,48 @@
           }
         }
       },
-      "EntityModelPlayer": {
+      "EntityModelCard": {
         "type": "object",
         "properties": {
-          "name": {
+          "cardRank": {
+            "type": "string",
+            "enum": [
+              "SIX",
+              "SEVEN",
+              "EIGHT",
+              "NINE",
+              "TEN",
+              "JACK",
+              "QUEEN",
+              "KING",
+              "ACE"
+            ]
+          },
+          "cardSuit": {
+            "type": "string",
+            "enum": [
+              "CLUB",
+              "DIAMOND",
+              "HEART",
+              "SPADE"
+            ]
+          },
+          "cardRankName": {
+            "type": "string"
+          },
+          "cardSuitName": {
             "type": "string"
           },
           "_links": {
             "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "Player": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
           }
         }
       },
@@ -1392,6 +1693,39 @@
           "number": {
             "type": "integer",
             "format": "int64"
+          }
+        }
+      },
+      "PagedModelEntityModelCard": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "cards": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EntityModelCard"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "page": {
+            "$ref": "#/components/schemas/PageMetadata"
+          }
+        }
+      },
+      "EntityModelPlayer": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
           }
         }
       },
@@ -1472,6 +1806,25 @@
           }
         }
       },
+      "CollectionModelParticipation": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "participations": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ParticipationResponse"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
       "CollectionModelObject": {
         "type": "object",
         "properties": {
@@ -1491,16 +1844,16 @@
           }
         }
       },
-      "CollectionModelParticipation": {
+      "CollectionModelEntityModelGame": {
         "type": "object",
         "properties": {
           "_embedded": {
             "type": "object",
             "properties": {
-              "participations": {
+              "games": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ParticipationResponse"
+                  "$ref": "#/components/schemas/EntityModelGame"
                 }
               }
             }
@@ -1550,6 +1903,46 @@
           },
           "page": {
             "$ref": "#/components/schemas/PageMetadata"
+          }
+        }
+      },
+      "CardRequestBody": {
+        "type": "object",
+        "properties": {
+          "cardRank": {
+            "type": "string",
+            "enum": [
+              "SIX",
+              "SEVEN",
+              "EIGHT",
+              "NINE",
+              "TEN",
+              "JACK",
+              "QUEEN",
+              "KING",
+              "ACE"
+            ]
+          },
+          "cardSuit": {
+            "type": "string",
+            "enum": [
+              "CLUB",
+              "DIAMOND",
+              "HEART",
+              "SPADE"
+            ]
+          },
+          "hand": {
+            "type": "string"
+          },
+          "round": {
+            "type": "string"
+          },
+          "cardRankName": {
+            "type": "string"
+          },
+          "cardSuitName": {
+            "type": "string"
           }
         }
       },
