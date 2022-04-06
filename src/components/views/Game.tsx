@@ -1,13 +1,14 @@
-import React from "react"
+import React, { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Paths } from "../routing/routers/Paths"
 import { usePlayers } from "../../hooks/api/usePlayers"
 import { useCurrentGame } from "../../hooks/api/useCurrentGame"
+import { useApi } from "../../hooks/api/useApi"
+import { appContext } from "../../AppContext"
 import { observer } from "mobx-react-lite"
 import { Login } from "@mui/icons-material"
 import { Button } from "@mui/material"
 import BaseContainer from "../ui/BaseContainer"
-import { api } from "../../api/api"
 
 /**
  * The main game page inside the Jass-Stube includes a table with all players
@@ -18,6 +19,8 @@ const Game = observer(() => {
   const navigate = useNavigate()
   const { me } = usePlayers()
   const { loading, game, leaveGame } = useCurrentGame()
+  const { currentGameStore } = useContext(appContext)
+  const { request, wrapApiCall } = useApi()
 
   const clickLeave = async () => {
     await leaveGame()
@@ -26,13 +29,23 @@ const Game = observer(() => {
 
   const getcard = async () => {
     //Just a test function to figure out how the api calls work now
-    try {
-      const response = await api.get("/cards") //How do I get the cards? They arent included in the /game, there is also no hand yet?
-    } catch (error) {
-      alert(`Something went wrong`)
-      console.log(error)
-    }
+
+    const cardlist = await wrapApiCall(
+      request.request({
+        method: "GET",
+        url: "/cards", //I should get all the information for my game with a call to /game/id - so how do i get the cards that are "active" in that game?
+      })
+    )
+
+    console.log(cardlist._embedded.cards) //How do I get the cards WITHOUT causing a huge error message?
   }
+
+  /*things i had to temporarily remove because errors occured:
+   <div>You are {me.name}</div>
+    <div>You are in the game {game.name}</div>
+
+    Ask Lucius why game can now no longer access this information! What changed?
+   */
 
   return (
     <BaseContainer>

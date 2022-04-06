@@ -15,7 +15,7 @@ export const RoomRow = (props: { game: EntityModelGame }) => {
 
   const clickJoin = async () => {
     await joinGame(props.game)
-    navigate(Paths.GAME)
+    navigate(Paths.ROOM)
   }
 
   return (
