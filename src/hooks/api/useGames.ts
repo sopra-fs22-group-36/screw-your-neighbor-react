@@ -13,7 +13,7 @@ export function useGames() {
   const createGame = async (name) => {
     setLoading(true)
     const createdGame = await wrapApiCall(
-      gameEntityController.postCollectionResourceGamePost({ name: name })
+      gameEntityController.postCollectionResourceGamePost({ name: name }) //Is this the API call? How does it work? What is the gameEntityController?
     ).finally(() => setLoading(false))
     currentGameStore.setGame(createdGame)
     currentGameStore.setParticipation(

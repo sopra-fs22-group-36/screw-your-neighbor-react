@@ -3,5 +3,6 @@ export enum Paths {
   CREATE_PLAYER = "/createPlayer",
   LOBBY = "/lobby",
   GAME = "/game",
+  ROOM = "/room",
   SANDBOX = "/sandbox",
 }

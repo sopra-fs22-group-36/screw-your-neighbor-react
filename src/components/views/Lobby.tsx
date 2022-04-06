@@ -25,14 +25,6 @@ const Lobby = observer(() => {
     return () =>
       [playersSubscription, gamesSubscription].forEach((sub) => sub.cancel())
   }, [startPollGames, startPollPlayers])
-  /* code for later!
-  const Room = ({room}) => (
-        <div className="">
-            <div style={{cursor:"crosshair", padding:"1em"}} className="player username" onClick={() => console.log("You clicked on something! wow!")}>Room</div>
-            <div className="">players: {room.players}</div>
-        </div>
-    );
-*/
 
   const doLogout = async () => {
     await logout()
