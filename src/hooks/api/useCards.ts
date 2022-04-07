@@ -21,7 +21,7 @@ export function useCards() {
       request.request({
         method: "PATCH",
         url: card._links.self.href.replace(getDomain(), ""), //Remove the Host from the url, otherwise it would be double
-        body: { cardRank: "SEVEN" }, //What gets changed
+        body: { cardRank: "ACE" }, //What gets changed
       })
     )
   }
