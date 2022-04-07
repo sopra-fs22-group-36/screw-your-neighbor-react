@@ -4,7 +4,7 @@ import { getDomain } from "../../api/api"
 
 export function useCards() {
   const { request, wrapApiCall, cardEntityController } = useApi()
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
   const [cards, setCards] = useState([])
 
   const getcards = async () => {
