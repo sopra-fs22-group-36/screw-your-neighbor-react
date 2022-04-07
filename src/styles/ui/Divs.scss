@@ -1,8 +1,18 @@
+@import '../theme';
 .div-box{ //stlye for the "mother div" of the register page
   overflow: hidden;
   bottom: 0;
   height: calc(100vh);
 }
+
+.div-lobby{ //stlye for the "mother div" of the register page
+  overflow: hidden;
+  width: 100%;
+  bottom: 0;
+  height: calc(99vh);
+
+}
+
 
 .div-rooms{
   display: block;
@@ -10,6 +20,8 @@
   align-items: center;
   clear:both;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 
 }
 
@@ -22,4 +34,32 @@
   margin: 5px;
   float: left;
   text-align: center;
+
 }
+
+.div-cardbox{
+  margin: 15px;
+  align-self: center;
+  display: inline-block;
+  overflow: hidden;
+}
+.div-players{
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #620606;
+  max-width: $DESKTOP_WIDTH;
+  color: $textColor;
+  border-radius: 2em;
+  overflow: hidden;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  margin-left: auto; //Necessary to put container in middle
+  margin-right: auto;
+  margin-top: 20px;
+  padding-bottom: 8px;
+  padding-right: 5px;
+
+}
+

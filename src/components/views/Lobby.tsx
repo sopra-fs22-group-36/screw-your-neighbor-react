@@ -32,7 +32,7 @@ const Lobby = observer(() => {
   }
 
   return (
-    <div className="div-box">
+    <div className="div-lobby">
       <BaseContainer>
         <h1 className="font-title">Lobby</h1>
       </BaseContainer>
@@ -56,14 +56,14 @@ const Lobby = observer(() => {
           </BaseContainer>
         </Grid>
         <Grid item xs={2}>
-          <BaseContainer>
+          <div className="div-players">
             <h3>Available players</h3>
             <ul>
               {players.map((value) => (
                 <li key={value._links.self.href}>{value.name}</li>
               ))}
             </ul>
-          </BaseContainer>
+          </div>
         </Grid>
       </Grid>
 

@@ -35,7 +35,7 @@ const Game = observer(() => {
   let content = <div>No cards..</div>
   if (cards.length > 0) {
     content = (
-      <div style={{ display: "inline-block", overflow: "hidden" }}>
+      <div className="div-cardbox">
         {cards.map((card) => (
           <div
             key={card._links.self.href}
@@ -51,22 +51,25 @@ const Game = observer(() => {
     )
   } //IMPORTANT: React NEEDS a key when mapping!
 
+  //Game doesn't like it when you refresh the page because of the ".name"
   return (
-    <BaseContainer>
-      <h1>Game page</h1>
-      <div>You are {me.name}</div>
-      <div>You are in the game {game.name}</div>
-
-      {content}
-      <Button
-        disabled={loading}
-        variant="contained"
-        endIcon={<Login />}
-        onClick={clickLeave}
-      >
-        Leave
-      </Button>
-    </BaseContainer>
+    <div className="div-box">
+      <BaseContainer>
+        <h1>
+          Welcome, {me.name} to Game: {game.name}{" "}
+        </h1>
+        <p>These are the Cards:</p>
+        {content}
+        <Button
+          disabled={loading}
+          variant="contained"
+          endIcon={<Login />}
+          onClick={clickLeave}
+        >
+          Leave
+        </Button>
+      </BaseContainer>
+    </div>
   )
 })
 
