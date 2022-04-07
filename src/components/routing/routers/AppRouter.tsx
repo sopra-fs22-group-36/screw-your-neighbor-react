@@ -6,6 +6,7 @@ import Register from "../../views/Register"
 import Lobby from "../../views/Lobby"
 import Sandbox from "../../views/Sandbox"
 import Game from "../../views/Game"
+import Room from "../../views/Room"
 import { Paths } from "./Paths"
 
 /**
@@ -27,6 +28,7 @@ const AppRouter = () => {
           }
         />
         <Route path={Paths.GAME} element={<Game />} />
+        <Route path={Paths.ROOM} element={<Room />} />
         <Route
           path={Paths.CREATE_PLAYER}
           element={

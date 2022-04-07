@@ -25,14 +25,6 @@ const Lobby = observer(() => {
     return () =>
       [playersSubscription, gamesSubscription].forEach((sub) => sub.cancel())
   }, [startPollGames, startPollPlayers])
-  /* code for later!
-  const Room = ({room}) => (
-        <div className="">
-            <div style={{cursor:"crosshair", padding:"1em"}} className="player username" onClick={() => console.log("You clicked on something! wow!")}>Room</div>
-            <div className="">players: {room.players}</div>
-        </div>
-    );
-*/
 
   const doLogout = async () => {
     await logout()
@@ -40,7 +32,7 @@ const Lobby = observer(() => {
   }
 
   return (
-    <div className="div-box">
+    <div className="div-lobby">
       <BaseContainer>
         <h1 className="font-title">Lobby</h1>
       </BaseContainer>
@@ -64,14 +56,14 @@ const Lobby = observer(() => {
           </BaseContainer>
         </Grid>
         <Grid item xs={2}>
-          <BaseContainer>
+          <div className="div-players">
             <h3>Available players</h3>
             <ul>
               {players.map((value) => (
                 <li key={value._links.self.href}>{value.name}</li>
               ))}
             </ul>
-          </BaseContainer>
+          </div>
         </Grid>
       </Grid>
 

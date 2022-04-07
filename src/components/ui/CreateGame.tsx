@@ -20,7 +20,7 @@ export const CreateGame = () => {
 
   const submit = async () => {
     await createGame(name)
-    navigate(Paths.GAME)
+    navigate(Paths.ROOM) //GAME and ROOM are the same in the Backend but the view is different for the Frontend! How to change?
   }
 
   return (
