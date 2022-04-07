@@ -17,4 +17,4 @@ const api = new AppClient({
   },
 })
 
-export { api }
+export { api, getDomain }

@@ -10,6 +10,7 @@ import { Login } from "@mui/icons-material"
 import { Button } from "@mui/material"
 import BaseContainer from "../ui/BaseContainer"
 import { RoomRow } from "../ui/RoomRow"
+import "../../styles/ui/Divs.scss"
 import { useCards } from "../../hooks/api/useCards"
 
 /**
@@ -21,7 +22,7 @@ const Game = observer(() => {
   const navigate = useNavigate()
   const { me } = usePlayers()
   const { loading, game, leaveGame } = useCurrentGame()
-  const { cards, getcards } = useCards()
+  const { cards, getcards, updatecards } = useCards()
 
   const clickLeave = async () => {
     await leaveGame()
@@ -32,16 +33,16 @@ const Game = observer(() => {
     getcards()
   })
 
-  const updateCard = async () => {
-    console.log("you clicked on a card")
-  }
-
   let content = <div>No cards..</div>
   if (cards.length > 0) {
     content = (
-      <div style={{ fontSize: "25px" }} onClick={updateCard}>
+      <div style={{ display: "inline-block", overflow: "hidden" }}>
         {cards.map((card) => (
-          <div key={card._links.self.href}>
+          <div
+            key={card._links.self.href}
+            onClick={() => updatecards(card)}
+            className="div-cards"
+          >
             <div>
               {card.cardRank} of {card.cardSuit}
             </div>

@@ -1,5 +1,6 @@
 import { useApi } from "./useApi"
 import { useState } from "react"
+import { getDomain } from "../../api/api"
 
 export function useCards() {
   const { request, wrapApiCall, cardEntityController } = useApi()
@@ -7,18 +8,28 @@ export function useCards() {
   const [cards, setCards] = useState([])
 
   const getcards = async () => {
-    //Goal is to get a list of cards so that i can make a div or button for each card (that has the name of the card on it) and that when i then click on the card i send a put request to "play it"
     const cardlist = await wrapApiCall(
-      cardEntityController.getCollectionResourceCardGet1()
+      cardEntityController.getCollectionResourceCardGet1() //This get function is already defined in our cardEntityController - Can we also use this for PATCH?
     )
-
-    const list_cards = cardlist._embedded.cards
+    const list_cards = cardlist._embedded.cards //Get JUST the cards
     setCards(list_cards) //update cards
     return list_cards
   }
+  const updatecards = async (card) => {
+    //Make a patch request
+    wrapApiCall(
+      request.request({
+        method: "PATCH",
+        url: card._links.self.href.replace(getDomain(), ""), //Remove the Host from the url, otherwise it would be double
+        body: { cardRank: "SEVEN" }, //What gets changed
+      })
+    )
+  }
+
   return {
-    //was wir exposen
+    //The things we return/expose
     cards,
     getcards,
+    updatecards,
   }
 }
