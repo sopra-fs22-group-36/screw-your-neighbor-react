@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Paths } from "../routing/routers/Paths"
 import { usePlayers } from "../../hooks/api/usePlayers"
@@ -9,6 +9,8 @@ import { observer } from "mobx-react-lite"
 import { Login } from "@mui/icons-material"
 import { Button } from "@mui/material"
 import BaseContainer from "../ui/BaseContainer"
+import { RoomRow } from "../ui/RoomRow"
+import { useCards } from "../../hooks/api/useCards"
 
 /**
  * The main game page inside the Jass-Stube includes a table with all players
@@ -19,40 +21,43 @@ const Game = observer(() => {
   const navigate = useNavigate()
   const { me } = usePlayers()
   const { loading, game, leaveGame } = useCurrentGame()
-  const { currentGameStore } = useContext(appContext)
-  const { request, wrapApiCall } = useApi()
+  const { cards, getcards } = useCards()
 
   const clickLeave = async () => {
     await leaveGame()
     navigate(Paths.LOBBY)
   }
+  useEffect(() => {
+    //Gets the cards at the beginning
+    getcards()
+  })
 
-  const getcard = async () => {
-    //Just a test function to figure out how the api calls work now
-
-    const cardlist = await wrapApiCall(
-      request.request({
-        method: "GET",
-        url: "/cards", //I should get all the information for my game with a call to /game/id - so how do i get the cards that are "active" in that game?
-      })
-    )
-
-    console.log(cardlist._embedded.cards) //How do I get the cards WITHOUT causing a huge error message?
+  const updateCard = async () => {
+    console.log("you clicked on a card")
   }
 
-  /*things i had to temporarily remove because errors occured:
-   <div>You are {me.name}</div>
-    <div>You are in the game {game.name}</div>
-
-    Ask Lucius why game can now no longer access this information! What changed?
-   */
+  let content = <div>No cards..</div>
+  if (cards.length > 0) {
+    content = (
+      <div style={{ fontSize: "25px" }} onClick={updateCard}>
+        {cards.map((card) => (
+          <div key={card._links.self.href}>
+            <div>
+              {card.cardRank} of {card.cardSuit}
+            </div>
+          </div>
+        ))}
+      </div>
+    )
+  } //IMPORTANT: React NEEDS a key when mapping!
 
   return (
     <BaseContainer>
       <h1>Game page</h1>
       <div>You are {me.name}</div>
       <div>You are in the game {game.name}</div>
-      <button onClick={getcard}>Get cards (TEST BUTTON)</button>
+
+      {content}
       <Button
         disabled={loading}
         variant="contained"

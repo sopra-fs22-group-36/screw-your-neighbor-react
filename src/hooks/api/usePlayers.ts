@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import { appContext } from "../../AppContext"
 import { useApi } from "./useApi"
 import { ApiError } from "../../generated"
-
+//Alles an einem ort basically
 export function usePlayers() {
   const playerStore = useContext(appContext).playerStore
   const [loading, setLoading] = useState(false)
@@ -11,7 +11,7 @@ export function usePlayers() {
   const { wrapApiCall, playerEntityController, authController } = useApi()
 
   const createPlayer = async (name) => {
-    setLoading(true)
+    setLoading(true) //Weil api call
     const createdPlayer = await wrapApiCall(
       playerEntityController.postCollectionResourcePlayerPost({
         name,
