@@ -4,12 +4,11 @@ import { getDomain } from "../../api/api"
 
 export function useCards() {
   const { request, wrapApiCall, cardEntityController } = useApi()
-  // const [loading, setLoading] = useState(false)
   const [cards, setCards] = useState([])
 
   const getcards = async () => {
     const cardlist = await wrapApiCall(
-      cardEntityController.getCollectionResourceCardGet1() //This get function is already defined in our cardEntityController - Can we also use this for PATCH?
+      cardEntityController.getCollectionResourceCardGet1()
     )
     const list_cards = cardlist._embedded.cards //Get JUST the cards
     setCards(list_cards) //update cards

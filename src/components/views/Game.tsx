@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom"
 import { Paths } from "../routing/routers/Paths"
 import { usePlayers } from "../../hooks/api/usePlayers"
 import { useCurrentGame } from "../../hooks/api/useCurrentGame"
-//import { useApi } from "../../hooks/api/useApi"
-//import { appContext } from "../../AppContext"
 import { observer } from "mobx-react-lite"
 import { Login } from "@mui/icons-material"
 import { Button } from "@mui/material"
@@ -23,18 +21,19 @@ const Game = observer(() => {
   const { me } = usePlayers()
   const { loading, game, leaveGame } = useCurrentGame()
   const { cards, getcards, updatecards } = useCards()
-  const [opacity, setOpacity] = useState(1)
+  const [opacity, setOpacity] = useState(10)
 
   const clickLeave = async () => {
     await leaveGame()
     navigate(Paths.LOBBY)
   }
 
-  const both = async (card, number) => {
-    //IM ECHTEN: Aus der hand rausnehmen
+  const bothfunctions = async (card, number) => {
+    //Change style and make patch request
+    //IN THE FINAL VERISON: remove card from hand
+    //Also need to remember what card was currently played so that you can place it on the table
     setOpacity(number)
     updatecards(card)
-    console.log("click")
   }
 
   useEffect(() => {
@@ -52,7 +51,7 @@ const Game = observer(() => {
               backgroundColor: opacity === index ? "#0b97c4" : "#006666",
             }}
             key={card._links.self.href}
-            onClick={() => both(card, index)}
+            onClick={() => bothfunctions(card, index)}
             className="cards"
           >
             <div>
@@ -62,9 +61,9 @@ const Game = observer(() => {
         ))}
       </div>
     )
-  } //IMPORTANT: React NEEDS a key when mapping!
+  }
 
-  //Game doesn't like it when you refresh the page because of the ".name"
+  //Game doesn't like it when you refresh the page because of the ".name" - get from backend
   return (
     <div className="div-box">
       <BaseContainer>

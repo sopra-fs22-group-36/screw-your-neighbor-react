@@ -10,7 +10,7 @@ export function usePlayers() {
   const { wrapApiCall, playerEntityController, authController } = useApi()
 
   const createPlayer = async (name) => {
-    setLoading(true) //Weil api call
+    setLoading(true)
     const createdPlayer = await wrapApiCall(
       playerEntityController.postCollectionResourcePlayerPost({
         name,
