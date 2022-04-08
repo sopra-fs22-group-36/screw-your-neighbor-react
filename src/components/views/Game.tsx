@@ -21,19 +21,29 @@ const Game = observer(() => {
   const { me } = usePlayers()
   const { loading, game, leaveGame } = useCurrentGame()
   const { cards, getcards, updatecards } = useCards()
-  const [opacity, setOpacity] = useState(10)
+  const [played, setPlayed] = useState([])
 
   const clickLeave = async () => {
     await leaveGame()
     navigate(Paths.LOBBY)
   }
 
-  const bothfunctions = async (card, number) => {
-    //Change style and make patch request
+  const updateAll = async (card) => {
+    // make patch request and add cards to list of played cards
     //IN THE FINAL VERISON: remove card from hand
-    //Also need to remember what card was currently played so that you can place it on the table
-    setOpacity(number)
     updatecards(card)
+
+    const name = `${card.cardRank} of ${card.cardSuit}` //To avoid being able to play the same card multiple times
+    if (!played.includes(name)) {
+      updateCardPlayed(name)
+    }
+  }
+  const updateCardPlayed = async (name) => {
+    //Add card to the list of played cards
+    const newArr = [...played]
+    const index = played.length
+    newArr[index] = name
+    setPlayed(newArr)
   }
 
   useEffect(() => {
@@ -45,18 +55,34 @@ const Game = observer(() => {
   if (cards.length > 0) {
     content = (
       <div className="cardbox">
-        {cards.map((card, index) => (
+        {cards.map((card) => (
           <div
-            style={{
-              backgroundColor: opacity === index ? "#0b97c4" : "#006666",
-            }}
             key={card._links.self.href}
-            onClick={() => bothfunctions(card, index)}
+            onClick={() => updateAll(card)}
             className="cards"
           >
             <div>
               {card.cardRank} of {card.cardSuit}
             </div>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  let playedcontent = <div>No cards played..</div> //Display the cards that were played
+  if (played.length > 0) {
+    playedcontent = (
+      <div className="cardbox">
+        {played.map((playedcard) => (
+          <div
+            style={{
+              backgroundColor: "#ff82ab",
+            }}
+            key={Math.random()}
+            className="cards"
+          >
+            <div>{playedcard}</div>
           </div>
         ))}
       </div>
@@ -72,6 +98,9 @@ const Game = observer(() => {
         </h1>
         <p>These are the Cards:</p>
         {content}
+        <br />
+        <h3>You have played the following cards:</h3>
+        {playedcontent}
         <Button
           disabled={loading}
           variant="contained"
