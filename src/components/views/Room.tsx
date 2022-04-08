@@ -6,10 +6,12 @@ import { useCurrentGame } from "../../hooks/api/useCurrentGame"
 
 const Room = (props) => {
   const navigate = useNavigate()
-  const { game } = useCurrentGame()
+  const { game, playGame } = useCurrentGame()
+
   const temporary = async () => {
     //To make sure you can get from the room to the Game
     navigate(Paths.GAME)
+    await playGame()
   }
 
   return (
