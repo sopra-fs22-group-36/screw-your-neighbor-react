@@ -15,11 +15,12 @@ export function useCards() {
     return list_cards
   }
   const updatecards = async (card) => {
-    //Make a patch request
+    const template = card._links.self.href.replace(getDomain(), "")
+    const patchUrl = template.replace("{?projection}", "")
     wrapApiCall(
       request.request({
         method: "PATCH",
-        url: card._links.self.href.replace(getDomain(), ""), //Remove the Host from the url, otherwise it would be double
+        url: patchUrl, //Remove the Host from the url, otherwise it would be double
         body: { cardRank: "ACE" }, //What gets changed
       })
     )

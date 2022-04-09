@@ -25,7 +25,7 @@ export const RoomRow = (props: { game: EntityModelGame }) => {
           {props.game.name}
         </Grid>
         <Grid item xs={3}>
-          {props.game._embedded.participations.length} Players
+          {props.game?.participations?.length} Players
         </Grid>
         <Grid item xs={3}>
           <Button
