@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { appContext } from "../../AppContext"
 import { useApi } from "./useApi"
-import { getDomain } from "../../api/api"
+import { toIri } from "../../util/toIri"
 
 export function useCurrentGame() {
   const [loading, setLoading] = useState(false)
@@ -13,7 +13,7 @@ export function useCurrentGame() {
     wrapApiCall(
       request.request({
         method: "PATCH",
-        url: currentGameStore.participation._links.self.href,
+        url: toIri(currentGameStore.participation._links.self),
         body: { active: false },
       })
     ).finally(() => setLoading(false))
@@ -23,7 +23,7 @@ export function useCurrentGame() {
     wrapApiCall(
       request.request({
         method: "PATCH",
-        url: currentGameStore.game._links.self.href.replace(getDomain(), ""),
+        url: toIri(currentGameStore.game._links.self),
         body: { gameState: "PLAYING" },
       })
     )
