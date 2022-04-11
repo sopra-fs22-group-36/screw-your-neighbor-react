@@ -16,9 +16,6 @@ export function useGames() {
       gameEntityController.postCollectionResourceGamePost({ name: name })
     ).finally(() => setLoading(false))
     currentGameStore.setGame(createdGame)
-    currentGameStore.setParticipation(
-      createdGame._embedded.participations.at(0)
-    )
     return createdGame
   }
 
