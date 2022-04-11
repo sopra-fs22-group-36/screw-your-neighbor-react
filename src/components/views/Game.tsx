@@ -74,12 +74,12 @@ const Game = observer(() => {
   if (played.length > 0) {
     playedcontent = (
       <div className="cardbox">
-        {played.map((playedcard) => (
+        {played.map((playedcard, index) => (
           <div
             style={{
               backgroundColor: "#ff82ab",
             }}
-            key={Math.random()}
+            key={index}
             className="cards"
           >
             <div>{playedcard}</div>
