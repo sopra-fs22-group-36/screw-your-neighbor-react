@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import BaseContainer from "../ui/BaseContainer"
 import { useNavigate } from "react-router-dom"
 import { Paths } from "../routing/routers/Paths"
@@ -11,7 +11,7 @@ import { useApi } from "../../hooks/api/useApi"
 
 const Room = () => {
   const navigate = useNavigate()
-  const { game, playGame, startPollGame } = useCurrentGame()
+  const { game, playGame } = useCurrentGame()
   const { startPollGames } = useGames()
   const { currentGameStore } = useContext(appContext)
   const { request, wrapApiCall } = useApi()
@@ -35,7 +35,7 @@ const Room = () => {
       })
     )
     //Send all joined players to the game room
-    if (game.gameState == EntityModelGame.gameState.PLAYING){
+    if (game.gameState === EntityModelGame.gameState.PLAYING) {
       navigate(Paths.GAME)
       return
     }
@@ -44,7 +44,9 @@ const Room = () => {
   useEffect(() => {
     //Start trigger to check, whether the current gameState has change
     //meaning that, one of the players has start the game
-    const updateGame = setInterval(() => { getCurrentGame() }, 500)
+    const updateGame = setInterval(() => {
+      getCurrentGame()
+    }, 500)
 
     const gamesSubscription = startPollGames()
 
@@ -52,31 +54,26 @@ const Room = () => {
       [gamesSubscription].forEach((sub) => sub.cancel())
       clearInterval(updateGame)
     }
-  }, [startPollGames])
+  }, [startPollGames, getCurrentGame])
 
   function startGame() {
     navigate(Paths.GAME)
   }
 
-  return ( 
+  return (
     <div>
       <div>
-      <BaseContainer>
-        <h1>Room page</h1>
-        <div>You are in the game {game.name}</div>
-        <button style={{ height: "50px" }} onClick={temporary}>
-          GET TO MY GAME
-        </button>
-      </BaseContainer>
+        <BaseContainer>
+          <h1>Room page</h1>
+          <div>You are in the game {game.name}</div>
+          <button style={{ height: "50px" }} onClick={temporary}>
+            GET TO MY GAME
+          </button>
+        </BaseContainer>
       </div>
-      <div>
-        {game.gameState === "PLAYING" ? startGame : <p>hallo</p>}
-      </div>
+      <div>{game.gameState === "PLAYING" ? startGame : <p>hallo</p>}</div>
     </div>
   )
 }
 
 export default Room
-function wrapApiCall(arg0: any): EntityModelGame | PromiseLike<EntityModelGame> {
-  throw new Error("Function not implemented.")
-}

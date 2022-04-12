@@ -50,14 +50,13 @@ export function useCurrentGame() {
     currentGameStore.gameSubscriptions.addSubscription(
       setInterval(refreshGame, 500)
     )
-    
+
     return {
       cancel() {
         currentGameStore.gameSubscriptions.removeSubscription()
       },
     }
   }
-
 
   return {
     loading,
