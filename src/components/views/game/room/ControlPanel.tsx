@@ -8,7 +8,8 @@ import LogoutIcon from "@mui/icons-material/Logout"
 
 export const ControlPanel = () => {
   const navigate = useNavigate()
-  const { loading, leaveGame, playGame } = useCurrentGame()
+  const { loading, leaveGame, playGame, activeParticipations } =
+    useCurrentGame()
 
   const clickLeave = async () => {
     await leaveGame()
@@ -19,7 +20,7 @@ export const ControlPanel = () => {
     <div className={"control-panel"}>
       <div>
         <Button
-          disabled={loading}
+          disabled={loading || activeParticipations.length < 2}
           variant="contained"
           endIcon={<SendIcon />}
           onClick={playGame}
