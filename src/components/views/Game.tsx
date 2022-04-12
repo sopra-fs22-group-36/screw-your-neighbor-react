@@ -10,6 +10,7 @@ import BaseContainer from "../ui/BaseContainer"
 import "../../styles/ui/Divs.scss"
 import "../../styles/ui/Cards.scss"
 import { useCards } from "../../hooks/api/useCards"
+import ScoreAnnouncing from "../ui/ScoreAnnoucing"
 
 /**
  * The main game page inside the Jass-Stube includes a table with all players
@@ -109,6 +110,8 @@ const Game = observer(() => {
         >
           Leave
         </Button>
+        <p></p>
+        <ScoreAnnouncing />
       </BaseContainer>
     </div>
   )
