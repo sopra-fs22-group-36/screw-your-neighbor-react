@@ -25,36 +25,37 @@ const Room = () => {
   /**
    * Get request for the current game, will update according the intervall
    */
-  async function getCurrentGame() {
-    const uri = currentGameStore.game._links.self.href.replace(getDomain(), "")
-    const url = `${uri}?projection=embed`
-    const game: EntityModelGame = await wrapApiCall(
-      request.request({
-        method: "GET",
-        url: url,
-      })
-    )
-    //Send all joined players to the game room
-    if (game.gameState === EntityModelGame.gameState.PLAYING) {
-      navigate(Paths.GAME)
-      return
-    }
-  }
-
   useEffect(() => {
     //Start trigger to check, whether the current gameState has change
     //meaning that, one of the players has start the game
-    const updateGame = setInterval(() => {
-      getCurrentGame()
-    }, 500)
-
     const gamesSubscription = startPollGames()
-
-    return () => {
-      [gamesSubscription].forEach((sub) => sub.cancel())
-      clearInterval(updateGame)
-    }
-  }, [startPollGames, getCurrentGame])
+    const updateGame = setInterval(async () => {
+      const uri = currentGameStore.game._links.self.href.replace(
+        getDomain(),
+        ""
+      )
+      const url = `${uri}?projection=embed`
+      const game: EntityModelGame = await wrapApiCall(
+        request.request({
+          method: "GET",
+          url: url,
+        })
+      )
+      //Send all joined players to the game room
+      if (game.gameState === EntityModelGame.gameState.PLAYING) {
+        clearInterval(updateGame)
+        navigate(Paths.GAME)
+        return
+      }
+    }, 500)
+    return () => [gamesSubscription].forEach((sub) => sub.cancel())
+  }, [
+    startPollGames,
+    currentGameStore.game._links.self.href,
+    navigate,
+    request,
+    wrapApiCall,
+  ])
 
   function startGame() {
     navigate(Paths.GAME)
