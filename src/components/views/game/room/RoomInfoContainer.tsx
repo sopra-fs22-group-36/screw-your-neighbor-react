@@ -13,7 +13,6 @@ export const RoomInfoContainer = observer(() => {
       <h2 className="infoPanel"> Room Info </h2>
       <div> This is room: {game.name}</div>
       <div> Current player count: {playerCount} </div>
-      <div> Creation Date: 07.04.2022 </div>
       <Button variant="contained" endIcon={<ContentCopyIcon />}>
         Copy invite Link
       </Button>

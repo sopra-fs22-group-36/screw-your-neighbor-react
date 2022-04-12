@@ -6,6 +6,8 @@ import SendIcon from "@mui/icons-material/Send"
 import Button from "@mui/material/Button"
 import { useNavigate } from "react-router-dom"
 import { Paths } from "../../../routing/routers/Paths"
+import ReactConfetti from "react-confetti"
+import { WinnersPodium } from "./WinnersPodium"
 
 export const GameSummary = observer(() => {
   const navigate = useNavigate()
@@ -17,16 +19,23 @@ export const GameSummary = observer(() => {
   }
 
   return (
-    <BaseContainer>
-      <h2>Game: {game.name} is finished</h2>
-      <Button
-        disabled={loading}
-        variant="contained"
-        endIcon={<SendIcon />}
-        onClick={clickCloseGame}
-      >
-        Close game
-      </Button>
-    </BaseContainer>
+    <div>
+      <ReactConfetti />
+
+      <BaseContainer>
+        <h4>Game: {game.name} is finished</h4>
+
+        <WinnersPodium />
+
+        <Button
+          disabled={loading}
+          variant="contained"
+          endIcon={<SendIcon />}
+          onClick={clickCloseGame}
+        >
+          Close game
+        </Button>
+      </BaseContainer>
+    </div>
   )
 })
