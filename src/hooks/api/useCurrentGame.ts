@@ -11,7 +11,6 @@ export function useCurrentGame() {
   const { request, wrapApiCall } = useApi()
 
   const leaveGame = async () => {
-    console.log(currentGameStore)
     setLoading(true)
     wrapApiCall(
       request.request({
