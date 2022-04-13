@@ -8,7 +8,7 @@ import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined"
 
 export const ScoreAnnouncing = () => {
   const { loading, scoreAnnouncing } = useCurrentGame()
-  const [score, setScore] = useState<string | null>(null)
+  const [score, setScore] = useState(null)
 
   const clickAnnouncing = async () => {
     await scoreAnnouncing(score)

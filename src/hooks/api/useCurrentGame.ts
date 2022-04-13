@@ -33,7 +33,7 @@ export function useCurrentGame() {
   }
 
   const refreshGame = async () => {
-    const uri = currentGameStore.game._links.self.href.replace(getDomain(), "")
+    const uri = toIri(currentGameStore.game._links.self)
     const url = `${uri}?projection=embed`
     const game: EntityModelGame = await wrapApiCall(
       request.request({
