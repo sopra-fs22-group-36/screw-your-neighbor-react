@@ -21,14 +21,19 @@ import { EntityModelCard } from "../../generated"
 const Game = observer(() => {
   const navigate = useNavigate()
   const { me } = usePlayers()
-  const { loading, game, leaveGame, startPollGame } = useCurrentGame()
+  const { loading, game, leaveGame, closeGame, startPollGame } =
+    useCurrentGame()
   const { updatecards } = useCards()
   const [played, setPlayed] = useState([])
 
   const cards: Array<EntityModelCard> = game.matches[0]?.hands[0]?.cards || []
 
+  //I tried to get the match number but somehow its not there?
+  const matchnr = JSON.stringify(game.matches[0]) //Why is matchNumber or roundNumber not available?
+
   const clickLeave = async () => {
     await leaveGame()
+    //await closeGame() - If i close the game i cant seem to set it to playing again - Is this intended?
     navigate(Paths.LOBBY)
   }
 
@@ -36,6 +41,7 @@ const Game = observer(() => {
     // make patch request and add cards to list of played cards
     //IN THE FINAL VERISON: remove card from hand
     updatecards(card)
+    console.log(matchnr)
 
     const name = `${card.cardRank} of ${card.cardSuit}` //To avoid being able to play the same card multiple times
     if (!played.includes(name)) {
@@ -97,14 +103,9 @@ const Game = observer(() => {
   return (
     <div className="div-box">
       <BaseContainer>
-        <h1>
+        <h2>
           Welcome, {me.name} to Game: {game.name}
-        </h1>
-        <p>These are the Cards:</p>
-        {content}
-        <br />
-        <h3>You have played the following cards:</h3>
-        {playedcontent}
+        </h2>
         <Button
           disabled={loading}
           variant="contained"
@@ -113,9 +114,21 @@ const Game = observer(() => {
         >
           Leave
         </Button>
-        <p></p>
-        <ScoreAnnouncing />
       </BaseContainer>
+      <div className="div-scoreannounce">
+        <ScoreAnnouncing />
+      </div>
+
+      <div className="div-bottomleft">
+        <p>These are the Cards:</p>
+        {content}
+      </div>
+
+      <div className="div-tableplayed">
+        <h3>You have played the following cards:</h3>
+        {playedcontent}
+      </div>
+      <div className="table-background"></div>
     </div>
   )
 })

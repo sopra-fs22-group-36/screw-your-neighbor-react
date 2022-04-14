@@ -66,9 +66,8 @@ const Lobby = observer(() => {
           </div>
         </Grid>
       </Grid>
-
-      <Footer />
       <div className="background-img"></div>
+      <Footer />
     </div>
   )
 })

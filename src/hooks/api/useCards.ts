@@ -16,7 +16,7 @@ export function useCards() {
       request.request({
         method: "PATCH",
         url: patchUrl, //Remove the Host from the url, otherwise it would be double
-        body: { cardRank: cardRank.ACE }, //What gets changed
+        body: { cardRank: cardRank.ACE }, //What gets changed -> Need way to change round
       })
     )
   }

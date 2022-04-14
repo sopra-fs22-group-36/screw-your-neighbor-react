@@ -3,6 +3,8 @@ import { appContext } from "../../AppContext"
 import { useApi } from "./useApi"
 import { toIri } from "../../util/toIri"
 import { EntityModelGame } from "../../generated"
+import { getDomain } from "../../api/api"
+const gameState = EntityModelGame.gameState
 
 export function useCurrentGame() {
   const [loading, setLoading] = useState(false)
@@ -22,11 +24,30 @@ export function useCurrentGame() {
 
   const playGame = async () => {
     setLoading(true)
+    const ignoreValidationFailed = (reason) => {
+      if (reason.status === 422) {
+        return
+      }
+      throw reason
+    }
+    wrapApiCall(
+      request
+        .request({
+          method: "PATCH",
+          url: toIri(currentGameStore.game._links.self),
+          body: { gameState: gameState.PLAYING },
+        })
+        .catch(ignoreValidationFailed)
+    ).finally(() => setLoading(false))
+  }
+
+  const closeGame = async () => {
+    setLoading(true)
     wrapApiCall(
       request.request({
         method: "PATCH",
         url: toIri(currentGameStore.game._links.self),
-        body: { gameState: "PLAYING" },
+        body: { gameState: gameState.CLOSED },
       })
     ).finally(() => setLoading(false))
   }
@@ -77,5 +98,6 @@ export function useCurrentGame() {
     playGame,
     startPollGame,
     announceScore,
+    closeGame,
   }
 }
