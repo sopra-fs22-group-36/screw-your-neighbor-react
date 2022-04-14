@@ -10,7 +10,7 @@ import BaseContainer from "../ui/BaseContainer"
 import "../../styles/ui/Divs.scss"
 import "../../styles/ui/Cards.scss"
 import { useCards } from "../../hooks/api/useCards"
-import ScoreAnnouncing from "../ui/ScoreAnnoucing"
+import ScoreAnnouncing from "../ui/ScoreAnnouncing"
 
 /**
  * The main game page inside the Jass-Stube includes a table with all players
