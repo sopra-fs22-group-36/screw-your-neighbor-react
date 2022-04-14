@@ -7,11 +7,11 @@ import insertCoin from "../../img/icons/insert-coin.png"
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined"
 
 export const ScoreAnnouncing = () => {
-  const { loading, scoreAnnouncing } = useCurrentGame()
+  const { loading, announceScore } = useCurrentGame()
   const [score, setScore] = useState(null)
 
-  const clickAnnouncing = async () => {
-    await scoreAnnouncing(score)
+  const clickAnnounceScore = async () => {
+    await announceScore(score)
   }
 
   return (
@@ -70,7 +70,7 @@ export const ScoreAnnouncing = () => {
             disabled={score === null || loading}
             variant="contained"
             startIcon={<CampaignOutlinedIcon fontSize="large" />}
-            onClick={clickAnnouncing}
+            onClick={clickAnnounceScore}
           >
             Announce
           </Button>
