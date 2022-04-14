@@ -3,7 +3,6 @@ import { appContext } from "../../AppContext"
 import { useApi } from "./useApi"
 import { toIri } from "../../util/toIri"
 import { EntityModelGame } from "../../generated"
-import { getDomain } from "../../api/api"
 
 export function useCurrentGame() {
   const [loading, setLoading] = useState(false)
@@ -57,13 +56,15 @@ export function useCurrentGame() {
     }
   }
 
-  //So far only for hand with ID 5, have to replace by ._links. ...
-  const scoreAnnouncing = (numberOfTricks) => {
+  /**
+   * So far only for hand with ID 5, have to replace by ._links. ...
+   */
+  const announceScore = (numberOfTricks) => {
     setLoading(true)
     wrapApiCall(
       request.request({
         method: "PATCH",
-        url: "http://localhost:8080/hands/5".replace(getDomain(), ""),
+        url: "/hands/5",
         body: { announcedScore: numberOfTricks },
       })
     ).finally(() => setLoading(false))
@@ -75,6 +76,6 @@ export function useCurrentGame() {
     leaveGame,
     playGame,
     startPollGame,
-    scoreAnnouncing,
+    announceScore,
   }
 }
