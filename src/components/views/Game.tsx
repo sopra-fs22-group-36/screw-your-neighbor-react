@@ -11,6 +11,7 @@ import "../../styles/ui/Divs.scss"
 import "../../styles/ui/Cards.scss"
 import { useCards } from "../../hooks/api/useCards"
 import ScoreAnnouncing from "../ui/ScoreAnnouncing"
+import { EntityModelCard } from "../../generated"
 
 /**
  * The main game page inside the Jass-Stube includes a table with all players
@@ -20,9 +21,11 @@ import ScoreAnnouncing from "../ui/ScoreAnnouncing"
 const Game = observer(() => {
   const navigate = useNavigate()
   const { me } = usePlayers()
-  const { loading, game, leaveGame } = useCurrentGame()
-  const { cards, getcards, updatecards } = useCards()
+  const { loading, game, leaveGame, startPollGame } = useCurrentGame()
+  const { updatecards } = useCards()
   const [played, setPlayed] = useState([])
+
+  const cards: Array<EntityModelCard> = game.matches[0]?.hands[0]?.cards || []
 
   const clickLeave = async () => {
     await leaveGame()
@@ -48,9 +51,9 @@ const Game = observer(() => {
   }
 
   useEffect(() => {
-    //Gets the cards at the beginning
-    getcards()
-  })
+    const pollGameSubscription = startPollGame()
+    return () => pollGameSubscription.cancel()
+  }, [startPollGame])
 
   let content = <div>No cards..</div>
   if (cards.length > 0) {
