@@ -56,7 +56,10 @@ export const ScoreAnnouncing = () => {
             InputLabelProps={{
               shrink: true,
             }}
-            value={score}
+            value={score !== null ? score : null}
+            inputProps={{
+              min: 0,
+            }}
             onChange={(event) => {
               setScore(event.target.value)
             }}
@@ -64,7 +67,7 @@ export const ScoreAnnouncing = () => {
         </Box>
         <Box component="span" sx={{ color: "primary.main", fontSize: 22 }}>
           <Button
-            disabled={loading}
+            disabled={score === null || loading}
             variant="contained"
             startIcon={<CampaignOutlinedIcon fontSize="large" />}
             onClick={clickAnnouncing}
