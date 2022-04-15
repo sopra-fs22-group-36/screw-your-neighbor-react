@@ -21,9 +21,11 @@
     border-radius: 2em;
     opacity: 0.9;
     z-index: 100;
-    position: relative;
-    top: 15em;
-    left: 30em;
+    position: absolute;
+    bottom: 15vh;
+    left: 41vw;
+    height: 30vh;
+    width: 35vw;
 
     .card-component {
       background-color: #ff82ab;
@@ -37,22 +39,22 @@
   }
 
   .player-2 {
-    left: 72vw;
-    top: 25vw;
+    right: 3vw;
+    bottom: 35vh;
   }
 
   .player-3 {
-    left: 60vw;
-    top: 15vw;
+    right: 20vw;
+    bottom: 50vh;
   }
 
   .player-4 {
-    left: 40vw;
-    top: 17vw;
+    left: 50vw;
+    bottom: 49vh;
   }
 
   .player-5 {
     left: 20vw;
-    top: 19vw;
+    bottom: 48vh;
   }
 }
