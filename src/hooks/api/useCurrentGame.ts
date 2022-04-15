@@ -2,7 +2,8 @@ import { useContext, useState } from "react"
 import { appContext } from "../../AppContext"
 import { useApi } from "./useApi"
 import { toIri } from "../../util/toIri"
-import { EntityModelGame } from "../../generated"
+import { Game } from "../../generated"
+const gameState = Game.gameState
 
 export function useCurrentGame() {
   const [loading, setLoading] = useState(false)
@@ -22,11 +23,30 @@ export function useCurrentGame() {
 
   const playGame = async () => {
     setLoading(true)
+    const ignoreValidationFailed = (reason) => {
+      if (reason.status === 422) {
+        return
+      }
+      throw reason
+    }
+    wrapApiCall(
+      request
+        .request({
+          method: "PATCH",
+          url: toIri(currentGameStore.game._links.self),
+          body: { gameState: gameState.PLAYING },
+        })
+        .catch(ignoreValidationFailed)
+    ).finally(() => setLoading(false))
+  }
+
+  const closeGame = async () => {
+    setLoading(true)
     wrapApiCall(
       request.request({
         method: "PATCH",
         url: toIri(currentGameStore.game._links.self),
-        body: { gameState: "PLAYING" },
+        body: { gameState: gameState.CLOSED },
       })
     ).finally(() => setLoading(false))
   }
@@ -34,7 +54,7 @@ export function useCurrentGame() {
   const refreshGame = async () => {
     const uri = toIri(currentGameStore.game._links.self)
     const url = `${uri}?projection=embed`
-    const game: EntityModelGame = await wrapApiCall(
+    const game: Game = await wrapApiCall(
       request.request({
         method: "GET",
         url: url,
@@ -78,5 +98,6 @@ export function useCurrentGame() {
     playGame,
     startPollGame,
     announceScore,
+    closeGame,
   }
 }

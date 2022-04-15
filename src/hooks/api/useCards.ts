@@ -1,35 +1,35 @@
 import { useApi } from "./useApi"
 import { useState } from "react"
 import { getDomain } from "../../api/api"
+import { useCurrentGame } from "./useCurrentGame"
+import { toIri } from "../../util/toIri"
 
 export function useCards() {
-  const { request, wrapApiCall, cardEntityController } = useApi()
-  const [cards, setCards] = useState([])
+  const { request, wrapApiCall } = useApi()
+  const { game } = useCurrentGame()
+  const [cards] = useState([])
 
-  const getcards = async () => {
-    const cardlist = await wrapApiCall(
-      cardEntityController.getCollectionResourceCardGet1()
-    )
-    const list_cards = cardlist._embedded.cards //Get JUST the cards
-    setCards(list_cards) //update cards
-    return list_cards
-  }
   const updatecards = async (card) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const roundnrforcard =
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      toIri(game.matches[0]?.rounds[0]?._links.self)
     const template = card._links.self.href.replace(getDomain(), "")
     const patchUrl = template.replace("{?projection}", "")
+    const patchround = roundnrforcard.replace("{?projection}", "")
     wrapApiCall(
       request.request({
         method: "PATCH",
-        url: patchUrl, //Remove the Host from the url, otherwise it would be double
-        body: { cardRank: "ACE" }, //What gets changed
+        url: patchUrl,
+        body: { round: patchround },
       })
     )
   }
-
   return {
     //The things we return/expose
     cards,
-    getcards,
     updatecards,
   }
 }
