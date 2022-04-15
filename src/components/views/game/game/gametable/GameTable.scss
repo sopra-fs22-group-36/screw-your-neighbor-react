@@ -1,0 +1,58 @@
+@import '../../../../../styles/theme';
+
+.game-table {
+  height: 60vh;
+  width: 100%;
+  background-image:url('../../../../../img/icons/table-game.png');
+  background-repeat: no-repeat;
+  background-size: 110% 150%;
+  background-position-x: -5vw;
+  background-position-y: -30vh;
+  bottom: 0;
+  z-index: -20;
+  overflow: hidden;
+
+  .card-table {
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    padding: 5px;
+    color: $textColor;
+    border-radius: 2em;
+    opacity: 0.9;
+    z-index: 100;
+    position: relative;
+    top: 15em;
+    left: 30em;
+
+    .card-component {
+      background-color: #ff82ab;
+    }
+  }
+
+  .player {
+    width: 10em;
+    height: 10em;
+    position: absolute;
+  }
+
+  .player-2 {
+    left: 72vw;
+    top: 25vw;
+  }
+
+  .player-3 {
+    left: 60vw;
+    top: 15vw;
+  }
+
+  .player-4 {
+    left: 40vw;
+    top: 17vw;
+  }
+
+  .player-5 {
+    left: 20vw;
+    top: 19vw;
+  }
+}
