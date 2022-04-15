@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 
 const BaseContainer = (props) => (
   <div {...props} className={`base-container ${props.className ?? ""}`}>
-    {props.children}
+    <div className={"content"}>{props.children}</div>
   </div>
 )
 

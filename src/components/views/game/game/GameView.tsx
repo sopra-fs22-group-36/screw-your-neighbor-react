@@ -10,9 +10,9 @@ import { VideoChat } from "./videochat/VideoChat"
 import { ScoreBoard } from "./scoreboard/ScoreBoard"
 import { Login } from "@mui/icons-material"
 import { Button, Grid } from "@mui/material"
-import {YourHand} from "./yourhand/YourHand";
+import { YourHand } from "./yourhand/YourHand"
 import "./GameView.scss"
-import ScoreAnnouncing from "./scoreannouncing/ScoreAnnouncing";
+import ScoreAnnouncing from "./scoreannouncing/ScoreAnnouncing"
 
 /**
  * The main game page inside the Jass-Stube includes a table with all players
@@ -49,7 +49,7 @@ const GameView = observer(() => {
           <Grid item xs={12}>
             <GameTable />
             <YourHand />
-            <ScoreAnnouncing/>
+            <ScoreAnnouncing />
           </Grid>
         </Grid>
         <Button
