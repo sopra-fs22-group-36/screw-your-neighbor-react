@@ -73,6 +73,7 @@ export function useCurrentGame() {
   return {
     loading,
     game: currentGameStore.game,
+    activeParticipations: currentGameStore.activeParticipations,
     leaveGame,
     playGame,
     startPollGame,
