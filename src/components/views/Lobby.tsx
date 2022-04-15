@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { observer } from "mobx-react-lite"
+import { toJS } from "mobx"
 import Footer from "../ui/Footer"
 import BaseContainer from "../ui/BaseContainer"
 import { useNavigate } from "react-router-dom"
@@ -43,7 +44,7 @@ const Lobby = observer(() => {
             <div className="div-rooms">
               <div className="roomlist">
                 {games.map((game) => (
-                  <RoomRow key={game._links.self.href} game={game} />
+                  <RoomRow key={game._links.self.href} game={toJS(game)} />
                 ))}
               </div>
 
