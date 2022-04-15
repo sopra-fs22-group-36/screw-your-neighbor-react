@@ -1,11 +1,10 @@
 import React from "react"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
-import Lobby from "../../views/Lobby"
+import Lobby from "../../views/lobby/Lobby"
 import { Paths } from "./Paths"
 import { SessionGuard } from "../guards/SessionGuard"
 import { GameGuard } from "../guards/GameGuard"
-import Register from "../../views/Register"
-import Sandbox from "../../views/Sandbox"
+import Register from "../../views/createplayer/Register"
 
 /**
  */
@@ -25,7 +24,6 @@ const AppRouter = () => {
           />
           <Route path={Paths.GAME} element={<Navigate to={Paths.LOBBY} />} />
           <Route path={Paths.CREATE_PLAYER} element={<Register />} />
-          <Route path={Paths.SANDBOX} element={<Sandbox />} />
         </Routes>
       </SessionGuard>
     </BrowserRouter>

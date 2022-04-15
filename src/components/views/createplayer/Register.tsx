@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react"
-import { usePlayers } from "../../hooks/api/usePlayers"
-import Footer from "../ui/Footer"
+import { usePlayers } from "../../../hooks/api/usePlayers"
+import Footer from "../../ui/Footer"
 import { useNavigate } from "react-router-dom"
-import { Paths } from "../routing/routers/Paths"
+import { Paths } from "../../routing/routers/Paths"
 
 import Button from "@mui/material/Button"
-import BaseContainer from "../ui/BaseContainer"
+import BaseContainer from "../../ui/BaseContainer"
 import SendIcon from "@mui/icons-material/Send"
 import { TextField } from "@mui/material"
 import Box from "@mui/material/Box"
-import "../../styles/fonts.scss"
-import "../../styles/ui/Box.scss"
-import "../../styles/ui/Divs.scss"
-import "../../styles/ui/images.scss"
+import "../../../styles/fonts.scss"
+import "../../../styles/ui/Box.scss"
+import "../../../styles/ui/Divs.scss"
+import "../../../styles/ui/images.scss"
 
 const Register = () => {
   const navigate = useNavigate()

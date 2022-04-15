@@ -2,8 +2,8 @@ import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
 import React, { useState } from "react"
-import { useCurrentGame } from "../../hooks/api/useCurrentGame"
-import insertCoin from "../../img/icons/insert-coin.png"
+import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
+import insertCoin from "../../../../img/icons/insert-coin.png"
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined"
 
 export const ScoreAnnouncing = () => {

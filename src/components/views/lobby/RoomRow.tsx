@@ -1,14 +1,14 @@
 import React from "react"
-import { EntityModelGame } from "../../generated"
+import { EntityModelGame } from "../../../generated"
 import { useNavigate } from "react-router-dom"
-import { Paths } from "../routing/routers/Paths"
-import { useGames } from "../../hooks/api/useGames"
-import { extractId } from "../../util/extractId"
+import { Paths } from "../../routing/routers/Paths"
+import { useGames } from "../../../hooks/api/useGames"
+import { extractId } from "../../../util/extractId"
 
 import { Grid } from "@mui/material"
 import Button from "@mui/material/Button"
 import { Login } from "@mui/icons-material"
-import "../../styles/ui/Lists.scss"
+import "../../../styles/ui/Lists.scss"
 
 export const RoomRow = (props: { game: EntityModelGame }) => {
   const { loading, joinGame } = useGames()
