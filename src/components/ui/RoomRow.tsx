@@ -18,6 +18,9 @@ export const RoomRow = (props: { game: EntityModelGame }) => {
     navigate(Paths.ROOM)
   }
 
+  const participationCount = props.game?.participations?.filter(
+    (value) => value.active
+  ).length
   return (
     <div className="roomlistitem">
       <Grid container spacing={1}>
@@ -25,7 +28,7 @@ export const RoomRow = (props: { game: EntityModelGame }) => {
           {props.game.name}
         </Grid>
         <Grid item xs={3}>
-          {props.game?.participations?.length} Players
+          {participationCount} Players
         </Grid>
         <Grid item xs={3}>
           <Button

@@ -1,14 +1,19 @@
 import { useContext, useState } from "react"
 import { appContext } from "../../AppContext"
 import { useApi } from "./useApi"
+import { toIri } from "../../util/toIri"
 import { EntityModelGame } from "../../generated"
 
 export function useGames() {
   const { playerStore, gamesStore, currentGameStore } = useContext(appContext)
   const [loading, setLoading] = useState(false)
 
-  const { participationEntityController, gameEntityController, wrapApiCall } =
-    useApi()
+  const {
+    participationEntityController,
+    gameEntityController,
+    request,
+    wrapApiCall,
+  } = useApi()
 
   const createGame = async (name) => {
     setLoading(true)
@@ -39,14 +44,33 @@ export function useGames() {
   }
 
   const joinGame = async (game: EntityModelGame) => {
-    const participation = {
+    const myParticipations = game.participations.filter(
+      (value) =>
+        toIri(value.player._links.self) === toIri(playerStore?.me._links.player)
+    )
+    setLoading(true)
+    if (myParticipations.length > 0) {
+      const participationToPatch = myParticipations[0]
+      return await wrapApiCall(
+        request
+          .request({
+            method: "PATCH",
+            url: toIri(participationToPatch._links.self),
+            body: {
+              active: true,
+            },
+          })
+          .finally(() => setLoading(false))
+      )
+    }
+    const newParticipation = {
       game: game._links.self.href,
       player: playerStore.me._links.self.href,
+      active: true,
     }
-    setLoading(true)
     const createdParticipation = await wrapApiCall(
       participationEntityController.postCollectionResourceParticipationPost(
-        participation
+        newParticipation
       )
     ).finally(() => setLoading(false))
     currentGameStore.setGame(game)

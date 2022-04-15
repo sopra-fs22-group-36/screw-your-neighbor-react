@@ -6,7 +6,7 @@ import Register from "../../views/Register"
 import Lobby from "../../views/Lobby"
 import Sandbox from "../../views/Sandbox"
 import Game from "../../views/Game"
-import Room from "../../views/Room"
+import { Room } from "../../views/Room"
 import { Paths } from "./Paths"
 
 /**
