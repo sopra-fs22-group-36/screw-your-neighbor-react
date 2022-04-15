@@ -42,6 +42,7 @@ export function useGames() {
     const participation = {
       game: game._links.self.href,
       player: playerStore.me._links.self.href,
+      active: true,
     }
     setLoading(true)
     const createdParticipation = await wrapApiCall(
