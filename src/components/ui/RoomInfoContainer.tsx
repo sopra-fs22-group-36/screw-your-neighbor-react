@@ -5,8 +5,8 @@ import Button from "@mui/material/Button"
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"
 
 export const RoomInfoContainer = observer(() => {
-  const { game, startPollGame } = useCurrentGame()
-  const playerCount = game?.participations?.length || 0
+  const { game, activeParticipations, startPollGame } = useCurrentGame()
+  const playerCount = activeParticipations?.length || 0
 
   useEffect(() => {
     const gameSubscription = startPollGame()
