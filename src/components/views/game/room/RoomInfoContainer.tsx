@@ -1,6 +1,6 @@
 import React from "react"
 import { observer } from "mobx-react-lite"
-import { useCurrentGame } from "../../hooks/api/useCurrentGame"
+import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import Button from "@mui/material/Button"
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"
 

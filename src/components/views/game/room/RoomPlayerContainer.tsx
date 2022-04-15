@@ -1,7 +1,7 @@
 import React from "react"
 import { observer } from "mobx-react-lite"
-import { useCurrentGame } from "../../hooks/api/useCurrentGame"
-import "../../styles/ui/BaseContainer.scss"
+import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
+import "../../../../styles/ui/BaseContainer.scss"
 
 export const RoomPlayerContainer = observer(() => {
   const { activeParticipations } = useCurrentGame()

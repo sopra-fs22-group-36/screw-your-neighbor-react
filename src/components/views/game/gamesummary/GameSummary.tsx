@@ -1,11 +1,11 @@
 import React from "react"
 import { observer } from "mobx-react-lite"
-import { useCurrentGame } from "../../hooks/api/useCurrentGame"
-import BaseContainer from "../ui/BaseContainer"
+import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
+import BaseContainer from "../../../ui/BaseContainer"
 import SendIcon from "@mui/icons-material/Send"
 import Button from "@mui/material/Button"
 import { useNavigate } from "react-router-dom"
-import { Paths } from "../routing/routers/Paths"
+import { Paths } from "../../../routing/routers/Paths"
 
 export const GameSummary = observer(() => {
   const navigate = useNavigate()

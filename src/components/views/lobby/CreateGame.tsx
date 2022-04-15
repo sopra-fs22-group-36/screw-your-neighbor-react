@@ -1,14 +1,14 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useGames } from "../../hooks/api/useGames"
-import { extractId } from "../../util/extractId"
+import { useGames } from "../../../hooks/api/useGames"
+import { extractId } from "../../../util/extractId"
 
 import { TextField } from "@mui/material"
 import Button from "@mui/material/Button"
 import SendIcon from "@mui/icons-material/Send"
 import Box from "@mui/material/Box"
-import { Paths } from "../routing/routers/Paths"
-import "../../styles/ui/Box.scss"
+import { Paths } from "../../routing/routers/Paths"
+import "../../../styles/ui/Box.scss"
 
 export const CreateGame = () => {
   const navigate = useNavigate()

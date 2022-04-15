@@ -47,4 +47,4 @@ The stores (and the api) should not be used directly in the components,
 but wrapped together with api calls in custom hooks like in [usePlayers()](src/hooks/api/usePlayers.ts).
 
 If you want to show values from the store, don't forget to wrap your component in an observer(), like shown
-in [Lobby](src/components/views/Lobby.tsx).
+in [Lobby](src/components/views/lobby/Lobby.tsx).
