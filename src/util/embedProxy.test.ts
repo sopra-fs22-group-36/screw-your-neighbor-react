@@ -31,4 +31,11 @@ describe("embedProxy", () => {
     // @ts-ignore
     expect(result.test3).toBe(object._embedded.test3)
   })
+
+  test("does not crash if object has no _embedded", () => {
+    const result = embedProxy({})
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    expect(result.test).toBe(undefined)
+  })
 })
