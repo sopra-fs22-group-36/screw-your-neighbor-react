@@ -42,7 +42,7 @@ const Game = observer(() => {
     // make patch request and add cards to list of played cards
     //IN THE FINAL VERISON: remove card from hand or onlyshow the ones without a round
     updatecards(card)
-    if (roundless.indexOf(card) != -1) {
+    if (roundless.indexOf(card) !== -1) {
       const removeid = roundless.indexOf(card)
       roundless.splice(removeid, 1)
     }

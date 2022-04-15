@@ -1,11 +1,8 @@
 import { useApi } from "./useApi"
 import { useState } from "react"
 import { getDomain } from "../../api/api"
-import { Card } from "../../generated"
 import { useCurrentGame } from "./useCurrentGame"
 import { toIri } from "../../util/toIri"
-
-const cardRank = Card.cardRank
 
 export function useCards() {
   const { request, wrapApiCall } = useApi()
