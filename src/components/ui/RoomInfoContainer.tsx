@@ -1,17 +1,12 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { observer } from "mobx-react-lite"
 import { useCurrentGame } from "../../hooks/api/useCurrentGame"
 import Button from "@mui/material/Button"
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"
 
 export const RoomInfoContainer = observer(() => {
-  const { game, activeParticipations, startPollGame } = useCurrentGame()
+  const { game, activeParticipations } = useCurrentGame()
   const playerCount = activeParticipations?.length || 0
-
-  useEffect(() => {
-    const gameSubscription = startPollGame()
-    return () => gameSubscription.cancel()
-  }, [startPollGame])
 
   return (
     <div className={`room-info-container`}>

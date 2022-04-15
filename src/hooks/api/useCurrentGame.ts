@@ -3,12 +3,16 @@ import { appContext } from "../../AppContext"
 import { useApi } from "./useApi"
 import { toIri } from "../../util/toIri"
 import { Game } from "../../generated"
+import { useParams } from "react-router"
 const gameState = Game.gameState
 
 export function useCurrentGame() {
   const [loading, setLoading] = useState(false)
   const { currentGameStore } = useContext(appContext)
   const { request, wrapApiCall } = useApi()
+  const { currentGameId } = useParams()
+
+  const currentGameIriFromParameter = `/games/${currentGameId}?projection=embed`
 
   const leaveGame = async () => {
     setLoading(true)
@@ -52,12 +56,10 @@ export function useCurrentGame() {
   }
 
   const refreshGame = async () => {
-    const uri = toIri(currentGameStore.game._links.self)
-    const url = `${uri}?projection=embed`
     const game: Game = await wrapApiCall(
       request.request({
         method: "GET",
-        url: url,
+        url: currentGameIriFromParameter,
       })
     )
     currentGameStore.setGame(game)
@@ -96,6 +98,8 @@ export function useCurrentGame() {
     activeParticipations: currentGameStore.activeParticipations,
     leaveGame,
     playGame,
+    currentGameIriFromParameter,
+    refreshGame,
     startPollGame,
     announceScore,
     closeGame,

@@ -3,6 +3,7 @@ import { EntityModelGame } from "../../generated"
 import { useNavigate } from "react-router-dom"
 import { Paths } from "../routing/routers/Paths"
 import { useGames } from "../../hooks/api/useGames"
+import { extractId } from "../../util/extractId"
 
 import { Grid } from "@mui/material"
 import Button from "@mui/material/Button"
@@ -15,7 +16,8 @@ export const RoomRow = (props: { game: EntityModelGame }) => {
 
   const clickJoin = async () => {
     await joinGame(props.game)
-    navigate(Paths.ROOM)
+    const gameId = extractId(props.game._links.self)
+    navigate(Paths.GAME + `/${gameId}`)
   }
 
   const participationCount = props.game?.participations?.filter(
