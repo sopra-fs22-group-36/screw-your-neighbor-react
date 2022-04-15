@@ -3,7 +3,6 @@ import { appContext } from "../../AppContext"
 import { useApi } from "./useApi"
 import { toIri } from "../../util/toIri"
 import { EntityModelGame } from "../../generated"
-import { getDomain } from "../../api/api"
 const gameState = EntityModelGame.gameState
 
 export function useCurrentGame() {

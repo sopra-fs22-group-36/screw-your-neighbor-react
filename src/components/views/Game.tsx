@@ -33,7 +33,7 @@ const Game = observer(() => {
 
   const clickLeave = async () => {
     await leaveGame()
-    //await closeGame() - If i close the game i cant seem to set it to playing again - Is this intended?
+    await closeGame() //Once a Gamestate is set to "CLOSED" it cannot be opened again - Temporary implementation to see if it works
     navigate(Paths.LOBBY)
   }
 
