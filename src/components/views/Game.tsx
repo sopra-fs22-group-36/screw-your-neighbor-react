@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { Paths } from "../routing/routers/Paths"
 import { usePlayers } from "../../hooks/api/usePlayers"
@@ -24,12 +24,12 @@ const Game = observer(() => {
   const { me } = usePlayers()
   const { loading, game, leaveGame, startPollGame } = useCurrentGame()
   const { updatecards } = useCards()
-  const [played, setPlayed] = useState([])
+  const played = game?.matches[0]?.rounds[0].cards || []
 
   const matchnr = game.matches.length
 
   const cards: Array<EntityModelCard> = game.matches[0]?.hands[0]?.cards || []
-  const roundless: Array<EntityModelCard> = JSON.parse(JSON.stringify(cards))
+  const roundless = cards.filter((value) => value.round === null)
 
   const clickLeave = async () => {
     await leaveGame()
@@ -40,23 +40,7 @@ const Game = observer(() => {
     // make patch request and add cards to list of played cards
     //IN THE FINAL VERISON: remove card from hand or onlyshow the ones without a round
     updatecards(card)
-    if (roundless.indexOf(card) !== -1) {
-      const removeid = roundless.indexOf(card)
-      roundless.splice(removeid, 1)
-    }
     console.log(toJS(roundless))
-
-    const name = `${card.cardRank} of ${card.cardSuit}` //To avoid being able to play the same card multiple times
-    if (!played.includes(name)) {
-      updateCardPlayed(name)
-    }
-  }
-  const updateCardPlayed = async (name) => {
-    //Add card to the list of played cards
-    const newArr = [...played]
-    const index = played.length
-    newArr[index] = name
-    setPlayed(newArr)
   }
 
   useEffect(() => {
@@ -65,10 +49,10 @@ const Game = observer(() => {
   }, [startPollGame])
 
   let content = <div>No cards..</div>
-  if (cards.length > 0) {
+  if (roundless.length > 0) {
     content = (
       <div className="cardbox">
-        {cards.map((card) => (
+        {roundless.map((card) => (
           <div
             key={card._links.self.href}
             onClick={() => updateAll(card)}
@@ -95,7 +79,10 @@ const Game = observer(() => {
             key={index}
             className="cards"
           >
-            <div>{playedcard}</div>
+            <div>
+              {" "}
+              {playedcard.cardRank} of {playedcard.cardSuit}
+            </div>
           </div>
         ))}
       </div>
