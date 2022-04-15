@@ -22,8 +22,7 @@ import { toJS } from "mobx"
 const Game = observer(() => {
   const navigate = useNavigate()
   const { me } = usePlayers()
-  const { loading, game, leaveGame, closeGame, startPollGame } =
-    useCurrentGame()
+  const { loading, game, leaveGame, startPollGame } = useCurrentGame()
   const { updatecards } = useCards()
   const [played, setPlayed] = useState([])
 
@@ -34,7 +33,6 @@ const Game = observer(() => {
 
   const clickLeave = async () => {
     await leaveGame()
-    await closeGame() //Once a Gamestate is set to "CLOSED" it cannot be opened again - Temporary implementation to see if it works
     navigate(Paths.LOBBY)
   }
 

@@ -2,8 +2,8 @@ import { useContext, useState } from "react"
 import { appContext } from "../../AppContext"
 import { useApi } from "./useApi"
 import { toIri } from "../../util/toIri"
-import { EntityModelGame } from "../../generated"
-const gameState = EntityModelGame.gameState
+import { Game } from "../../generated"
+const gameState = Game.gameState
 
 export function useCurrentGame() {
   const [loading, setLoading] = useState(false)
@@ -54,7 +54,7 @@ export function useCurrentGame() {
   const refreshGame = async () => {
     const uri = toIri(currentGameStore.game._links.self)
     const url = `${uri}?projection=embed`
-    const game: EntityModelGame = await wrapApiCall(
+    const game: Game = await wrapApiCall(
       request.request({
         method: "GET",
         url: url,
