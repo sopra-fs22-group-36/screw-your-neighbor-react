@@ -27,12 +27,10 @@ const Game = observer(() => {
   const { updatecards } = useCards()
   const [played, setPlayed] = useState([])
 
-  const cards: Array<EntityModelCard> = game.matches[0]?.hands[0]?.cards || []
+  const matchnr = game.matches.length
 
-  //I tried to get the match number but somehow its not there?
-  const matchnr = game.matches.length //Why is matchNumber or roundNumber not available?
-  const matchesjson = game.matches
-  const roundnrforcard = game.matches[0]?.hands[0]?.cards[0].round
+  const cards: Array<EntityModelCard> = game.matches[0]?.hands[0]?.cards || []
+  const roundless: Array<EntityModelCard> = JSON.parse(JSON.stringify(cards))
 
   const clickLeave = async () => {
     await leaveGame()
@@ -44,8 +42,11 @@ const Game = observer(() => {
     // make patch request and add cards to list of played cards
     //IN THE FINAL VERISON: remove card from hand or onlyshow the ones without a round
     updatecards(card)
-    console.log(toJS(matchesjson))
-    console.log(roundnrforcard)
+    if (roundless.indexOf(card) != -1) {
+      const removeid = roundless.indexOf(card)
+      roundless.splice(removeid, 1)
+    }
+    console.log(toJS(roundless))
 
     const name = `${card.cardRank} of ${card.cardSuit}` //To avoid being able to play the same card multiple times
     if (!played.includes(name)) {
