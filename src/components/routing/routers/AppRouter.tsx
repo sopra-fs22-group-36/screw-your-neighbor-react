@@ -1,7 +1,5 @@
 import React from "react"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
-import { RegisterGuard } from "../routeProtectors/RegisterGuard"
-import { LobbyGuard } from "../routeProtectors/LobbyGuard"
 import Register from "../../views/Register"
 import Lobby from "../../views/Lobby"
 import Sandbox from "../../views/Sandbox"
@@ -22,9 +20,7 @@ const AppRouter = () => {
         <Route
           path={Paths.LOBBY}
           element={
-            <LobbyGuard>
               <Lobby />
-            </LobbyGuard>
           }
         />
         <Route path={Paths.GAME} element={<Game />} />
@@ -32,9 +28,7 @@ const AppRouter = () => {
         <Route
           path={Paths.CREATE_PLAYER}
           element={
-            <RegisterGuard>
-              <Register />
-            </RegisterGuard>
+          <Register />
           }
         />
         <Route path={Paths.SANDBOX} element={<Sandbox />} />
