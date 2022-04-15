@@ -17,18 +17,11 @@ import "../../styles/ui/images.scss"
 const Register = () => {
   const navigate = useNavigate()
   const [name, setName] = useState("")
-  const [sessionFetched, setSessionFetched] = useState(false)
   const changeName = (e) => {
     setName(e.target.value)
   }
 
-  const {
-    loading,
-    createPlayer,
-    startPollPlayers,
-    fetchingSession,
-    hasCurrentSession,
-  } = usePlayers()
+  const { me, loading, createPlayer, startPollPlayers } = usePlayers()
 
   const submit = async () => {
     await createPlayer(name)
@@ -36,24 +29,12 @@ const Register = () => {
   }
 
   useEffect(() => {
-    if (!sessionFetched) {
-      //TODO add cancel possibility
-      hasCurrentSession()
-        .then((value) => {
-          if (value) {
-            navigate(Paths.LOBBY)
-          }
-        })
-        .finally(() => setSessionFetched(true))
-      return
+    if (me !== null) {
+      navigate(Paths.LOBBY)
     }
     const playersSubscription = startPollPlayers()
     return () => playersSubscription.cancel()
-  }, [hasCurrentSession, navigate, sessionFetched, startPollPlayers])
-
-  if (fetchingSession) {
-    return <div>Loading...</div>
-  }
+  }, [me, navigate, startPollPlayers])
 
   return (
     <div className="div-box">
@@ -63,7 +44,6 @@ const Register = () => {
       <br />
       <BaseContainer>
         <h4>
-          {" "}
           Register by entering your name in the field below and pressing "Take
           me to the Lobby"
         </h4>

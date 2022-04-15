@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { observer } from "mobx-react-lite"
 import { useCurrentGame } from "../../hooks/api/useCurrentGame"
 import BaseContainer from "../ui/BaseContainer"
@@ -9,12 +9,7 @@ import { Grid } from "@mui/material"
 import "./Room.scss"
 
 export const Room = observer(() => {
-  const { game, startPollGame } = useCurrentGame()
-
-  useEffect(() => {
-    const gameSubscription = startPollGame()
-    return () => gameSubscription.cancel()
-  }, [startPollGame])
+  const { game } = useCurrentGame()
 
   return (
     <div className={"room"}>

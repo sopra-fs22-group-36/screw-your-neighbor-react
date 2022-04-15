@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useNavigate } from "react-router-dom"
 import { Paths } from "../routing/routers/Paths"
 import { usePlayers } from "../../hooks/api/usePlayers"
@@ -19,10 +19,10 @@ import { toJS } from "mobx"
  * @param props
  * @returns
  */
-const Game = observer(() => {
+const GameView = observer(() => {
   const navigate = useNavigate()
   const { me } = usePlayers()
-  const { loading, game, leaveGame, startPollGame } = useCurrentGame()
+  const { loading, game, leaveGame } = useCurrentGame()
   const { updatecards } = useCards()
   const played = game?.matches[0]?.rounds[0].cards || []
 
@@ -42,11 +42,6 @@ const Game = observer(() => {
     updatecards(card)
     console.log(toJS(roundless))
   }
-
-  useEffect(() => {
-    const pollGameSubscription = startPollGame()
-    return () => pollGameSubscription.cancel()
-  }, [startPollGame])
 
   let content = <div>No cards..</div>
   if (roundless.length > 0) {
@@ -89,7 +84,6 @@ const Game = observer(() => {
     )
   }
 
-  //Game doesn't like it when you refresh the page because of the ".name" - get from backend
   return (
     <div className="div-box">
       <BaseContainer>
@@ -123,4 +117,4 @@ const Game = observer(() => {
   )
 })
 
-export default Game
+export default GameView

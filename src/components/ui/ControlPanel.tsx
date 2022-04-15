@@ -15,11 +15,6 @@ export const ControlPanel = () => {
     navigate(Paths.LOBBY)
   }
 
-  const start = async () => {
-    await playGame()
-    navigate(Paths.GAME)
-  }
-
   return (
     <div className={"control-panel"}>
       <div>
@@ -27,7 +22,7 @@ export const ControlPanel = () => {
           disabled={loading}
           variant="contained"
           endIcon={<SendIcon />}
-          onClick={start}
+          onClick={playGame}
         >
           Start Game
         </Button>

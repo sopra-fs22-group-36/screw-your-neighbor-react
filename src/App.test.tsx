@@ -17,12 +17,14 @@ afterEach(cleanup)
 const usePlayersReturn = jest.mocked({
   hasCurrentSession: jest.fn(),
   startPollPlayers: jest.fn(),
+  me: null,
 })
 
 test("renders register page", async () => {
   const promise = Promise.resolve(false)
   usePlayersReturn.hasCurrentSession.mockReturnValue(promise)
   usePlayersReturn.startPollPlayers.mockReturnValue({ cancel: () => null })
+  usePlayersReturn.me = null
   // @ts-ignore
   usePlayersMock.mockReturnValue(usePlayersReturn)
 

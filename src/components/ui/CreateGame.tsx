@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useGames } from "../../hooks/api/useGames"
+import { extractId } from "../../util/extractId"
 
 import { TextField } from "@mui/material"
 import Button from "@mui/material/Button"
@@ -19,8 +20,9 @@ export const CreateGame = () => {
   }
 
   const submit = async () => {
-    await createGame(name)
-    navigate(Paths.ROOM) //GAME and ROOM are the same in the Backend but the view is different for the Frontend! How to change?
+    const createdGame = await createGame(name)
+    const gameId = extractId(createdGame._links.self)
+    navigate(Paths.GAME + `/${gameId}`)
   }
 
   return (
