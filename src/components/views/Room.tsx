@@ -1,28 +1,44 @@
-import React from "react"
-import BaseContainer from "../ui/BaseContainer"
-import { useNavigate } from "react-router-dom"
-import { Paths } from "../routing/routers/Paths"
+import React, { useEffect } from "react"
+import { observer } from "mobx-react-lite"
 import { useCurrentGame } from "../../hooks/api/useCurrentGame"
+import BaseContainer from "../ui/BaseContainer"
+import { RoomInfoContainer } from "../ui/RoomInfoContainer"
+import { ControlPanel } from "../ui/ControlPanel"
+import { RoomPlayerContainer } from "../ui/RoomPlayerContainer"
+import { Grid } from "@mui/material"
+import "./Room.scss"
 
-const Room = (props) => {
-  const navigate = useNavigate()
-  const { game, playGame } = useCurrentGame()
+export const Room = observer(() => {
+  const { game, startPollGame } = useCurrentGame()
 
-  const temporary = async () => {
-    //To make sure you can get from the room to the Game
-    navigate(Paths.GAME)
-    await playGame()
-  }
+  useEffect(() => {
+    const gameSubscription = startPollGame()
+    return () => gameSubscription.cancel()
+  }, [startPollGame])
 
   return (
-    <BaseContainer>
-      <h1>Room page</h1>
-      <div>You are in the game {game.name}</div>
-      <button style={{ height: "50px" }} onClick={temporary}>
-        GET TO MY GAME
-      </button>
-    </BaseContainer>
-  )
-}
+    <div className={"room"}>
+      <BaseContainer>
+        <h1 className="font-title">Room "{game.name}"</h1>
+      </BaseContainer>
 
-export default Room
+      <Grid container spacing={5} className={"actions-container"}>
+        <Grid item xs={4}>
+          <BaseContainer>
+            <RoomInfoContainer />
+          </BaseContainer>
+        </Grid>
+        <Grid item xs={4}>
+          <BaseContainer>
+            <ControlPanel />
+          </BaseContainer>
+        </Grid>
+        <Grid item xs={4}>
+          <BaseContainer>
+            <RoomPlayerContainer />
+          </BaseContainer>
+        </Grid>
+      </Grid>
+    </div>
+  )
+})
