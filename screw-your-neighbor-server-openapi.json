@@ -316,6 +316,139 @@
         }
       }
     },
+    "/cards/{id}/round": {
+      "get": {
+        "tags": [
+          "card-property-reference-controller"
+        ],
+        "description": "get-round-by-card-Id",
+        "operationId": "followPropertyReference-card-get_2_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelRound"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "card-property-reference-controller"
+        ],
+        "description": "patch-round-by-card-Id",
+        "operationId": "createPropertyReference-card-patch_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "application/x-spring-data-compact+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "text/uri-list": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelRound"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/cards/{id}/round/{propertyId}": {
+      "get": {
+        "tags": [
+          "card-property-reference-controller"
+        ],
+        "description": "get-round-by-card-Id",
+        "operationId": "followPropertyReference-card-get_2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "propertyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelRound"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/games": {
       "get": {
         "tags": [
@@ -520,13 +653,146 @@
         }
       }
     },
+    "/games/{id}/matches": {
+      "get": {
+        "tags": [
+          "game-property-reference-controller"
+        ],
+        "description": "get-match-by-game-Id",
+        "operationId": "followPropertyReference-game-get_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelMatch"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "game-property-reference-controller"
+        ],
+        "description": "patch-match-by-game-Id",
+        "operationId": "createPropertyReference-game-patch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "application/x-spring-data-compact+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "text/uri-list": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelMatch"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/games/{id}/matches/{propertyId}": {
+      "get": {
+        "tags": [
+          "game-property-reference-controller"
+        ],
+        "description": "get-match-by-game-Id",
+        "operationId": "followPropertyReference-game-get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "propertyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelMatch"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/games/{id}/nextGame": {
       "get": {
         "tags": [
           "game-property-reference-controller"
         ],
         "description": "get-game-by-game-Id",
-        "operationId": "followPropertyReference-game-get_1",
+        "operationId": "followPropertyReference-game-get_2_1",
         "parameters": [
           {
             "name": "id",
@@ -563,7 +829,7 @@
           "game-property-reference-controller"
         ],
         "description": "patch-game-by-game-Id",
-        "operationId": "createPropertyReference-game-patch",
+        "operationId": "createPropertyReference-game-patch_1",
         "parameters": [
           {
             "name": "id",
@@ -617,7 +883,7 @@
           "game-property-reference-controller"
         ],
         "description": "get-game-by-game-Id",
-        "operationId": "followPropertyReference-game-get",
+        "operationId": "followPropertyReference-game-get_2",
         "parameters": [
           {
             "name": "id",
@@ -659,7 +925,7 @@
           "game-property-reference-controller"
         ],
         "description": "get-participation-by-game-Id",
-        "operationId": "followPropertyReference-game-get_2_1",
+        "operationId": "followPropertyReference-game-get_3_1",
         "parameters": [
           {
             "name": "id",
@@ -696,7 +962,7 @@
           "game-property-reference-controller"
         ],
         "description": "patch-participation-by-game-Id",
-        "operationId": "createPropertyReference-game-patch_1",
+        "operationId": "createPropertyReference-game-patch_2",
         "parameters": [
           {
             "name": "id",
@@ -750,7 +1016,7 @@
           "game-property-reference-controller"
         ],
         "description": "get-participation-by-game-Id",
-        "operationId": "followPropertyReference-game-get_2",
+        "operationId": "followPropertyReference-game-get_3",
         "parameters": [
           {
             "name": "id",
@@ -1091,13 +1357,146 @@
         }
       }
     },
+    "/hands/{id}/match": {
+      "get": {
+        "tags": [
+          "hand-property-reference-controller"
+        ],
+        "description": "get-match-by-hand-Id",
+        "operationId": "followPropertyReference-hand-get_2_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelMatch"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "hand-property-reference-controller"
+        ],
+        "description": "patch-match-by-hand-Id",
+        "operationId": "createPropertyReference-hand-patch_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "application/x-spring-data-compact+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "text/uri-list": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelMatch"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/hands/{id}/match/{propertyId}": {
+      "get": {
+        "tags": [
+          "hand-property-reference-controller"
+        ],
+        "description": "get-match-by-hand-Id",
+        "operationId": "followPropertyReference-hand-get_2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "propertyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelMatch"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/hands/{id}/participation": {
       "get": {
         "tags": [
           "hand-property-reference-controller"
         ],
         "description": "get-participation-by-hand-Id",
-        "operationId": "followPropertyReference-hand-get_2_1",
+        "operationId": "followPropertyReference-hand-get_3_1",
         "parameters": [
           {
             "name": "id",
@@ -1134,7 +1533,7 @@
           "hand-property-reference-controller"
         ],
         "description": "patch-participation-by-hand-Id",
-        "operationId": "createPropertyReference-hand-patch_1",
+        "operationId": "createPropertyReference-hand-patch_2",
         "parameters": [
           {
             "name": "id",
@@ -1188,7 +1587,7 @@
           "hand-property-reference-controller"
         ],
         "description": "get-participation-by-hand-Id",
-        "operationId": "followPropertyReference-hand-get_2",
+        "operationId": "followPropertyReference-hand-get_3",
         "parameters": [
           {
             "name": "id",
@@ -1214,6 +1613,610 @@
               "application/hal+json": {
                 "schema": {
                   "$ref": "#/components/schemas/EntityModelParticipation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/matches": {
+      "get": {
+        "tags": [
+          "match-entity-controller"
+        ],
+        "description": "get-match",
+        "operationId": "getCollectionResource-match-get_1",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelEntityModelMatch"
+                }
+              },
+              "application/x-spring-data-compact+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelEntityModelMatch"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "match-entity-controller"
+        ],
+        "description": "create-match",
+        "operationId": "postCollectionResource-match-post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatchRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelMatch"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/matches/search/findAllByMatchNumber": {
+      "get": {
+        "tags": [
+          "match-search-controller"
+        ],
+        "operationId": "executeSearch-match-get",
+        "parameters": [
+          {
+            "name": "matchNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelEntityModelMatch"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/matches/{id}": {
+      "get": {
+        "tags": [
+          "match-entity-controller"
+        ],
+        "description": "get-match",
+        "operationId": "getItemResource-match-get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelMatch"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "match-entity-controller"
+        ],
+        "description": "patch-match",
+        "operationId": "patchItemResource-match-patch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatchRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelMatch"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/matches/{id}/game": {
+      "get": {
+        "tags": [
+          "match-property-reference-controller"
+        ],
+        "description": "get-game-by-match-Id",
+        "operationId": "followPropertyReference-match-get_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelGame"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "match-property-reference-controller"
+        ],
+        "description": "patch-game-by-match-Id",
+        "operationId": "createPropertyReference-match-patch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "application/x-spring-data-compact+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "text/uri-list": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelGame"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/matches/{id}/game/{propertyId}": {
+      "get": {
+        "tags": [
+          "match-property-reference-controller"
+        ],
+        "description": "get-game-by-match-Id",
+        "operationId": "followPropertyReference-match-get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "propertyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelGame"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/matches/{id}/hands": {
+      "get": {
+        "tags": [
+          "match-property-reference-controller"
+        ],
+        "description": "get-hand-by-match-Id",
+        "operationId": "followPropertyReference-match-get_2_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelHand"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "match-property-reference-controller"
+        ],
+        "description": "patch-hand-by-match-Id",
+        "operationId": "createPropertyReference-match-patch_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "application/x-spring-data-compact+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "text/uri-list": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelHand"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/matches/{id}/hands/{propertyId}": {
+      "get": {
+        "tags": [
+          "match-property-reference-controller"
+        ],
+        "description": "get-hand-by-match-Id",
+        "operationId": "followPropertyReference-match-get_2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "propertyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelHand"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/matches/{id}/rounds": {
+      "get": {
+        "tags": [
+          "match-property-reference-controller"
+        ],
+        "description": "get-round-by-match-Id",
+        "operationId": "followPropertyReference-match-get_3_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelRound"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "match-property-reference-controller"
+        ],
+        "description": "patch-round-by-match-Id",
+        "operationId": "createPropertyReference-match-patch_2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "application/x-spring-data-compact+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "text/uri-list": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelRound"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/matches/{id}/rounds/{propertyId}": {
+      "get": {
+        "tags": [
+          "match-property-reference-controller"
+        ],
+        "description": "get-round-by-match-Id",
+        "operationId": "followPropertyReference-match-get_3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "propertyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelRound"
                 }
               }
             }
@@ -2234,7 +3237,7 @@
         }
       }
     },
-    "/profile/participations": {
+    "/profile/matches": {
       "get": {
         "tags": [
           "profile-controller"
@@ -2264,7 +3267,7 @@
         }
       }
     },
-    "/profile/players": {
+    "/profile/participations": {
       "get": {
         "tags": [
           "profile-controller"
@@ -2290,6 +3293,504 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/profile/players": {
+      "get": {
+        "tags": [
+          "profile-controller"
+        ],
+        "operationId": "descriptor_1_1_6",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/alps+json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/schema+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile/rounds": {
+      "get": {
+        "tags": [
+          "profile-controller"
+        ],
+        "operationId": "descriptor_1_1_7",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/alps+json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/schema+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonSchema"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rounds": {
+      "get": {
+        "tags": [
+          "round-entity-controller"
+        ],
+        "description": "get-round",
+        "operationId": "getCollectionResource-round-get_1",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": {
+              "minimum": 1,
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelEntityModelRound"
+                }
+              },
+              "application/x-spring-data-compact+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedModelEntityModelRound"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "round-entity-controller"
+        ],
+        "description": "create-round",
+        "operationId": "postCollectionResource-round-post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoundRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelRound"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rounds/{id}": {
+      "get": {
+        "tags": [
+          "round-entity-controller"
+        ],
+        "description": "get-round",
+        "operationId": "getItemResource-round-get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelRound"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "round-entity-controller"
+        ],
+        "description": "patch-round",
+        "operationId": "patchItemResource-round-patch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoundRequestBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelRound"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/rounds/{id}/cards": {
+      "get": {
+        "tags": [
+          "round-property-reference-controller"
+        ],
+        "description": "get-card-by-round-Id",
+        "operationId": "followPropertyReference-round-get_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelCard"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "round-property-reference-controller"
+        ],
+        "description": "patch-card-by-round-Id",
+        "operationId": "createPropertyReference-round-patch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "application/x-spring-data-compact+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "text/uri-list": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelCard"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/rounds/{id}/cards/{propertyId}": {
+      "get": {
+        "tags": [
+          "round-property-reference-controller"
+        ],
+        "description": "get-card-by-round-Id",
+        "operationId": "followPropertyReference-round-get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "propertyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectionModelCard"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/rounds/{id}/match": {
+      "get": {
+        "tags": [
+          "round-property-reference-controller"
+        ],
+        "description": "get-match-by-round-Id",
+        "operationId": "followPropertyReference-round-get_2_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelMatch"
+                }
+              },
+              "text/uri-list": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "round-property-reference-controller"
+        ],
+        "description": "patch-match-by-round-Id",
+        "operationId": "createPropertyReference-round-patch_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "application/x-spring-data-compact+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionModelObject"
+              }
+            },
+            "text/uri-list": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelMatch"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/rounds/{id}/match/{propertyId}": {
+      "get": {
+        "tags": [
+          "round-property-reference-controller"
+        ],
+        "description": "get-match-by-round-Id",
+        "operationId": "followPropertyReference-round-get_2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "propertyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelMatch"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
@@ -2456,273 +3957,18 @@
               "SPADE"
             ]
           },
-          "hand": {
-            "$ref": "#/components/schemas/Hand"
-          },
           "round": {
             "$ref": "#/components/schemas/Round"
-          }
-        }
-      },
-      "EntityModelHand": {
-        "type": "object",
-        "properties": {
-          "announcedScore": {
-            "type": "integer",
-            "format": "int32"
           },
           "_links": {
             "$ref": "#/components/schemas/Links"
           }
         }
+      },
+      "EntityModelMatch": {
+        "$ref": "#/components/schemas/Match"
       },
       "Game": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 50,
-            "minLength": 3,
-            "type": "string"
-          },
-          "gameState": {
-            "type": "string",
-            "enum": [
-              "FINDING_PLAYERS",
-              "PLAYING",
-              "CLOSED"
-            ]
-          },
-          "participations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Participation"
-            }
-          },
-          "matches": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Match"
-            }
-          },
-          "nextGame": {
-            "$ref": "#/components/schemas/Game"
-          }
-        }
-      },
-      "Hand": {
-        "type": "object",
-        "properties": {
-          "announcedScore": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "cards": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Card"
-            }
-          },
-          "match": {
-            "$ref": "#/components/schemas/Match"
-          },
-          "participation": {
-            "$ref": "#/components/schemas/Participation"
-          }
-        }
-      },
-      "Match": {
-        "type": "object",
-        "properties": {
-          "matchNumber": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "rounds": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Round"
-            }
-          },
-          "hands": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Hand"
-            }
-          },
-          "game": {
-            "$ref": "#/components/schemas/Game"
-          },
-          "matchState": {
-            "type": "string",
-            "enum": [
-              "ANNOUNCING",
-              "PLAYING",
-              "FINISH"
-            ]
-          }
-        }
-      },
-      "PageMetadata": {
-        "type": "object",
-        "properties": {
-          "size": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "totalElements": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "totalPages": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "number": {
-            "type": "integer",
-            "format": "int64"
-          }
-        }
-      },
-      "PagedModelEntityModelHand": {
-        "type": "object",
-        "properties": {
-          "_embedded": {
-            "type": "object",
-            "properties": {
-              "hands": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/EntityModelHand"
-                }
-              }
-            }
-          },
-          "_links": {
-            "$ref": "#/components/schemas/Links"
-          },
-          "page": {
-            "$ref": "#/components/schemas/PageMetadata"
-          }
-        }
-      },
-      "Participation": {
-        "type": "object",
-        "properties": {
-          "active": {
-            "type": "boolean"
-          },
-          "participationNumber": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "game": {
-            "$ref": "#/components/schemas/Game"
-          },
-          "player": {
-            "$ref": "#/components/schemas/Player"
-          },
-          "hands": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Hand"
-            }
-          }
-        }
-      },
-      "Player": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 50,
-            "minLength": 3,
-            "type": "string"
-          }
-        }
-      },
-      "Round": {
-        "type": "object",
-        "properties": {
-          "roundNumber": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "cards": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Card"
-            }
-          },
-          "match": {
-            "$ref": "#/components/schemas/Match"
-          }
-        }
-      },
-      "CollectionModelObject": {
-        "type": "object",
-        "properties": {
-          "_embedded": {
-            "type": "object",
-            "properties": {
-              "objects": {
-                "type": "array",
-                "items": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "_links": {
-            "$ref": "#/components/schemas/Links"
-          }
-        }
-      },
-      "EntityModelParticipation": {
-        "type": "object",
-        "properties": {
-          "active": {
-            "type": "boolean"
-          },
-          "participationNumber": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "game": {
-            "$ref": "#/components/schemas/Game"
-          },
-          "player": {
-            "$ref": "#/components/schemas/Player"
-          },
-          "_links": {
-            "$ref": "#/components/schemas/Links"
-          }
-        }
-      },
-      "CollectionModelCard": {
-        "type": "object",
-        "properties": {
-          "_embedded": {
-            "type": "object",
-            "properties": {
-              "cards": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/CardResponse"
-                }
-              }
-            }
-          },
-          "_links": {
-            "$ref": "#/components/schemas/Links"
-          }
-        }
-      },
-      "EntityModelGame": {
         "required": [
           "name"
         ],
@@ -2761,6 +4007,296 @@
           }
         }
       },
+      "Hand": {
+        "type": "object",
+        "properties": {
+          "announcedScore": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Card"
+            }
+          },
+          "match": {
+            "$ref": "#/components/schemas/Match"
+          },
+          "participation": {
+            "$ref": "#/components/schemas/Participation"
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "Match": {
+        "type": "object",
+        "properties": {
+          "matchNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rounds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Round"
+            }
+          },
+          "hands": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Hand"
+            }
+          },
+          "game": {
+            "$ref": "#/components/schemas/Game"
+          },
+          "matchState": {
+            "type": "string",
+            "enum": [
+              "ANNOUNCING",
+              "PLAYING",
+              "FINISH"
+            ]
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "PageMetadata": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "PagedModelEntityModelMatch": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "matches": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EntityModelMatch"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "page": {
+            "$ref": "#/components/schemas/PageMetadata"
+          }
+        }
+      },
+      "Participation": {
+        "type": "object",
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "participationNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "player": {
+            "$ref": "#/components/schemas/Player"
+          },
+          "hands": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Hand"
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "Player": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 50,
+            "minLength": 3,
+            "type": "string"
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "Round": {
+        "type": "object",
+        "properties": {
+          "roundNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Card"
+            }
+          },
+          "trickWinnerIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "CollectionModelObject": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "objects": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "CollectionModelHand": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "hands": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/HandResponse"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "CollectionModelRound": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "rounds": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RoundResponse"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "EntityModelGame": {
+        "$ref": "#/components/schemas/Game"
+      },
+      "CollectionModelEntityModelMatch": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "matches": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EntityModelMatch"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
+      "EntityModelRound": {
+        "$ref": "#/components/schemas/Round"
+      },
+      "PagedModelEntityModelRound": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "rounds": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EntityModelRound"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          },
+          "page": {
+            "$ref": "#/components/schemas/PageMetadata"
+          }
+        }
+      },
+      "CollectionModelCard": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "cards": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CardResponse"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
+          }
+        }
+      },
       "PagedModelEntityModelGame": {
         "type": "object",
         "properties": {
@@ -2780,6 +4316,25 @@
           },
           "page": {
             "$ref": "#/components/schemas/PageMetadata"
+          }
+        }
+      },
+      "CollectionModelMatch": {
+        "type": "object",
+        "properties": {
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "matches": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MatchResponse"
+                }
+              }
+            }
+          },
+          "_links": {
+            "$ref": "#/components/schemas/Links"
           }
         }
       },
@@ -2822,20 +4377,7 @@
         }
       },
       "EntityModelPlayer": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 50,
-            "minLength": 3,
-            "type": "string"
-          },
-          "_links": {
-            "$ref": "#/components/schemas/Links"
-          }
-        }
+        "$ref": "#/components/schemas/Player"
       },
       "PagedModelEntityModelPlayer": {
         "type": "object",
@@ -2860,35 +4402,7 @@
         }
       },
       "EntityModelCard": {
-        "type": "object",
-        "properties": {
-          "cardRank": {
-            "type": "string",
-            "enum": [
-              "SIX",
-              "SEVEN",
-              "EIGHT",
-              "NINE",
-              "TEN",
-              "JACK",
-              "QUEEN",
-              "KING",
-              "ACE"
-            ]
-          },
-          "cardSuit": {
-            "type": "string",
-            "enum": [
-              "CLUB",
-              "DIAMOND",
-              "HEART",
-              "SPADE"
-            ]
-          },
-          "_links": {
-            "$ref": "#/components/schemas/Links"
-          }
-        }
+        "$ref": "#/components/schemas/Card"
       },
       "PagedModelEntityModelCard": {
         "type": "object",
@@ -2912,6 +4426,12 @@
           }
         }
       },
+      "EntityModelHand": {
+        "$ref": "#/components/schemas/Hand"
+      },
+      "EntityModelParticipation": {
+        "$ref": "#/components/schemas/Participation"
+      },
       "PagedModelEntityModelParticipation": {
         "type": "object",
         "properties": {
@@ -2934,7 +4454,7 @@
           }
         }
       },
-      "CollectionModelHand": {
+      "PagedModelEntityModelHand": {
         "type": "object",
         "properties": {
           "_embedded": {
@@ -2943,13 +4463,16 @@
               "hands": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/HandResponse"
+                  "$ref": "#/components/schemas/EntityModelHand"
                 }
               }
             }
           },
           "_links": {
             "$ref": "#/components/schemas/Links"
+          },
+          "page": {
+            "$ref": "#/components/schemas/PageMetadata"
           }
         }
       },
@@ -3044,6 +4567,38 @@
           }
         }
       },
+      "MatchRequestBody": {
+        "type": "object",
+        "properties": {
+          "matchNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rounds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "hands": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "game": {
+            "type": "string"
+          },
+          "matchState": {
+            "type": "string",
+            "enum": [
+              "ANNOUNCING",
+              "PLAYING",
+              "FINISH"
+            ]
+          }
+        }
+      },
       "ParticipationRequestBody": {
         "type": "object",
         "properties": {
@@ -3081,60 +4636,45 @@
           }
         }
       },
-      "CardResponse": {
+      "RoundRequestBody": {
         "type": "object",
         "properties": {
-          "cardRank": {
-            "type": "string",
-            "enum": [
-              "SIX",
-              "SEVEN",
-              "EIGHT",
-              "NINE",
-              "TEN",
-              "JACK",
-              "QUEEN",
-              "KING",
-              "ACE"
-            ]
+          "roundNumber": {
+            "type": "integer",
+            "format": "int32"
           },
-          "cardSuit": {
-            "type": "string",
-            "enum": [
-              "CLUB",
-              "DIAMOND",
-              "HEART",
-              "SPADE"
-            ]
+          "cards": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "match": {
+            "type": "string"
+          },
+          "trickWinnerIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
           }
         }
+      },
+      "CardResponse": {
+        "$ref": "#/components/schemas/Card"
       },
       "HandResponse": {
-        "type": "object",
-        "properties": {
-          "announcedScore": {
-            "type": "integer",
-            "format": "int32"
-          }
-        }
+        "$ref": "#/components/schemas/Hand"
+      },
+      "MatchResponse": {
+        "$ref": "#/components/schemas/Match"
       },
       "ParticipationResponse": {
-        "type": "object",
-        "properties": {
-          "active": {
-            "type": "boolean"
-          },
-          "participationNumber": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "player" : {
-            "$ref": "#/components/schemas/EntityModelPlayer"
-          },
-          "game" : {
-            "$ref": "#/components/schemas/EntityModelGame"
-          }
-        }
+        "$ref": "#/components/schemas/Participation"
+      },
+      "RoundResponse": {
+        "$ref": "#/components/schemas/Round"
       },
       "HelloWorld": {
         "type": "object",

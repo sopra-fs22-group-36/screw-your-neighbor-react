@@ -9,7 +9,10 @@ export function embedProxy<T extends object>(input: T): T {
       if (target[prop] !== undefined) {
         return target[prop]
       }
-      if (target["_embedded"][prop] !== undefined) {
+      if (
+        target["_embedded"] !== undefined &&
+        target["_embedded"][prop] !== undefined
+      ) {
         return target["_embedded"][prop]
       }
       return Reflect.get(target, prop, receiver)
