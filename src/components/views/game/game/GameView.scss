@@ -1,0 +1,22 @@
+.game {
+  .top-row {
+    min-height: 10em;
+    padding: 1em;
+  }
+  .second-row {
+    height: 65vh;
+  }
+
+  .your-hand {
+    position: absolute;
+    left: 18vw;
+    bottom: 12vh;
+  }
+
+  .score-announcing {
+    position: absolute;
+    left: 49vw;
+    bottom: 13vh;
+    width: 30vw;
+  }
+}

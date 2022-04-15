@@ -1,0 +1,20 @@
+@import '../../../../../styles/theme';
+
+.your-hand {
+  margin: 15px;
+  align-self: center;
+  display: inline-block;
+  overflow: hidden;
+
+  bottom: 0;
+  left: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 5px;
+  padding-right: 5px;
+  color: $textColor;
+  background-color: #620606;
+  border-radius: 2em;
+  opacity: 0.9;
+}

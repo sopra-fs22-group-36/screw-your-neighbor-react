@@ -4,15 +4,15 @@ import { Paths } from "../../../routing/routers/Paths"
 import { usePlayers } from "../../../../hooks/api/usePlayers"
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import { observer } from "mobx-react-lite"
-import { Login } from "@mui/icons-material"
-import { Button } from "@mui/material"
 import BaseContainer from "../../../ui/BaseContainer"
-import "../../../../styles/ui/Divs.scss"
-import "../../../../styles/ui/Cards.scss"
-import { useCards } from "../../../../hooks/api/useCards"
-import ScoreAnnouncing from "./ScoreAnnouncing"
-import { EntityModelCard } from "../../../../generated"
-import { toJS } from "mobx"
+import { GameTable } from "./gametable/GameTable"
+import { VideoChat } from "./videochat/VideoChat"
+import { ScoreBoard } from "./scoreboard/ScoreBoard"
+import { Login } from "@mui/icons-material"
+import { Button, Grid } from "@mui/material"
+import {YourHand} from "./yourhand/YourHand";
+import "./GameView.scss"
+import ScoreAnnouncing from "./scoreannouncing/ScoreAnnouncing";
 
 /**
  * The main game page inside the Jass-Stube includes a table with all players
@@ -23,73 +23,35 @@ const GameView = observer(() => {
   const navigate = useNavigate()
   const { me } = usePlayers()
   const { loading, game, leaveGame } = useCurrentGame()
-  const { updatecards } = useCards()
-  const played = game?.matches[0]?.rounds[0].cards || []
-
-  const matchnr = game.matches.length
-
-  const cards: Array<EntityModelCard> = game.matches[0]?.hands[0]?.cards || []
-  const roundless = cards.filter((value) => value.round === null)
 
   const clickLeave = async () => {
     await leaveGame()
     navigate(Paths.LOBBY)
   }
 
-  const updateAll = async (card) => {
-    // make patch request and add cards to list of played cards
-    //IN THE FINAL VERISON: remove card from hand or onlyshow the ones without a round
-    updatecards(card)
-    console.log(toJS(roundless))
-  }
-
-  let content = <div>No cards..</div>
-  if (roundless.length > 0) {
-    content = (
-      <div className="cardbox">
-        {roundless.map((card) => (
-          <div
-            key={card._links.self.href}
-            onClick={() => updateAll(card)}
-            className="cards"
-          >
-            <div>
-              {card.cardRank} of {card.cardSuit}
-            </div>
-          </div>
-        ))}
-      </div>
-    )
-  }
-
-  let playedcontent = <div>No cards played..</div> //Display the cards that were played
-  if (played.length > 0) {
-    playedcontent = (
-      <div className="cardbox">
-        {played.map((playedcard, index) => (
-          <div
-            style={{
-              backgroundColor: "#ff82ab",
-            }}
-            key={index}
-            className="cards"
-          >
-            <div>
-              {" "}
-              {playedcard.cardRank} of {playedcard.cardSuit}
-            </div>
-          </div>
-        ))}
-      </div>
-    )
-  }
-
   return (
-    <div className="div-box">
+    <div className="game div-box">
       <BaseContainer>
-        <h2>
+        <h1>
           Welcome, {me.name} to Game: {game.name}
-        </h2>
+        </h1>
+        <Grid container spacing={0} className={"top-row"}>
+          <Grid item xs={2} />
+          <Grid item xs={4}>
+            <ScoreBoard />
+          </Grid>
+          <Grid item xs={2} />
+          <Grid item xs={4}>
+            <VideoChat />
+          </Grid>
+        </Grid>
+        <Grid container className={"second-row"}>
+          <Grid item xs={12}>
+            <GameTable />
+            <YourHand />
+            <ScoreAnnouncing/>
+          </Grid>
+        </Grid>
         <Button
           disabled={loading}
           variant="contained"
@@ -99,20 +61,6 @@ const GameView = observer(() => {
           Leave
         </Button>
       </BaseContainer>
-      <div className="div-scoreannounce">
-        <ScoreAnnouncing />
-      </div>
-
-      <div className="div-bottomleft">
-        <p>These are the Cards for Match {matchnr}:</p>
-        {content}
-      </div>
-
-      <div className="div-tableplayed">
-        <h3>You have played the following cards:</h3>
-        {playedcontent}
-      </div>
-      <div className="table-background"></div>
     </div>
   )
 })
