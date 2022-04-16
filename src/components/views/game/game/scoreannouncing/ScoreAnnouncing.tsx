@@ -7,8 +7,8 @@ import insertCoin from "../../../../../img/icons/insert-coin.png"
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined"
 
 export const ScoreAnnouncing = () => {
-  const { loading, announceScore } = useCurrentGame()
-  const [score, setScore] = useState(null)
+  const { loading, announceScore, yourActiveHand } = useCurrentGame()
+  const [score, setScore] = useState(yourActiveHand?.announcedScore)
 
   const clickAnnounceScore = async () => {
     await announceScore(score)

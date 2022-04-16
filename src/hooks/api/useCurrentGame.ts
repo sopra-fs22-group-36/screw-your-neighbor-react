@@ -4,11 +4,12 @@ import { useApi } from "./useApi"
 import { toIri } from "../../util/toIri"
 import { Game } from "../../generated"
 import { useParams } from "react-router"
+import { iriMatch } from "../../util/iriMatch"
 const gameState = Game.gameState
 
 export function useCurrentGame() {
   const [loading, setLoading] = useState(false)
-  const { currentGameStore } = useContext(appContext)
+  const { currentGameStore, playerStore } = useContext(appContext)
   const { request, wrapApiCall } = useApi()
   const { currentGameId } = useParams()
 
@@ -63,7 +64,12 @@ export function useCurrentGame() {
       })
     )
     currentGameStore.setGame(game)
-    currentGameStore.setParticipation(game.participations.at(0))
+    const myParticipations = game.participations?.filter((value) =>
+      iriMatch(value.player._links.self, playerStore.me._links.self)
+    )
+    currentGameStore.setParticipation(
+      myParticipations?.length > 0 ? myParticipations[0] : null
+    )
   }
 
   const startPollGame = () => {
@@ -86,7 +92,7 @@ export function useCurrentGame() {
     wrapApiCall(
       request.request({
         method: "PATCH",
-        url: "/hands/5",
+        url: toIri(currentGameStore.yourActiveHand._links.self),
         body: { announcedScore: numberOfTricks },
       })
     ).finally(() => setLoading(false))
@@ -96,6 +102,11 @@ export function useCurrentGame() {
     loading,
     game: currentGameStore.game,
     activeParticipations: currentGameStore.activeParticipations,
+    sortedMatches: currentGameStore.sortedMatches,
+    activeMatch: currentGameStore.activeMatch,
+    sortedRoundsOfActiveMatch: currentGameStore.sortedRoundsOfActiveMatch,
+    activeRound: currentGameStore.activeRound,
+    yourActiveHand: currentGameStore.yourActiveHand,
     leaveGame,
     playGame,
     currentGameIriFromParameter,

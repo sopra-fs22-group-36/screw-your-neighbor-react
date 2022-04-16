@@ -1,18 +1,16 @@
 import React, { useState } from "react"
 import { useCards } from "../../../../../hooks/api/useCards"
-import "./YourHand.scss"
-import { EntityModelCard } from "../../../../../generated"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
 import { CardComponent } from "../../../../ui/CardComponent"
+import "./YourHand.scss"
 
 export const YourHand = () => {
   const { updatecards } = useCards()
-  const { game } = useCurrentGame()
+  const { activeMatch, yourActiveHand } = useCurrentGame()
   const [opacity, setOpacity] = useState(10)
 
-  const match = game.matches[0]
-  const cards: Array<EntityModelCard> = match?.hands[0]?.cards || []
-  const notYetPlayed = cards.filter((value) => value.round === null)
+  const notYetPlayed =
+    yourActiveHand?.cards.filter((value) => value.round === null) ?? []
 
   const clickCard = async (card, number) => {
     setOpacity(number)
@@ -21,7 +19,7 @@ export const YourHand = () => {
 
   return (
     <div className="your-hand">
-      <p>These are the Cards for Match {match?.matchNumber}:</p>
+      <p>These are the Cards for Match {activeMatch?.matchNumber}:</p>
       {notYetPlayed.map((card, index) => (
         <div
           style={{
