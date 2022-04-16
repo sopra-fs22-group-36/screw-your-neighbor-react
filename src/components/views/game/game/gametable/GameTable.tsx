@@ -13,9 +13,9 @@ function createParticipation(name) {
 }
 
 export const GameTable = () => {
-  const { game } = useCurrentGame()
+  const { activeRound } = useCurrentGame()
 
-  const cards = game?.matches[0]?.rounds[0].cards || []
+  const cards = activeRound.cards || []
 
   const participationTwo = createParticipation("Player2")
   const participationThree = createParticipation("Player3")

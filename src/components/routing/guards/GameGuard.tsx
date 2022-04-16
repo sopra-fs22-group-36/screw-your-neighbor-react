@@ -3,8 +3,8 @@ import { observer } from "mobx-react-lite"
 import { useNavigate } from "react-router-dom"
 import { useCurrentGame } from "../../../hooks/api/useCurrentGame"
 import { Paths } from "../routers/Paths"
-import { toIri } from "../../../util/toIri"
-import { ApiError, EntityModelGame, Game } from "../../../generated"
+import { ApiError, Game } from "../../../generated"
+import { iriMatch } from "../../../util/iriMatch"
 import { Loading } from "../../ui/Loading"
 import { delay } from "../../../util/timeout"
 import { Room } from "../../views/game/room/Room"
@@ -20,19 +20,11 @@ export type GameGuardProps = {
   redirectTo: Paths
 }
 
-function iriMatch(currentGameIriFromParameter: string, game: EntityModelGame) {
-  const iriWithOutEmbed = toIri(game._links.self)
-  const iriWithEmbed = iriWithOutEmbed + "?projection=embed"
-  return (
-    currentGameIriFromParameter === iriWithOutEmbed ||
-    currentGameIriFromParameter === iriWithEmbed
-  )
-}
-
 export const GameGuard = observer((props: GameGuardProps) => {
   const navigate = useNavigate()
   const { game, refreshGame, currentGameIriFromParameter } = useCurrentGame()
-  const gameReady = game && iriMatch(currentGameIriFromParameter, game)
+  const gameReady =
+    game && iriMatch(currentGameIriFromParameter, game._links.self)
 
   const [gameLoaded, setGameLoaded] = useState(gameReady)
 
