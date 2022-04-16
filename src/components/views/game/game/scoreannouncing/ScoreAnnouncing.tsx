@@ -14,6 +14,7 @@ export const ScoreAnnouncing = () => {
     await announceScore(score)
   }
 
+  const scoreAvailable = score !== null && score !== undefined
   return (
     <Box
       className={"score-announcing"}
@@ -57,12 +58,12 @@ export const ScoreAnnouncing = () => {
             InputLabelProps={{
               shrink: true,
             }}
-            value={score !== null ? score : null}
+            value={scoreAvailable ? score : ""}
             inputProps={{
               min: 0,
             }}
             onChange={(event) => {
-              setScore(event.target.value)
+              setScore(parseInt(event.target.value))
             }}
           />
         </Box>
