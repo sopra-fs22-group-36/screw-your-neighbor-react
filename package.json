@@ -8,6 +8,7 @@
   "dependencies": {
     "@emotion/react": "11.8.2",
     "@emotion/styled": "11.8.1",
+    "@jitsi/react-sdk": "1.0.1",
     "@mui/icons-material": "5.5.1",
     "@mui/material": "5.5.2",
     "axios": "0.26.1",
@@ -76,6 +77,9 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/",
       "/src/generated"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!@jitsi/react-sdk)"
     ]
   }
 }
