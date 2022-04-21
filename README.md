@@ -26,10 +26,7 @@ By group 36 of the course "Software Praktikum"@UZH in FS 22.
 
 ### Update the classes of the api:
 
-Download the screw-your-neighbor-server-openapi.json from the server under the path /v3/api-docs.
-Then apply the patches from commits:
-
-- 728196a (screw-your-neighbor-server-openapi.json: add embedded relations).
+Add the properties you need to  [screw-your-neighbor-server-openapi.json](screw-your-neighbor-server-openapi.json)
 
 Then run again `npm run openapi-generate`
 
