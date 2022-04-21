@@ -23,7 +23,8 @@ const CreatePlayer = () => {
 
   const { me, loading, createPlayer, startPollPlayers } = usePlayers()
 
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventDefault()
     await createPlayer(name)
     navigate(Paths.LOBBY)
   }
@@ -47,24 +48,26 @@ const CreatePlayer = () => {
           Register by entering your name in the field below and pressing "Take
           me to the Lobby"
         </h4>
-        <Box className="Box">
-          <TextField
-            helperText="Please enter your player name"
-            id="demo-helper-text-aligned"
-            label="player name"
-            value={name}
-            onChange={changeName}
-          />
-          <p></p>
-          <Button
-            disabled={loading}
-            variant="contained"
-            endIcon={<SendIcon />}
-            onClick={submit}
-          >
-            TAKE ME TO THE LOBBY
-          </Button>
-        </Box>
+        <form onSubmit={submit}>
+          <Box className="Box">
+            <TextField
+              helperText="Please enter your player name"
+              id="demo-helper-text-aligned"
+              label="player name"
+              value={name}
+              onChange={changeName}
+            />
+            <p></p>
+            <Button
+              type={"submit"}
+              disabled={loading}
+              variant="contained"
+              endIcon={<SendIcon />}
+            >
+              TAKE ME TO THE LOBBY
+            </Button>
+          </Box>
+        </form>
       </BaseContainer>
       <Footer />
       <div className="background-img"></div>
