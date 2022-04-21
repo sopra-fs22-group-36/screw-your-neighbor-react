@@ -14,7 +14,7 @@ import "../../../styles/ui/Box.scss"
 import "../../../styles/ui/Divs.scss"
 import "../../../styles/ui/images.scss"
 
-const Register = () => {
+const CreatePlayer = () => {
   const navigate = useNavigate()
   const [name, setName] = useState("")
   const changeName = (e) => {
@@ -72,4 +72,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default CreatePlayer
