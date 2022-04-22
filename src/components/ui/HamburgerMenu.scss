@@ -16,7 +16,7 @@
 }
 
 .navBar li {
-  bottom: 20px;
+  bottom: 0px;
   text-align: center;
   font-size: x-large;
   z-index: 10;
@@ -36,22 +36,21 @@
 .menuNav {
   list-style: none;
   position: fixed;
-  bottom: 0;
+  top: 0;
   background: rgba(156, 22, 12, 1);
   left: 0;
-  bottom: 0;
-  height: 100vh;
+  height: 100%;
   width: 0;
   overflow: hidden;
   max-width: 290px;
   z-index: 9;
-  overflow: hidden;
-
 }
 
 .menuNav.showMenu {
   width: 100%;
-  background: rgba(156, 22, 12, 0.6);
+  height: 110%;
+  margin-top: -10px;
+  background: rgba(156, 22, 12, 0.8);
 
 }
 

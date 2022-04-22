@@ -33,7 +33,7 @@ function findCard(rank: Card.cardRank, suit: Card.cardSuit): string {
 export const CardComponent = (props: CardComponentProps) => {
   const onClick = props.onClick ?? (() => ({}))
   return (
-    <div className="card-component" onClick={onClick}>
+    <div className="card-component ex2" onClick={onClick}>
       <div>
         <img
           src={cards[findCard(props.card.cardRank, props.card.cardSuit)]}

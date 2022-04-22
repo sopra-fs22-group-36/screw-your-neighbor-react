@@ -13,7 +13,7 @@ export const YourHand = () => {
     yourActiveHand?.cards.filter((value) => value.round === null) ?? []
 
   const clickCard = async (card, number) => {
-    updatecards(card)
+    setTimeout(() => updatecards(card), 600)
     console.log(toJS(activeRound.cards)) //DEBUGGING - REMOVE LATER
   }
 
