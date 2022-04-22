@@ -19,29 +19,32 @@ export const CreateGame = () => {
     setName(e.target.value)
   }
 
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventDefault()
     const createdGame = await createGame(name)
     const gameId = extractId(createdGame._links.self)
     navigate(Paths.GAME + `/${gameId}`)
   }
 
   return (
-    <Box className="Box">
-      <TextField
-        helperText="Please enter your room name"
-        id="demo-helper-text-aligned"
-        label="game name"
-        value={name}
-        onChange={changeName}
-      />
-      <Button
-        disabled={loading}
-        variant="contained"
-        endIcon={<SendIcon />}
-        onClick={submit}
-      >
-        create game
-      </Button>
-    </Box>
+    <form onSubmit={submit}>
+      <Box className="Box">
+        <TextField
+          helperText="Please enter your room name"
+          id="demo-helper-text-aligned"
+          label="game name"
+          value={name}
+          onChange={changeName}
+        />
+        <Button
+          type={"submit"}
+          disabled={loading}
+          variant="contained"
+          endIcon={<SendIcon />}
+        >
+          create game
+        </Button>
+      </Box>
+    </form>
   )
 }
