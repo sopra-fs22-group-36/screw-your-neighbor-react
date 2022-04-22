@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding: 8px 8px;
+  //padding: 8px 8px; - Removed because it caused problems with the overflow
   color: $textColor;
   border-radius: 2em;
   overflow-y: hidden;

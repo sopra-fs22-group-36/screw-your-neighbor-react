@@ -1,0 +1,58 @@
+
+
+.navBar {
+  position: relative;
+  overflow: hidden;
+
+}
+
+.navBar button {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 10;
+  cursor: pointer;
+  width: 40px;
+}
+
+.navBar li {
+  bottom: 20px;
+  text-align: center;
+  font-size: x-large;
+  z-index: 10;
+  cursor: pointer;
+  width: 200px;
+  margin: 10px;
+  height: 30px;
+  padding: 5px;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-style: normal;
+  background-color: #0074D9;
+  border-radius: 10px;
+  align-self: center;
+}
+
+
+.menuNav {
+  list-style: none;
+  position: fixed;
+  bottom: 0;
+  background: rgba(156, 22, 12, 1);
+  left: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 0;
+  overflow: hidden;
+  max-width: 290px;
+  z-index: 9;
+  overflow: hidden;
+
+}
+
+.menuNav.showMenu {
+  width: 100%;
+  background: rgba(156, 22, 12, 0.6);
+
+}
+
+

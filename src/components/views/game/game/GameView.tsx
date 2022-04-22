@@ -1,16 +1,13 @@
 import React from "react"
-import { useNavigate } from "react-router-dom"
-import { Paths } from "../../../routing/routers/Paths"
-import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import { observer } from "mobx-react-lite"
 import { GameTable } from "./gametable/GameTable"
 import { VideoChat } from "./videochat/VideoChat"
 import { ScoreBoard } from "./scoreboard/ScoreBoard"
-import { Login } from "@mui/icons-material"
-import { Button, Grid } from "@mui/material"
+import { Grid } from "@mui/material"
 import { YourHand } from "./yourhand/YourHand"
 import "./GameView.scss"
 import ScoreAnnouncing from "./scoreannouncing/ScoreAnnouncing"
+import HamburgerMenu from "../../../ui/HamburgerMenu"
 
 /**
  * The main game page inside the Jass-Stube includes a table with all players
@@ -18,16 +15,8 @@ import ScoreAnnouncing from "./scoreannouncing/ScoreAnnouncing"
  * @returns
  */
 const GameView = observer(() => {
-  const navigate = useNavigate()
-  const { loading, leaveGame } = useCurrentGame()
-
-  const clickLeave = async () => {
-    await leaveGame()
-    navigate(Paths.LOBBY)
-  }
-
   return (
-    <div className="game div-box">
+    <div className="game div-box" style={{ overflow: "hidden" }}>
       <Grid container spacing={0} className={"top-row"}>
         <Grid item xs={1} />
         <Grid item xs={5}>
@@ -47,14 +36,7 @@ const GameView = observer(() => {
           </div>
         </Grid>
       </Grid>
-      <Button
-        disabled={loading}
-        variant="contained"
-        endIcon={<Login />}
-        onClick={clickLeave}
-      >
-        Leave
-      </Button>
+      <HamburgerMenu />
     </div>
   )
 })
