@@ -1,24 +1,47 @@
+@import 'src/styles/theme';
+
+
 .game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 8px 8px;
+  color: $textColor;
+  border-radius: 2em;
+  overflow-y: hidden;
+
+  .base-container {
+    margin: 5px auto;
+    height: 95%;
+  }
+
   .top-row {
-    min-height: 10em;
+    height: 40%;
     padding: 1em;
   }
   .second-row {
-    height: 65vh;
+    height: 60%;
+  }
+
+  .game.wrapper-for-absolute {
+    height: 100%;
+    position: relative;
   }
 
   .your-hand {
     position: absolute;
-    left: 3vw;
-    bottom: 12vh;
-    height: 30vh;
-    width: 35vw;
+    left: 3%;
+    bottom: 3%;
+    height: 50%;
+    width: 50%;
   }
 
   .score-announcing {
     position: absolute;
-    right: 3vw;
-    bottom: 13vh;
-    width: 30vw;
+    right: 3%;
+    bottom: 3%;
+    width: 30%;
+    margin-bottom: 15px;
   }
 }

@@ -1,10 +1,8 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 import { Paths } from "../../../routing/routers/Paths"
-import { usePlayers } from "../../../../hooks/api/usePlayers"
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import { observer } from "mobx-react-lite"
-import BaseContainer from "../../../ui/BaseContainer"
 import { GameTable } from "./gametable/GameTable"
 import { VideoChat } from "./videochat/VideoChat"
 import { ScoreBoard } from "./scoreboard/ScoreBoard"
@@ -21,8 +19,7 @@ import ScoreAnnouncing from "./scoreannouncing/ScoreAnnouncing"
  */
 const GameView = observer(() => {
   const navigate = useNavigate()
-  const { me } = usePlayers()
-  const { loading, game, leaveGame } = useCurrentGame()
+  const { loading, leaveGame } = useCurrentGame()
 
   const clickLeave = async () => {
     await leaveGame()
@@ -31,36 +28,33 @@ const GameView = observer(() => {
 
   return (
     <div className="game div-box">
-      <BaseContainer>
-        <h1>
-          Welcome, {me.name} to Game: {game.name}
-        </h1>
-        <Grid container spacing={0} className={"top-row"}>
-          <Grid item xs={2} />
-          <Grid item xs={4}>
-            <ScoreBoard />
-          </Grid>
-          <Grid item xs={2} />
-          <Grid item xs={4}>
-            <VideoChat />
-          </Grid>
+      <Grid container spacing={0} className={"top-row"}>
+        <Grid item xs={1} />
+        <Grid item xs={5}>
+          <ScoreBoard />
         </Grid>
-        <Grid container className={"second-row"}>
-          <Grid item xs={12}>
+        <Grid item xs={1} />
+        <Grid item xs={5}>
+          <VideoChat />
+        </Grid>
+      </Grid>
+      <Grid container className={"second-row"}>
+        <Grid item xs={12}>
+          <div className={"game wrapper-for-absolute"}>
             <GameTable />
             <YourHand />
             <ScoreAnnouncing />
-          </Grid>
+          </div>
         </Grid>
-        <Button
-          disabled={loading}
-          variant="contained"
-          endIcon={<Login />}
-          onClick={clickLeave}
-        >
-          Leave
-        </Button>
-      </BaseContainer>
+      </Grid>
+      <Button
+        disabled={loading}
+        variant="contained"
+        endIcon={<Login />}
+        onClick={clickLeave}
+      >
+        Leave
+      </Button>
     </div>
   )
 })
