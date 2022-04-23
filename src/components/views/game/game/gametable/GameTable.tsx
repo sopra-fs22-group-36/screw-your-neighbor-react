@@ -2,25 +2,20 @@ import React from "react"
 import { PlayerHand } from "./PlayerHand"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
 import { CardComponent } from "../../../../ui/CardComponent"
+import { distributeOpponents } from "./distributeOpponents"
 import "./GameTable.scss"
 
-function createParticipation(name) {
-  return {
-    player: {
-      name: name,
-    },
-  }
-}
-
 export const GameTable = () => {
-  const { activeRound } = useCurrentGame()
+  const { activeParticipations, myParticipation, activeRound } =
+    useCurrentGame()
 
   const cards = activeRound.cards || []
 
-  const participationTwo = createParticipation("Player2")
-  const participationThree = createParticipation("Player3")
-  const participationFour = createParticipation("Player4")
-  const participationFive = createParticipation("Player5")
+  const participationSlots = distributeOpponents(
+    myParticipation,
+    activeParticipations
+  )
+
   return (
     <div className={"game-table"}>
       <div className={"game-table absolute-wrapper"}>
@@ -33,19 +28,19 @@ export const GameTable = () => {
         </div>
         <PlayerHand
           className={"player player-2"}
-          participation={participationTwo}
+          participation={participationSlots.slot1}
         />
         <PlayerHand
           className={"player player-3"}
-          participation={participationThree}
+          participation={participationSlots.slot2}
         />
         <PlayerHand
           className={"player player-4"}
-          participation={participationFour}
+          participation={participationSlots.slot3}
         />
         <PlayerHand
           className={"player player-5"}
-          participation={participationFive}
+          participation={participationSlots.slot4}
         />
       </div>
     </div>
