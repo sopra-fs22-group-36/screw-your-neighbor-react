@@ -1,5 +1,14 @@
 .player-hand {
   background-color: orange;
   height: 100%;
-  width: 100%;
+  width: 130%;
+}
+
+.player-hand img {
+  margin: -20px;
+  align-self: center;
+  display: inline-block;
+  overflow: hidden;
+  height: 60%;
+  width: 40%;
 }
