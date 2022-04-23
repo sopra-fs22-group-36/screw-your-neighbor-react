@@ -4,7 +4,7 @@ import Lobby from "../../views/lobby/Lobby"
 import { Paths } from "./Paths"
 import { SessionGuard } from "../guards/SessionGuard"
 import { GameGuard } from "../guards/GameGuard"
-import Register from "../../views/createplayer/Register"
+import CreatePlayer from "../../views/createplayer/CreatePlayer"
 
 /**
  */
@@ -23,7 +23,7 @@ const AppRouter = () => {
             element={<GameGuard redirectTo={Paths.LOBBY} />}
           />
           <Route path={Paths.GAME} element={<Navigate to={Paths.LOBBY} />} />
-          <Route path={Paths.CREATE_PLAYER} element={<Register />} />
+          <Route path={Paths.CREATE_PLAYER} element={<CreatePlayer />} />
         </Routes>
       </SessionGuard>
     </BrowserRouter>

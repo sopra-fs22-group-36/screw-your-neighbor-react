@@ -23,29 +23,31 @@ export const GameTable = () => {
   const participationFive = createParticipation("Player5")
   return (
     <div className={"game-table"}>
-      <div className={"card-table"}>
-        {cards.map((card, index) => (
-          <div key={index}>
-            <CardComponent card={card} />
-          </div>
-        ))}
+      <div className={"game-table absolute-wrapper"}>
+        <div className={"card-table"}>
+          {cards.map((card, index) => (
+            <div key={index}>
+              <CardComponent card={card} />
+            </div>
+          ))}
+        </div>
+        <PlayerHand
+          className={"player player-2"}
+          participation={participationTwo}
+        />
+        <PlayerHand
+          className={"player player-3"}
+          participation={participationThree}
+        />
+        <PlayerHand
+          className={"player player-4"}
+          participation={participationFour}
+        />
+        <PlayerHand
+          className={"player player-5"}
+          participation={participationFive}
+        />
       </div>
-      <PlayerHand
-        className={"player player-2"}
-        participation={participationTwo}
-      />
-      <PlayerHand
-        className={"player player-3"}
-        participation={participationThree}
-      />
-      <PlayerHand
-        className={"player player-4"}
-        participation={participationFour}
-      />
-      <PlayerHand
-        className={"player player-5"}
-        participation={participationFive}
-      />
     </div>
   )
 }

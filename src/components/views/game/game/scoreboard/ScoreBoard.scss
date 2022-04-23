@@ -1,5 +1,52 @@
+@import 'src/styles/theme';
+
 .scoreboard {
-  border: solid green 1px;
   height: 100%;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+
+  .base-container {
+    width: 100%;
+    height: 100%;
+
+    .content {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  h1 {
+    margin: 0;
+    font-family: 'Pacifico', cursive;
+    font-style: normal;
+  }
+
+  ul {
+    min-height: 70%;
+    list-style: none;
+    background-color: #971c1c;
+    border-radius: $borderRadius;
+    width: 90%;
+    padding: 5px 5px;
+  }
+
+  li {
+    background-color: #b96262;
+    height: 40px;
+    font-size: 20pt;
+    border-radius: $borderRadius;
+    padding: 3px 0;
+    margin: 3px 0;
+  }
+
+  .player-name {
+    margin-left: $borderRadius;
+  }
+
+  .points {
+    float: right;
+    margin-right: $borderRadius;
+  }
+
 }
