@@ -20,6 +20,7 @@ export const YourHand = () => {
   const notYetPlayed =
     yourActiveHand?.cards.filter((value) => value.round === null) ?? []
 
+  //Check if all players did the score announcement for this match
   const clickCard = async (card, number) => {
     setOpacity(number)
     if (activeMatch.matchState === Match.matchState.PLAYING) {
@@ -30,12 +31,15 @@ export const YourHand = () => {
     }
   }
 
+  // Close dialog
   const handleClose = () => {
     setOpen(false)
   }
 
+
   let content = <></>
 
+  // Inform the player that it is not possible to play a card
   if (open) {
     content = (
       <Dialog
@@ -45,7 +49,7 @@ export const YourHand = () => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Use Google's location service?"}
+          {"Screw-your-neighbor: talk to other users"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
