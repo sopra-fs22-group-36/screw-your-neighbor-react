@@ -1,5 +1,4 @@
 import React from "react"
-import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import { observer } from "mobx-react-lite"
 import { GameTable } from "./gametable/GameTable"
 import { VideoChat } from "./videochat/VideoChat"
@@ -16,8 +15,6 @@ import HamburgerMenu from "../../../ui/HamburgerMenu"
  * @returns
  */
 const GameView = observer(() => {
-  const { loading } = useCurrentGame() //IF I REMOVE THIS THE CODE DOESNT WANT TO WORK ANYMORE AND I HAVENT FIGURED OUT WHY YET
-
   return (
     <div className="game div-box">
       <Grid container spacing={0} className={"top-row"}>

@@ -4,8 +4,9 @@ import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
 import { CardComponent } from "../../../../ui/CardComponent"
 import "./YourHand.scss"
 import { toJS } from "mobx" //DEBUGGING - REMOVE LATER
+import { observer } from "mobx-react-lite"
 
-export const YourHand = () => {
+export const YourHand = observer(() => {
   const { updatecards } = useCards()
   const { activeMatch, yourActiveHand, activeRound } = useCurrentGame()
 
@@ -30,4 +31,4 @@ export const YourHand = () => {
       ))}
     </div>
   )
-}
+})
