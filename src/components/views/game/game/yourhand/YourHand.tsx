@@ -3,19 +3,17 @@ import { useCards } from "../../../../../hooks/api/useCards"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
 import { CardComponent } from "../../../../ui/CardComponent"
 import "./YourHand.scss"
-import { toJS } from "mobx" //DEBUGGING - REMOVE LATER
 import { observer } from "mobx-react-lite"
 
 export const YourHand = observer(() => {
   const { updatecards } = useCards()
-  const { activeMatch, yourActiveHand, activeRound } = useCurrentGame()
+  const { activeMatch, yourActiveHand } = useCurrentGame()
 
   const notYetPlayed =
     yourActiveHand?.cards.filter((value) => value.round === null) ?? []
 
   const clickCard = async (card, number) => {
     setTimeout(() => updatecards(card), 600)
-    console.log(toJS(activeRound.cards)) //DEBUGGING - REMOVE LATER
   }
 
   return (
