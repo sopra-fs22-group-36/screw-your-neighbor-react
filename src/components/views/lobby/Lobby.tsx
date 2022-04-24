@@ -9,7 +9,8 @@ import { usePlayers } from "../../../hooks/api/usePlayers"
 import { CreateGame } from "./CreateGame"
 import { RoomRow } from "./RoomRow"
 import { Paths } from "../../routing/routers/Paths"
-import { Grid } from "@mui/material"
+import { Collapse, Grid } from "@mui/material"
+import { TransitionGroup } from "react-transition-group"
 import "../../../styles/ui/Button.scss"
 import "../../../styles/ui/Divs.scss"
 import "../../../styles/ui/Lists.scss"
@@ -43,9 +44,13 @@ const Lobby = observer(() => {
             <h3>Choose one of the Rooms to join</h3>
             <div className="div-rooms">
               <div className="roomlist">
-                {games.map((game) => (
-                  <RoomRow key={game._links.self.href} game={toJS(game)} />
-                ))}
+                <TransitionGroup>
+                  {games.map((game) => (
+                    <Collapse key={game._links.self.href}>
+                      <RoomRow game={toJS(game)} />
+                    </Collapse>
+                  ))}
+                </TransitionGroup>
               </div>
 
               <CreateGame />
