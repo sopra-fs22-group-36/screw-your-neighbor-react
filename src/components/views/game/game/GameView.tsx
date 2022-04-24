@@ -18,6 +18,7 @@ const GameView = observer(() => {
   return (
     <div className="game div-box">
       <Grid container spacing={0} className={"top-row"}>
+        <HamburgerMenu />
         <Grid item xs={1} />
         <Grid item xs={5}>
           <ScoreBoard />
@@ -36,7 +37,6 @@ const GameView = observer(() => {
           </div>
         </Grid>
       </Grid>
-      <HamburgerMenu />
     </div>
   )
 })

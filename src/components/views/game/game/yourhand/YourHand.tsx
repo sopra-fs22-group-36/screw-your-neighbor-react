@@ -21,7 +21,7 @@ export const YourHand = observer(() => {
   return (
     <div className="your-hand">
       <p style={{ marginLeft: "10px" }}>
-        These are the Cards for Match {activeMatch?.matchNumber} Round{" "}
+        These are the Cards for Match {activeMatch?.matchNumber} Round
         {activeMatch?.rounds.length}:
       </p>
       {notYetPlayed.map((card, index) => (
