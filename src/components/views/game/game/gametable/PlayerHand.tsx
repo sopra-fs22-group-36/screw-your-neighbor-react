@@ -1,6 +1,7 @@
 import React from "react"
 import { EntityModelParticipation } from "../../../../../generated"
 import "./PlayerHand.scss"
+import cardBack from "../../../../../img/card-backside.png"
 
 export type PlayerHandProps = {
   participation: EntityModelParticipation
@@ -15,6 +16,11 @@ export const PlayerHand = (props: PlayerHandProps) => {
   return (
     <div className={`player-hand ${props.className}`}>
       <h3>Here comes the hand of {playerName}</h3>
+      <img src={cardBack} alt="card_back_image" />
+      <img src={cardBack} alt="card_back_image" />
+      <img src={cardBack} alt="card_back_image" />
+      <img src={cardBack} alt="card_back_image" />
+      <img src={cardBack} alt="card_back_image" />
     </div>
   )
 }
