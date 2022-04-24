@@ -36,7 +36,6 @@ export const YourHand = () => {
     setOpen(false)
   }
 
-
   let content = <></>
 
   // Inform the player that it is not possible to play a card
