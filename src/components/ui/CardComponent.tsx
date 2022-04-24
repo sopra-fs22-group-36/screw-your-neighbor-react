@@ -1,6 +1,7 @@
 import React, { MouseEventHandler } from "react"
 import { Card } from "../../generated"
 import "./CardComponent.scss"
+import requireContext from "require-context.macro"
 
 export type CardComponentProps = {
   card: Card
@@ -8,7 +9,7 @@ export type CardComponentProps = {
 }
 
 //Store all cards from a deck in the dict cards
-const cards = importAll(require.context("../../img/deck/", false, /\.png$/))
+const cards = importAll(requireContext("../../img/deck/", false, /\.png$/))
 
 //Import all images from a directory
 function importAll(r) {
