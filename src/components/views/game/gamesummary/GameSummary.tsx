@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite"
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import BaseContainer from "../../../ui/BaseContainer"
 import SendIcon from "@mui/icons-material/Send"
+import LogoutIcon from "@mui/icons-material/Logout"
 import Button from "@mui/material/Button"
 import { useNavigate } from "react-router-dom"
 import { Paths } from "../../../routing/routers/Paths"
@@ -22,11 +23,17 @@ export const GameSummary = observer(() => {
     navigate(Paths.LOBBY)
   }
 
+  const clickStartNewGame = async () => {
+    await closeGame()
+    navigate(Paths.LOBBY)
+  }
+
   return (
     <div>
       <ReactConfetti
         gravity={0.01}
         opacity={0.5}
+        tweenDuration={5000}
       />
 
 
@@ -39,10 +46,22 @@ export const GameSummary = observer(() => {
         <Button
           disabled={loading}
           variant="contained"
-          endIcon={<SendIcon />}
+          endIcon={<LogoutIcon />}
           onClick={clickCloseGame}
         >
           Close game
+        </Button>
+
+
+        <Button
+
+          //TODO implement startNewGame function that takes the players and puts the automatically into a new game
+          disabled={loading}
+          variant="contained"
+          endIcon={<SendIcon />}
+          onClick={clickStartNewGame}
+          >
+          Start new Game
         </Button>
 
       </BaseContainer>
