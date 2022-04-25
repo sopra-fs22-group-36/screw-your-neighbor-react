@@ -98,8 +98,6 @@ export function useCurrentGame() {
     ).finally(() => setLoading(false))
   }
 
-
-
   return {
     loading,
     game: currentGameStore.game,

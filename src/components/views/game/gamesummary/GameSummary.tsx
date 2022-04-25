@@ -26,11 +26,7 @@ export const GameSummary = observer(() => {
 
   return (
     <div>
-      <ReactConfetti
-        gravity={0.01}
-        opacity={0.5}
-        tweenDuration={5000}
-      />
+      <ReactConfetti gravity={0.01} opacity={0.5} tweenDuration={5000} />
       <BaseContainer>
         <WinnersPodium />
         <Button
@@ -46,10 +42,10 @@ export const GameSummary = observer(() => {
           variant="contained"
           endIcon={<SendIcon />}
           onClick={clickStartNewGame}
-          >
+        >
           Start new Game
         </Button>
       </BaseContainer>
-      </div>
+    </div>
   )
 })
