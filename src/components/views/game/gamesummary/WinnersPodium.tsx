@@ -7,7 +7,8 @@ import "./WinnersPodium.scss"
 export const WinnersPodium = () => {
   const { activeParticipations } = useCurrentGame()
 
-  const sortedPlayers =  activeParticipations.slice().sort((a, b) => b.points - a.points) ?? []
+  const sortedPlayers =
+    activeParticipations.slice().sort((a, b) => b.points - a.points) ?? []
   return (
     <div className={"winnerspodium"}>
       <BaseContainer>
@@ -24,7 +25,7 @@ export const WinnersPodium = () => {
             )
           })}
         </ol>
-        </BaseContainer>
+      </BaseContainer>
     </div>
   )
 }
