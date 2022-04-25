@@ -5,8 +5,9 @@ import React, { useState } from "react"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
 import insertCoin from "../../../../../img/icons/insert-coin.png"
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined"
+import { observer } from "mobx-react-lite"
 
-export const ScoreAnnouncing = () => {
+export const ScoreAnnouncing = observer(() => {
   const { loading, announceScore, yourActiveHand } = useCurrentGame()
   const [score, setScore] = useState(yourActiveHand?.announcedScore)
 
@@ -80,6 +81,6 @@ export const ScoreAnnouncing = () => {
       </Box>
     </Box>
   )
-}
+})
 
 export default ScoreAnnouncing

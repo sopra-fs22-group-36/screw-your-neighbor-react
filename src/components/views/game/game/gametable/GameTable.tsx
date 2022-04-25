@@ -1,11 +1,12 @@
 import React from "react"
 import { PlayerHand } from "./PlayerHand"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
+import { observer } from "mobx-react-lite"
 import { CardComponent } from "../../../../ui/CardComponent"
 import { distributeOpponents } from "./distributeOpponents"
 import "./GameTable.scss"
 
-export const GameTable = () => {
+export const GameTable = observer(() => {
   const { activeParticipations, myParticipation, activeRound } =
     useCurrentGame()
 
@@ -45,4 +46,4 @@ export const GameTable = () => {
       </div>
     </div>
   )
-}
+})
