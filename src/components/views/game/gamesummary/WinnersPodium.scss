@@ -1,6 +1,6 @@
 @import 'src/styles/theme';
 
-.scoreboard {
+.winnerspodium {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -24,24 +24,12 @@
 
   ol {
     min-height: 70%;
-    //list-style: upper-latin;
     background-color: #971c1c;
     border-radius: $borderRadius;
     width: available;
     padding: 30px 100px;
 
   }
-
-
-  ul {
-    min-height: 70%;
-    list-style: none;
-    background-color: #971c1c;
-    border-radius: $borderRadius;
-    width: 100%;
-    padding: 5px 5px;
-  }
-
   li {
     background-color: #b96262;
     height: 40px;
