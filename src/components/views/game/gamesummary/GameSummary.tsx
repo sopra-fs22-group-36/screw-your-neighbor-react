@@ -14,10 +14,6 @@ export const GameSummary = observer(() => {
   const navigate = useNavigate()
   const { closeGame, loading } = useCurrentGame()
 
-
-
-
-
   const clickCloseGame = async () => {
     await closeGame()
     navigate(Paths.LOBBY)
@@ -35,14 +31,8 @@ export const GameSummary = observer(() => {
         opacity={0.5}
         tweenDuration={5000}
       />
-
-
       <BaseContainer>
-
         <WinnersPodium />
-
-        <div> </div>
-
         <Button
           disabled={loading}
           variant="contained"
@@ -51,11 +41,7 @@ export const GameSummary = observer(() => {
         >
           Close game
         </Button>
-
-
         <Button
-
-          //TODO implement startNewGame function that takes the players and puts the automatically into a new game
           disabled={loading}
           variant="contained"
           endIcon={<SendIcon />}
@@ -63,10 +49,7 @@ export const GameSummary = observer(() => {
           >
           Start new Game
         </Button>
-
       </BaseContainer>
-
-
-    </div>
+      </div>
   )
 })
