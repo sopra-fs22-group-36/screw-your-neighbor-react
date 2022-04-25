@@ -3,9 +3,11 @@ import BaseContainer from "../../../ui/BaseContainer"
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 
 import "./WinnersPodium.scss"
+import {map} from "react-confetti/dist/types/utils";
 
 export const WinnersPodium = () => {
-  const { activeParticipations } = useCurrentGame()
+  const { myParticipation, activeParticipations } = useCurrentGame()
+
 
   return (
     <div className={"scoreboard"}>
@@ -23,7 +25,7 @@ export const WinnersPodium = () => {
             )
           })}
         </ul>
-      </BaseContainer>
+        </BaseContainer>
     </div>
   )
 }
