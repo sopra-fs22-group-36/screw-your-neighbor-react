@@ -18,7 +18,6 @@ export const GameSummary = observer(() => {
     await closeGame()
     navigate(Paths.LOBBY)
   }
-
   const clickStartNewGame = async () => {
     await closeGame()
     navigate(Paths.LOBBY)
