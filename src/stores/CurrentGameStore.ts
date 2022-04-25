@@ -82,16 +82,4 @@ export class CurrentGameStore {
     }
     return yourHands.slice(-1)[0]
   }
-
-  @computed get sortedParticipations() {
-    if (!this.game) {
-      return []
-    }
-
-    return (
-      embedProxy(this.game)
-        .participations.slice()
-        .sort((a, b) => b.points - a.points) ?? []
-    )
-  }
 }
