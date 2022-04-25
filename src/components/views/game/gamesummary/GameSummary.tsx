@@ -11,9 +11,8 @@ import { WinnersPodium } from "./WinnersPodium"
 
 export const GameSummary = observer(() => {
   const navigate = useNavigate()
-  const { game, closeGame, loading } = useCurrentGame()
+  const { closeGame, loading } = useCurrentGame()
 
-  const listOfPlayers = game.participations.map((participation) => (participation))
 
 
 
@@ -35,6 +34,8 @@ export const GameSummary = observer(() => {
 
         <WinnersPodium />
 
+        <div> </div>
+
         <Button
           disabled={loading}
           variant="contained"
@@ -43,7 +44,10 @@ export const GameSummary = observer(() => {
         >
           Close game
         </Button>
+
       </BaseContainer>
+
+
     </div>
   )
 })

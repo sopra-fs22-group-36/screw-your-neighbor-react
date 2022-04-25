@@ -105,6 +105,7 @@ export function useCurrentGame() {
     game: currentGameStore.game,
     myParticipation: currentGameStore.participation,
     activeParticipations: currentGameStore.activeParticipations,
+    sortedParticipations: currentGameStore.sortedParticipations,
     sortedMatches: currentGameStore.sortedMatches,
     activeMatch: currentGameStore.activeMatch,
     sortedRoundsOfActiveMatch: currentGameStore.sortedRoundsOfActiveMatch,
