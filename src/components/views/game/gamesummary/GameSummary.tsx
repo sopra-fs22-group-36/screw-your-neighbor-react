@@ -13,6 +13,11 @@ export const GameSummary = observer(() => {
   const navigate = useNavigate()
   const { game, closeGame, loading } = useCurrentGame()
 
+  const listOfPlayers = game.participations.map((participation) => (participation))
+
+
+
+
   const clickCloseGame = async () => {
     await closeGame()
     navigate(Paths.LOBBY)
@@ -20,10 +25,13 @@ export const GameSummary = observer(() => {
 
   return (
     <div>
-      <ReactConfetti />
+      <ReactConfetti
+        gravity={0.01}
+        opacity={0.5}
+      />
+
 
       <BaseContainer>
-        <h4>Game: {game.name} is finished</h4>
 
         <WinnersPodium />
 
