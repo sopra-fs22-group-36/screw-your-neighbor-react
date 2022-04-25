@@ -48,7 +48,7 @@ export const YourHand = () => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Screw-your-neighbor: talk to other users"}
+          "Screw-your-neighbor: talk to other users"
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
