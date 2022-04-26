@@ -14,13 +14,15 @@ import "./YourHand.scss"
 export const YourHand = () => {
   const { updatecards } = useCards()
   const { activeMatch, yourActiveHand } = useCurrentGame()
+  const [opacity, setOpacity] = useState(10)
   const [open, setOpen] = useState(false)
 
   const notYetPlayed =
     yourActiveHand?.cards.filter((value) => value.round === null) ?? []
 
   //Check if all players did the score announcement for this match
-  const clickCard = async (card) => {
+  const clickCard = async (card, number) => {
+    setOpacity(number)
     if (activeMatch.matchState === Match.matchState.PLAYING) {
       updatecards(card)
     } else {
@@ -65,11 +67,14 @@ export const YourHand = () => {
   return (
     <div className="your-hand">
       <p>These are the Cards for Match {activeMatch?.matchNumber}:</p>
-      {notYetPlayed.map((card) => (
+      {notYetPlayed.map((card, index) => (
         <div
+          style={{
+            backgroundColor: opacity === index ? "#0b97c4" : "#006666",
+          }}
           key={card._links.self.href}
         >
-          <CardComponent card={card} onClick={() => clickCard(card)} />
+          <CardComponent card={card} onClick={() => clickCard(card, index)} />
         </div>
       ))}
       {content}
