@@ -8,9 +8,9 @@
   margin: 5px;
   float: left;
   text-align: center;
-  z-index: 9999; 
-	&:hover{
+  z-index: 9999;
+  &:hover{
     transition: all 0.5s;
     transform: scale(105%);
-	}
+  }
 }
