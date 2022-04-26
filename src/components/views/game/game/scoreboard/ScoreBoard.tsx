@@ -1,10 +1,10 @@
 import React from "react"
+import { observer } from "mobx-react-lite"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
-
 import BaseContainer from "../../../../ui/BaseContainer"
 import "./ScoreBoard.scss"
 
-export const ScoreBoard = () => {
+export const ScoreBoard = observer(() => {
   const { activeParticipations } = useCurrentGame()
 
   return (
@@ -26,4 +26,4 @@ export const ScoreBoard = () => {
       </BaseContainer>
     </div>
   )
-}
+})
