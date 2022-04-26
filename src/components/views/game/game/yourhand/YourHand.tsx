@@ -12,7 +12,7 @@ export const YourHand = observer(() => {
   const notYetPlayed =
     yourActiveHand?.cards.filter((value) => value.round === null) ?? []
 
-  const clickCard = async (card, number) => {
+  const clickCard = async (card) => {
     setTimeout(() => updatecards(card), 600)
   }
 
@@ -22,9 +22,9 @@ export const YourHand = observer(() => {
         These are the Cards for Match {activeMatch?.matchNumber} Round
         {activeMatch?.rounds.length}:
       </p>
-      {notYetPlayed.map((card, index) => (
+      {notYetPlayed.map((card) => (
         <div key={card._links.self.href}>
-          <CardComponent card={card} onClick={() => clickCard(card, index)} />
+          <CardComponent card={card} onClick={() => clickCard(card)} />
         </div>
       ))}
     </div>
