@@ -44,6 +44,24 @@
     margin-left: $borderRadius;
   }
 
+  .chip {
+    -webkit-margin-before: 5px;
+    margin-left: 10px;
+    font-size: 15pt;
+    height: 75%;
+
+    span {
+      border-radius: $borderRadius;
+      padding: 0 $borderRadius;
+    }
+  }
+
+  @-moz-document url-prefix() {
+    .chip {
+      margin-bottom: 5px;
+    }
+  }
+
   .points {
     float: right;
     margin-right: $borderRadius;
