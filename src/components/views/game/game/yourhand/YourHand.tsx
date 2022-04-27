@@ -10,8 +10,9 @@ import { useCards } from "../../../../../hooks/api/useCards"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
 import { CardComponent } from "../../../../ui/CardComponent"
 import "./YourHand.scss"
+import { observer } from "mobx-react-lite"
 
-export const YourHand = () => {
+export const YourHand = observer(() => {
   const { updatecards } = useCards()
   const { activeMatch, yourActiveHand } = useCurrentGame()
   const [open, setOpen] = useState(false)
@@ -65,7 +66,7 @@ export const YourHand = () => {
   return (
     <div className="your-hand">
       <p>These are the Cards for Match {activeMatch?.matchNumber}:</p>
-      {notYetPlayed.map((card, index) => (
+      {notYetPlayed.map((card) => (
         <div key={card._links.self.href}>
           <CardComponent card={card} onClick={() => clickCard(card)} />
         </div>
@@ -73,4 +74,4 @@ export const YourHand = () => {
       {content}
     </div>
   )
-}
+})
