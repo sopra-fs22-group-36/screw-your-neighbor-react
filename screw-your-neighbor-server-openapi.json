@@ -4028,6 +4028,9 @@
             "type": "integer",
             "format": "int32"
           },
+          "turnActive": {
+            "type": "boolean"
+          },
           "cards": {
             "type": "array",
             "items": {
