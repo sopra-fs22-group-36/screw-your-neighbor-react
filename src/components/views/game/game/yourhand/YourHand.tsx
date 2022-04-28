@@ -32,7 +32,6 @@ export const YourHand = observer(() => {
         setWrongTurn(true)
       }
     } else {
-      console.log("Not everyone has announced their score yet!")
       setOpen(true)
     }
   }
@@ -105,7 +104,15 @@ export const YourHand = observer(() => {
       <p>These are the Cards for Match {activeMatch?.matchNumber}:</p>
       {notYetPlayed.map((card) => (
         <div key={card._links.self.href}>
-          <CardComponent card={card} onClick={() => clickCard(card)} />
+          <CardComponent
+            foo={
+              activeMatch.matchState === Match.matchState.PLAYING
+                ? "card-playing"
+                : "card-announcing"
+            }
+            card={card}
+            onClick={() => clickCard(card)}
+          />
         </div>
       ))}
       {content}
