@@ -7,8 +7,10 @@
 }
 
 .navBar button {
-  position: relative;
-  z-index: 10;
+  position: fixed; //Button on top left corner
+  left: 0;
+  top:0;
+  z-index: 11;
   cursor: pointer;
   width: 40px;
 }
@@ -34,15 +36,14 @@
 .menuNav {
   list-style: none;
   position: fixed;
-  top: 0;
+  top: -40px;
   background: rgba(156, 22, 12, 1);
   left: 0;
-  height: 100%;
+  height: 110%;
   width: 0;
-  padding: 0;
   overflow: hidden;
   max-width: 290px;
-  z-index: 19;
+  z-index: 9;
 }
 
 .menuNav.showMenu {
