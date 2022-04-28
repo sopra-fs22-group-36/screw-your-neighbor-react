@@ -7,7 +7,7 @@ import { useCurrentGame } from "../../hooks/api/useCurrentGame"
 export type CardComponentProps = {
   card: Card
   onClick?: MouseEventHandler<HTMLDivElement>
-  foo?: string
+  stylePlaying?: string
 }
 
 //Store all cards from a deck in the dict cards
@@ -42,7 +42,7 @@ export const CardComponent = (props: CardComponentProps) => {
 
   const onClick = props.onClick ?? (() => ({}))
 
-  const foo = props.foo ?? "card-component"
+  const stylePlaying = props.stylePlaying ?? "card-component"
 
   const clickCard = async (e) => {
     if (activeMatch.matchState === Match.matchState.PLAYING) {
@@ -53,7 +53,10 @@ export const CardComponent = (props: CardComponentProps) => {
   }
 
   return (
-    <div className={foo + (isPlayed ? " moving" : "")} onClick={clickCard}>
+    <div
+      className={stylePlaying + (isPlayed ? " moving" : "")}
+      onClick={clickCard}
+    >
       <div>
         <img
           src={cards[findCard(props.card.cardRank, props.card.cardSuit)]}
