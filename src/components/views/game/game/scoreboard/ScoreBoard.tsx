@@ -26,7 +26,7 @@ const PlayerRow = observer((props: PlayerRowProps) => {
     myParticipation._links.self
   )
   return (
-    <li className={isOwnParticipation && "own-participation"}>
+    <li className={isOwnParticipation ? "own-participation" : ""}>
       <span className={"player-name"}>{participation.player.name}</span>
       {turnActive && (
         <Chip
