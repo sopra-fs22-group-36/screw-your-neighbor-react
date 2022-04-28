@@ -1,19 +1,13 @@
 import Box from "@mui/material/Box"
-import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
 import React, { useState } from "react"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
 import insertCoin from "../../../../../img/icons/insert-coin.png"
-import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined"
 import { observer } from "mobx-react-lite"
 
 export const ScoreAnnouncing = observer(() => {
-  const { loading, announceScore, yourActiveHand } = useCurrentGame()
+  const { yourActiveHand } = useCurrentGame()
   const [score, setScore] = useState(yourActiveHand?.announcedScore)
-
-  const clickAnnounceScore = async () => {
-    await announceScore(score)
-  }
 
   const scoreAvailable = score !== null && score !== undefined
   return (
@@ -67,16 +61,6 @@ export const ScoreAnnouncing = observer(() => {
               setScore(parseInt(event.target.value))
             }}
           />
-        </Box>
-        <Box component="span" sx={{ color: "primary.main", fontSize: 22 }}>
-          <Button
-            disabled={score === null || loading}
-            variant="contained"
-            startIcon={<CampaignOutlinedIcon fontSize="large" />}
-            onClick={clickAnnounceScore}
-          >
-            Announce
-          </Button>
         </Box>
       </Box>
     </Box>
