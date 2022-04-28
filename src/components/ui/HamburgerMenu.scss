@@ -13,6 +13,9 @@
   z-index: 11;
   cursor: pointer;
   width: 40px;
+  &:hover{
+    color: #006606;
+  }
 }
 
 .navBar li {
@@ -30,6 +33,10 @@
   background: linear-gradient(0deg, rgba(15,30,113,1) 0%, rgba(42,56,173,1) 50%, rgba(0,138,255,1) 100%);
   border-radius: 10px;
   align-self: center;
+  &:hover{
+    transition: all 0.1s;
+    transform: scale(105%);
+  }
 }
 
 
@@ -47,11 +54,31 @@
 }
 
 .menuNav.showMenu {
-  width: 100%;
   height: 110%;
   margin-top: -10px;
   padding-left: 40px;
   background: linear-gradient(90deg, rgba(156, 20, 10, 1) 0% ,rgba(150, 25, 15, 0.6) 100% );
+  animation-name: slidein;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+@keyframes slidein {
+  0% {width: 0%}
+  50% {width: 65%;}
+  100% {width: 100%;}
+}
 
+.xbutton{
+  color: #7b7b7b;
+  width: 20px;
+  height: 40px;
+  &:hover{
+    transition: all 0.2s;
+    transform: scale(125%);
+  }
+  &:active{
+    transition: all 0.15s;
+    transform: rotate(180deg);
+  }
 }
 
