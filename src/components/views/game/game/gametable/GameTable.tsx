@@ -7,10 +7,15 @@ import { distributeOpponents } from "./distributeOpponents"
 import "./GameTable.scss"
 
 export const GameTable = observer(() => {
-  const { activeParticipations, myParticipation, activeRound } =
+  const { activeParticipations, myParticipation, activeRound, lastRound } =
     useCurrentGame()
 
-  const cards = activeRound.cards || []
+  const method = () => {
+    if (activeRound.cards.length >= 1) return activeRound.cards
+    else return lastRound.cards
+  }
+
+  const cards = method()
 
   const participationSlots = distributeOpponents(
     myParticipation,
