@@ -4,7 +4,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-content: stretch;
+  align-items: center;
 
   .base-container {
     width: 100%;
@@ -48,4 +48,10 @@
     margin-right: $borderRadius;
   }
 
+}
+.trophy
+{
+  -webkit-filter: drop-shadow(0 0 100px rgb(237, 211, 83,0.6));
+  marginLeft: auto;
+  marginRight: auto;
 }
