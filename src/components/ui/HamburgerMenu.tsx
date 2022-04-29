@@ -62,7 +62,7 @@ const HamburgerMenu = () => {
             marginTop: "120px",
           }}
         >
-          <ListAltIcon />
+          <ListAltIcon style={{ width: "20%", paddingRight: "4px" }} />
           The Rules
         </li>
         <Grow in={showRules}>{theRules}</Grow>
@@ -73,7 +73,7 @@ const HamburgerMenu = () => {
             marginTop: "80px",
           }}
         >
-          <SendIcon />
+          <SendIcon style={{ width: "20%", paddingRight: "4px" }} />
           Leave Game
         </li>
       </ul>
