@@ -16,25 +16,36 @@ export const YourHand = observer(() => {
   const { updatecards } = useCards()
   const { activeMatch, yourActiveHand } = useCurrentGame()
   const [open, setOpen] = useState(false)
-
+  const [wrongTurn, setWrongTurn] = useState(false)
   const notYetPlayed =
     yourActiveHand?.cards.filter((value) => value.round === null) ?? []
 
   //Check if all players did the score announcement for this match
   const clickCard = async (card) => {
     if (activeMatch.matchState === Match.matchState.PLAYING) {
-      updatecards(card)
+      if (yourActiveHand?.turnActive) {
+        updatecards(card)
+      } else {
+        console.log(
+          "you are trying to play a card when you are not allowed. wait your turn"
+        )
+        setWrongTurn(true)
+      }
     } else {
-      console.log("hallo")
+      console.log("Not everyone has announced their score yet!")
       setOpen(true)
     }
   }
 
-  // Close dialog
-  const handleClose = () => {
+  // Close dialog trick announcement
+  const handleCloseAnnouncement = () => {
     setOpen(false)
   }
 
+  // Close dialog
+  const handleCloseTurn = () => {
+    setWrongTurn(false)
+  }
   let content = <></>
 
   // Inform the player that it is not possible to play a card
@@ -42,12 +53,12 @@ export const YourHand = observer(() => {
     content = (
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={handleCloseAnnouncement}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          "Screw-your-neighbor: talk to other users"
+          Wait! Everyone needs to announce their trick first!
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
@@ -55,8 +66,34 @@ export const YourHand = observer(() => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} autoFocus>
+          <Button onClick={handleCloseAnnouncement} autoFocus>
             Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
+    )
+  }
+  // Inform the player that they cannot play the card because it's not their turn yet
+  if (wrongTurn) {
+    content = (
+      <Dialog
+        open={wrongTurn}
+        onClose={handleCloseTurn}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          "Hold your horses! It's not your turn yet!"
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            You are trying to play a card when it's not even your turn yet!
+            Please wait a bit..
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseTurn} autoFocus>
+            Ok..
           </Button>
         </DialogActions>
       </Dialog>
