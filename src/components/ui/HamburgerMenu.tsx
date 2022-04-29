@@ -56,7 +56,7 @@ const HamburgerMenu = () => {
       </button>
       <ul className={`menuNav ${hamburgerOpen ? " showMenu" : ""}`}>
         <li
-          className="licolor1"
+          className="listitem licolor1"
           onClick={clickRules}
           style={{
             marginTop: "120px",
@@ -68,7 +68,7 @@ const HamburgerMenu = () => {
         <Grow in={showRules}>{theRules}</Grow>
         <li
           onClick={clickLeave}
-          className="licolor2"
+          className="listitem licolor2"
           style={{
             marginTop: "80px",
           }}
