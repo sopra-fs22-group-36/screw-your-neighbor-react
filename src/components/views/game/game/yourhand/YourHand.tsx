@@ -17,7 +17,6 @@ export const YourHand = observer(() => {
   const { activeMatch, yourActiveHand } = useCurrentGame()
   const [open, setOpen] = useState(false)
   const [wrongTurn, setWrongTurn] = useState(false)
-
   const notYetPlayed =
     yourActiveHand?.cards.filter((value) => value.round === null) ?? []
 
@@ -74,7 +73,7 @@ export const YourHand = observer(() => {
       </Dialog>
     )
   }
-
+  // Inform the player that they cannot play the card because it's not their turn yet
   if (wrongTurn) {
     content = (
       <Dialog
