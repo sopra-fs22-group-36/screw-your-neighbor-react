@@ -1,0 +1,152 @@
+@import 'src/styles/theme';
+
+.announcement-modal {
+
+  .top-row {
+    height: 40%;
+  }
+
+  .second-row {
+    height: 60%;
+    padding: 10px;
+  }
+
+  .base-container {
+    min-width: 100%;
+    min-height: 70%;
+    display: flex;
+    padding: 0;
+    .content {
+      flex-grow: 1;
+      margin: 10px 10px;
+
+      display: flex;
+      background-color: #620606;
+      padding: 10px 10px 20px 10px;
+      border-radius: $borderRadius;
+    }
+    h1 {
+      margin: 0;
+      font-family: 'Pacifico', cursive;
+      font-style: normal;
+    }
+  }
+
+  .cards-and-buttons {
+    flex-grow: 1;
+    min-width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+    gap: 30px;
+    background-color: #971c1c;
+    border-radius: $borderRadius;
+  }
+
+  .cards {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    >div {
+      flex-grow: 1;
+    }
+
+    .card-component {
+      cursor: unset;
+    }
+
+    .card-component :is(div, img) {
+      width: 105%;
+    }
+  }
+
+  .announce-buttons {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    align-content: flex-start;
+    column-gap: 30px;
+    row-gap: 30px;
+
+    >button {
+      flex-grow: 1;
+      --length: 50px;
+      min-height: var(--length);
+      max-height: var(--length);
+      min-width: var(--length);
+      max-width: var(--length);
+
+      font-size: 25pt;
+      background-color: #620606;
+      font-family: 'Pacifico', cursive;
+      font-style: normal;
+      padding-top: 0;
+    }
+
+  }
+
+  .announced-score-list {
+    ul {
+      min-height: 80%;
+      list-style: none;
+      background-color: #971c1c;
+      border-radius: $borderRadius;
+      width: 90%;
+      padding: 5px 5px;
+    }
+
+    li {
+      background-color: #b96262;
+      height: 40px;
+      font-size: 20pt;
+      border-radius: $borderRadius;
+      padding: 3px 0;
+      margin: 3px 0;
+    }
+
+    li.own-participation {
+      background-color: #7f6b55;
+    }
+
+    .player-name {
+      margin-left: $borderRadius;
+    }
+
+    .chip {
+      -webkit-margin-before: 5px;
+      margin-left: 10px;
+      font-size: 15pt;
+      height: 75%;
+
+      span {
+        border-radius: $borderRadius;
+        padding: 0 $borderRadius;
+      }
+    }
+
+    @-moz-document url-prefix() {
+      .chip {
+        margin-bottom: 5px;
+      }
+    }
+
+    .announced-score {
+      float: right;
+      margin-right: $borderRadius;
+
+      padding: 0 $borderRadius;
+      background-color: #620606;
+      border-radius: $borderRadius;
+      min-width: 20px;
+      height: 100%;
+    }
+  }
+}
