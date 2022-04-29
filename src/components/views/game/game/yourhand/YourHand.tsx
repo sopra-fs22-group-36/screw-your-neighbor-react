@@ -27,12 +27,12 @@ export const YourHand = observer(() => {
         updatecards(card)
       } else {
         console.log(
-          "look at this f-ing lovely person trying to play a card when it's not their turn lmao"
+          "you are trying to play a card when you are not allowed. wait your turn"
         )
         setWrongTurn(true)
       }
     } else {
-      console.log("hallo")
+      console.log("Not everyone has announced their score yet!")
       setOpen(true)
     }
   }
