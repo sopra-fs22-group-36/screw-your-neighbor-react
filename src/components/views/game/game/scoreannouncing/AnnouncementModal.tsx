@@ -89,7 +89,7 @@ export const AnnouncementModal = observer(() => {
       (matchStateChangedToAnnouncing && matchChanged)
     ) {
       let cancelled = false
-      delay(2000, null).then((_) => {
+      delay(1000, null).then((_) => {
         cancelled && updateMatch()
       })
       return () => {

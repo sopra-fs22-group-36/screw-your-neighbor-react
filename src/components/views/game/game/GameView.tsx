@@ -6,8 +6,8 @@ import { ScoreBoard } from "./scoreboard/ScoreBoard"
 import { Grid } from "@mui/material"
 import { YourHand } from "./yourhand/YourHand"
 import "./GameView.scss"
-import ScoreAnnouncing from "./scoreannouncing/ScoreAnnouncing"
 import HamburgerMenu from "../../../ui/HamburgerMenu"
+import { AnnouncementModal } from "./scoreannouncing/AnnouncementModal"
 
 /**
  * The main game page inside the Jass-Stube includes a table with all players
@@ -34,7 +34,7 @@ const GameView = observer(() => {
           <div className={"game wrapper-for-absolute"}>
             <GameTable />
             <YourHand />
-            <ScoreAnnouncing />
+            <AnnouncementModal />
           </div>
         </Grid>
       </Grid>
