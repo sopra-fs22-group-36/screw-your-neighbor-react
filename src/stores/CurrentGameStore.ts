@@ -67,6 +67,13 @@ export class CurrentGameStore {
     return this.sortedRoundsOfActiveMatch.slice(-1)[0]
   }
 
+  @computed get lastRound() {
+    if (this.sortedRoundsOfActiveMatch.length === 0) {
+      return null
+    }
+    return this.sortedRoundsOfActiveMatch.slice(-2)[0]
+  }
+
   @computed get yourActiveHand() {
     if (!this.participation) {
       return null
