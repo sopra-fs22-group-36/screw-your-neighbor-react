@@ -26,9 +26,6 @@ export const YourHand = observer(() => {
       if (yourActiveHand?.turnActive) {
         updatecards(card)
       } else {
-        console.log(
-          "you are trying to play a card when you are not allowed. wait your turn"
-        )
         setWrongTurn(true)
       }
     } else {

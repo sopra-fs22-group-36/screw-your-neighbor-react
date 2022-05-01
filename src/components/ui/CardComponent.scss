@@ -34,7 +34,7 @@
 }
 
 .card-playing.moving {
-  animation: turner 1.25s cubic-bezier(0.1, 0.2, 0.7, 1.0);
+  animation: turner .45s cubic-bezier(0.1, 0.2, 0.7, 1.0);
 }
 
 .card-component{
@@ -42,7 +42,6 @@
   height: 163px;
   background-color: #006666;
   color: #E8E8E8;
-  //fontSize: 25px; - Why does sonar cloud not like this? lol
   margin: 5px;
   float: left;
   text-align: center;

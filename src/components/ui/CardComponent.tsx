@@ -47,7 +47,7 @@ export const CardComponent = (props: CardComponentProps) => {
   const clickCard = async (e) => {
     if (activeMatch.matchState === Match.matchState.PLAYING) {
       setIsPlayed(true)
-      await timeout(750)
+      await timeout(300)
     }
     onClick(e)
   }
