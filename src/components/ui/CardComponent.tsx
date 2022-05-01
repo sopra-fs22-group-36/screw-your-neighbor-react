@@ -1,11 +1,13 @@
-import React, { MouseEventHandler } from "react"
-import { Card } from "../../generated"
+import React, { MouseEventHandler, useState } from "react"
+import { Card, Match } from "../../generated"
 import "./CardComponent.scss"
 import requireContext from "require-context.macro"
+import { useCurrentGame } from "../../hooks/api/useCurrentGame"
 
 export type CardComponentProps = {
   card: Card
   onClick?: MouseEventHandler<HTMLDivElement>
+  stylePlaying?: string
 }
 
 //Store all cards from a deck in the dict cards
@@ -30,10 +32,31 @@ function findCard(rank: Card.cardRank, suit: Card.cardSuit): string {
   return cardName
 }
 
+function timeout(delay: number) {
+  return new Promise((res) => setTimeout(res, delay))
+}
+
 export const CardComponent = (props: CardComponentProps) => {
+  const [isPlayed, setIsPlayed] = useState(false)
+  const { activeMatch } = useCurrentGame()
+
   const onClick = props.onClick ?? (() => ({}))
+
+  const stylePlaying = props.stylePlaying ?? "card-component"
+
+  const clickCard = async (e) => {
+    if (activeMatch.matchState === Match.matchState.PLAYING) {
+      setIsPlayed(true)
+      await timeout(300)
+    }
+    onClick(e)
+  }
+
   return (
-    <div className="card-component" onClick={onClick}>
+    <div
+      className={stylePlaying + (isPlayed ? " moving" : "")}
+      onClick={clickCard}
+    >
       <div>
         <img
           src={cards[findCard(props.card.cardRank, props.card.cardSuit)]}

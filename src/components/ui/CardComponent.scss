@@ -6,8 +6,45 @@
   float: left;
   text-align: center;
   z-index: 9999;
+
   &:hover{
     transition: all 0.5s;
     transform: scale(105%);
   }
+}
+
+@keyframes turner{
+  from{
+    transform: translate(0%, 0%) rotate(0deg);
+    opacity: 1;
+  }
+  to  {
+    transform: translate(900%, -120%) rotate(200deg);
+    opacity: 10%;
+  }
+}
+
+.card-announcing{
+  width: 106px;
+  height: 163px;
+  background-color: #006666;
+  color: #E8E8E8;
+  margin: 50px;
+  float: left;
+  text-align: center;
+}
+
+.card-component.moving {
+  animation: turner .45s cubic-bezier(0.1, 0.2, 0.7, 1.0);
+}
+
+.card-playing{
+  cursor: pointer;
+  width: 106px;
+  height: 163px;
+  margin: 5px;
+  float: left;
+  text-align: center;
+  z-index: 9999;
+
 }
