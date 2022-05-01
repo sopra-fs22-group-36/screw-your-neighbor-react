@@ -46,7 +46,7 @@ const Lobby = observer(() => {
               <div className="roomlist">
                 <TransitionGroup>
                   {games
-                    .filter((game) => game.gameState == "FINDING_PLAYERS")
+                    .filter((game) => game.gameState === "FINDING_PLAYERS")
                     .map((game) => (
                       <Collapse key={game._links.self.href}>
                         <RoomRow game={toJS(game)} />
