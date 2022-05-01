@@ -101,15 +101,7 @@ export const YourHand = observer(() => {
       <p>These are the Cards for Match {activeMatch?.matchNumber}:</p>
       {notYetPlayed.map((card) => (
         <div key={card._links.self.href}>
-          <CardComponent
-            stylePlaying={
-              activeMatch.matchState === Match.matchState.PLAYING
-                ? "card-playing"
-                : "card-announcing"
-            }
-            card={card}
-            onClick={() => clickCard(card)}
-          />
+          <CardComponent card={card} onClick={() => clickCard(card)} />
         </div>
       ))}
       {content}

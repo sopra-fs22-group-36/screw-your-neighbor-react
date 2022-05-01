@@ -1,4 +1,4 @@
-.card-playing {
+.card-component {
   cursor: pointer;
   width: 106px;
   height: 163px;
@@ -6,12 +6,11 @@
   float: left;
   text-align: center;
   z-index: 9999;
-
   &:hover{
     transition: all 0.5s;
     transform: scale(105%);
   }
-}
+
 
 @keyframes turner{
   from{  
