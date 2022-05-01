@@ -107,7 +107,6 @@ export function useCurrentGame() {
     activeMatch: currentGameStore.activeMatch,
     sortedRoundsOfActiveMatch: currentGameStore.sortedRoundsOfActiveMatch,
     activeRound: currentGameStore.activeRound,
-    lastRound: currentGameStore.lastRound,
     yourActiveHand: currentGameStore.yourActiveHand,
     leaveGame,
     playGame,
