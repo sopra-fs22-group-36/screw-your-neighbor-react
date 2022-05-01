@@ -42,7 +42,7 @@ export const CardComponent = (props: CardComponentProps) => {
 
   const onClick = props.onClick ?? (() => ({}))
 
-  const stylePlaying = props.stylePlaying ?? "card-playing"
+  const stylePlaying = props.stylePlaying ?? "card-component"
 
   const clickCard = async (e) => {
     if (activeMatch.matchState === Match.matchState.PLAYING) {
