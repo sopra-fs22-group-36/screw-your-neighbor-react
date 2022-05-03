@@ -28,7 +28,9 @@ export const GameGuard = observer((props: GameGuardProps) => {
 
   const [gameLoaded, setGameLoaded] = useState(gameReady)
 
-  const gameState = game?.gameState
+  const [cachedGameState, setCachedGameState] = useState(undefined)
+  const [runningGameStateUpdate, setRunningGameStateUpdate] =
+    useState<NodeJS.Timeout>(undefined)
 
   const { startPollGame } = useCurrentGame()
 
@@ -55,10 +57,35 @@ export const GameGuard = observer((props: GameGuardProps) => {
       return
     }
     if (game) {
+      if (
+        cachedGameState === gameStateEnum.PLAYING &&
+        game.gameState === gameStateEnum.CLOSED
+      ) {
+        setRunningGameStateUpdate((previousState) => {
+          if (!previousState) {
+            return setTimeout(() => setCachedGameState(game.gameState), 2000)
+          }
+          return previousState
+        })
+      } else {
+        setCachedGameState(game.gameState)
+      }
       const pollGameSubscription = startPollGame()
-      return () => pollGameSubscription.cancel()
+      return () => {
+        pollGameSubscription.cancel()
+        if (runningGameStateUpdate) {
+          clearTimeout(runningGameStateUpdate)
+        }
+      }
     }
-  }, [game, gameReady, refreshGame, startPollGame])
+  }, [
+    cachedGameState,
+    game,
+    gameReady,
+    refreshGame,
+    runningGameStateUpdate,
+    startPollGame,
+  ])
 
   return (
     <Loading ready={gameLoaded}>
@@ -78,13 +105,13 @@ export const GameGuard = observer((props: GameGuardProps) => {
               </BaseContainer>
             )
           }
-          if (gameState === gameStateEnum.FINDING_PLAYERS) {
+          if (cachedGameState === gameStateEnum.FINDING_PLAYERS) {
             return <Room />
           }
-          if (gameState === gameStateEnum.PLAYING) {
+          if (cachedGameState === gameStateEnum.PLAYING) {
             return <GameView />
           }
-          if (gameState === gameStateEnum.CLOSED) {
+          if (cachedGameState === gameStateEnum.CLOSED) {
             return <GameSummary />
           }
         })()}
