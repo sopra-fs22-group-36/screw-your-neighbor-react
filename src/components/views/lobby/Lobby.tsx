@@ -15,6 +15,7 @@ import "../../../styles/ui/Button.scss"
 import "../../../styles/ui/Divs.scss"
 import "../../../styles/ui/Lists.scss"
 import "../../../styles/ui/images.scss"
+import { Game } from "../../../generated"
 
 const Lobby = observer(() => {
   const navigate = useNavigate()
@@ -32,6 +33,10 @@ const Lobby = observer(() => {
     await logout()
     navigate(Paths.CREATE_PLAYER)
   }
+  // filtering all the active games to only show the ones that have not started yet
+  const searchingGames = games.filter(
+    (game) => game.gameState === Game.gameState.FINDING_PLAYERS
+  )
 
   return (
     <div className="div-lobby">
@@ -45,13 +50,11 @@ const Lobby = observer(() => {
             <div className="div-rooms">
               <div className="roomlist">
                 <TransitionGroup>
-                  {games
-                    .filter((game) => game.gameState === "FINDING_PLAYERS")
-                    .map((game) => (
-                      <Collapse key={game._links.self.href}>
-                        <RoomRow game={toJS(game)} />
-                      </Collapse>
-                    ))}
+                  {searchingGames.map((game) => (
+                    <Collapse key={game._links.self.href}>
+                      <RoomRow game={toJS(game)} />
+                    </Collapse>
+                  ))}
                 </TransitionGroup>
               </div>
 
