@@ -39,7 +39,7 @@ const Lobby = observer(() => {
   )
 
   return (
-    <div className="div-lobby">
+    <div className="div-lobby ">
       <BaseContainer>
         <h1 className="font-title">Lobby</h1>
       </BaseContainer>
@@ -77,8 +77,8 @@ const Lobby = observer(() => {
           </div>
         </Grid>
       </Grid>
-      <div className="background-img"></div>
       <Footer />
+      <div className="background-lobby"></div>
     </div>
   )
 })
