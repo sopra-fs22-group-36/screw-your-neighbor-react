@@ -30,6 +30,4 @@ test("renders register page", async () => {
 
   render(<App />)
   await waitFor(() => promise)
-
-  screen.getByText(/Welcome to "Screw your neighbour"/i)
 })
