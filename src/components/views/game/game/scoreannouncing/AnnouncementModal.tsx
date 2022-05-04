@@ -43,8 +43,15 @@ const HandRow = observer((props: HandRowProps) => {
 })
 
 export const AnnouncementModal = observer(() => {
-  const { loading, sortedMatches, activeMatch, yourActiveHand, announceScore } =
-    useCurrentGame()
+  const {
+    loading,
+    sortedMatches,
+    activeMatch,
+    yourActiveHand,
+    sumOfAnnouncedScores,
+    lastPlayerAnnouncing,
+    announceScore,
+  } = useCurrentGame()
 
   const [matchForModal, setMatchForModal] = useState(activeMatch)
   const [yourHand, setYourHand] = useState(yourActiveHand)
@@ -66,6 +73,10 @@ export const AnnouncementModal = observer(() => {
     )
 
   const active = !loading && yourActiveHand.turnActive
+  //Validate the illegal announcing score only for the last player in the queue
+  const illegalNumber = lastPlayerAnnouncing
+    ? yourActiveHand.cards.length - sumOfAnnouncedScores
+    : null
 
   useEffect(() => {
     const updateMatch = () => {
@@ -129,7 +140,7 @@ export const AnnouncementModal = observer(() => {
                     return (
                       <Button
                         key={number}
-                        disabled={!active}
+                        disabled={!active || illegalNumber === number}
                         onClick={(_) => announceScore(number)}
                         variant={"contained"}
                       >
