@@ -22,7 +22,7 @@ export const YourHand = observer(() => {
   const onActive = (event) => {
     console.log("active")
   }
-  const idleTimer = useIdleTimer({ timeout, onIdle, onActive })
+  useIdleTimer({ timeout, onIdle, onActive })
 
   //-------
   const { updatecards } = useCards()
