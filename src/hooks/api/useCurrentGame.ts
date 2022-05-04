@@ -108,6 +108,8 @@ export function useCurrentGame() {
     sortedRoundsOfActiveMatch: currentGameStore.sortedRoundsOfActiveMatch,
     activeRound: currentGameStore.activeRound,
     lastRound: currentGameStore.lastRound,
+    sumOfAnnouncedScores: currentGameStore.sumOfAnnouncedScores,
+    lastPlayerAnnouncing: currentGameStore.isLastPlayerAnnouncing,
     yourActiveHand: currentGameStore.yourActiveHand,
     leaveGame,
     playGame,
