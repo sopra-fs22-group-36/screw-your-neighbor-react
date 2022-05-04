@@ -28,8 +28,8 @@ export const YourHand = observer(() => {
   const notYetPlayed =
     yourActiveHand?.cards.filter((value) => value.round === null) ?? []
   const onIdle = () => {
-    setPlayerTimeout(true)
     setStart(Date.now)
+    setPlayerTimeout(true)
   }
   const onActive = (event) => {
     //do nothing
