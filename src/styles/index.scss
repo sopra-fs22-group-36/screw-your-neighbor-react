@@ -1,22 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Roboto+Mono:wght@300;400;500;700&display=swap');
 @import './theme';
 
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /**
 This file contains the general and shared style of your application.
  */
 body {
   margin: 0;
   font-family: $fontDefault;
-  background: rgb(151,0,0);
-  background: linear-gradient(0deg,  #700c00, #ff0000, #700c00 );//background gradient
-  background-size : 600% 600%;
-  animation : Gradient 25s ease infinite;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
 }
-
-/* Animate Background*/
-@keyframes Gradient { //Ask how exactly this works, so that you can remove the rather darkish colour
-  0%{background-position:50% 0%}
-  50%{background-position:50% 100%}
-  100%{background-position:50% 0%}
-  }
-
