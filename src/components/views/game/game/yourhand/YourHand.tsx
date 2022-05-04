@@ -4,7 +4,7 @@ import DialogActions from "@mui/material/DialogActions"
 import DialogContent from "@mui/material/DialogContent"
 import DialogContentText from "@mui/material/DialogContentText"
 import DialogTitle from "@mui/material/DialogTitle"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Match } from "../../../../../generated"
 import { useCards } from "../../../../../hooks/api/useCards"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
@@ -14,8 +14,10 @@ import { observer } from "mobx-react-lite"
 import { useIdleTimer } from "react-idle-timer"
 
 export const YourHand = observer(() => {
-  const timeout = 9500 //Test how much time actual players need for a decision
+  const timeout = 20000 //Test how much time actual players need for a decision (here its 20sec)
   const [playerTimeout, setPlayerTimeout] = useState(false)
+  const [counter, setCounter] = useState(120) //player has ~100sec to react
+  let playerleaves
   const onIdle = () => {
     setPlayerTimeout(true)
   }
@@ -23,6 +25,13 @@ export const YourHand = observer(() => {
     console.log("active")
   }
   useIdleTimer({ timeout, onIdle, onActive })
+  useEffect(() => {
+    playerleaves =
+      counter > 0 && setTimeout(() => setCounter(counter - 1), 1000) //find way to only start when player timeout
+    return () => {
+      clearTimeout(playerleaves)
+    }
+  }, [counter])
 
   //-------
   const { updatecards } = useCards()
@@ -50,6 +59,8 @@ export const YourHand = observer(() => {
 
   const handleCloseTimeout = () => {
     setPlayerTimeout(false)
+    clearTimeout(playerleaves)
+    setCounter(120)
   }
 
   let content = <></>
@@ -72,6 +83,7 @@ export const YourHand = observer(() => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
+          {counter}
           <Button onClick={handleCloseTimeout} autoFocus>
             Okay
           </Button>
@@ -99,6 +111,7 @@ export const YourHand = observer(() => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
+          {counter}
           <Button onClick={handleCloseTurn} autoFocus>
             Ok..
           </Button>
