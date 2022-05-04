@@ -4,7 +4,7 @@ import DialogActions from "@mui/material/DialogActions"
 import DialogContent from "@mui/material/DialogContent"
 import DialogContentText from "@mui/material/DialogContentText"
 import DialogTitle from "@mui/material/DialogTitle"
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { Match } from "../../../../../generated"
 import { useCards } from "../../../../../hooks/api/useCards"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
@@ -12,33 +12,36 @@ import { CardComponent } from "../../../../ui/CardComponent"
 import "./YourHand.scss"
 import { observer } from "mobx-react-lite"
 import { useIdleTimer } from "react-idle-timer"
+import { Paths } from "../../../../routing/routers/Paths"
+import { useNavigate } from "react-router-dom"
+import Countdown from "react-countdown"
 
 export const YourHand = observer(() => {
+  const { leaveGame } = useCurrentGame()
+  const navigate = useNavigate()
   const timeout = 20000 //Test how much time actual players need for a decision (here its 20sec)
   const [playerTimeout, setPlayerTimeout] = useState(false)
   const [counter, setCounter] = useState(120) //player has ~100sec to react
-  let playerleaves
-  const onIdle = () => {
-    setPlayerTimeout(true)
-  }
-  const onActive = (event) => {
-    console.log("active")
-  }
-  useIdleTimer({ timeout, onIdle, onActive })
-  useEffect(() => {
-    playerleaves =
-      counter > 0 && setTimeout(() => setCounter(counter - 1), 1000) //find way to only start when player timeout
-    return () => {
-      clearTimeout(playerleaves)
-    }
-  }, [counter])
-
-  //-------
+  const [start, setStart] = useState(Date.now)
   const { updatecards } = useCards()
   const { activeMatch, yourActiveHand } = useCurrentGame()
   const [wrongTurn, setWrongTurn] = useState(false)
   const notYetPlayed =
     yourActiveHand?.cards.filter((value) => value.round === null) ?? []
+  const onIdle = () => {
+    setPlayerTimeout(true)
+    setStart(Date.now)
+  }
+  const onActive = (event) => {
+    //do nothing
+  }
+
+  const handleLeave = () => {
+    //For the future: Continue game when player lEaves
+    leaveGame()
+    navigate(Paths.LOBBY)
+  }
+  useIdleTimer({ timeout, onIdle, onActive })
 
   //Check if all players did the score announcement for this match
   const clickCard = async (card) => {
@@ -59,13 +62,13 @@ export const YourHand = observer(() => {
 
   const handleCloseTimeout = () => {
     setPlayerTimeout(false)
-    clearTimeout(playerleaves)
     setCounter(120)
   }
 
   let content = <></>
   let timeouted = <></>
 
+  //Inform player that he's AFK (he is idle)
   if (playerTimeout && yourActiveHand?.turnActive) {
     timeouted = (
       <Dialog
@@ -75,7 +78,7 @@ export const YourHand = observer(() => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          "HEY! Are you still here?"
+          HEY! Are you still here?
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
@@ -83,10 +86,10 @@ export const YourHand = observer(() => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          {counter}
           <Button onClick={handleCloseTimeout} autoFocus>
             Okay
           </Button>
+          <Countdown date={start + 40000} onComplete={handleLeave} />
         </DialogActions>
       </Dialog>
     )
@@ -111,7 +114,6 @@ export const YourHand = observer(() => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          {counter}
           <Button onClick={handleCloseTurn} autoFocus>
             Ok..
           </Button>
