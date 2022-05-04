@@ -21,7 +21,6 @@ export const YourHand = observer(() => {
   const navigate = useNavigate()
   const timeout = 20000 //Test how much time actual players need for a decision (here its 20sec)
   const [playerTimeout, setPlayerTimeout] = useState(false)
-  const [counter, setCounter] = useState(120) //player has ~100sec to react
   const [start, setStart] = useState(Date.now)
   const { updatecards } = useCards()
   const { activeMatch, yourActiveHand } = useCurrentGame()
@@ -62,7 +61,6 @@ export const YourHand = observer(() => {
 
   const handleCloseTimeout = () => {
     setPlayerTimeout(false)
-    setCounter(120)
   }
 
   let content = <></>
