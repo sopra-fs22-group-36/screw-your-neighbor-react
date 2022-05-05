@@ -60,6 +60,7 @@ const HamburgerMenu = () => {
           onClick={clickRules}
           style={{
             marginTop: "120px",
+            color: "white",
           }}
         >
           <ListAltIcon style={{ width: "20%", paddingRight: "4px" }} />
@@ -71,6 +72,7 @@ const HamburgerMenu = () => {
           className="listitem licolor2"
           style={{
             marginTop: "80px",
+            color: "white",
           }}
         >
           <SendIcon style={{ width: "20%", paddingRight: "4px" }} />
