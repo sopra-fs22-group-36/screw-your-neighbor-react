@@ -47,7 +47,7 @@ const LandingPage = () => {
           <form onSubmit={submit}>
             <p className="title">LOGIN</p>
             <br />
-            <label htmlFor="bastard name...">PLAYER NAME</label>
+            <label htmlFor="player name...">PLAYER NAME</label>
             <br />
             <input
               type="text"
