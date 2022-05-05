@@ -19,7 +19,7 @@ import Countdown from "react-countdown"
 export const YourHand = observer(() => {
   const { leaveGame } = useCurrentGame()
   const navigate = useNavigate()
-  const timeout = 20000 //Test how much time actual players need for a decision (here its 20sec)
+  const timeout = 200000 //Test how much time actual players need for a decision (here its 200sec)
   const [playerTimeout, setPlayerTimeout] = useState(false)
   const [start, setStart] = useState(Date.now)
   const { updatecards } = useCards()
