@@ -1,6 +1,4 @@
 import React, { useState } from "react"
-import { MdClose } from "react-icons/md"
-import { FiMenu } from "react-icons/fi"
 import "./HamburgerMenu.scss"
 import SendIcon from "@mui/icons-material/Send"
 import ListAltIcon from "@mui/icons-material/ListAlt"
@@ -47,13 +45,12 @@ const HamburgerMenu = () => {
 
   return (
     <nav className="navBar">
-      <button onClick={handleToggle}>
-        {hamburgerOpen ? (
-          <MdClose className="xbutton" />
-        ) : (
-          <FiMenu className="xbutton" />
-        )}
-      </button>
+      <input type="checkbox" id="menu_checkbox" onClick={handleToggle} />
+      <label htmlFor="menu_checkbox">
+        <div></div>
+        <div></div>
+        <div></div>
+      </label>
       <ul className={`menuNav ${hamburgerOpen ? " showMenu" : ""}`}>
         <li
           className="listitem licolor1"

@@ -124,9 +124,6 @@ export const AnnouncementModal = observer(() => {
     >
       <>
         <Grid container spacing={0} className={"top-row"}></Grid>
-        <Grid item xs={1}>
-          <HamburgerMenu />
-        </Grid>
         <Grid container spacing={0} className={"second-row"}>
           <Grid item xs={6}>
             <BaseContainer>
