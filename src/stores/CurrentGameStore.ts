@@ -90,14 +90,11 @@ export class CurrentGameStore {
     return yourHands.slice(-1)[0]
   }
 
-  //Calculate if only one player, exactlly the last one has to announce the tricks
   @computed get isLastPlayerAnnouncing() {
-    let nullValues = 0
-    this.activeMatch?.hands.forEach(
-      (el) => el.announcedScore === null ?? (nullValues += nullValues + 1)
+    return (
+      this.activeMatch?.hands.filter((value) => value.announcedScore === null)
+        .length === 1
     )
-    if (nullValues === 1) return true
-    else return false
   }
 
   //Count the value for all announced scores so far
