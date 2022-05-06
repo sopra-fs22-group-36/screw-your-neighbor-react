@@ -30,4 +30,6 @@ test("renders register page", async () => {
 
   render(<App />)
   await waitFor(() => promise)
+
+  screen.getByText(/LOGIN/i)
 })
