@@ -5,7 +5,6 @@
   height: calc(100vh);
   background-image: url("https://cdn.pixabay.com/photo/2017/10/12/10/17/jass-cards-2844130_960_720.png" );
   background-repeat: no-repeat;
-  // width:auto,  height: 90% of the container
   background-size: auto 90%;
   background-position-x: Min(100px, calc(100vw - 1820px));
   background-position-y: 100px;
@@ -13,7 +12,20 @@
   overflow: hidden;
   opacity: 0.6;
   z-index: -2;
-  //Die rotation hat es irgendwie nicht gern:
-  //transform: rotate(-35deg);
+
+}
+
+.background-lobby{
+  height: calc(90vh);
+  margin-top: -20px; //Necessary to not have a weird space between room list and background image
+  background-image: url("https://cdn.pixabay.com/photo/2017/10/12/10/17/jass-cards-2844130_960_720.png" );
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position-y: 620px ;
+  background-position-x: 50%;
+  background-attachment: fixed;
+  overflow: hidden;
+  opacity: 0.6;
+  z-index: -20;
 
 }
