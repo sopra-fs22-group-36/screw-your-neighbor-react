@@ -31,16 +31,13 @@ export const YourHand = observer(() => {
     setStart(Date.now)
     setPlayerTimeout(true)
   }
-  const onActive = (event) => {
-    //do nothing
-  }
 
   const handleLeave = () => {
     //For the future: Continue game when player lEaves
     leaveGame()
     navigate(Paths.LOBBY)
   }
-  useIdleTimer({ timeout, onIdle, onActive })
+  useIdleTimer({ timeout, onIdle })
 
   //Check if all players did the score announcement for this match
   const clickCard = async (card) => {
@@ -66,7 +63,6 @@ export const YourHand = observer(() => {
   let content = <></>
   let timeouted = <></>
 
-  //Inform player that he's AFK (he is idle)
   if (playerTimeout && yourActiveHand?.turnActive) {
     timeouted = (
       <Dialog
