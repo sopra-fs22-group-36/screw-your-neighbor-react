@@ -19,7 +19,7 @@ import Countdown from "react-countdown"
 export const YourHand = observer(() => {
   const { leaveGame } = useCurrentGame()
   const navigate = useNavigate()
-  const timeout = 200000 //Test how much time actual players need for a decision (here its 200sec)
+  const timeoutMs = 200000
   const [playerTimeout, setPlayerTimeout] = useState(false)
   const [start, setStart] = useState(Date.now)
   const { updatecards } = useCards()
@@ -37,7 +37,7 @@ export const YourHand = observer(() => {
     leaveGame()
     navigate(Paths.LOBBY)
   }
-  useIdleTimer({ timeout, onIdle })
+  useIdleTimer({ timeout: timeoutMs, onIdle })
 
   //Check if all players did the score announcement for this match
   const clickCard = async (card) => {
