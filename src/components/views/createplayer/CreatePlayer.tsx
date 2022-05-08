@@ -21,7 +21,7 @@ const CreatePlayer = () => {
     setName(e.target.value)
   }
   const params = useParams()
-  console.log(params)
+  console.log(JSON.stringify(params))
 
   const { me, loading, createPlayer, startPollPlayers } = usePlayers()
 
