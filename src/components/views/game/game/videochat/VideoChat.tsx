@@ -61,6 +61,7 @@ export const VideoChat = observer(() => {
               getIFrameRef={(iframe) => {
                 // does not work how i want it. But you can change the style of the container div
                 iframe.style.objectFit = "fill"
+                iframe.style.height = "100%"
               }}
             />
           </div>
