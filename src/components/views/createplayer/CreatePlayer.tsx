@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { usePlayers } from "../../../hooks/api/usePlayers"
 import Footer from "../../ui/Footer"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { Paths } from "../../routing/routers/Paths"
 
 import Button from "@mui/material/Button"
@@ -20,6 +20,8 @@ const CreatePlayer = () => {
   const changeName = (e) => {
     setName(e.target.value)
   }
+  const params = useParams()
+  console.log(params)
 
   const { me, loading, createPlayer, startPollPlayers } = usePlayers()
 
