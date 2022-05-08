@@ -1,14 +1,42 @@
-.player-hand {
-  background-color: orange;
-  height: 100%;
-  width: 130%;
-}
+@import 'src/styles/theme';
 
-.player-hand img {
-  margin: -20px;
-  align-self: center;
-  display: inline-block;
-  overflow: hidden;
-  height: 60%;
-  width: 40%;
+.player-hand {
+  .content {
+    position: relative;
+  }
+
+  .opponent {
+    position: relative;
+
+    .player-name {
+      position: absolute;
+      color: $textColor;
+      left: 30%;
+      bottom: 25%;
+      max-width: 80%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .cards {
+    position: absolute;
+    bottom: 5%;
+    left: 40%;
+    width: 100%;
+
+
+    img {
+      margin: -10px;
+      align-self: center;
+      display: inline-block;
+      height: 30%;
+      width: 20%;
+    }
+
+    img:first-child {
+      margin-left: 0;
+    }
+  }
 }
