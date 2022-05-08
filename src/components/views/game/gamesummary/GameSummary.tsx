@@ -1,6 +1,7 @@
 import React from "react"
 import { observer } from "mobx-react-lite"
-import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
+import { useGames } from "../../../../hooks/api/useGames"
+import { extractId } from "../../../../util/extractId"
 import BaseContainer from "../../../ui/BaseContainer"
 import SendIcon from "@mui/icons-material/Send"
 import LogoutIcon from "@mui/icons-material/Logout"
@@ -12,15 +13,15 @@ import { WinnersPodium } from "./WinnersPodium"
 
 export const GameSummary = observer(() => {
   const navigate = useNavigate()
-  const { closeGame, loading } = useCurrentGame()
+  const { createOrJoinNextGame, loading } = useGames()
 
   const clickCloseGame = async () => {
-    await closeGame()
     navigate(Paths.LOBBY)
   }
   const clickStartNewGame = async () => {
-    await closeGame()
-    navigate(Paths.LOBBY)
+    const nextGame = await createOrJoinNextGame()
+    const nextGameId = extractId(nextGame._links.self)
+    navigate(Paths.GAME + `/${nextGameId}`)
   }
 
   return (

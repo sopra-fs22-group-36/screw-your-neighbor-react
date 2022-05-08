@@ -3795,6 +3795,37 @@
         }
       }
     },
+    "/games/{gameId}/nextGame": {
+      "post": {
+        "tags": [
+          "follow-up-game-controller"
+        ],
+        "operationId": "createNextGame",
+        "parameters": [
+          {
+            "name": "gameId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntityModelGame"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/auth/logout": {
       "post": {
         "tags": [
