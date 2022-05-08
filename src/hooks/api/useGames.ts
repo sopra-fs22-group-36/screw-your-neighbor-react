@@ -2,7 +2,22 @@ import { useContext, useState } from "react"
 import { appContext } from "../../AppContext"
 import { useApi } from "./useApi"
 import { toIri } from "../../util/toIri"
-import { EntityModelGame } from "../../generated"
+import { EntityModelGame, Game } from "../../generated"
+import { extractId } from "../../util/extractId"
+
+const ignoreValidationFailed = (reason) => {
+  if (reason.status === 422) {
+    return
+  }
+  throw reason
+}
+
+const ignoreConflict = (reason) => {
+  if (reason.status === 409) {
+    return
+  }
+  throw reason
+}
 
 export function useGames() {
   const { playerStore, gamesStore, currentGameStore } = useContext(appContext)
@@ -13,6 +28,7 @@ export function useGames() {
     gameEntityController,
     request,
     wrapApiCall,
+    followUpGameController,
   } = useApi()
 
   const createGame = async (name) => {
@@ -78,11 +94,40 @@ export function useGames() {
     return createdParticipation
   }
 
+  const createOrJoinNextGame = async () => {
+    setLoading(true)
+    try {
+      const currentGame = currentGameStore.game
+      let nextGame: Game | void = currentGame.nextGame
+      if (!currentGame.nextGame) {
+        const currentGameId = parseInt(extractId(currentGame._links.self))
+        nextGame = await wrapApiCall(
+          followUpGameController
+            .createNextGame(currentGameId)
+            .catch(ignoreValidationFailed)
+            .catch(ignoreConflict)
+        )
+        if (nextGame) {
+          return nextGame
+        }
+        const refreshedCurrentGame = await wrapApiCall(
+          gameEntityController.getItemResourceGameGet(`${currentGameId}`)
+        )
+        nextGame = refreshedCurrentGame.nextGame
+      }
+      await joinGame(nextGame)
+      return nextGame
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return {
     loading,
     games: gamesStore.games,
     startPollGames,
     createGame,
     joinGame,
+    createOrJoinNextGame,
   }
 }
