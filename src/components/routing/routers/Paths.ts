@@ -3,4 +3,5 @@ export enum Paths {
   CREATE_PLAYER = "/createPlayer",
   LOBBY = "/lobby",
   GAME = "/game",
+  JOINGAME = "/joinGame"
 }
