@@ -10,7 +10,7 @@ import "./VideoChat.scss"
 const jitsiConfig = {
   disableModeratorIndicator: true,
   disablePolls: true,
-  disableSelfView: true,
+  disableSelfView: false,
   disableSelfViewSettings: true,
   hideLobbyButton: true,
   requireDisplayName: false,
@@ -62,6 +62,7 @@ export const VideoChat = observer(() => {
                 // does not work how i want it. But you can change the style of the container div
                 iframe.style.objectFit = "fill"
                 iframe.style.height = "100%"
+                iframe.style.width = "100%"
               }}
             />
           </div>
