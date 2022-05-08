@@ -51,7 +51,7 @@ export function useGames() {
     setLoading(true)
     if (myParticipations.length > 0) {
       const participationToPatch = myParticipations[0]
-      return await wrapApiCall(
+      return wrapApiCall(
         request
           .request({
             method: "PATCH",
