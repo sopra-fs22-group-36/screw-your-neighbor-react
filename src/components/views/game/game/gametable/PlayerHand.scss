@@ -22,20 +22,25 @@
 
   .cards {
     position: absolute;
-    bottom: 5%;
+    bottom: 0;
     left: 40%;
     width: 100%;
 
 
-    img {
+    .animated-card {
       margin: -10px;
       align-self: center;
       display: inline-block;
       height: 30%;
       width: 20%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
-    img:first-child {
+    .animated-card:first-child {
       margin-left: 0;
     }
   }
