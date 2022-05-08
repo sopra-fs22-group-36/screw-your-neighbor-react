@@ -101,6 +101,7 @@ export function useCurrentGame() {
   return {
     loading,
     game: currentGameStore.game,
+    id: currentGameId,
     myParticipation: currentGameStore.participation,
     activeParticipations: currentGameStore.activeParticipations,
     sortedMatches: currentGameStore.sortedMatches,
