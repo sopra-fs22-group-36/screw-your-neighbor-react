@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { usePlayers } from "../../../hooks/api/usePlayers"
 import Footer from "../../ui/Footer"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { Paths } from "../../routing/routers/Paths"
+import { useQuery } from "../../../hooks/useQuery"
 
 import Button from "@mui/material/Button"
 import BaseContainer from "../../ui/BaseContainer"
@@ -20,15 +21,19 @@ const CreatePlayer = () => {
   const changeName = (e) => {
     setName(e.target.value)
   }
-  const params = useParams()
-  console.log(JSON.stringify(params))
+  const redirectLink = useQuery().get("redirectTo")
+  console.log(JSON.stringify(redirectLink))
 
   const { me, loading, createPlayer, startPollPlayers } = usePlayers()
 
   const submit = async (e) => {
     e.preventDefault()
     await createPlayer(name)
-    navigate(Paths.LOBBY)
+    if (redirectLink === null) {
+      navigate(Paths.LOBBY)
+    } else {
+      navigate(redirectLink)
+    }
   }
 
   useEffect(() => {
