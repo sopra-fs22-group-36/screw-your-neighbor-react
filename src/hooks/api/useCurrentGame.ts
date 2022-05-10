@@ -45,17 +45,6 @@ export function useCurrentGame() {
     ).finally(() => setLoading(false))
   }
 
-  const closeGame = async () => {
-    setLoading(true)
-    wrapApiCall(
-      request.request({
-        method: "PATCH",
-        url: toIri(currentGameStore.game._links.self),
-        body: { gameState: gameState.CLOSED },
-      })
-    ).finally(() => setLoading(false))
-  }
-
   const refreshGame = async () => {
     const game: Game = await wrapApiCall(
       request.request({
@@ -108,6 +97,8 @@ export function useCurrentGame() {
     sortedRoundsOfActiveMatch: currentGameStore.sortedRoundsOfActiveMatch,
     activeRound: currentGameStore.activeRound,
     lastRound: currentGameStore.lastRound,
+    sumOfAnnouncedScores: currentGameStore.sumOfAnnouncedScores,
+    lastPlayerAnnouncing: currentGameStore.isLastPlayerAnnouncing,
     yourActiveHand: currentGameStore.yourActiveHand,
     leaveGame,
     playGame,
@@ -115,6 +106,5 @@ export function useCurrentGame() {
     refreshGame,
     startPollGame,
     announceScore,
-    closeGame,
   }
 }

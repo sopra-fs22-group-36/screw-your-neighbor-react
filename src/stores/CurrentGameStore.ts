@@ -89,4 +89,18 @@ export class CurrentGameStore {
     }
     return yourHands.slice(-1)[0]
   }
+
+  @computed get isLastPlayerAnnouncing() {
+    return (
+      this.activeMatch?.hands.filter((value) => value.announcedScore === null)
+        .length === 1
+    )
+  }
+
+  //Count the value for all announced scores so far
+  @computed get sumOfAnnouncedScores() {
+    let value = 0
+    this.activeMatch?.hands.forEach((el) => (value += el.announcedScore))
+    return value
+  }
 }

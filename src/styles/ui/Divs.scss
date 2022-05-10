@@ -25,7 +25,7 @@
 
 .div-players{
   align-self: center;
-  display: flex;
+  display: block;
   flex-direction: column;
   background-color: #620606;
   color: $textColor;
@@ -39,6 +39,8 @@
   margin-top: 20px;
   padding-bottom: 8px;
   padding-right: 5px;
+  overflow-y: scroll;
+  max-height: 200px;
 
 }
 

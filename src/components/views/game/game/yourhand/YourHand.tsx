@@ -11,64 +11,84 @@ import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
 import { CardComponent } from "../../../../ui/CardComponent"
 import "./YourHand.scss"
 import { observer } from "mobx-react-lite"
+import { useIdleTimer } from "react-idle-timer"
+import { Paths } from "../../../../routing/routers/Paths"
+import { useNavigate } from "react-router-dom"
+import Countdown from "react-countdown"
 
 export const YourHand = observer(() => {
+  const { leaveGame } = useCurrentGame()
+  const navigate = useNavigate()
+  const timeoutMs = 200000
+  const [playerTimeout, setPlayerTimeout] = useState(false)
+  const [start, setStart] = useState(Date.now)
   const { updatecards } = useCards()
   const { activeMatch, yourActiveHand } = useCurrentGame()
-  const [open, setOpen] = useState(false)
   const [wrongTurn, setWrongTurn] = useState(false)
   const notYetPlayed =
     yourActiveHand?.cards.filter((value) => value.round === null) ?? []
+  const onIdle = () => {
+    setStart(Date.now)
+    setPlayerTimeout(true)
+  }
+
+  const handleLeave = () => {
+    //For the future: Continue game when player lEaves
+    leaveGame()
+    navigate(Paths.LOBBY)
+  }
+  useIdleTimer({ timeout: timeoutMs, onIdle })
 
   //Check if all players did the score announcement for this match
   const clickCard = async (card) => {
     if (activeMatch.matchState === Match.matchState.PLAYING) {
       if (yourActiveHand?.turnActive) {
         updatecards(card)
+        setPlayerTimeout(false)
       } else {
         setWrongTurn(true)
       }
-    } else {
-      setOpen(true)
     }
-  }
-
-  // Close dialog trick announcement
-  const handleCloseAnnouncement = () => {
-    setOpen(false)
   }
 
   // Close dialog
   const handleCloseTurn = () => {
     setWrongTurn(false)
   }
-  let content = <></>
 
-  // Inform the player that it is not possible to play a card
-  if (open) {
-    content = (
+  const handleCloseTimeout = () => {
+    setPlayerTimeout(false)
+  }
+
+  let content = <></>
+  let timeouted = <></>
+
+  if (playerTimeout && yourActiveHand?.turnActive) {
+    timeouted = (
       <Dialog
-        open={open}
-        onClose={handleCloseAnnouncement}
+        open={playerTimeout}
+        onClose={handleCloseTimeout}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          Wait! Everyone needs to announce their trick first!
+          HEY! Are you still here?
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Not all players announced there number of tricks! Please wait...
+            Please do something! The other players are waiting!
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseAnnouncement} autoFocus>
-            Agree
+          <Button onClick={handleCloseTimeout} autoFocus>
+            Okay
           </Button>
+          <Countdown date={start + 40000} onComplete={handleLeave} />
         </DialogActions>
       </Dialog>
     )
   }
+
   // Inform the player that they cannot play the card because it's not their turn yet
   if (wrongTurn) {
     content = (
@@ -105,6 +125,7 @@ export const YourHand = observer(() => {
         </div>
       ))}
       {content}
+      {timeouted}
     </div>
   )
 })
