@@ -4,18 +4,14 @@
 
   background: rgba(0,0,0,0.5);
 
-  .top-row {
-    height: 40%;
-  }
-
   .second-row {
-    height: 60%;
+    height: 100%;
     padding: 10px;
   }
 
   .base-container {
     min-width: 100%;
-    min-height: 80%;
+    min-height: 90%;
     display: flex;
     padding: 0;
     .content {
