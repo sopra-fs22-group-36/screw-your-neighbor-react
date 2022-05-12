@@ -68,7 +68,7 @@ const HamburgerMenu = () => {
           onClick={clickLeave}
           className="listitem licolor2"
           style={{
-            marginTop: "80px",
+            marginTop: "8%",
             color: "white",
           }}
         >
