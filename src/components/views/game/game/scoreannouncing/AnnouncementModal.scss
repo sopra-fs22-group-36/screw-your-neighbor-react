@@ -56,10 +56,7 @@
     }
 
     .card-component {
-      cursor: pointer;
-      &:hover {
-        transform: scale(100%);
-      }
+      pointer-events: none;
     }
 
     .card-component :is(div, img) {
