@@ -1,3 +1,5 @@
+@import 'src/styles/theme';
+
 .videochat {
   height: 100%;
   width: 100%;
@@ -6,18 +8,39 @@
   align-items: center;
 
   .video-container {
+    padding-top: 7px;
     height: 100%;
     width: 100%;
-    animation-name: slidein;
+    animation-name: video-slide-in;
     animation-duration: 2.5s;
-    //animation-fill-mode: forwards;
+  }
+
+  iframe {
+    border-radius: 1.5em;
+  }
+
+  @keyframes video-slide-in {
+    0% {
+      width: 0
+    }
+    50% {
+      width: 65%;
+    }
+    100% {
+      width: 100%;
+    }
   }
 }
 
 .videochat.inactive {
-  background-color: #620606;
-  border-radius: 2em;
-  height: 30%;
-  width: 30%;
+
+  div.button-border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #620606;
+    border-radius: 2em;
+    padding: 30px;
+  }
 
 }
