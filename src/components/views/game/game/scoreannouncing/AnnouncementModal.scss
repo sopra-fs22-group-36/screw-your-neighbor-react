@@ -59,15 +59,13 @@
 
     .card-component {
       cursor: pointer;
+      &:hover {
+        transform: scale(100%);
+      }
     }
 
     .card-component :is(div, img) {
       width: 105%;
-    }
-    .card-component {
-      &:hover {
-        transform: scale(100%);
-      }
     }
   }
 
