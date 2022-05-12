@@ -20,6 +20,8 @@
 .listitem{
   bottom: 0;
   text-align: center;
+  line-height: 70%;
+  color: whitesmoke;
   font-size: x-large;
   z-index: 10;
   cursor: pointer;
@@ -89,7 +91,7 @@
   z-index: 10;
 }
 
-label {
+.hamburgerlabel { //Important: Don't define style of "label"!
   position: fixed;
   top: -40;
   left: 0;
@@ -99,15 +101,15 @@ label {
   margin: -30px auto 0 auto;
   cursor: pointer;
   z-index: 10;
-}
 
-label:before {
-  content: "";
-  position: fixed;
-  top: -40;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  &:before {
+    content: "";
+    position: fixed;
+    top: -40;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 }
 
 label div {

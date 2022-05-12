@@ -46,7 +46,7 @@ const HamburgerMenu = () => {
   return (
     <nav className="navBar">
       <input type="checkbox" id="menu_checkbox" onClick={handleToggle} />
-      <label htmlFor="menu_checkbox">
+      <label className="hamburgerlabel" htmlFor="menu_checkbox">
         <div></div>
         <div></div>
         <div></div>

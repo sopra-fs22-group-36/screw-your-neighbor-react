@@ -17,7 +17,7 @@ const PlayedCards = forwardRef<HTMLDivElement, PlayedCardsProps>(
     return (
       <div className={"card-table"} ref={ref}>
         {props.cards.map((card, index) => (
-          <div key={index}>
+          <div key={index} className={"card-place-" + (index + 1)}>
             <CardComponent card={card} />
           </div>
         ))}
@@ -68,26 +68,43 @@ export const GameTable = observer(() => {
           <></>
         )}
         <PlayedCards cards={cards} ref={playedCardsRef} />
-        <PlayerHand
-          className={"player player-2"}
-          participation={participationSlots.slot1}
-          playedCards={playedCardsRef.current}
-        />
-        <PlayerHand
-          className={"player player-3"}
-          participation={participationSlots.slot2}
-          playedCards={playedCardsRef.current}
-        />
-        <PlayerHand
-          className={"player player-4"}
-          participation={participationSlots.slot3}
-          playedCards={playedCardsRef.current}
-        />
-        <PlayerHand
-          className={"player player-5"}
-          participation={participationSlots.slot4}
-          playedCards={playedCardsRef.current}
-        />
+
+        {participationSlots.slot1 ? (
+          <PlayerHand
+            className={"player player-2"}
+            participation={participationSlots.slot1}
+            playedCards={playedCardsRef.current}
+          />
+        ) : (
+          <></>
+        )}
+        {participationSlots.slot2 ? (
+          <PlayerHand
+            className={"player player-3"}
+            participation={participationSlots.slot2}
+            playedCards={playedCardsRef.current}
+          />
+        ) : (
+          <></>
+        )}
+        {participationSlots.slot3 ? (
+          <PlayerHand
+            className={"player player-4"}
+            participation={participationSlots.slot3}
+            playedCards={playedCardsRef.current}
+          />
+        ) : (
+          <></>
+        )}
+        {participationSlots.slot4 ? (
+          <PlayerHand
+            className={"player player-5"}
+            participation={participationSlots.slot4}
+            playedCards={playedCardsRef.current}
+          />
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   )
