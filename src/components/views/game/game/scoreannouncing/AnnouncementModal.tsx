@@ -121,9 +121,12 @@ export const AnnouncementModal = observer(() => {
     <Modal
       className={"announcement-modal"}
       open={matchForModal.matchState === matchState.ANNOUNCING}
+      sx={{
+        top: "40%",
+      }}
+      hideBackdrop={true}
     >
       <>
-        <Grid container spacing={0} className={"top-row"}></Grid>
         <Grid container spacing={0} className={"second-row"}>
           <Grid item xs={6}>
             <BaseContainer>
