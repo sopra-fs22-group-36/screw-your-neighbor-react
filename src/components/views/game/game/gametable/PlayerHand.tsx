@@ -15,9 +15,6 @@ export type PlayerHandProps = {
 }
 
 export const PlayerHand = observer((props: PlayerHandProps) => {
-  if (!props.participation) {
-    return <></>
-  }
   const useCurrentGameHook = useCurrentGame()
   const playerName = props.participation.player.name
 

@@ -1,6 +1,4 @@
 import React, { useState } from "react"
-import { MdClose } from "react-icons/md"
-import { FiMenu } from "react-icons/fi"
 import "./HamburgerMenu.scss"
 import SendIcon from "@mui/icons-material/Send"
 import ListAltIcon from "@mui/icons-material/ListAlt"
@@ -47,19 +45,19 @@ const HamburgerMenu = () => {
 
   return (
     <nav className="navBar">
-      <button onClick={handleToggle}>
-        {hamburgerOpen ? (
-          <MdClose className="xbutton" />
-        ) : (
-          <FiMenu className="xbutton" />
-        )}
-      </button>
+      <input type="checkbox" id="menu_checkbox" onClick={handleToggle} />
+      <label className="hamburgerlabel" htmlFor="menu_checkbox">
+        <div></div>
+        <div></div>
+        <div></div>
+      </label>
       <ul className={`menuNav ${hamburgerOpen ? " showMenu" : ""}`}>
         <li
           className="listitem licolor1"
           onClick={clickRules}
           style={{
             marginTop: "120px",
+            color: "white",
           }}
         >
           <ListAltIcon style={{ width: "20%", paddingRight: "4px" }} />
@@ -70,7 +68,8 @@ const HamburgerMenu = () => {
           onClick={clickLeave}
           className="listitem licolor2"
           style={{
-            marginTop: "80px",
+            marginTop: "8%",
+            color: "white",
           }}
         >
           <SendIcon style={{ width: "20%", paddingRight: "4px" }} />
