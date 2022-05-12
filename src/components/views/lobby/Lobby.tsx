@@ -78,7 +78,7 @@ const Lobby = observer(() => {
         </Grid>
       </Grid>
       <Footer />
-      <div className="background-lobby"></div>
+      <div className="background-img"></div>
     </div>
   )
 })

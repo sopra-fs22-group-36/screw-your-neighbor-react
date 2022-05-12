@@ -1,3 +1,4 @@
+@import '../theme';
 
 .button {
   &:hover {
@@ -11,7 +12,6 @@
     }
   }
 
-
   margin-bottom: 10px;
   font-weight: 700;
   text-transform: uppercase;
@@ -20,7 +20,7 @@
   height: 35px;
   border: black;
 
-  border-radius: 20%;
+  border-radius: $borderRadius;
   cursor: pointer;
   opacity: 1;
   color: whitesmoke;
