@@ -4,17 +4,11 @@
   margin: 15px;
   align-self: center;
   display: inline-block;
-
-
-  bottom: 0;
-  left: 0;
+  padding: 0px 5px 5px 35px;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding-bottom: 5px;
-  padding-right: 5px;
   color: $textColor;
-  background-color: #620606;
+  background-color: #620606bc;
   border-radius: 2em;
-  opacity: 0.9;
 }

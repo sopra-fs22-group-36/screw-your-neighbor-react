@@ -2,6 +2,8 @@
 
 .announcement-modal {
 
+  background: rgba(0,0,0,0.5);
+
   .top-row {
     height: 40%;
   }
@@ -19,7 +21,6 @@
     .content {
       flex-grow: 1;
       margin: 10px 10px;
-
       display: flex;
       background-color: #620606;
       padding: 10px 10px 20px 10px;
@@ -55,7 +56,7 @@
     }
 
     .card-component {
-      cursor: pointer;
+      pointer-events: none;
     }
 
     .card-component :is(div, img) {
