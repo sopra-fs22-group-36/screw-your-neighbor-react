@@ -10,7 +10,7 @@ import "./VideoChat.scss"
 const jitsiConfig = {
   disableModeratorIndicator: true,
   disablePolls: true,
-  disableSelfView: false,
+  disableSelfView: true,
   disableSelfViewSettings: true,
   hideLobbyButton: true,
   requireDisplayName: false,
@@ -36,14 +36,16 @@ export const VideoChat = observer(() => {
       {(() => {
         if (!active) {
           return (
-            <Button
-              className={"toggle-camera"}
-              variant="contained"
-              endIcon={<VideoCameraFront />}
-              onClick={() => setActive(true)}
-            >
-              Activate video chat
-            </Button>
+            <div className={"button-border"}>
+              <Button
+                className={"toggle-camera"}
+                variant="contained"
+                endIcon={<VideoCameraFront />}
+                onClick={() => setActive(true)}
+              >
+                Activate video chat
+              </Button>
+            </div>
           )
         }
         return (
@@ -57,9 +59,11 @@ export const VideoChat = observer(() => {
               }}
               interfaceConfigOverwrite={{
                 filmStripOnly: true,
+                SHOW_CHROME_EXTENSION_BANNER: false,
+                VIDEO_QUALITY_LABEL_DISABLED: true,
+                SHOW_JITSI_WATERMARK: false,
               }}
               getIFrameRef={(iframe) => {
-                // does not work how i want it. But you can change the style of the container div
                 iframe.style.objectFit = "fill"
                 iframe.style.height = "100%"
                 iframe.style.width = "100%"
