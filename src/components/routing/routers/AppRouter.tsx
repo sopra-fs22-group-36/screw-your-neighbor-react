@@ -25,7 +25,10 @@ const AppRouter = () => {
           />
           <Route path={Paths.GAME} element={<Navigate to={Paths.LOBBY} />} />
           <Route path={Paths.CREATE_PLAYER} element={<CreatePlayer />} />
-          <Route path={`${Paths.JOINGAME}/:gameId`} element={<JoinGame />} />
+          <Route
+            path={`${Paths.JOINGAME}/:currentGameId`}
+            element={<JoinGame />}
+          />
         </Routes>
       </SessionGuard>
     </BrowserRouter>
