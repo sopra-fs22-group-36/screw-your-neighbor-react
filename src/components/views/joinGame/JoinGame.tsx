@@ -6,33 +6,29 @@ import SendIcon from "@mui/icons-material/Send"
 import { useGames } from "../../../hooks/api/useGames"
 import { Paths } from "../../routing/routers/Paths"
 import { useNavigate, useParams } from "react-router-dom"
-import { useApi } from "../../../hooks/api/useApi"
-import { appContext } from "../../../AppContext"
+import { observer } from "mobx-react-lite"
+import { useCurrentGame } from "../../../hooks/api/useCurrentGame"
 
-const JoinGame = () => {
+const JoinGame = observer(() => {
   const { joinGame } = useGames()
   const navigate = useNavigate()
   const gameId = useParams()
+  const { refreshGame } = useCurrentGame()
 
   const [loading, setLoading] = useState(false)
-  const { wrapApiCall, gameEntityController } = useApi()
-  const gameStore = useContext(appContext).playerStore
 
-  const findGame = async (gameId) => {
+  const findgame = async () =>{
     setLoading(true)
-    const foundGame = await wrapApiCall(
-      gameEntityController.getItemResourceGameGet("{gameId}")
-    ).finally(() => setLoading(false))
-    gameStore.setMe(foundGame)
+    const foundGame = await refreshGame().finally(()=>setLoading(false))
     return foundGame
   }
-
-  const theGameToJoin = findGame(gameId)
+  const theGame = findgame()
 
   const clickJoin = async () => {
-    await joinGame(await theGameToJoin)
-    navigate(Paths.GAME + `/${gameId}`)
+    await joinGame(theGame)
+    navigate((Paths.GAME + `/${gameId}`))
   }
+
 
   return (
     <div>
@@ -45,7 +41,7 @@ const JoinGame = () => {
           You were invited to play this game, do you want to join the game?
         </h4>
         <Button
-          onClick={clickJoin}
+          //onClick={clickJoin}
           type={"submit"}
           variant="contained"
           endIcon={<SendIcon />}
@@ -56,6 +52,6 @@ const JoinGame = () => {
       <div className="background-img"></div>
     </div>
   )
-}
+})
 
 export default JoinGame

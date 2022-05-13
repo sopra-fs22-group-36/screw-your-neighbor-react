@@ -29,7 +29,7 @@ const CreatePlayer = () => {
   const submit = async (e) => {
     e.preventDefault()
     await createPlayer(name)
-    if (redirectLink === null) {
+    if (!redirectLink) {
       navigate(Paths.LOBBY)
     } else {
       navigate(redirectLink)
