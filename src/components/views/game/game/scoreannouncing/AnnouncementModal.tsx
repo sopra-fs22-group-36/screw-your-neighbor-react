@@ -59,18 +59,6 @@ export const AnnouncementModal = observer(() => {
 
   const handSize = matchForModal.hands[0]?.cards.length || 0
 
-  let cards = []
-  if (activeMatch.matchNumber !== 5) {
-    cards = yourHand?.cards.filter((value) => value.round === null)
-  } else {
-    const otherHands = activeMatch?.hands
-      .filter(
-        (value) => !iriMatch(yourActiveHand._links.self, value._links.self)
-      )
-      .slice(-1)[0]
-    cards = otherHands.cards
-  }
-
   const observableMatch = sortedMatches.filter((match) =>
     iriMatch(match._links.self, matchForModal._links.self)
   )[0]
@@ -126,6 +114,17 @@ export const AnnouncementModal = observer(() => {
     matchForModal.matchState,
     yourActiveHand,
   ])
+  let cards = []
+  if (activeMatch.matchNumber !== 5) {
+    cards = yourHand?.cards.filter((value) => value.round === null)
+  } else {
+    const otherHands = activeMatch?.hands
+      .filter(
+        (value) => !iriMatch(yourActiveHand._links.self, value._links.self)
+      )
+      .slice(-1)[0]
+    cards = otherHands.cards
+  }
 
   return (
     <Modal

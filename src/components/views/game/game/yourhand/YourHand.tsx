@@ -15,8 +15,7 @@ import { useIdleTimer } from "react-idle-timer"
 import { Paths } from "../../../../routing/routers/Paths"
 import { useNavigate } from "react-router-dom"
 import Countdown from "react-countdown"
-import { iriMatch } from "../../../../../util/iriMatch"
-import cardBack from "../../../../../img/card-backside.png"
+import { BackgroundCard } from "../../../../ui/BackgroundCard"
 
 export const YourHand = observer(() => {
   const { leaveGame } = useCurrentGame()
@@ -128,12 +127,7 @@ export const YourHand = observer(() => {
           {activeMatch.matchNumber !== 5 ? (
             <CardComponent card={card} onClick={() => clickCard(card)} />
           ) : (
-            <img
-              src={cardBack}
-              alt="card_back_image"
-              style={{ height: "200px" }}
-              onClick={() => clickCard(card)}
-            />
+            <BackgroundCard card={card} onClick={() => clickCard(card)} />
           )}
         </div>
       ))}
