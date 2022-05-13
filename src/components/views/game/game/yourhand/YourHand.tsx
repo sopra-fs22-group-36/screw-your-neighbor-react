@@ -15,6 +15,8 @@ import { useIdleTimer } from "react-idle-timer"
 import { Paths } from "../../../../routing/routers/Paths"
 import { useNavigate } from "react-router-dom"
 import Countdown from "react-countdown"
+import { iriMatch } from "../../../../../util/iriMatch"
+import cardBack from "../../../../../img/card-backside.png"
 
 export const YourHand = observer(() => {
   const { leaveGame } = useCurrentGame()
@@ -25,8 +27,10 @@ export const YourHand = observer(() => {
   const { updatecards } = useCards()
   const { activeMatch, yourActiveHand } = useCurrentGame()
   const [wrongTurn, setWrongTurn] = useState(false)
-  const notYetPlayed =
-    yourActiveHand?.cards.filter((value) => value.round === null) ?? []
+  const notYetPlayed = yourActiveHand?.cards.filter(
+    (value) => value.round === null
+  )
+
   const onIdle = () => {
     setStart(Date.now)
     setPlayerTimeout(true)
@@ -121,7 +125,16 @@ export const YourHand = observer(() => {
       <p>These are the Cards for Match {activeMatch?.matchNumber}:</p>
       {notYetPlayed.map((card) => (
         <div key={card._links.self.href}>
-          <CardComponent card={card} onClick={() => clickCard(card)} />
+          {activeMatch.matchNumber !== 5 ? (
+            <CardComponent card={card} onClick={() => clickCard(card)} />
+          ) : (
+            <img
+              src={cardBack}
+              alt="card_back_image"
+              style={{ height: "200px" }}
+              onClick={() => clickCard(card)}
+            />
+          )}
         </div>
       ))}
       {content}

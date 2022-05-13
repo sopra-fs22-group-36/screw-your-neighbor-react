@@ -69,8 +69,6 @@ export const AnnouncementModal = observer(() => {
       )
       .slice(-1)[0]
     cards = otherHands.cards
-
-    console.log(JSON.stringify(cards)) //TODO:  REMOVE AFTER TESTING
   }
 
   const observableMatch = sortedMatches.filter((match) =>
