@@ -55,7 +55,6 @@ export const AnnouncementModal = observer(() => {
   } = useCurrentGame()
 
   const [matchForModal, setMatchForModal] = useState(activeMatch)
-  const [yourHand, setYourHand] = useState(yourActiveHand)
 
   const handSize = matchForModal.hands[0]?.cards.length || 0
 
@@ -78,9 +77,9 @@ export const AnnouncementModal = observer(() => {
     : null
 
   useEffect(() => {
-    const updateMatch = () => {
+    let cancelled = false
+    const updateMatch = async () => {
       setMatchForModal(activeMatch)
-      setYourHand(yourActiveHand)
     }
     const matchStateChangedToPlaying =
       matchForModal.matchState === matchState.ANNOUNCING &&
@@ -98,8 +97,7 @@ export const AnnouncementModal = observer(() => {
       matchStateChangedToPlaying ||
       (matchStateChangedToAnnouncing && matchChanged)
     ) {
-      let cancelled = false
-      delay(1000, null).then((_) => {
+      delay(800, null).then((_) => {
         cancelled && updateMatch()
       })
       return () => {
@@ -115,15 +113,21 @@ export const AnnouncementModal = observer(() => {
     yourActiveHand,
   ])
   let cards = []
-  if (activeMatch.matchNumber !== 5) {
-    cards = yourHand?.cards.filter((value) => value.round === null)
+  if (activeMatch?.matchNumber !== 5) {
+    cards = yourActiveHand?.cards.filter((value) => value.round === null)
   } else {
-    const otherHands = activeMatch?.hands
-      .filter(
-        (value) => !iriMatch(yourActiveHand._links.self, value._links.self)
-      )
-      .slice(-1)[0]
-    cards = otherHands.cards
+    const otherHands = activeMatch?.hands.filter(
+      (value) => !iriMatch(yourActiveHand?._links.self, value._links.self)
+    )
+    const andere = activeMatch.hands.length - 1
+    for (let i = 0; i < andere; i++) {
+      if (i === 0) {
+        cards = otherHands[i].cards
+      } else {
+        cards.push(...otherHands[i].cards)
+      }
+    }
+    console.log(JSON.stringify(cards))
   }
 
   return (

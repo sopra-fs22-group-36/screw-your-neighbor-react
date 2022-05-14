@@ -22,9 +22,9 @@ function importAll(r) {
 
 //Combine card name from rank and suit for find in the storage /img/deck
 function findCard(rank: Card.cardRank, suit: Card.cardSuit): string {
-  if (!rank || !suit) {
-    window.location.reload() //This should be Temporary! It is not elegant and doesn't fix the REAL problem
-    //Find and fix the error as soon as possible! Ask others!
+  if (rank == null) {
+    //sometimes, the game crashes with no apparent reason. This is a temporary fix for that crash
+    window.location.reload()
   }
   let cardName = ""
   let cardSuit = ""

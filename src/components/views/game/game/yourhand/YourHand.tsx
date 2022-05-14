@@ -44,7 +44,7 @@ export const YourHand = observer(() => {
 
   //Check if all players did the score announcement for this match
   const clickCard = async (card) => {
-    if (activeMatch.matchState === Match.matchState.PLAYING) {
+    if (activeMatch?.matchState === Match.matchState.PLAYING) {
       if (yourActiveHand?.turnActive) {
         updatecards(card)
         setPlayerTimeout(false)
@@ -124,7 +124,7 @@ export const YourHand = observer(() => {
       <p>These are the Cards for Match {activeMatch?.matchNumber}:</p>
       {notYetPlayed.map((card) => (
         <div key={card._links.self.href}>
-          {activeMatch.matchNumber !== 5 ? (
+          {activeMatch?.matchNumber !== 5 ? (
             <CardComponent card={card} onClick={() => clickCard(card)} />
           ) : (
             <BackgroundCard card={card} onClick={() => clickCard(card)} />
