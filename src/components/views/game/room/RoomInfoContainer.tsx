@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite"
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import Button from "@mui/material/Button"
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"
+import { Tooltip } from "@mui/material"
 
 export const RoomInfoContainer = observer(() => {
   const { game, activeParticipations, id } = useCurrentGame()
@@ -14,15 +15,21 @@ export const RoomInfoContainer = observer(() => {
       <h2 className="infoPanel"> Room Info </h2>
       <div> This is room: {game.name}</div>
       <div> Current player count: {playerCount} </div>
-      <Button
-        onClick={() => {
-          navigator.clipboard.writeText(inviteLink)
-        }}
-        variant="contained"
-        endIcon={<ContentCopyIcon />}
+      <Tooltip
+        title={"send this invite-link to people who you want to play with!"}
+        arrow={true}
+        placement={"bottom"}
       >
-        Copy invite Link
-      </Button>
+        <Button
+          onClick={() => {
+            navigator.clipboard.writeText(inviteLink)
+          }}
+          variant="contained"
+          endIcon={<ContentCopyIcon />}
+        >
+          Copy invite Link
+        </Button>
+      </Tooltip>
     </div>
   )
 })

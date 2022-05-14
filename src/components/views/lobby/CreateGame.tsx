@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useGames } from "../../../hooks/api/useGames"
 import { extractId } from "../../../util/extractId"
 
-import { TextField } from "@mui/material"
+import { TextField, Tooltip } from "@mui/material"
 import Button from "@mui/material/Button"
 import SendIcon from "@mui/icons-material/Send"
 import Box from "@mui/material/Box"
@@ -36,14 +36,23 @@ export const CreateGame = () => {
           value={name}
           onChange={changeName}
         />
-        <Button
-          type={"submit"}
-          disabled={loading}
-          variant="contained"
-          endIcon={<SendIcon />}
+        <Tooltip
+          title={
+            'Enter a name for your game and click on "CREATE GAME" to create a new game room'
+          }
+          arrow={true}
+          placement={"left"}
+          enterDelay={500}
         >
-          create game
-        </Button>
+          <Button
+            type={"submit"}
+            disabled={loading}
+            variant="contained"
+            endIcon={<SendIcon />}
+          >
+            create game
+          </Button>
+        </Tooltip>
       </Box>
     </form>
   )

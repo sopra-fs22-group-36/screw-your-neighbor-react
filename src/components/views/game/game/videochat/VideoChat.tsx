@@ -6,6 +6,7 @@ import Button from "@mui/material/Button"
 import { VideoCameraFront } from "@mui/icons-material"
 import { JitsiMeeting } from "@jitsi/react-sdk"
 import "./VideoChat.scss"
+import { Tooltip } from "@mui/material"
 
 const jitsiConfig = {
   disableModeratorIndicator: true,
@@ -36,16 +37,25 @@ export const VideoChat = observer(() => {
       {(() => {
         if (!active) {
           return (
-            <div className={"button-border"}>
-              <Button
-                className={"toggle-camera"}
-                variant="contained"
-                endIcon={<VideoCameraFront />}
-                onClick={() => setActive(true)}
-              >
-                Activate video chat
-              </Button>
-            </div>
+            <Tooltip
+              title={
+                "Activate the videochat to see the people you are playing against. " +
+                "This will help you call their bluffs!"
+              }
+              arrow={true}
+              placement={"bottom"}
+            >
+              <div className={"button-border"}>
+                <Button
+                  className={"toggle-camera"}
+                  variant="contained"
+                  endIcon={<VideoCameraFront />}
+                  onClick={() => setActive(true)}
+                >
+                  Activate video chat
+                </Button>
+              </div>
+            </Tooltip>
           )
         }
         return (

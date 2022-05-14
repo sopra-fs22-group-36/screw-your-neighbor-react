@@ -7,7 +7,7 @@ import { iriMatch } from "../../../../../util/iriMatch"
 import { delay } from "../../../../../util/timeout"
 import BaseContainer from "../../../../ui/BaseContainer"
 import { CardComponent } from "../../../../ui/CardComponent"
-import { Chip, Grid, Modal } from "@mui/material"
+import { Chip, Grid, Modal, Tooltip } from "@mui/material"
 import Button from "@mui/material/Button"
 import "./AnnouncementModal.scss"
 import LeaveButton from "./LeaveButton"
@@ -28,18 +28,29 @@ const HandRow = observer((props: HandRowProps) => {
     myParticipation._links.self
   )
   return (
-    <li className={isOwnParticipation ? "own-participation" : ""}>
-      <span className={"player-name"}>{hand.participation.player.name}</span>
-      {hand.turnActive && (
-        <Chip
-          color={"info"}
-          label={"Announcing"}
-          className={"chip"}
-          size={"small"}
-        ></Chip>
-      )}
-      <span className={"announced-score"}>{hand.announcedScore}</span>
-    </li>
+    <Tooltip
+      title={
+        !hand.announcedScore
+          ? `Here you will see how many tricks ${hand.participation.player.name} expects to make.
+             They have not voted yet!`
+          : `${hand.participation.player.name} expects to win ${hand.announcedScore} tricks!`
+      }
+      arrow={true}
+      enterDelay={750}
+    >
+      <li className={isOwnParticipation ? "own-participation" : ""}>
+        <span className={"player-name"}>{hand.participation.player.name}</span>
+        {hand.turnActive && (
+          <Chip
+            color={"info"}
+            label={"Announcing"}
+            className={"chip"}
+            size={"small"}
+          ></Chip>
+        )}
+        <span className={"announced-score"}>{hand.announcedScore}</span>
+      </li>
+    </Tooltip>
   )
 })
 
@@ -156,20 +167,29 @@ export const AnnouncementModal = observer(() => {
                     </div>
                   ))}
                 </div>
-                <div className={"announce-buttons"}>
-                  {range(0, handSize + 3).map((number) => {
-                    return (
-                      <Button
-                        key={number}
-                        disabled={!active || illegalNumber === number}
-                        onClick={(_) => announceScore(number)}
-                        variant={"contained"}
-                      >
-                        {number}
-                      </Button>
-                    )
-                  })}
-                </div>
+                <Tooltip
+                  title={
+                    "Here you can choose how many tricks you think you will win!"
+                  }
+                  placement={"bottom"}
+                  arrow={true}
+                  enterDelay={750}
+                >
+                  <div className={"announce-buttons"}>
+                    {range(0, handSize + 3).map((number) => {
+                      return (
+                        <Button
+                          key={number}
+                          disabled={!active || illegalNumber === number}
+                          onClick={(_) => announceScore(number)}
+                          variant={"contained"}
+                        >
+                          {number}
+                        </Button>
+                      )
+                    })}
+                  </div>
+                </Tooltip>
               </div>
             </BaseContainer>
           </Grid>

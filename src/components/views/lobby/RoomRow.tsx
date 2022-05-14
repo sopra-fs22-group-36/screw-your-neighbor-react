@@ -5,7 +5,7 @@ import { Paths } from "../../routing/routers/Paths"
 import { useGames } from "../../../hooks/api/useGames"
 import { extractId } from "../../../util/extractId"
 
-import { Grid } from "@mui/material"
+import { Grid, Tooltip } from "@mui/material"
 import Button from "@mui/material/Button"
 import { Login } from "@mui/icons-material"
 import "../../../styles/ui/Lists.scss"
@@ -24,25 +24,32 @@ export const RoomRow = (props: { game: EntityModelGame }) => {
     (value) => value.active
   ).length
   return (
-    <div className="roomlistitem">
-      <Grid container spacing={1}>
-        <Grid item xs={6}>
-          {props.game.name}
+    <Tooltip
+      title={'click "JOIN" to access this game-room'}
+      arrow={true}
+      placement={"left"}
+      enterDelay={500}
+    >
+      <div className="roomlistitem">
+        <Grid container spacing={1}>
+          <Grid item xs={6}>
+            {props.game.name}
+          </Grid>
+          <Grid item xs={3}>
+            {participationCount} Players
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              disabled={loading}
+              variant="contained"
+              endIcon={<Login />}
+              onClick={clickJoin}
+            >
+              join
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item xs={3}>
-          {participationCount} Players
-        </Grid>
-        <Grid item xs={3}>
-          <Button
-            disabled={loading}
-            variant="contained"
-            endIcon={<Login />}
-            onClick={clickJoin}
-          >
-            join
-          </Button>
-        </Grid>
-      </Grid>
-    </div>
+      </div>
+    </Tooltip>
   )
 }

@@ -5,7 +5,7 @@ import ListAltIcon from "@mui/icons-material/ListAlt"
 import { useCurrentGame } from "../../hooks/api/useCurrentGame"
 import { Paths } from "../routing/routers/Paths"
 import { useNavigate } from "react-router-dom"
-import { Grow } from "@mui/material"
+import { Grow, Tooltip } from "@mui/material"
 
 const HamburgerMenu = () => {
   const navigate = useNavigate()
@@ -46,11 +46,13 @@ const HamburgerMenu = () => {
   return (
     <nav className="navBar">
       <input type="checkbox" id="menu_checkbox" onClick={handleToggle} />
-      <label className="hamburgerlabel" htmlFor="menu_checkbox">
-        <div></div>
-        <div></div>
-        <div></div>
-      </label>
+      <Tooltip title={"Menu"} arrow={true} placement={"right"}>
+        <label className="hamburgerlabel" htmlFor="menu_checkbox">
+          <div></div>
+          <div></div>
+          <div></div>
+        </label>
+      </Tooltip>
       <ul className={`menuNav ${hamburgerOpen ? " showMenu" : ""}`}>
         <li
           className="listitem licolor1"

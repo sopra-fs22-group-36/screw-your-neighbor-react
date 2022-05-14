@@ -9,7 +9,7 @@ import { usePlayers } from "../../../hooks/api/usePlayers"
 import { CreateGame } from "./CreateGame"
 import { RoomRow } from "./RoomRow"
 import { Paths } from "../../routing/routers/Paths"
-import { Collapse, Grid } from "@mui/material"
+import { Collapse, Grid, Tooltip } from "@mui/material"
 import { TransitionGroup } from "react-transition-group"
 import "../../../styles/ui/Button.scss"
 import "../../../styles/ui/Divs.scss"
@@ -70,14 +70,23 @@ const Lobby = observer(() => {
           </BaseContainer>
         </Grid>
         <Grid item xs={2}>
-          <div className="div-players">
-            <h3>Available players</h3>
-            <ul>
-              {players.map((value) => (
-                <li key={value._links.self.href}>{value.name}</li>
-              ))}
-            </ul>
-          </div>
+          <Tooltip
+            title={
+              "Here you can see everyone that is currently playing or in the lobby"
+            }
+            arrow={true}
+            enterDelay={500}
+            placement={"bottom"}
+          >
+            <div className="div-players">
+              <h3>Available players</h3>
+              <ul>
+                {players.map((value) => (
+                  <li key={value._links.self.href}>{value.name}</li>
+                ))}
+              </ul>
+            </div>
+          </Tooltip>
         </Grid>
       </Grid>
       <Footer />

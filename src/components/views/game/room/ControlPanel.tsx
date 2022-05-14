@@ -5,6 +5,7 @@ import { Paths } from "../../../routing/routers/Paths"
 import Button from "@mui/material/Button"
 import SendIcon from "@mui/icons-material/Send"
 import LogoutIcon from "@mui/icons-material/Logout"
+import { Tooltip } from "@mui/material"
 
 export const ControlPanel = () => {
   const navigate = useNavigate()
@@ -18,16 +19,26 @@ export const ControlPanel = () => {
 
   return (
     <div className={"control-panel"}>
-      <div>
-        <Button
-          disabled={loading || activeParticipations.length < 2}
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={playGame}
-        >
-          Start Game
-        </Button>
-      </div>
+      <Tooltip
+        title={
+          activeParticipations.length < 2
+            ? "You need to be at least two players to start the game"
+            : ""
+        }
+        arrow={true}
+        placement={"top"}
+      >
+        <div>
+          <Button
+            disabled={loading || activeParticipations.length < 2}
+            variant="contained"
+            endIcon={<SendIcon />}
+            onClick={playGame}
+          >
+            Start Game
+          </Button>
+        </div>
+      </Tooltip>
 
       <div>
         <Button
