@@ -28,6 +28,7 @@ export const Room = observer(() => {
             <ControlPanel />
           </BaseContainer>
         </Grid>
+
         <Grid item xs={4}>
           <BaseContainer>
             <RoomPlayerContainer />
