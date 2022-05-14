@@ -15,7 +15,6 @@ import { useIdleTimer } from "react-idle-timer"
 import { Paths } from "../../../../routing/routers/Paths"
 import { useNavigate } from "react-router-dom"
 import Countdown from "react-countdown"
-import { BackgroundCard } from "../../../../ui/BackgroundCard"
 
 export const YourHand = observer(() => {
   const { leaveGame } = useCurrentGame()
@@ -124,11 +123,7 @@ export const YourHand = observer(() => {
       <p>These are the Cards for Match {activeMatch?.matchNumber}:</p>
       {notYetPlayed.map((card) => (
         <div key={card._links.self.href}>
-          {activeMatch?.matchNumber !== 5 ? (
-            <CardComponent card={card} onClick={() => clickCard(card)} />
-          ) : (
-            <BackgroundCard card={card} onClick={() => clickCard(card)} />
-          )}
+          <CardComponent card={card} onClick={() => clickCard(card)} />
         </div>
       ))}
       {content}

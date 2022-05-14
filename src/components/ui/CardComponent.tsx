@@ -3,6 +3,7 @@ import { Card, Match } from "../../generated"
 import "./CardComponent.scss"
 import requireContext from "require-context.macro"
 import { useCurrentGame } from "../../hooks/api/useCurrentGame"
+import sCardBack from "../../img/smallerbackside.png"
 
 export type CardComponentProps = {
   card: Card
@@ -63,7 +64,11 @@ export const CardComponent = (props: CardComponentProps) => {
     >
       <div>
         <img
-          src={cards[findCard(props.card.cardRank, props.card.cardSuit)]}
+          src={
+            props.card.cardRank !== null
+              ? cards[findCard(props.card.cardRank, props.card.cardSuit)]
+              : sCardBack
+          }
           alt="card"
         />
       </div>
