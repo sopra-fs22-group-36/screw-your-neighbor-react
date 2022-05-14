@@ -119,14 +119,7 @@ export const AnnouncementModal = observer(() => {
     const otherHands = activeMatch?.hands.filter(
       (value) => !iriMatch(yourActiveHand?._links.self, value._links.self)
     )
-    const andere = activeMatch.hands.length - 1
-    for (let i = 0; i < andere; i++) {
-      if (i === 0) {
-        cards = otherHands[i].cards
-      } else {
-        cards.push(...otherHands[i].cards)
-      }
-    }
+    cards = otherHands[1].cards
     console.log(JSON.stringify(cards))
   }
 
