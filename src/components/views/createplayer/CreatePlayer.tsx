@@ -22,7 +22,6 @@ const CreatePlayer = () => {
     setName(e.target.value)
   }
   const redirectLink = useQuery().get("redirectTo")
-  console.log(JSON.stringify(redirectLink))
 
   const { me, loading, createPlayer, startPollPlayers } = usePlayers()
 
