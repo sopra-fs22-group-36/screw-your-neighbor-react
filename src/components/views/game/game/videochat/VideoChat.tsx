@@ -76,7 +76,6 @@ export const VideoChat = observer(() => {
               variant="contained"
               endIcon={<VideoCameraFront />}
               onClick={() => setActive(false)}
-
             >
               End video chat
             </Button>
