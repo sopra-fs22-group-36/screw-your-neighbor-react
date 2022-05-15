@@ -69,6 +69,17 @@ export const VideoChat = observer(() => {
                 iframe.style.width = "100%"
               }}
             />
+
+            <div> </div>
+            <Button
+              className={"toggle-camera"}
+              variant="contained"
+              endIcon={<VideoCameraFront />}
+              onClick={() => setActive(false)}
+
+            >
+              End video chat
+            </Button>
           </div>
         )
       })()}
