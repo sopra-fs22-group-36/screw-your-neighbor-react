@@ -24,10 +24,12 @@ export const SessionGuard = observer((props: SessionGuardProps) => {
       hasCurrentSession()
         .then((value) => {
           if (!value && location.pathname !== Paths.CREATE_PLAYER) {
-            navigate( location.pathname === '/' ? Paths.CREATE_PLAYER :
-              Paths.CREATE_PLAYER +
-                "/?redirectTo=" +
-                encodeURI(location.pathname)
+            navigate(
+              location.pathname === "/"
+                ? Paths.CREATE_PLAYER
+                : Paths.CREATE_PLAYER +
+                    "/?redirectTo=" +
+                    encodeURI(location.pathname)
             )
           }
         })
