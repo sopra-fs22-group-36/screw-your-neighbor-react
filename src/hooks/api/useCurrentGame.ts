@@ -87,6 +87,18 @@ export function useCurrentGame() {
     ).finally(() => setLoading(false))
   }
 
+  const closeGame = () =>{
+    setLoading(true)
+    wrapApiCall(
+      request.request({
+        method: "PATCH",
+        url: toIri(currentGameStore.game._links.self),
+        body: {gameState : Game.gameState.CLOSED }
+        })
+      ).finally(() => setLoading(false)
+    )
+  }
+
   return {
     loading,
     game: currentGameStore.game,
@@ -102,6 +114,7 @@ export function useCurrentGame() {
     yourActiveHand: currentGameStore.yourActiveHand,
     leaveGame,
     playGame,
+    closeGame,
     currentGameIriFromParameter,
     refreshGame,
     startPollGame,
