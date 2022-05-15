@@ -133,6 +133,13 @@ export const AnnouncementModal = observer(() => {
           <Grid item xs={6}>
             <BaseContainer>
               <h1>How many tricks will you make?</h1>
+              {matchForModal.matchNumber == 5 ? (
+                <p>
+                  Please note: These are your OPPONENTS cards, not your own!
+                </p>
+              ) : (
+                <></>
+              )}
               <div className={"cards-and-buttons"}>
                 <div className={"cards"}>
                   {cards.map((card) => (
