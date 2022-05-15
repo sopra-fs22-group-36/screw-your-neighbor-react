@@ -39,7 +39,9 @@ export const ControlPanel = () => {
           disabled={loading}
           variant="contained"
           endIcon={<LogoutIcon />}
-          onClick={activeParticipations.length < 2 ? clickCloseGame : clickLeave}
+          onClick={
+            activeParticipations.length < 2 ? clickCloseGame : clickLeave
+          }
         >
           Leave Room
         </Button>

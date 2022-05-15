@@ -25,6 +25,16 @@ export function useCurrentGame() {
       })
     ).finally(() => setLoading(false))
   }
+  const closeGame = () => {
+    setLoading(true)
+    wrapApiCall(
+      request.request({
+        method: "PATCH",
+        url: toIri(currentGameStore.game._links.self),
+        body: { gameState: Game.gameState.CLOSED },
+      })
+    ).finally(() => setLoading(false))
+  }
 
   const playGame = async () => {
     setLoading(true)
@@ -85,18 +95,6 @@ export function useCurrentGame() {
         body: { announcedScore: numberOfTricks },
       })
     ).finally(() => setLoading(false))
-  }
-
-  const closeGame = () =>{
-    setLoading(true)
-    wrapApiCall(
-      request.request({
-        method: "PATCH",
-        url: toIri(currentGameStore.game._links.self),
-        body: {gameState : Game.gameState.CLOSED }
-        })
-      ).finally(() => setLoading(false)
-    )
   }
 
   return {
