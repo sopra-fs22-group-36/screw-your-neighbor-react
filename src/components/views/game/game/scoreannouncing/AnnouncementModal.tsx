@@ -113,7 +113,6 @@ export const AnnouncementModal = observer(() => {
     yourActiveHand,
   ])
   let cards = []
-  const links = []
   if (activeMatch?.matchNumber !== 5) {
     cards = yourActiveHand?.cards.filter((value) => value.round === null)
   } else {
@@ -121,7 +120,6 @@ export const AnnouncementModal = observer(() => {
       (value) => !iriMatch(yourActiveHand?._links.self, value._links.self)
     )
     cards = otherHands.flatMap((hands) => hands.cards)
-    // links = otherHands.flatMap((hands) => hands._links.self.href)
   }
 
   return (
@@ -139,7 +137,6 @@ export const AnnouncementModal = observer(() => {
                 <div className={"cards"}>
                   {cards.map((card) => (
                     <div key={card._links.self.href}>
-                      <p>{card._links.self.href}</p>
                       <CardComponent card={card} />
                     </div>
                   ))}
