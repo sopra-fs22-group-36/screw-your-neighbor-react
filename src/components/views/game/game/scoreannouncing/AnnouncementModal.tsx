@@ -173,11 +173,11 @@ export const AnnouncementModal = observer(() => {
                       ? "It's not your turn to announce yet!"
                       : `Here you can choose how many tricks you think you will win! As per the rules you are not 
                       allowed to choose ${illegalNumber} as the total of announced tricks would equal the amount of 
-                      cards!`}
+                      cards!`
+                  }
                   placement={"bottom"}
                   arrow={true}
                   enterDelay={750}
-
                 >
                   <div className={"announce-buttons"}>
                     {range(0, handSize + 3).map((number) => {
