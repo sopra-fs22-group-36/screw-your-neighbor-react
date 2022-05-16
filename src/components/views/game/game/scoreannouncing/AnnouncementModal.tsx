@@ -77,7 +77,6 @@ export const AnnouncementModal = observer(() => {
     : null
 
   useEffect(() => {
-    let cancelled = false
     const updateMatch = async () => {
       setMatchForModal(activeMatch)
     }
@@ -97,6 +96,7 @@ export const AnnouncementModal = observer(() => {
       matchStateChangedToPlaying ||
       (matchStateChangedToAnnouncing && matchChanged)
     ) {
+      let cancelled = false
       delay(800, null).then((_) => {
         cancelled && updateMatch()
       })
@@ -148,7 +148,11 @@ export const AnnouncementModal = observer(() => {
                 <div className={"cards"}>
                   {cards.map((card) => (
                     <div key={card._links.self.href}>
-                      {enemyNames[cards.indexOf(card)]}
+                      {matchForModal.matchNumber === 5 ? (
+                        <div>{enemyNames[cards.indexOf(card)]}</div> //TODO: FIND THROUGH CARD DIRECTLY
+                      ) : (
+                        <></>
+                      )}
                       <CardComponent card={card} />
                     </div>
                   ))}

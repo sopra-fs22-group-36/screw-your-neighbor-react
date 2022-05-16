@@ -43,7 +43,7 @@ export const YourHand = observer(() => {
 
   //Check if all players did the score announcement for this match
   const clickCard = async (card) => {
-    if (activeMatch?.matchState === Match.matchState.PLAYING) {
+    if (activeMatch.matchState === Match.matchState.PLAYING) {
       if (yourActiveHand?.turnActive) {
         updatecards(card)
         setPlayerTimeout(false)

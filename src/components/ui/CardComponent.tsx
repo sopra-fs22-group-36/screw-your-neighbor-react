@@ -22,10 +22,10 @@ function importAll(r) {
 }
 
 //Combine card name from rank and suit for find in the storage /img/deck
-function findCard(rank: Card.cardRank, suit: Card.cardSuit): string {
-  if (rank == null) {
-    //sometimes, the game crashes with no apparent reason. This is a temporary fix for that crash
-    window.location.reload()
+cards["background"] = sCardBack
+function findCard(rank?: Card.cardRank, suit?: Card.cardSuit): string {
+  if (!rank || !suit) {
+    return "background"
   }
   let cardName = ""
   let cardSuit = ""
@@ -64,11 +64,7 @@ export const CardComponent = (props: CardComponentProps) => {
     >
       <div>
         <img
-          src={
-            props.card.cardRank !== null
-              ? cards[findCard(props.card.cardRank, props.card.cardSuit)]
-              : sCardBack
-          }
+          src={cards[findCard(props.card.cardRank, props.card.cardSuit)]}
           alt="card"
         />
       </div>
