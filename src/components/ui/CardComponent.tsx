@@ -3,6 +3,7 @@ import { Card, Match } from "../../generated"
 import "./CardComponent.scss"
 import requireContext from "require-context.macro"
 import { useCurrentGame } from "../../hooks/api/useCurrentGame"
+import sCardBack from "../../img/smallerbackside.png"
 
 export type CardComponentProps = {
   card: Card
@@ -21,7 +22,11 @@ function importAll(r) {
 }
 
 //Combine card name from rank and suit for find in the storage /img/deck
-function findCard(rank: Card.cardRank, suit: Card.cardSuit): string {
+cards["background"] = sCardBack
+function findCard(rank?: Card.cardRank, suit?: Card.cardSuit): string {
+  if (!rank || !suit) {
+    return "background"
+  }
   let cardName = ""
   let cardSuit = ""
   if (Card.cardSuit.CLUB === suit) cardSuit = "schellen"

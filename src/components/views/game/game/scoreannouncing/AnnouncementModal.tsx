@@ -55,11 +55,8 @@ export const AnnouncementModal = observer(() => {
   } = useCurrentGame()
 
   const [matchForModal, setMatchForModal] = useState(activeMatch)
-  const [yourHand, setYourHand] = useState(yourActiveHand)
 
   const handSize = matchForModal.hands[0]?.cards.length || 0
-
-  const cards = yourHand?.cards.filter((value) => value.round === null) ?? []
 
   const observableMatch = sortedMatches.filter((match) =>
     iriMatch(match._links.self, matchForModal._links.self)
@@ -80,9 +77,8 @@ export const AnnouncementModal = observer(() => {
     : null
 
   useEffect(() => {
-    const updateMatch = () => {
+    const updateMatch = async () => {
       setMatchForModal(activeMatch)
-      setYourHand(yourActiveHand)
     }
     const matchStateChangedToPlaying =
       matchForModal.matchState === matchState.ANNOUNCING &&
@@ -101,7 +97,7 @@ export const AnnouncementModal = observer(() => {
       (matchStateChangedToAnnouncing && matchChanged)
     ) {
       let cancelled = false
-      delay(1000, null).then((_) => {
+      delay(800, null).then((_) => {
         cancelled && updateMatch()
       })
       return () => {
@@ -116,6 +112,19 @@ export const AnnouncementModal = observer(() => {
     matchForModal.matchState,
     yourActiveHand,
   ])
+  let cards = []
+  let enemyNames = []
+  if (activeMatch?.matchNumber !== 5) {
+    cards = yourActiveHand?.cards.filter((value) => value.round === null)
+  } else {
+    const otherHands = activeMatch?.hands.filter(
+      (value) => !iriMatch(yourActiveHand?._links.self, value._links.self)
+    )
+    cards = otherHands.flatMap((enemyhands) => enemyhands.cards)
+    enemyNames = otherHands.flatMap(
+      (enemies) => enemies.participation.player.name
+    )
+  }
 
   return (
     <Modal
@@ -131,10 +140,18 @@ export const AnnouncementModal = observer(() => {
           <Grid item xs={6}>
             <BaseContainer>
               <h1>How many tricks will you make?</h1>
+              {matchForModal.matchNumber === 5 ? (
+                <p>
+                  Please note: These are your OPPONENTS cards, not your own!
+                </p>
+              ) : (
+                <></>
+              )}
               <div className={"cards-and-buttons"}>
                 <div className={"cards"}>
                   {cards.map((card) => (
                     <div key={card._links.self.href}>
+                      <div>{enemyNames[cards.indexOf(card)]}</div>
                       <CardComponent card={card} />
                     </div>
                   ))}
