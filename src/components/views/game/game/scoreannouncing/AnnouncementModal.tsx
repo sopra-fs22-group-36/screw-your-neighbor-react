@@ -148,11 +148,7 @@ export const AnnouncementModal = observer(() => {
                 <div className={"cards"}>
                   {cards.map((card) => (
                     <div key={card._links.self.href}>
-                      {matchForModal.matchNumber === 5 ? (
-                        <div>{enemyNames[cards.indexOf(card)]}</div> //TODO: FIND THROUGH CARD DIRECTLY
-                      ) : (
-                        <></>
-                      )}
+                      <div>{enemyNames[cards.indexOf(card)]}</div>
                       <CardComponent card={card} />
                     </div>
                   ))}
