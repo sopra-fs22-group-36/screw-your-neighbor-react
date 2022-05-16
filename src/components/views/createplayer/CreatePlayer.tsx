@@ -5,14 +5,13 @@ import { useNavigate } from "react-router-dom"
 import { Paths } from "../../routing/routers/Paths"
 import { useQuery } from "../../../hooks/useQuery"
 
-import Button from "@mui/material/Button"
 import BaseContainer from "../../ui/BaseContainer"
-import SendIcon from "@mui/icons-material/Send"
 import { TextField } from "@mui/material"
 import Box from "@mui/material/Box"
 import "../../../styles/fonts.scss"
 import "../../../styles/ui/Box.scss"
 import "../../../styles/ui/Divs.scss"
+import "../../../styles/ui/Button.scss"
 import "../../../styles/ui/images.scss"
 
 const CreatePlayer = () => {
@@ -45,36 +44,31 @@ const CreatePlayer = () => {
 
   return (
     <div className="div-box">
-      <BaseContainer>
-        <h1 className="font-title">Welcome to "Screw your neighbour"</h1>
-      </BaseContainer>
-      <br />
-      <BaseContainer>
-        <h4>
-          Register by entering your name in the field below and pressing "Take
-          me to the Lobby"
-        </h4>
-        <form onSubmit={submit}>
-          <Box className="Box">
-            <TextField
-              helperText="Please enter your player name"
-              id="demo-helper-text-aligned"
-              label="player name"
-              value={name}
-              onChange={changeName}
-            />
-            <p></p>
-            <Button
-              type={"submit"}
-              disabled={loading}
-              variant="contained"
-              endIcon={<SendIcon />}
-            >
-              TAKE ME TO THE LOBBY
-            </Button>
-          </Box>
-        </form>
-      </BaseContainer>
+      <div className="div-container">
+        <BaseContainer>
+          <h1 className="font-title">Welcome to "Screw your neighbour"</h1>
+        </BaseContainer>
+        <BaseContainer>
+          <h4>
+            Register by entering your name and pressing "Take me to the Lobby"
+          </h4>
+          <form onSubmit={submit}>
+            <Box className="Box">
+              <TextField
+                helperText="Please enter your player name"
+                id="demo-helper-text-aligned"
+                label="player name"
+                value={name}
+                onChange={changeName}
+              />
+              <p></p>
+              <button className="button" disabled={loading} onClick={submit}>
+                TAKE ME TO THE LOBBY
+              </button>
+            </Box>
+          </form>
+        </BaseContainer>
+      </div>
       <Footer />
       <div className="background-img"></div>
     </div>

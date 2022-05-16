@@ -3,6 +3,13 @@
   overflow: hidden;
   bottom: 0;
   height: calc(100vh);
+  font-size: 100%;
+
+  .div-container {
+    margin: auto;
+    width: 60%;
+    overflow: hidden;
+  }  
 }
 
 .div-lobby{ //stlye for the "mother div" of the register page
@@ -22,7 +29,6 @@
 
 }
 
-
 .div-players{
   align-self: center;
   display: block;
@@ -41,6 +47,4 @@
   padding-right: 5px;
   overflow-y: scroll;
   max-height: 200px;
-
 }
-
