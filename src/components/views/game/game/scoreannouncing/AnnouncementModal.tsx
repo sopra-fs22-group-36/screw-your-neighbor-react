@@ -119,7 +119,7 @@ export const AnnouncementModal = observer(() => {
     const otherHands = activeMatch?.hands.filter(
       (value) => !iriMatch(yourActiveHand?._links.self, value._links.self)
     )
-    cards = otherHands.flatMap((hands) => hands.cards)
+    cards = otherHands.flatMap((enemyhands) => enemyhands.cards)
   }
 
   return (
