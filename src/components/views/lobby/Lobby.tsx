@@ -18,7 +18,7 @@ import "../../../styles/ui/images.scss"
 import { Game } from "../../../generated"
 
 const Lobby = observer(() => {
-  const MAX_NUMBER_OF_PLAYERS = 5
+  const maxNumberOfPlayers = 5
   const navigate = useNavigate()
   const { startPollPlayers, players, logout } = usePlayers()
   const { startPollGames, games } = useGames()
@@ -38,7 +38,7 @@ const Lobby = observer(() => {
   const searchingGames = games.filter(
     (game) =>
       game.gameState === Game.gameState.FINDING_PLAYERS &&
-      game.participations.length < MAX_NUMBER_OF_PLAYERS
+      game.participations.length < maxNumberOfPlayers
   )
 
   return (
