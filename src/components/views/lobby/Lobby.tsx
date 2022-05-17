@@ -18,6 +18,7 @@ import "../../../styles/ui/images.scss"
 import { Game } from "../../../generated"
 
 const Lobby = observer(() => {
+  const maxNumberOfPlayers = 5
   const navigate = useNavigate()
   const { startPollPlayers, players, logout } = usePlayers()
   const { startPollGames, games } = useGames()
@@ -35,7 +36,9 @@ const Lobby = observer(() => {
   }
   // filtering all the active games to only show the ones that have not started yet
   const searchingGames = games.filter(
-    (game) => game.gameState === Game.gameState.FINDING_PLAYERS
+    (game) =>
+      game.gameState === Game.gameState.FINDING_PLAYERS &&
+      game.participations.length < maxNumberOfPlayers
   )
 
   return (
