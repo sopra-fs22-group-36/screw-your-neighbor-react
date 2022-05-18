@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite"
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import "../../../ui/BaseContainer.scss"
 import { Tooltip } from "@mui/material"
+import BaseContainer from "../../../ui/BaseContainer"
 
 export const RoomPlayerContainer = observer(() => {
   const { activeParticipations } = useCurrentGame()
@@ -13,12 +14,16 @@ export const RoomPlayerContainer = observer(() => {
       placement={"top"}
       arrow={true}
     >
-      <div className={"room-player-container"}>
-        <h2 className="playerPanel"> Playerlist </h2>
-        {activeParticipations.map((value, index) => (
-          <li key={index}>{value.player.name}</li>
-        ))}
-      </div>
+      <BaseContainer>
+        <h2 style={{ margin: "0px 0px 10px" }}> Playerlist </h2>
+        <div className={"roominfobackground"}>
+          {activeParticipations.map((value, index) => (
+            <li style={{ fontSize: "larger" }} key={index}>
+              {value.player.name}
+            </li>
+          ))}
+        </div>
+      </BaseContainer>
     </Tooltip>
   )
 })

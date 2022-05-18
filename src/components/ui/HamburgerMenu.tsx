@@ -29,8 +29,22 @@ const HamburgerMenu = () => {
 
       <Slide direction="right" in={hamburgerOpen} mountOnEnter unmountOnExit>
         <ul className="menuNav showMenu">
-          <RulesButton />
-          <LeaveButton />
+          <RulesButton
+            style={{
+              marginTop: "50%",
+              color: "white",
+              left: "5%",
+              width: "80%",
+            }}
+          />
+          <LeaveButton
+            style={{
+              marginTop: "10%",
+              color: "white",
+              left: "5%",
+              width: "80%",
+            }}
+          />
         </ul>
       </Slide>
     </nav>

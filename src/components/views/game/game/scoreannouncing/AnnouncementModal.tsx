@@ -207,7 +207,9 @@ export const AnnouncementModal = observer(() => {
                   return <HandRow key={hand._links.self.href} hand={hand} />
                 })}
               </ul>
-              <LeaveButton />
+              <LeaveButton
+                style={{ width: "25%", marginTop: "0%", color: "white" }}
+              />
             </BaseContainer>
           </Grid>
         </Grid>

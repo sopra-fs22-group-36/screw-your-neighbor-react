@@ -7,6 +7,8 @@ import { ControlPanel } from "./ControlPanel"
 import { RoomPlayerContainer } from "./RoomPlayerContainer"
 import { Grid } from "@mui/material"
 import "./Room.scss"
+import Footer from "../../../ui/Footer"
+//import tilted from "../../../../img/tiltedcards.png" //GET THE BACKGROUND IMAGE!!!!
 
 export const Room = observer(() => {
   const { game } = useCurrentGame()
@@ -35,6 +37,7 @@ export const Room = observer(() => {
           </BaseContainer>
         </Grid>
       </Grid>
+      <Footer />
     </div>
   )
 })
