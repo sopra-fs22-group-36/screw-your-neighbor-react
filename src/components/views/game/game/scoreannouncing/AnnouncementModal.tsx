@@ -154,9 +154,11 @@ export const AnnouncementModal = observer(() => {
                   title={
                     !active
                       ? "It's not your turn to announce yet!"
+                      : !illegalNumber
+                      ? `Here you can choose how many tricks you think you will win!`
                       : `Here you can choose how many tricks you think you will win! As per the rules you are not 
-                      allowed to choose ${illegalNumber} as the total of announced tricks would equal the amount of 
-                      cards!`
+                      allowed to choose ${illegalNumber} as the total of announced tricks would equal the amount 
+                      of cards!`
                   }
                   placement={"bottom"}
                   arrow={true}
