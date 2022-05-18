@@ -10,7 +10,7 @@ import { CardComponent } from "../../../../ui/CardComponent"
 import { Chip, Grid, Modal, Tooltip } from "@mui/material"
 import Button from "@mui/material/Button"
 import "./AnnouncementModal.scss"
-import LeaveButton from "./LeaveButton"
+import LeaveButton from "../../../../ui/LeaveButton"
 
 const matchState = Match.matchState
 
@@ -202,7 +202,7 @@ export const AnnouncementModal = observer(() => {
           <Grid item xs={6} className={"announced-score-list"}>
             <BaseContainer>
               <h1>Announced Scores</h1>
-              <ul className={"player-list"}>
+              <ul>
                 {hands.map((hand) => {
                   return <HandRow key={hand._links.self.href} hand={hand} />
                 })}

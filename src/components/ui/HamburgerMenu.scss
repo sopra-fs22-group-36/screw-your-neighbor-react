@@ -20,7 +20,6 @@
 .listitem{
   bottom: 0;
   text-align: center;
-  line-height: 70%;
   color: whitesmoke;
   font-size: x-large;
   z-index: 10;
@@ -74,16 +73,10 @@
   margin-top: -10px;
   padding-left: 40px;
   background: linear-gradient(90deg, rgba(156, 20, 10, 1) 0% ,rgba(150, 25, 15, 0.6) 100% );
-  animation-name: slidein;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
   z-index: 9;
+  width: 100%;
 }
-@keyframes slidein {
-  0% {width: 0%}
-  50% {width: 65%;}
-  100% {width: 100%;}
-}
+
 
 
 #menu_checkbox {
