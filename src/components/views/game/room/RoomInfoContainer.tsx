@@ -4,6 +4,9 @@ import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import Button from "@mui/material/Button"
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"
 import { Tooltip } from "@mui/material"
+import RulesButton from "../../../ui/RulesButton"
+import BaseContainer from "../../../ui/BaseContainer"
+import "./Room.scss"
 
 export const RoomInfoContainer = observer(() => {
   const { game, activeParticipations, id } = useCurrentGame()
@@ -11,25 +14,33 @@ export const RoomInfoContainer = observer(() => {
   const inviteLink = `${window.location.host}/joinGame/${id}`
 
   return (
-    <div className={`room-info-container`}>
-      <h2 className="infoPanel"> Room Info </h2>
-      <div> This is room: {game.name}</div>
-      <div> Current player count: {playerCount} </div>
-      <Tooltip
-        title={"send this invite-link to people who you want to play with!"}
-        arrow={true}
-        placement={"bottom"}
-      >
-        <Button
-          onClick={() => {
-            navigator.clipboard.writeText(inviteLink)
-          }}
-          variant="contained"
-          endIcon={<ContentCopyIcon />}
-        >
-          Copy invite Link
-        </Button>
-      </Tooltip>
-    </div>
+    <BaseContainer>
+      <h2 style={{ margin: "5px" }}> Room Info </h2>
+      <div className={"roominfobackground"}>
+        <div> This is room: {game.name}</div>
+        <div> Current player count: {playerCount} </div>
+        <div style={{ marginTop: "20%" }}>
+          <Tooltip
+            title={"send this invite-link to people who you want to play with!"}
+            arrow={true}
+            placement={"bottom"}
+          >
+            <Button
+              onClick={() => {
+                navigator.clipboard.writeText(inviteLink)
+              }}
+              variant="contained"
+              endIcon={<ContentCopyIcon />}
+            >
+              Copy invite Link
+            </Button>
+          </Tooltip>
+        </div>
+        <div style={{ marginTop: "20%" }}>
+          Don't know the rules?
+          <RulesButton style={{ color: "white" }}></RulesButton>
+        </div>
+      </div>
+    </BaseContainer>
   )
 })

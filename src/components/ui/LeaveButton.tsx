@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom"
 import { useCurrentGame } from "../../hooks/api/useCurrentGame"
 import { Paths } from "../routing/routers/Paths"
 import SendIcon from "@mui/icons-material/Send"
+import { Button } from "@mui/material"
+import "./ColorButtons.scss"
 
-const LeaveButton = () => {
+const LeaveButton = (props: { style }) => {
   const navigate = useNavigate()
   const { leaveGame } = useCurrentGame()
 
@@ -14,18 +16,14 @@ const LeaveButton = () => {
   }
 
   return (
-    <li
+    <Button
       onClick={clickLeave}
-      className="listitem licolor2"
-      style={{
-        color: "white",
-        fontSize: "x-large",
-        listStyle: "none",
-      }}
+      className="colorbuttons bucolor2"
+      style={props.style}
+      endIcon={<SendIcon />}
     >
-      <SendIcon style={{ width: "20%", paddingRight: "4px" }} />
       Leave Game
-    </li>
+    </Button>
   )
 }
 export default LeaveButton

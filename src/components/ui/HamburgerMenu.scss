@@ -5,56 +5,6 @@
   overflow: hidden;
 
 }
-
-.navBar button {
-  position: fixed; //Button on top left corner
-  left: 0;
-  top:0;
-  z-index: 11;
-  cursor: pointer;
-  width: 40px;
-  background-color: rgba(222, 222, 222, 1) ;
-  border-radius: 10%;
-}
-
-.listitem{
-  bottom: 0;
-  text-align: center;
-  color: whitesmoke;
-  font-size: x-large;
-  z-index: 10;
-  cursor: pointer;
-  width: 200px;
-  height: 30px;
-  padding: 5px;
-  margin-left: 5px;
-  font-family: 'Merriweather Sans', sans-serif;
-  font-style: normal;
-  border-radius: 10px;
-  align-items: center;
-
-  background-size: 300% 100%;
-  -moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-  &:hover{
-    background-position: 100% 0;
-    -moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-  }
-}
-.licolor1{
-  background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a);
-  box-shadow: 0 4px 5px 0 rgba(49, 196, 190, 0.5);
-}
-.licolor2{
-  background-image: linear-gradient(to right, #0a0f96,  #0a74c2, #163a8e);
-  box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
-}
-
 .menuNav {
   list-style: none;
   position: fixed;
@@ -66,6 +16,7 @@
   overflow: hidden;
   max-width: 290px;
   z-index: 9;
+  align-items: center;
 }
 
 .menuNav.showMenu {
@@ -74,7 +25,8 @@
   padding-left: 40px;
   background: linear-gradient(90deg, rgba(156, 20, 10, 1) 0% ,rgba(150, 25, 15, 0.6) 100% );
   z-index: 9;
-  width: 100%;
+  width: 200%;
+  align-items: center;
 }
 
 

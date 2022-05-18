@@ -6,8 +6,9 @@ import DialogContentText from "@mui/material/DialogContentText"
 import DialogTitle from "@mui/material/DialogTitle"
 import React, { useState } from "react"
 import ListAltIcon from "@mui/icons-material/ListAlt"
+import "./ColorButtons.scss"
 
-const RulesButton = () => {
+const RulesButton = (props: { style }) => {
   const [showRules, setShowRules] = useState(false)
 
   const theRules = (
@@ -62,14 +63,14 @@ const RulesButton = () => {
 
   return (
     <div>
-      <li
-        className="listitem licolor1"
+      <Button
+        className="colorbuttons bucolor1"
         onClick={clickRules}
-        style={{ lineHeight: "130%", marginTop: "50%", marginBottom: "10%" }}
+        style={props.style}
+        endIcon={<ListAltIcon />}
       >
-        <ListAltIcon style={{ width: "20%", paddingRight: "4px" }} />
         The Rules
-      </li>
+      </Button>
       {content}
     </div>
   )

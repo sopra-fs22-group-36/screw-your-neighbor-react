@@ -28,7 +28,7 @@ export const ControlPanel = () => {
         arrow={true}
         placement={"top"}
       >
-        <div>
+        <div style={{ margin: "10px" }}>
           <Button
             disabled={loading || activeParticipations.length < 2}
             variant="contained"
@@ -40,7 +40,7 @@ export const ControlPanel = () => {
         </div>
       </Tooltip>
 
-      <div>
+      <div style={{ margin: "10px" }}>
         <Button
           disabled={loading}
           variant="contained"
