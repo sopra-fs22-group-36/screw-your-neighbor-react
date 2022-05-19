@@ -17,7 +17,7 @@ const PlayedCards = forwardRef<HTMLDivElement, PlayedCardsProps>(
     return (
       <div className={"card-table"} ref={ref}>
         {props.cards.map((card, index) => (
-          <div key={index} className={"card-place-" + (index + 1)}>
+          <div key={index}>
             <CardComponent card={card} />
           </div>
         ))}
