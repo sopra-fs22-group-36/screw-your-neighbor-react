@@ -19,9 +19,16 @@ const PlayedCards = observer(
       const { cardHandMap } = useCurrentGame()
       const { getAvatarConfigFor } = useParticipationAvatars()
 
+      const cardRanks = Object.keys(Card.cardRank)
+      const sortedCards = props.cards
+        .slice()
+        .sort(
+          (a, b) =>
+            cardRanks.indexOf(a.cardRank) - cardRanks.indexOf(b.cardRank)
+        )
       return (
         <div className={"card-table"} ref={ref}>
-          {props.cards.map((card, index) => {
+          {sortedCards.map((card, index) => {
             const hand = cardHandMap[card._links.self.href]
             const avatarConfig = getAvatarConfigFor(hand.participation)
             return (
