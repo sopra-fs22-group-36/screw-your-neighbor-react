@@ -40,7 +40,7 @@
     .card-component {
       width: 10%;
 
-      :is(div, img) {
+      :is(div.img-div, img) {
         width: 150%;
       }
     }

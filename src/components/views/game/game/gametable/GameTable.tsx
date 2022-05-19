@@ -2,6 +2,7 @@ import React, { forwardRef, useRef } from "react"
 import { PlayerHand } from "./PlayerHand"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
 import { observer } from "mobx-react-lite"
+import { useParticipationAvatars } from "../../../../../hooks/useParticipationAvatars"
 import { CardComponent } from "../../../../ui/CardComponent"
 import { distributeOpponents } from "./distributeOpponents"
 import { Alert } from "@mui/material"
@@ -12,18 +13,29 @@ type PlayedCardsProps = {
   cards: Card[]
 }
 
-const PlayedCards = forwardRef<HTMLDivElement, PlayedCardsProps>(
-  (props: { cards: Card[] }, ref) => {
-    return (
-      <div className={"card-table"} ref={ref}>
-        {props.cards.map((card, index) => (
-          <div key={index}>
-            <CardComponent card={card} />
-          </div>
-        ))}
-      </div>
-    )
-  }
+const PlayedCards = observer(
+  forwardRef<HTMLDivElement, PlayedCardsProps>(
+    (props: { cards: Card[] }, ref) => {
+      const { cardHandMap } = useCurrentGame()
+      const { getAvatarConfigFor } = useParticipationAvatars()
+
+      return (
+        <div className={"card-table"} ref={ref}>
+          {props.cards.map((card, index) => {
+            const hand = cardHandMap[card._links.self.href]
+            const avatarConfig = getAvatarConfigFor(hand.participation)
+            return (
+              <div key={index} className={"card-wrapper"}>
+                <div>
+                  <CardComponent card={card} avatarConfig={avatarConfig} />
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )
+    }
+  )
 )
 
 export const GameTable = observer(() => {

@@ -55,7 +55,7 @@
       pointer-events: none;
     }
 
-    .card-component :is(div, img) {
+    .card-component :is(div.img-div, img) {
       width: 105%;
     }
   }

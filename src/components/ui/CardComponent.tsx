@@ -4,11 +4,14 @@ import "./CardComponent.scss"
 import requireContext from "require-context.macro"
 import { useCurrentGame } from "../../hooks/api/useCurrentGame"
 import sCardBack from "../../img/smallerbackside.png"
+import { AvatarConfig } from "../../hooks/useParticipationAvatars"
+import { ConfiguredAvatar } from "./ConfiguredAvatar"
 
 export type CardComponentProps = {
   card: Card
   onClick?: MouseEventHandler<HTMLDivElement>
   stylePlaying?: string
+  avatarConfig?: AvatarConfig
 }
 
 //Store all cards from a deck in the dict cards
@@ -62,7 +65,8 @@ export const CardComponent = (props: CardComponentProps) => {
       className={stylePlaying + (isPlayed ? " moving" : "")}
       onClick={clickCard}
     >
-      <div>
+      {props.avatarConfig && <ConfiguredAvatar config={props.avatarConfig} />}
+      <div className={"img-div"}>
         <img
           src={cards[findCard(props.card.cardRank, props.card.cardSuit)]}
           alt="card"

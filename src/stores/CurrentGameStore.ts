@@ -1,5 +1,5 @@
 import { action, computed, makeAutoObservable, observable } from "mobx"
-import { EntityModelGame, EntityModelParticipation } from "../generated"
+import { EntityModelGame, EntityModelParticipation, Hand } from "../generated"
 import { KeepOnlyOneInterval } from "../util/KeepOnlyOneInterval"
 import { embedProxy } from "../util/embedProxy"
 
@@ -49,6 +49,20 @@ export class CurrentGameStore {
       return null
     }
     return this.sortedMatches.slice(-1)[0]
+  }
+
+  @computed get cardHandMap(): Record<string, Hand> {
+    if (!this.game) {
+      return {}
+    }
+    const cardHandMap = {}
+    const hands = this.game.matches?.flatMap((match) => match.hands) ?? []
+    for (const hand of hands) {
+      for (const card of hand.cards ?? []) {
+        cardHandMap[card._links.self.href] = hand
+      }
+    }
+    return cardHandMap
   }
 
   @computed get sortedRoundsOfActiveMatch() {

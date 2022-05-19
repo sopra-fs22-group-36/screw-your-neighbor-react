@@ -101,6 +101,7 @@ export function useCurrentGame() {
     sumOfAnnouncedScores: currentGameStore.sumOfAnnouncedScores,
     lastPlayerAnnouncing: currentGameStore.isLastPlayerAnnouncing,
     yourActiveHand: currentGameStore.yourActiveHand,
+    cardHandMap: currentGameStore.cardHandMap,
     leaveGame,
     playGame,
     currentGameIriFromParameter,
