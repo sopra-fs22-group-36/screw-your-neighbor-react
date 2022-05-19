@@ -7,6 +7,8 @@ import { useTransition, a, config } from "react-spring"
 import { Person } from "@mui/icons-material"
 import "./PlayerHand.scss"
 import cardBack from "../../../../../img/card-backside.png"
+import { useParticipationAvatars } from "../../../../../hooks/useParticipationAvatars"
+import { ConfiguredAvatar } from "../../../../ui/ConfiguredAvatar"
 
 export type PlayerHandProps = {
   participation: EntityModelParticipation
@@ -16,7 +18,7 @@ export type PlayerHandProps = {
 
 export const PlayerHand = observer((props: PlayerHandProps) => {
   const useCurrentGameHook = useCurrentGame()
-  const playerName = props.participation.player.name
+  const { getAvatarConfigFor } = useParticipationAvatars()
 
   const currentHand = useCurrentGameHook.activeMatch.hands
     .filter((value) =>
@@ -35,6 +37,8 @@ export const PlayerHand = observer((props: PlayerHandProps) => {
     createTransitionConfig(difference)
   )
 
+  const avatarConfig = getAvatarConfigFor(props.participation)
+
   return (
     <div className={`player-hand ${props.className}`}>
       <div className={"content"}>
@@ -45,7 +49,7 @@ export const PlayerHand = observer((props: PlayerHandProps) => {
               color: "black",
             }}
           />
-          <span className={"player-name"}>{playerName}</span>
+          <ConfiguredAvatar config={avatarConfig} />
         </div>
         <div className={"cards"} ref={cardsContainer}>
           {transition(
