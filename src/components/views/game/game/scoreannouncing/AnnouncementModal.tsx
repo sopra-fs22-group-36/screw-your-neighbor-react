@@ -86,6 +86,10 @@ export const AnnouncementModal = observer(() => {
   const illegalNumber = lastPlayerAnnouncing
     ? yourActiveHand.cards.length - sumOfAnnouncedScores
     : null
+  const activatedNumberInfo = !illegalNumber
+    ? `Here you can choose how many tricks you think you will win!`
+    : `Here you can choose how many tricks you think you will win! As per the rules you are not allowed to choose
+         ${illegalNumber} as the total of announced tricks would equal the amount of cards!`
 
   useEffect(() => {
     const updateMatch = async () => {
@@ -171,11 +175,7 @@ export const AnnouncementModal = observer(() => {
                   title={
                     !active
                       ? "It's not your turn to announce yet!"
-                      : !illegalNumber
-                      ? `Here you can choose how many tricks you think you will win!`
-                      : `Here you can choose how many tricks you think you will win! As per the rules you are not 
-                      allowed to choose ${illegalNumber} as the total of announced tricks would equal the amount 
-                      of cards!`
+                      : `${activatedNumberInfo}`
                   }
                   placement={"bottom"}
                   arrow={true}
@@ -202,7 +202,6 @@ export const AnnouncementModal = observer(() => {
           <Grid item xs={6} className={"announced-score-list"}>
             <BaseContainer>
               <h1>Announced Scores</h1>
-
               <ul className={"player-list"}>
                 {hands.map((hand) => {
                   return <HandRow key={hand._links.self.href} hand={hand} />
