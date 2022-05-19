@@ -19,6 +19,7 @@ export const ControlPanel = () => {
   return (
     <div className={"control-panel"}>
       <div>
+        <h2 className="infoPanel"> Game entrance </h2>
         <Button
           disabled={loading || activeParticipations.length < 2}
           variant="contained"
@@ -28,7 +29,6 @@ export const ControlPanel = () => {
           Start Game
         </Button>
       </div>
-
       <div>
         <Button
           disabled={loading}
