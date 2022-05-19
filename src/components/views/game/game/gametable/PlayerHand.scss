@@ -8,21 +8,16 @@
   .opponent {
     position: relative;
 
-    .player-name {
+    .configured-avatar {
       position: absolute;
-      color: $textColor;
-      left: 30%;
-      bottom: 25%;
-      max-width: 80%;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      top: 22.5%;
+      left: 52%;
     }
   }
 
   .cards {
     position: absolute;
-    bottom: 0;
+    bottom: 10%;
     left: 40%;
     width: 100%;
 
