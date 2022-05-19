@@ -6,6 +6,8 @@ import { iriMatch } from "../../../../../util/iriMatch"
 import BaseContainer from "../../../../ui/BaseContainer"
 import { Chip } from "@mui/material"
 import "./ScoreBoard.scss"
+import { useParticipationAvatars } from "../../../../../hooks/useParticipationAvatars"
+import { ConfiguredAvatar } from "../../../../ui/ConfiguredAvatar"
 
 type PlayerRowProps = {
   participation: Participation
@@ -14,6 +16,7 @@ type PlayerRowProps = {
 const PlayerRow = observer((props: PlayerRowProps) => {
   const { participation } = props
   const { activeMatch, myParticipation } = useCurrentGame()
+  const { getAvatarConfigFor } = useParticipationAvatars()
   const participationLink = participation._links.self
   const turnActive = activeMatch.hands
     .filter((hand) =>
@@ -25,8 +28,12 @@ const PlayerRow = observer((props: PlayerRowProps) => {
     participationLink,
     myParticipation._links.self
   )
+
+  const avatarConfig = getAvatarConfigFor(participation)
+
   return (
     <li className={isOwnParticipation ? "own-participation" : ""}>
+      <ConfiguredAvatar config={avatarConfig} />
       <span className={"player-name"}>{participation.player.name}</span>
       {turnActive && (
         <Chip
