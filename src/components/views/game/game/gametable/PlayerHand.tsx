@@ -9,6 +9,7 @@ import "./PlayerHand.scss"
 import cardBack from "../../../../../img/card-backside.png"
 import { useParticipationAvatars } from "../../../../../hooks/useParticipationAvatars"
 import { ConfiguredAvatar } from "../../../../ui/ConfiguredAvatar"
+import { Badge } from "@mui/material"
 
 export type PlayerHandProps = {
   participation: EntityModelParticipation
@@ -43,12 +44,26 @@ export const PlayerHand = observer((props: PlayerHandProps) => {
     <div className={`player-hand ${props.className}`}>
       <div className={"content"}>
         <div className={"opponent"}>
-          <Person
+          <Badge
             sx={{
-              fontSize: "13em",
-              color: "black",
+              "& .MuiBadge-badge": {
+                fontSize: 18,
+                height: 30,
+                minWidth: 30,
+                borderRadius: 15,
+              },
             }}
-          />
+            badgeContent={<span>{currentHand.numberOfWonTricks}</span>}
+            color={"primary"}
+            className={"number-of-won-tricks"}
+          >
+            <Person
+              sx={{
+                fontSize: "13em",
+                color: "black",
+              }}
+            />
+          </Badge>
           <ConfiguredAvatar config={avatarConfig} />
         </div>
         <div className={"cards"} ref={cardsContainer}>
