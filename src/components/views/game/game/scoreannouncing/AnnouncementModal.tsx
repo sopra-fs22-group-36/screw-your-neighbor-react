@@ -175,7 +175,7 @@ export const AnnouncementModal = observer(() => {
                   title={
                     !active
                       ? "It's not your turn to announce yet!"
-                      : `${activatedNumberInfo}`
+                      : activatedNumberInfo
                   }
                   placement={"bottom"}
                   arrow={true}
