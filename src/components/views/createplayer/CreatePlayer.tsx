@@ -52,7 +52,8 @@ const CreatePlayer = () => {
 
         <Box className="registerContainer">
           <h4 className="registerBoxSubtitle">
-            Register by entering your name and pressing "Take me to the Lobby"
+            Register by entering your name and pressing <br />
+            "Take me to the Lobby"
           </h4>
           <form onSubmit={submit}>
             <Box className="registerBox">
