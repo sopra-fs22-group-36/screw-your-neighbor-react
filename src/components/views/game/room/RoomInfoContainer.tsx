@@ -17,7 +17,9 @@ export const RoomInfoContainer = observer(() => {
     <BaseContainer>
       <h2 style={{ margin: "5px" }}> Room Info </h2>
       <div className={"roominfobackground"}>
-        <div> This is room: {game.name}</div>
+        <div style={{ maxWidth: "250px", wordWrap: "break-word" }}>
+          This is room: {game.name}
+        </div>
         <div> Current player count: {playerCount} </div>
         <div style={{ marginTop: "20%" }}>
           <Tooltip
@@ -38,7 +40,12 @@ export const RoomInfoContainer = observer(() => {
         </div>
         <div style={{ marginTop: "20%" }}>
           Don't know the rules?
-          <RulesButton style={{ color: "white" }}></RulesButton>
+          <RulesButton
+            style={{
+              color: "white",
+              maxWidth: "200px",
+            }}
+          ></RulesButton>
         </div>
       </div>
     </BaseContainer>
