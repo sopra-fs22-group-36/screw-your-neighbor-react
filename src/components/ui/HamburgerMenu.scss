@@ -38,8 +38,8 @@
 
 .hamburgerlabel { //Important: Don't define style of "label"!
   position: fixed;
-  top: -40;
-  left: 0;
+  top: 5%;
+  left: 2%;
   display: block;
   width: 40px;
   height: 40px;
@@ -61,11 +61,11 @@ label div {
   position: relative;
   top: 4px;
   height: 10px;
-  background-color: #fff;
+  background-image: linear-gradient(rgba(69,8,8,1),rgba(143,24,24,1));
   margin-bottom: 5px;
   transition: 0.3s ease transform, 0.3s ease top, 0.3s ease width,
   0.3s ease right;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 label div:first-child {
@@ -84,12 +84,15 @@ label div:nth-child(2) {
 
 #menu_checkbox:checked + label div:first-child {
   transform: rotateZ(45deg);
+  background-image: linear-gradient(white,whitesmoke);
 
 }
 
 #menu_checkbox:checked + label div:last-child {
   top: 13.9px;
   transform: rotateZ(45deg);
+  background-image: linear-gradient(white,whitesmoke);
+
 }
 
 #menu_checkbox:checked + label div:nth-child(2) {
@@ -97,4 +100,5 @@ label div:nth-child(2) {
   top: 9px;
   right: 8px;
   transform: rotateZ(-45deg);
+  background-image: linear-gradient(white,whitesmoke);
 }

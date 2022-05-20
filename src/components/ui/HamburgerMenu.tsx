@@ -7,6 +7,7 @@ import LeaveButton from "./LeaveButton"
 
 const HamburgerMenu = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false)
+
   const handleToggle = () => {
     setHamburgerOpen(!hamburgerOpen)
   }
@@ -21,12 +22,6 @@ const HamburgerMenu = () => {
           <div></div>
         </label>
       </Tooltip>
-      <label className="hamburgerlabel" htmlFor="menu_checkbox">
-        <div></div>
-        <div></div>
-        <div></div>
-      </label>
-
       <Slide direction="right" in={hamburgerOpen} mountOnEnter unmountOnExit>
         <ul className="menuNav showMenu">
           <RulesButton
