@@ -13,6 +13,7 @@ import "../../../styles/ui/Box.scss"
 import "../../../styles/ui/Divs.scss"
 import "../../../styles/ui/Button.scss"
 import "../../../styles/ui/images.scss"
+import "../createplayer/CreatePlayer.scss"
 
 const CreatePlayer = () => {
   const navigate = useNavigate()
@@ -46,14 +47,15 @@ const CreatePlayer = () => {
     <div className="div-box">
       <div className="div-container">
         <BaseContainer>
-          <h1 className="font-title">Welcome to "Screw your neighbour"</h1>
+          <h1 className="registerTitle">Welcome to "Screw your neighbour"</h1>
         </BaseContainer>
-        <BaseContainer>
-          <h4>
+
+        <Box className="registerContainer">
+          <h4 className="registerBoxSubtitle">
             Register by entering your name and pressing "Take me to the Lobby"
           </h4>
           <form onSubmit={submit}>
-            <Box className="Box">
+            <Box className="registerBox">
               <TextField
                 helperText="Please enter your player name"
                 id="demo-helper-text-aligned"
@@ -67,7 +69,7 @@ const CreatePlayer = () => {
               </button>
             </Box>
           </form>
-        </BaseContainer>
+        </Box>
       </div>
       <Footer />
       <div className="background-img"></div>
