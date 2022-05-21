@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import "./HamburgerMenu.scss"
-import { Tooltip } from "@mui/material"
-import { Slide } from "@mui/material"
+import { Tooltip, Slide } from "@mui/material"
 import RulesButton from "./RulesButton"
 import LeaveButton from "./LeaveButton"
 
