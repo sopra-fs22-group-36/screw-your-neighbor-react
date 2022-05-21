@@ -42,6 +42,10 @@ const HamburgerMenu = () => {
           />
         </ul>
       </Slide>
+      <p className={"hamburgerinfotext"}>
+        <i className="arrow left"></i>Click here to leave the game or look at
+        the rules
+      </p>
     </nav>
   )
 }
