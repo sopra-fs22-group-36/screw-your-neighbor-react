@@ -73,13 +73,18 @@ const Lobby = observer(() => {
             enterDelay={500}
             placement={"bottom"}
           >
-            <div className="player-div">
-              <h3>Available players</h3>
-              <ul>
+            <div className="lobby-player-div">
+              <h3>Available players </h3>
+              <div>
                 {players.map((value) => (
-                  <li key={value._links.self.href}>{value.name}</li>
+                  <li
+                    className="lobby-individualPlayer"
+                    key={value._links.self.href}
+                  >
+                    {value.name}
+                  </li>
                 ))}
-              </ul>
+              </div>
             </div>
             <div className="buttonDiv">
               <button className="lobbyButton" onClick={() => doLogout()}>
