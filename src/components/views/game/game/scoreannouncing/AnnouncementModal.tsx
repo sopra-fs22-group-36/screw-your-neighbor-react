@@ -12,6 +12,7 @@ import { Chip, Grid, Modal, Tooltip } from "@mui/material"
 import Button from "@mui/material/Button"
 import "./AnnouncementModal.scss"
 import LeaveButton from "../../../../ui/LeaveButton"
+import { ConfiguredAvatar } from "../../../../ui/ConfiguredAvatar"
 
 const matchState = Match.matchState
 
@@ -22,25 +23,31 @@ type HandRowProps = {
 const HandRow = observer((props: HandRowProps) => {
   const { hand } = props
   const { myParticipation } = useCurrentGame()
-  const participationLink = hand.participation._links.self
+  const { getAvatarConfigFor } = useParticipationAvatars()
+  const participation = hand.participation
+  const participationLink = participation._links.self
 
   const isOwnParticipation = iriMatch(
     participationLink,
     myParticipation._links.self
   )
+
+  const avatarConfig = getAvatarConfigFor(participation)
+
   return (
     <Tooltip
       title={
         !hand.announcedScore
-          ? `Here you will see how many tricks ${hand.participation.player.name} expects to make.
+          ? `Here you will see how many tricks ${participation.player.name} expects to make.
              They have not voted yet!`
-          : `${hand.participation.player.name} expects to win ${hand.announcedScore} tricks!`
+          : `${participation.player.name} expects to win ${hand.announcedScore} tricks!`
       }
       arrow={true}
       enterDelay={750}
     >
       <li className={isOwnParticipation ? "own-participation" : ""}>
-        <span className={"player-name"}>{hand.participation.player.name}</span>
+        <ConfiguredAvatar config={avatarConfig} />
+        <span className={"player-name"}>{participation.player.name}</span>
         {hand.turnActive && (
           <Chip
             color={"info"}
@@ -187,7 +194,7 @@ export const AnnouncementModal = observer(() => {
                   title={
                     !active
                       ? "It's not your turn to announce yet!"
-                      : activatedNumberInfo
+                      : `${activatedNumberInfo}`
                   }
                   placement={"bottom"}
                   arrow={true}
