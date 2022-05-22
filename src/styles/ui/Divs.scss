@@ -20,17 +20,7 @@
 
 }
 
-.div-rooms{
-  display: block;
-  justify-content: center;
-  align-items: center;
-  clear:both;
-  text-align: center;
-  width: 650px;
-}
-
 .div-players{
-  align-self: center;
   display: block;
   flex-direction: column;
   background-color: #620606;
@@ -46,5 +36,5 @@
   padding-bottom: 8px;
   padding-right: 5px;
   overflow-y: scroll;
-  max-height: 200px;
+  max-height: 400px;
 }
