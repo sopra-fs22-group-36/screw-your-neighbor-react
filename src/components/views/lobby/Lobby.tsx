@@ -11,10 +11,10 @@ import { RoomRow } from "./RoomRow"
 import { Paths } from "../../routing/routers/Paths"
 import { Collapse, Grid, Tooltip } from "@mui/material"
 import { TransitionGroup } from "react-transition-group"
-import "../../../styles/ui/Button.scss"
 import "../../../styles/ui/Divs.scss"
 import "../../../styles/ui/Lists.scss"
 import "../../../styles/ui/images.scss"
+import "../lobby/Lobby.scss"
 import { Game } from "../../../generated"
 
 const Lobby = observer(() => {
@@ -50,9 +50,9 @@ const Lobby = observer(() => {
         <Grid item xs={9}>
           <BaseContainer>
             <h3>Choose one of the Rooms to join</h3>
-            <div className="div-rooms">
+            <div className="room-group">
               <div className="roomlist">
-                <TransitionGroup>
+                <TransitionGroup className="roomlist-item">
                   {searchingGames.map((game) => (
                     <Collapse key={game._links.self.href}>
                       <RoomRow game={toJS(game)} />
@@ -60,12 +60,7 @@ const Lobby = observer(() => {
                   ))}
                 </TransitionGroup>
               </div>
-
               <CreateGame />
-
-              <button className="button" onClick={() => doLogout()}>
-                Logout
-              </button>
             </div>
           </BaseContainer>
         </Grid>
@@ -78,13 +73,18 @@ const Lobby = observer(() => {
             enterDelay={500}
             placement={"bottom"}
           >
-            <div className="div-players">
+            <div className="player-div">
               <h3>Available players</h3>
               <ul>
                 {players.map((value) => (
                   <li key={value._links.self.href}>{value.name}</li>
                 ))}
               </ul>
+            </div>
+            <div className="buttonDiv">
+              <button className="lobbyButton" onClick={() => doLogout()}>
+                Logout
+              </button>
             </div>
           </Tooltip>
         </Grid>

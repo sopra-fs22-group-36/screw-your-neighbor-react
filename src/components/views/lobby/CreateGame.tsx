@@ -10,6 +10,7 @@ import Box from "@mui/material/Box"
 import { Paths } from "../../routing/routers/Paths"
 import "../../../styles/ui/Box.scss"
 
+import "../lobby/Lobby.scss"
 export const CreateGame = () => {
   const navigate = useNavigate()
   const [name, setName] = useState("")
@@ -28,7 +29,7 @@ export const CreateGame = () => {
 
   return (
     <form onSubmit={submit}>
-      <Box className="Box">
+      <Box className="gameBox">
         <TextField
           helperText="Please enter your room name"
           id="demo-helper-text-aligned"
