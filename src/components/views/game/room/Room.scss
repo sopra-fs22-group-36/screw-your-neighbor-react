@@ -17,3 +17,32 @@
 .Button {
   padding: 20px;
 }
+
+.room-playerDiv{
+
+  width: 100%;
+  display: block;
+  flex-direction: column;
+  background-color: #620606;
+  color: white;
+  border-radius: 2em;
+  overflow: hidden;
+  overflow-y: scroll;
+  justify-content: space-around;
+  text-align: center;
+  margin: 20px auto;
+  min-height: 150px;
+  max-height: 400px;
+}
+
+.room-individualPlayer{
+  text-align: left;
+  background-color: #8e0202;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 0.5em;
+  margin-right: 20px;
+  margin-left: 20px;
+  border-radius: 2em;
+}
+

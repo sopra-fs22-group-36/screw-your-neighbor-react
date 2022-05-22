@@ -41,7 +41,7 @@
   align-content: center;
   align-self: center;
   justify-content: space-around;
-  margin-left: 35%;
+  margin-left: 50%;
 }
 
 .roomlist{
@@ -118,21 +118,31 @@
   transition: all 0.3s ease;
 }
 
-.player-div{
+.lobby-player-div{
+
+  width: 100%;
   display: block;
   flex-direction: column;
   background-color: #620606;
   color: white;
   border-radius: 2em;
   overflow: hidden;
-  align-items: center;
   justify-content: space-around;
   text-align: center;
-  margin-left: auto; //Necessary to put container in middle
-  margin-right: auto;
   margin-top: 20px;
-  padding-bottom: 8px;
-  padding-right: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
   overflow-y: scroll;
   max-height: 400px;
+}
+
+.lobby-individualPlayer{
+  text-align: left;
+  background-color: #8e0202;
+  margin: 0.5em;
+  padding: 1px;
+  padding-left: 20px;
+  border-radius: 2em;
 }
