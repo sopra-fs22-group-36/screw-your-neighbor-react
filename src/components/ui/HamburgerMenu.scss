@@ -1,42 +1,4 @@
 
-.hamburgerinfotext{
-  position: fixed;
-  top: 10px;
-  left: 100px;
-  color: #f7bf74;
-  font-size: x-large;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-  font-family: sans-serif;
-  -webkit-animation-duration: 15s;animation-duration: 15s;
-  -webkit-animation-fill-mode: forwards;animation-fill-mode: both;
-  -webkit-animation-name: fadeOut;
-  animation-name: fadeOut;
-
-}
-@-webkit-keyframes fadeOut {
-  0% {opacity: 1;}
-  80%{opacity: 0.5;}
-  100% {opacity: 0;}
-}
-
-@keyframes fadeOut {
-  0% {opacity: 1;}
-  80%{opacity: 0.5;}
-  100% {opacity: 0;}
-}
-
-.arrow {
-  border: solid orange;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-}
-
-.left {
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-}
-
 .navBar {
   position: relative;
   overflow: hidden;

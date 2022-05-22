@@ -16,8 +16,8 @@ export const RoomInfoContainer = observer(() => {
   return (
     <BaseContainer>
       <h2 style={{ margin: "5px" }}> Room Info </h2>
-      <div className={"roominfobackground"}>
-        <div style={{ maxWidth: "250px", wordWrap: "break-word" }}>
+      <div className={"room-info-background"}>
+        <div style={{ maxWidth: "150px", wordWrap: "break-word" }}>
           This is room: {game.name}
         </div>
         <div> Current player count: {playerCount} </div>
