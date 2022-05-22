@@ -6,10 +6,10 @@ import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
 import { useTransition, a, config } from "react-spring"
 import { Person } from "@mui/icons-material"
 import "./PlayerHand.scss"
-import cardBack from "../../../../../img/card-backside.png"
 import { useParticipationAvatars } from "../../../../../hooks/useParticipationAvatars"
 import { ConfiguredAvatar } from "../../../../ui/ConfiguredAvatar"
 import { Badge } from "@mui/material"
+import { CardComponent } from "../../../../ui/CardComponent"
 
 export type PlayerHandProps = {
   participation: EntityModelParticipation
@@ -71,7 +71,7 @@ export const PlayerHand = observer((props: PlayerHandProps) => {
             (styles, item) =>
               item && (
                 <a.div className={"animated-card"} style={styles}>
-                  <img src={cardBack} alt="card_back_image" />
+                  <CardComponent card={item} />
                 </a.div>
               )
           )}

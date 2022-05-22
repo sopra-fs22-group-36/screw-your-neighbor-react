@@ -3,7 +3,7 @@ import { Card, Match } from "../../generated"
 import "./CardComponent.scss"
 import requireContext from "require-context.macro"
 import { useCurrentGame } from "../../hooks/api/useCurrentGame"
-import sCardBack from "../../img/smallerbackside.png"
+import cardBack from "../../img/card-backside.png"
 import { AvatarConfig } from "../../hooks/useParticipationAvatars"
 import { ConfiguredAvatar } from "./ConfiguredAvatar"
 
@@ -25,7 +25,7 @@ function importAll(r) {
 }
 
 //Combine card name from rank and suit for find in the storage /img/deck
-cards["background"] = sCardBack
+cards["background"] = cardBack
 function findCard(rank?: Card.cardRank, suit?: Card.cardSuit): string {
   if (!rank || !suit) {
     return "background"
