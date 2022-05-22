@@ -25,10 +25,10 @@ function importAll(r) {
 }
 
 //Combine card name from rank and suit for find in the storage /img/deck
-cards["background"] = cardBack
+cards["backside"] = cardBack
 function findCard(rank?: Card.cardRank, suit?: Card.cardSuit): string {
   if (!rank || !suit) {
-    return "background"
+    return "backside"
   }
   let cardName = ""
   let cardSuit = ""
