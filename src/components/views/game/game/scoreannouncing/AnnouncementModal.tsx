@@ -5,6 +5,7 @@ import { range } from "../../../../../util/range"
 import { Hand, Match } from "../../../../../generated"
 import { iriMatch } from "../../../../../util/iriMatch"
 import { delay } from "../../../../../util/timeout"
+import { useParticipationAvatars } from "../../../../../hooks/useParticipationAvatars"
 import BaseContainer from "../../../../ui/BaseContainer"
 import { CardComponent } from "../../../../ui/CardComponent"
 import { Chip, Grid, Modal, Tooltip } from "@mui/material"
@@ -62,8 +63,11 @@ export const AnnouncementModal = observer(() => {
     yourActiveHand,
     sumOfAnnouncedScores,
     lastPlayerAnnouncing,
+    cardHandMap,
     announceScore,
   } = useCurrentGame()
+
+  const { getAvatarConfigFor } = useParticipationAvatars()
 
   const [matchForModal, setMatchForModal] = useState(activeMatch)
 
@@ -128,17 +132,12 @@ export const AnnouncementModal = observer(() => {
     yourActiveHand,
   ])
   let cards = []
-  let enemyNames = []
-  if (activeMatch?.matchNumber !== 5) {
+  const isMatchNumber5 = activeMatch?.matchNumber === 5
+  if (!isMatchNumber5) {
     cards = yourActiveHand?.cards.filter((value) => value.round === null)
   } else {
-    const otherHands = activeMatch?.hands.filter(
-      (value) => !iriMatch(yourActiveHand?._links.self, value._links.self)
-    )
+    const otherHands = activeMatch?.hands
     cards = otherHands.flatMap((enemyhands) => enemyhands.cards)
-    enemyNames = otherHands.flatMap(
-      (enemies) => enemies.participation.player.name
-    )
   }
 
   return (
@@ -155,21 +154,34 @@ export const AnnouncementModal = observer(() => {
           <Grid item xs={6}>
             <BaseContainer>
               <h1>How many tricks will you make?</h1>
-              {matchForModal.matchNumber === 5 ? (
-                <p>
-                  Please note: These are your OPPONENTS cards, not your own!
-                </p>
-              ) : (
-                <></>
-              )}
               <div className={"cards-and-buttons"}>
                 <div className={"cards"}>
-                  {cards.map((card) => (
-                    <div key={card._links.self.href}>
-                      <div>{enemyNames[cards.indexOf(card)]}</div>
-                      <CardComponent card={card} />
-                    </div>
-                  ))}
+                  {cards.map((card) => {
+                    const hand = cardHandMap[card._links.self.href]
+                    const avatarConfig = getAvatarConfigFor(hand.participation)
+
+                    const isOwnCard = iriMatch(
+                      yourActiveHand?._links.self,
+                      hand._links.self
+                    )
+
+                    const toolTipText = getCardToolTipText(
+                      hand,
+                      isMatchNumber5,
+                      isOwnCard
+                    )
+
+                    return (
+                      <Tooltip key={card._links.self.href} title={toolTipText}>
+                        <div>
+                          <CardComponent
+                            card={card}
+                            avatarConfig={isMatchNumber5 ? avatarConfig : null}
+                          />
+                        </div>
+                      </Tooltip>
+                    )
+                  })}
                 </div>
                 <Tooltip
                   title={
@@ -217,3 +229,19 @@ export const AnnouncementModal = observer(() => {
     </Modal>
   )
 })
+
+function getCardToolTipText(
+  hand: Hand,
+  isMatchNumber5: boolean,
+  isOwnCard: boolean
+) {
+  if (!isMatchNumber5) {
+    return ""
+  }
+
+  if (isOwnCard) {
+    return "This is your card. You cannot see your own card in the 5th match."
+  }
+  const playerName = hand.participation.player.name
+  return `This is the card of ${playerName}`
+}
