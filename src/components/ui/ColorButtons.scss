@@ -1,5 +1,4 @@
-.colorbuttons{
-  position: fixed;
+.color-buttons {
   text-align: center;
   color: white;
   z-index: 10;
@@ -23,11 +22,11 @@
     transition: all .4s ease-in-out;
   }
 }
-.bucolor1{
+.bucolor-lightblue{
   background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a);
   box-shadow: 0 4px 5px 0 rgba(49, 196, 190, 0.5);
 }
-.bucolor2{
+.bucolor-darkblue{
   background-image: linear-gradient(to right, #0a0f96,  #0a74c2, #163a8e);
   box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
 }

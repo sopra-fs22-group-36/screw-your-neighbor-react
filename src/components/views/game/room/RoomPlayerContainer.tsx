@@ -17,7 +17,10 @@ export const RoomPlayerContainer = observer(() => {
       <div>
         <BaseContainer>
           <h2 style={{ margin: "0px 0px 10px" }}> Playerlist </h2>
-          <div className={"roominfobackground"}>
+          <div
+            className={"room-info-background"}
+            style={{ padding: "5px 4em 5px 4em" }}
+          >
             {activeParticipations.map((value, index) => (
               <li style={{ fontSize: "larger" }} key={index}>
                 {value.player.name}

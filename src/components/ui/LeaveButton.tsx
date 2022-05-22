@@ -18,7 +18,7 @@ const LeaveButton = (props: { style }) => {
   return (
     <Button
       onClick={clickLeave}
-      className="colorbuttons bucolor2"
+      className="color-buttons bucolor-darkblue"
       style={props.style}
       endIcon={<SendIcon />}
     >

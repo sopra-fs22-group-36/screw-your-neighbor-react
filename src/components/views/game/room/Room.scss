@@ -2,13 +2,14 @@
 
 
 .room {
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
-.roominfobackground{
-  margin-right: auto;
+.room-info-background{
+  overflow: hidden;
+  padding: 10px 2em 10px 2em;
   margin-left: auto;
+  margin-right: auto;
   background-color: rgba(255,200,200,0.2);
-  padding: 10px 6em 20px;
   border-radius: 10px;
 }

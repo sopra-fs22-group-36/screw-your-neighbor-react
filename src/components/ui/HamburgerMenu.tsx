@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./HamburgerMenu.scss"
 import { Tooltip, Slide } from "@mui/material"
 import RulesButton from "./RulesButton"
@@ -6,6 +6,15 @@ import LeaveButton from "./LeaveButton"
 
 const HamburgerMenu = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false)
+  const [openTooltip, setOpenTooltip] = useState(true)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setOpenTooltip(false)
+    }, 5000)
+
+    return () => clearTimeout(timeout)
+  }, [])
 
   const handleToggle = () => {
     setHamburgerOpen(!hamburgerOpen)
@@ -17,7 +26,14 @@ const HamburgerMenu = () => {
       <Tooltip title={"Menu"} arrow={true} placement={"right"}>
         <label className="hamburgerlabel" htmlFor="menu_checkbox">
           <div></div>
-          <div></div>
+          <Tooltip
+            title={"Click here to leave the game or look at the rules"}
+            arrow={true}
+            placement={"right"}
+            open={openTooltip}
+          >
+            <div></div>
+          </Tooltip>
           <div></div>
         </label>
       </Tooltip>
@@ -41,10 +57,6 @@ const HamburgerMenu = () => {
           />
         </ul>
       </Slide>
-      <p className={"hamburgerinfotext"}>
-        <i className="arrow left"></i>Click here to leave the game or look at
-        the rules
-      </p>
     </nav>
   )
 }

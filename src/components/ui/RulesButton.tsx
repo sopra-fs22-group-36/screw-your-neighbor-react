@@ -12,7 +12,7 @@ const RulesButton = (props: { style }) => {
   const [showRules, setShowRules] = useState(false)
 
   const theRules = (
-    <p>
+    <>
       One game is split up into nine matches where you first get decreasing
       numbers of cards each match, with a minimum of one card, and then
       increasing numbers of cards again. (5,4,3,2,1,2,3,4). <br /> At the
@@ -29,7 +29,7 @@ const RulesButton = (props: { style }) => {
       may see the cards of all the other players. <br /> If you are ever
       confused on what to do you can also just hover over the buttons/cards to
       get more information <br /> <big>Have Fun! :)</big>
-    </p>
+    </>
   )
 
   const clickRules = async () => {
@@ -64,7 +64,7 @@ const RulesButton = (props: { style }) => {
   return (
     <div>
       <Button
-        className="colorbuttons bucolor1"
+        className="color-buttons bucolor-lightblue"
         onClick={clickRules}
         style={props.style}
         endIcon={<ListAltIcon />}
