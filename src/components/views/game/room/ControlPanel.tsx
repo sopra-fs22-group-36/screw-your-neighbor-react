@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import { Paths } from "../../../routing/routers/Paths"
 import Button from "@mui/material/Button"
+import Box from "@mui/material/Box"
 import SendIcon from "@mui/icons-material/Send"
 import LogoutIcon from "@mui/icons-material/Logout"
 import { Tooltip } from "@mui/material"
@@ -28,8 +29,10 @@ export const ControlPanel = () => {
         arrow={true}
         placement={"top"}
       >
-        <div style={{ margin: "10px" }}>
+        <Box p={1} m={2} borderRadius={2}>
           <Button
+            style={{ minWidth: "250px", minHeight: "60px", borderRadius: 20 }}
+            color="success"
             disabled={loading || activeParticipations.length < 2}
             variant="contained"
             endIcon={<SendIcon />}
@@ -37,11 +40,13 @@ export const ControlPanel = () => {
           >
             Start Game
           </Button>
-        </div>
+        </Box>
       </Tooltip>
 
-      <div style={{ margin: "10px" }}>
+      <Box p={1} m={2}>
         <Button
+          style={{ minWidth: "250px", minHeight: "60px", borderRadius: 20 }}
+          color="error"
           disabled={loading}
           variant="contained"
           endIcon={<LogoutIcon />}
@@ -49,7 +54,7 @@ export const ControlPanel = () => {
         >
           Leave Room
         </Button>
-      </div>
+      </Box>
     </div>
   )
 }
