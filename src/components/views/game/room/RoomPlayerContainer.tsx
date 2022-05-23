@@ -14,10 +14,10 @@ export const RoomPlayerContainer = observer(() => {
       placement={"top"}
       arrow={true}
     >
-      <div className={"room-playerDiv"}>
-        <h2 className="playerPanel"> Playerlist </h2>
+      <div className={"room-player-div"}>
+        <h2 className="room-player-panel"> Playerlist </h2>
         {activeParticipations.map((value, index) => (
-          <li className="room-individualPlayer" key={index}>
+          <li className="room-individual-player" key={index}>
             {value.player.name}
           </li>
         ))}

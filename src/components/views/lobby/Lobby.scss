@@ -1,4 +1,4 @@
-.room-group{
+.lobby-room-group{
   display: block;
   clear:both;
   text-align: center;
@@ -8,7 +8,7 @@
   margin-bottom: 10px;
 }
 
-.roomlist-item{
+.lobby-roomlist-item{
   border-radius: 10px;
   width: 80%;
   margin-left: auto;
@@ -35,7 +35,7 @@
   max-height: 400px;
 }
 
-.buttonDiv{
+.lobby-button-div{
   width: 100%;
   overflow: hidden;
   align-content: center;
@@ -44,7 +44,7 @@
   margin-left: 50%;
 }
 
-.roomlist{
+.lobby-room-list{
   width:100%;
   margin-bottom: 10px;
   text-align:center;
@@ -89,7 +89,7 @@
   font-Weight: 700;
 }
 
-.lobbyButton {
+.lobby-button {
   &:hover {
     transform: translateY(-2px) scale(101%);
   }
@@ -135,10 +135,11 @@
   padding-left: 40px;
   padding-right: 40px;
   overflow-y: scroll;
+  padding-bottom: 10px;
   max-height: 400px;
 }
 
-.lobby-individualPlayer{
+.lobby-individual-playerlist{
   text-align: left;
   background-color: #8e0202;
   margin: 0.5em;
