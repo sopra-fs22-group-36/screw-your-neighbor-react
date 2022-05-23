@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom"
 import { Paths } from "../../../routing/routers/Paths"
 import ReactConfetti from "react-confetti"
 import { WinnersPodium } from "./WinnersPodium"
+import "../gamesummary/GameSummary.scss"
+import Box from "@mui/material/Box";
 
 export const GameSummary = observer(() => {
   const navigate = useNavigate()
@@ -25,27 +27,35 @@ export const GameSummary = observer(() => {
   }
 
   return (
-    <div>
+    <div className="gameSummary-div">
       <ReactConfetti gravity={0.01} opacity={0.5} tweenDuration={5000} />
-      <BaseContainer>
+      <div className="gameSummary-box">
         <WinnersPodium />
-        <Button
-          disabled={loading}
-          variant="contained"
-          endIcon={<LogoutIcon />}
-          onClick={clickCloseGame}
-        >
-          Close game
-        </Button>
-        <Button
-          disabled={loading}
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={clickStartNewGame}
-        >
-          Start new Game
-        </Button>
-      </BaseContainer>
+        <div className="gameSummary-buttons">
+          <Box p={1} m={1}>
+            <Button
+              style={{ minWidth: "250px", minHeight: "50px", borderRadius: 20}}
+              disabled={loading}
+              variant="contained"
+              endIcon={<LogoutIcon />}
+              onClick={clickCloseGame}
+            >
+              Close game
+            </Button>
+          </Box>
+          <Box p={1} m={1}>
+            <Button
+              style={{ minWidth: "250px", minHeight: "60px", borderRadius: 20}}
+              disabled={loading}
+              variant="contained"
+              endIcon={<SendIcon />}
+              onClick={clickStartNewGame}
+            >
+              Start new Game
+            </Button>
+          </Box>
+        </div>
+      </div>
     </div>
   )
 })
