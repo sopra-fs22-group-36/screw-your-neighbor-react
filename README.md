@@ -45,3 +45,9 @@ but wrapped together with api calls in custom hooks like in [usePlayers()](src/h
 
 If you want to show values from the store, don't forget to wrap your component in an observer(), like shown
 in [Lobby](src/components/views/lobby/Lobby.tsx).
+
+## License
+
+This project is licensed under the **MIT license**.
+
+See [LICENSE](LICENSE.txt) for more information.
