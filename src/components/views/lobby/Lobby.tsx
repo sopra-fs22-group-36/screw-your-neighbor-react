@@ -42,7 +42,7 @@ const Lobby = observer(() => {
   )
 
   return (
-    <div className="div-lobby">
+    <div className="lobby-div">
       <BaseContainer>
         <h1 className="font-title">Lobby</h1>
       </BaseContainer>
@@ -50,9 +50,9 @@ const Lobby = observer(() => {
         <Grid item xs={9}>
           <BaseContainer>
             <h3>Choose one of the Rooms to join</h3>
-            <div className="room-group">
-              <div className="roomlist">
-                <TransitionGroup className="roomlist-item">
+            <div className="lobby-room-group">
+              <div className="lobby-room-list">
+                <TransitionGroup className="lobby-roomlist-item">
                   {searchingGames.map((game) => (
                     <Collapse key={game._links.self.href}>
                       <RoomRow game={toJS(game)} />
@@ -78,7 +78,7 @@ const Lobby = observer(() => {
               <div>
                 {players.map((value) => (
                   <li
-                    className="lobby-individualPlayer"
+                    className="lobby-individual-playerlist"
                     key={value._links.self.href}
                   >
                     {value.name}
@@ -86,8 +86,8 @@ const Lobby = observer(() => {
                 ))}
               </div>
             </div>
-            <div className="buttonDiv">
-              <button className="lobbyButton" onClick={() => doLogout()}>
+            <div className="lobby-button-div">
+              <button className="lobby-button" onClick={() => doLogout()}>
                 Logout
               </button>
             </div>

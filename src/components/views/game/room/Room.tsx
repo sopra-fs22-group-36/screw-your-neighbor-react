@@ -13,7 +13,7 @@ export const Room = observer(() => {
   const { game } = useCurrentGame()
 
   return (
-    <div className={"room"}>
+    <div className={"room-div"}>
       <BaseContainer>
         <h1 className="font-title">Room "{game.name}"</h1>
       </BaseContainer>

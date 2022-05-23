@@ -1,24 +1,14 @@
 @import 'src/styles/theme';
 
-
-.room {
-  padding: 0 10px;
-}
-
-.room-info-background{
-  overflow: hidden;
-  padding: 10px 2em 10px 2em;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgba(255,200,200,0.2);
-  border-radius: 10px;
+.room-div {
+  padding: 0 20px;
 }
 
 .Button {
   padding: 20px;
 }
 
-.room-playerDiv{
+.room-player-div{
 
   width: 100%;
   display: block;
@@ -35,7 +25,7 @@
   max-height: 400px;
 }
 
-.room-individualPlayer{
+.room-individual-player{
   text-align: left;
   background-color: #8e0202;
   padding-left: 40px;
