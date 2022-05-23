@@ -18,9 +18,6 @@ const JoinGame = observer(() => {
   const { refreshGame, game, id, currentGameIriFromParameter, startPollGame } =
     useCurrentGame()
   const [loading, setLoading] = useState(true)
-  const goBack = () => {
-    navigate(Paths.LOBBY)
-  }
 
   const gameReady =
     game && iriMatch(currentGameIriFromParameter, game._links.self)
@@ -51,6 +48,9 @@ const JoinGame = observer(() => {
     await joinGame(game)
     navigate(Paths.GAME + `/${id}`)
   }
+  const goBack = () => {
+    navigate(Paths.LOBBY)
+  }
 
   return (
     <Loading ready={!loading}>
@@ -71,7 +71,17 @@ const JoinGame = observer(() => {
         }
         if (game) {
           const unavailableGame =
-            game.gameState !== Game.gameState.FINDING_PLAYERS
+            game.gameState !== Game.gameState.FINDING_PLAYERS ||
+            game.participations.length === 5
+          const canJoinGame =
+            "You were invited to play this game, do you want to join the game?"
+          const cantJoinGame =
+            "The game you were invited to is not available anymore, please join the lobby to find" +
+            " other games to join"
+          const headerText = unavailableGame ? cantJoinGame : canJoinGame
+          const canJoinButton = "TAKE ME TO THIS ROOM"
+          const cantJoinButton = "TAKE ME TO THE LOBBY"
+          const buttonText = unavailableGame ? cantJoinButton : canJoinButton
 
           return (
             <div>
@@ -80,18 +90,14 @@ const JoinGame = observer(() => {
               </BaseContainer>
 
               <BaseContainer>
-                <h4>
-                  You were invited to play this game, do you want to join the
-                  game?
-                </h4>
+                <h4>{headerText}</h4>
                 <Button
-                  disabled={unavailableGame}
-                  onClick={clickJoin}
+                  onClick={unavailableGame ? goBack : clickJoin}
                   type={"submit"}
                   variant="contained"
                   endIcon={<SendIcon />}
                 >
-                  TAKE ME TO THIS GAME
+                  {buttonText}
                 </Button>
               </BaseContainer>
               <div className="background-img"></div>
