@@ -3,7 +3,6 @@ import { observer } from "mobx-react-lite"
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import "../../../ui/BaseContainer.scss"
 import { Tooltip } from "@mui/material"
-import BaseContainer from "../../../ui/BaseContainer"
 
 export const RoomPlayerContainer = observer(() => {
   const { activeParticipations } = useCurrentGame()
