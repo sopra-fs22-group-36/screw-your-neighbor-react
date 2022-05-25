@@ -86,12 +86,12 @@ const Lobby = observer(() => {
                 ))}
               </div>
             </div>
-            <div className="lobby-button-div">
-              <button className="lobby-button" onClick={() => doLogout()}>
-                Logout
-              </button>
-            </div>
           </Tooltip>
+          <div className="lobby-button-div">
+            <button className="lobby-button" onClick={() => doLogout()}>
+              Logout
+            </button>
+          </div>
         </Grid>
       </Grid>
       <Footer />
