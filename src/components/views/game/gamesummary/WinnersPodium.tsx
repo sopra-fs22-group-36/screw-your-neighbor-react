@@ -1,5 +1,5 @@
 import React from "react"
-import BaseContainer from "../../../ui/BaseContainer"
+//import BaseContainer from "../../../ui/BaseContainer" //Replaced Base Container with Div for easier centering! - remove this line completely when the reviewers agree on this change
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import trophy from "../../../../img/winnerwinnerchickendinner.png"
 import lost from "../../../../img/betterluck.png"
