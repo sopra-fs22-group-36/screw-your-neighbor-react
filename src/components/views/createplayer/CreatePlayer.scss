@@ -55,3 +55,15 @@
   font-weight: 700;
 }
 
+@keyframes mover {
+  0% { transform: translateY(0) scaleY(-1); }
+  50% {transform: translateY(60vh) scaleY(-1); }
+  51% {transform: translateY(60vh) scaleY(1); }
+  100% { transform: translateY(0em) scaleY(1); }
+}
+
+.side-img {
+  float: right;
+  opacity: 1.0;
+  animation: mover 10s infinite;
+}
