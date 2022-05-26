@@ -30,7 +30,7 @@ export const GameSummary = observer(() => {
       <ReactConfetti gravity={0.01} opacity={0.5} tweenDuration={5000} />
       <div className="gameSummary-box">
         <WinnersPodium />
-        <Box className="gameSummary-buttonBox">
+        <Box className="gameSummary-button-box">
           <Button
             style={{
               minWidth: "200px",
