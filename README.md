@@ -33,8 +33,8 @@ Briefly overview about used main technologies:
 ![npm](./src/img/readme/npm.png)
 
 ## Launch & Deployment
-Small introduction to establish the frontend with react. After download use clean install[^2].
-[^2] Project has an existing package-lock.json, all scripts are listed in package.json
+Small introduction to establish the frontend with react. After download use clean install.[^2]
+[^2]: Project has an existing package-lock.json, all scripts are listed in package.json
 
 `npm ci`
 
@@ -72,7 +72,7 @@ in [Lobby](src/components/views/lobby/Lobby.tsx).
 
 ### Game playing
 
-### Winner :tada / Looser :loser page 
+### Winner :tada: / Looser :loser: page 
 
 ## Roadmap
 
