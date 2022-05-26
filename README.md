@@ -22,7 +22,13 @@
 World famous card game played with 36 Swiss "Jasskarten". 
 
 ## Technologies
-Overview about used technologies: 
+Briefly overview about used main technologies: \
+![This is an image](../screw-your-neighbor-react/src/img/readme/react.png)
+![This is an image](../screw-your-neighbor-react/src/img/readme/mi.png)
+![This is an image](../screw-your-neighbor-react/src/img/readme/mobx.png)
+![This is an image](../screw-your-neighbor-react/src/img/readme/tsx.png)
+![This is an image](../screw-your-neighbor-react/src/img/readme/exlint.png)
+![This is an image](../screw-your-neighbor-react/src/img/readme/npm.png)
 
 ## Launch & Deployment
 Small introduction to establish the frontend with react. After download use clean install[^2].
@@ -64,7 +70,21 @@ in [Lobby](src/components/views/lobby/Lobby.tsx).
 
 ### Game playing
 
-### Game playing 
+### Winner :tada / Looser :loser page 
+
+## Roadmap
+
+- Create your own avatar 
+- Choose backside image for cards
+- Change frontend to socket.io solution 
+
+## Authors
+- Carmen Kirchdorfer, full stack
+- Salome Wildermuth, full stack
+- Beat Furrer, full stack
+- Lucius Simon Bachmann, full stack
+- Moris Camporesi, full stack
+
 
 ## License
 
