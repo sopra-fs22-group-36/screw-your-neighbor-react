@@ -22,12 +22,12 @@
 World famous card game played with 36 Swiss "Jasskarten". 
 
 ## Technologies
-Briefly overview about used main technologies: \
+Briefly overview about used main technologies: 
 
 ![react](./src/img/readme/react.png)
 ![matrial ui](./src/img/readme/mi.png)
 ![MobX](./src/img/readme/mobx.png)
-![Typescript](./src/img/readme/tsx.png)\
+![Typescript](./src/img/readme/tsx.png)
 
 ![prettier and linter](./src/img/readme/exlint.png)
 ![npm](./src/img/readme/npm.png)
