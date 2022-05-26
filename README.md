@@ -72,7 +72,7 @@ in [Lobby](src/components/views/lobby/Lobby.tsx).
 
 ### Game playing
 
-### Winner :tada: / Looser :loser: page 
+### Winner :tada: / Looser :screwdriver::facepalm: page 
 
 ## Roadmap
 
