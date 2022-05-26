@@ -1,7 +1,7 @@
 @import "src/styles/theme";
 
 
-.register-title {
+.create-title {
   font-family: 'Pacifico', cursive;
   font-size: 40px;
   text-align: center;
@@ -14,13 +14,13 @@
   color: $textColor;
 }
 
-.register-box-subtitle {
+.create-box-subtitle {
   text-align: center;
   color: whitesmoke;
   font-size: 15px;
 }
 
-.register-container {
+.create-container {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
@@ -31,13 +31,13 @@
   background-color: #620606;
   color: #620606;
   border: 5px solid;
-  border-Radius: 1em;
-  text-Align: center;
-  font-Size: 0.875rem;
-  font-Weight: 700;
+  border-radius: 1em;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 700;
 }
 
-.register-box {
+.create-box {
   margin-right: auto;
   margin-left: auto;
   width: auto;
@@ -50,8 +50,8 @@
   border: 5px solid;
   border-color: #8E0202;
   border-Radius: 1em;
-  text-Align: center;
-  font-Size: 0.875rem;
-  font-Weight: 700;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 700;
 }
 
