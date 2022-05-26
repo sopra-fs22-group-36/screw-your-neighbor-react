@@ -2,9 +2,9 @@
    <img src="./src/img/icon.png" width="auto" height="500">
 </h1>
 
-# Screw your neighbor react client
+# Screw your neighbor: frontend solution[^1]
 
-By group 36 of the course "Software Praktikum"@UZH in FS 22.
+[^1]: By group 36 of the course "Software Praktikum"@UZH in FS 22.
 
 ## Github Badges:
 
@@ -18,7 +18,17 @@ By group 36 of the course "Software Praktikum"@UZH in FS 22.
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sopra-fs22-group-36_screw-your-neighbor-react&metric=coverage)](https://sonarcloud.io/summary/new_code?id=sopra-fs22-group-36_screw-your-neighbor-react)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sopra-fs22-group-36_screw-your-neighbor-react&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=sopra-fs22-group-36_screw-your-neighbor-react)
 
-## Development
+## Introduction
+World famous card game played with 36 Swiss "Jasskarten". 
+
+## Technologies
+Overview about used technologies: 
+
+## Launch & Deployment
+Small introduction to establish the frontend with react. After download use clean install[^2].
+[^2] Project has an existing package-lock.json, all scripts are listed in package.json
+
+`npm ci`
 
 ### Generate the classes of the api:
 
@@ -45,6 +55,16 @@ but wrapped together with api calls in custom hooks like in [usePlayers()](src/h
 
 If you want to show values from the store, don't forget to wrap your component in an observer(), like shown
 in [Lobby](src/components/views/lobby/Lobby.tsx).
+
+## Illustrations
+
+### Lobby & Lobby
+
+### Game announcing round
+
+### Game playing
+
+### Game playing 
 
 ## License
 
