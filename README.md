@@ -2,7 +2,7 @@
    <img src="./src/img/icon.png" width="auto" height="500">
 </h1>
 
-# Screw your neighbor: frontend solution[^1]
+# Screw your neighbor: frontend solution [^1]
 
 [^1]: By group 36 of the course "Software Praktikum"@UZH in FS 22.
 
@@ -75,17 +75,15 @@ in [Lobby](src/components/views/lobby/Lobby.tsx).
 ### Winner :tada: / Looser :screwdriver::facepalm: page 
 
 ## Roadmap
-
+### Top features to contribute
 - Create your own avatar 
 - Choose backside image for cards
 - Change frontend to socket.io solution 
 
-## Authors
-- Carmen Kirchdorfer, full stack
-- Salome Wildermuth, full stack
-- Beat Furrer, full stack
-- Lucius Simon Bachmann, full stack
-- Moris Camporesi, full stack
+## Contributors
+Screw your neighbor application was developed in context of the SoPra (Software Praktikum / Software Engineerin Lab) module at the Institut für Informatik at the University of Zurich by Lucius Bachmann, Beat Furrer, Carmen Kirchdorfer, Moris Camporesi and Salome Wildermuth.
+
+Any new contributor hearts, welcome to our Screw-your-neighbor-family. Please don't hesitate to open a PR or an issue if there's something that needs improvement or if you want to help implementing one of our roadmap features!
 
 
 ## License
