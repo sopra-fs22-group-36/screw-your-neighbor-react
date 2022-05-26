@@ -23,12 +23,12 @@ World famous card game played with 36 Swiss "Jasskarten".
 
 ## Technologies
 Briefly overview about used main technologies: \
-![This is an image](../screw-your-neighbor-react/src/img/readme/react.png)
-![This is an image](../screw-your-neighbor-react/src/img/readme/mi.png)
-![This is an image](../screw-your-neighbor-react/src/img/readme/mobx.png)
-![This is an image](../screw-your-neighbor-react/src/img/readme/tsx.png)
-![This is an image](../screw-your-neighbor-react/src/img/readme/exlint.png)
-![This is an image](../screw-your-neighbor-react/src/img/readme/npm.png)
+![react](./src/img/readme/react.png)
+![matrial ui](./src/img/readme/mi.png)
+![MobX](./src/img/readme/mobx.png)
+![Typescript](./src/img/readme/tsx.png)
+![prettier and linter](./src/img/readme/exlint.png)
+![npm](./src/img/readme/npm.png)
 
 ## Launch & Deployment
 Small introduction to establish the frontend with react. After download use clean install[^2].
