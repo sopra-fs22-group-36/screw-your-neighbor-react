@@ -8,7 +8,7 @@ import { extractId } from "../../../util/extractId"
 import { Grid, Tooltip } from "@mui/material"
 import Button from "@mui/material/Button"
 import { Login } from "@mui/icons-material"
-import "../lobby/Lobby.scss"
+import "../lobby/RoomRow.scss"
 import "../../../styles/ui/Button.scss"
 
 export const RoomRow = (props: { game: EntityModelGame }) => {
@@ -31,7 +31,7 @@ export const RoomRow = (props: { game: EntityModelGame }) => {
       placement={"left"}
       enterDelay={500}
     >
-      <div className="lobbyRooms">
+      <div className="lobby-rooms">
         <Grid container spacing={1}>
           <Grid item xs={6}>
             {props.game.name}
