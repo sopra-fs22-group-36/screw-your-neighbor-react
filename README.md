@@ -1,5 +1,5 @@
 <h1 align="center">
-   <img src="./src/img/icon.png" width="auto" height="500">
+   <img src="./src/img/icon.png" alt ="logo" width="auto" height="500">
 </h1>
 
 # Screw your neighbor: frontend solution [^1]
@@ -19,10 +19,10 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sopra-fs22-group-36_screw-your-neighbor-react&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=sopra-fs22-group-36_screw-your-neighbor-react)
 
 ## Introduction
-World famous card game played with 36 Swiss "Jasskarten". 
+We are developing an online version of the world famous card game "Härdöpfle" also known as "Screw your neighbour" played with the 36 Swiss "Jasskarten". 
 
 ## Technologies
-Briefly overview about used main technologies: 
+These are the main technologies we used: 
 
 ![react](./src/img/readme/react.png)
 ![matrial ui](./src/img/readme/mi.png)
@@ -33,10 +33,12 @@ Briefly overview about used main technologies:
 ![npm](./src/img/readme/npm.png)
 
 ## Launch & Deployment
-Small introduction to establish the frontend with react. After download use clean install.[^2]
-[^2]: Project has an existing package-lock.json, all scripts are listed in package.json
+After download use clean install.[^2]
 
 `npm ci`
+
+[^2]: Project has an existing package-lock.json, all scripts are listed in package.json
+
 
 ### Generate the classes of the api:
 
@@ -53,19 +55,21 @@ Then run again `npm run openapi-generate`
 This app uses [MobX](https://github.com/mobxjs/mobx) as state management.  
 The api is provided in [api.ts](src/api/api.ts), but then wrapped with the hook [useApi()](src/hooks/api/useApi.ts)
 to provide global error handling and to display the [ApiErrorSnackBar](src/components/ui/ApiErrorSnackBar.tsx).  
-The error message to show is stored in the [AppStore](src/stores/AppStore.ts) which contains also all other stores.  
+The error message to show is stored in the [AppStore](src/stores/AppStore.ts) which also contains all other stores.  
 The AppStore is provided via the [useContext()](https://reactjs.org/docs/hooks-reference.html#usecontext)
 hook mechanism in [AppContext](src/AppContext.tsx).
 The [PlayerStore](src/stores/PlayerStore.ts) stores your own player and the list of players in the lobby.
 
-The stores (and the api) should not be used directly in the components,
+The stores and the api should not be used directly in the components,
 but wrapped together with api calls in custom hooks like in [usePlayers()](src/hooks/api/usePlayers.ts).
 
-If you want to show values from the store, don't forget to wrap your component in an observer(), like shown
+If you want to use values from the store, don't forget to wrap your component in an observer(), like shown
 in [Lobby](src/components/views/lobby/Lobby.tsx).
 
 ### Jitsi API
-External api according project requierments. 
+We implemented the Jitsi API into our game to give the players an option to video chat and 
+to fulfill the requirements given to us by the SoPra Team.
+
 
 ## Illustrations
 
@@ -84,9 +88,9 @@ External api according project requierments.
 - Change frontend to socket.io solution 
 
 ## Contributors
-Screw your neighbor application was developed in context of the SoPra (Software Praktikum / Software Engineerin Lab) module at the Institut für Informatik at the University of Zurich by Lucius Bachmann, Beat Furrer, Carmen Kirchdorfer, Moris Camporesi and Salome Wildermuth.
+The "Screw your neighbor" application was developed in context of the SoPra (Software Praktikum / Software Engineerin Lab) module at the Institut für Informatik at the University of Zurich by Lucius Bachmann, Beat Furrer, Carmen Kirchdorfer, Moris Camporesi and Salome Wildermuth.
 
-Any new contributor hearts, welcome to our Screw-your-neighbor-family. Please don't hesitate to open a PR or an issue if there's something that needs improvement or if you want to help implementing one of our roadmap features!
+Any new contributors are welcome to contribute to our Screw-your-neighbor-family. Please don't hesitate to open a PR or an issue if there's something that needs improvement or if you want to help with implementing one of our roadmap features!
 
 
 ## License
