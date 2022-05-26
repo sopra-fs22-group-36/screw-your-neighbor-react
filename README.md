@@ -64,6 +64,9 @@ but wrapped together with api calls in custom hooks like in [usePlayers()](src/h
 If you want to show values from the store, don't forget to wrap your component in an observer(), like shown
 in [Lobby](src/components/views/lobby/Lobby.tsx).
 
+### Jitsi API
+External api according project requierments. 
+
 ## Illustrations
 
 ### Lobby & Lobby
