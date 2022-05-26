@@ -8,7 +8,7 @@
   padding: 20px;
 }
 
-.room-player-div{
+.room-player-div {
 
   width: 100%;
   display: block;
@@ -25,7 +25,7 @@
   max-height: 400px;
 }
 
-.room-individual-player{
+.room-individual-player {
   text-align: left;
   background-color: #8e0202;
   padding-left: 40px;
@@ -33,6 +33,6 @@
   margin-top: 0.5em;
   margin-right: 20px;
   margin-left: 20px;
-  border-radius: 2em;
+  border-radius: $borderRadius;
 }
 
