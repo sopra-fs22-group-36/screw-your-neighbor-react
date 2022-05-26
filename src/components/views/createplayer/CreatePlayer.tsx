@@ -47,16 +47,16 @@ const CreatePlayer = () => {
     <div className="div-box">
       <div className="div-container">
         <BaseContainer>
-          <h1 className="register-title">Welcome to "Screw your neighbour"</h1>
+          <h1 className="create-title">Welcome to "Screw your neighbour"</h1>
         </BaseContainer>
 
-        <Box className="register-container">
-          <h4 className="register-box-subtitle">
+        <Box className="create-container">
+          <h4 className="create-box-subtitle">
             Register by entering your name and pressing <br />
             "Take me to the Lobby"
           </h4>
           <form onSubmit={submit}>
-            <Box className="register-box">
+            <Box className="create-box">
               <TextField
                 helperText="Please enter your player name"
                 id="demo-helper-text-aligned"
