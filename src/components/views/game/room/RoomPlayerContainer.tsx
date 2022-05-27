@@ -15,11 +15,16 @@ export const RoomPlayerContainer = observer(() => {
     >
       <div className={"room-player-div"}>
         <h2 className="room-player-panel"> Playerlist </h2>
-        {activeParticipations.map((value, index) => (
-          <li className="room-individual-player" key={index}>
-            {value.player.name}
-          </li>
-        ))}
+        <div
+          className={"room-info-background"}
+          style={{ padding: "5px 4em 5px 4em" }}
+        >
+          {activeParticipations.map((value, index) => (
+            <li style={{ fontSize: "larger" }} key={index}>
+              {value.player.name}
+            </li>
+          ))}
+        </div>
       </div>
     </Tooltip>
   )
