@@ -4,14 +4,14 @@ import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import { Paths } from "../../../routing/routers/Paths"
 import Button from "@mui/material/Button"
 import Box from "@mui/material/Box"
-import SendIcon from "@mui/icons-material/Send"
 import LogoutIcon from "@mui/icons-material/Logout"
 import { Tooltip } from "@mui/material"
+import StartButton from "../../../ui/StartButton"
 
 export const ControlPanel = () => {
   const navigate = useNavigate()
-  const { loading, leaveGame, playGame, activeParticipations } =
-    useCurrentGame()
+  const { loading, leaveGame, activeParticipations } = useCurrentGame()
+  const shouldDisable = activeParticipations.length < 2
 
   const clickLeave = async () => {
     await leaveGame()
@@ -30,23 +30,21 @@ export const ControlPanel = () => {
         placement={"top"}
       >
         <Box p={1} m={2} borderRadius={2}>
-          <Button
-            style={{ minWidth: "250px", minHeight: "60px", borderRadius: 20 }}
-            color="success"
-            disabled={loading || activeParticipations.length < 2}
-            variant="contained"
-            endIcon={<SendIcon />}
-            onClick={playGame}
-          >
-            Start Game
-          </Button>
+          <StartButton
+            style={{
+              minWidth: "250px",
+              minHeight: "60px",
+              borderRadius: 15,
+              color: shouldDisable === true ? "rgb(45,45,45,0.8)" : "white",
+            }}
+            disabled={shouldDisable}
+          />
         </Box>
       </Tooltip>
 
       <Box p={1} m={2}>
         <Button
           style={{ minWidth: "250px", minHeight: "60px", borderRadius: 20 }}
-          color="error"
           disabled={loading}
           variant="contained"
           endIcon={<LogoutIcon />}

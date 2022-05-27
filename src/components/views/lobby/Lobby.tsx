@@ -3,12 +3,10 @@ import { observer } from "mobx-react-lite"
 import { toJS } from "mobx"
 import Footer from "../../ui/Footer"
 import BaseContainer from "../../ui/BaseContainer"
-import { useNavigate } from "react-router-dom"
 import { useGames } from "../../../hooks/api/useGames"
 import { usePlayers } from "../../../hooks/api/usePlayers"
 import { CreateGame } from "./CreateGame"
 import { RoomRow } from "./RoomRow"
-import { Paths } from "../../routing/routers/Paths"
 import { Collapse, Grid, Tooltip } from "@mui/material"
 import { TransitionGroup } from "react-transition-group"
 import "../../../styles/ui/Divs.scss"
@@ -16,11 +14,11 @@ import "../../../styles/ui/Lists.scss"
 import "../../../styles/ui/images.scss"
 import "../lobby/Lobby.scss"
 import { Game } from "../../../generated"
+import LogoutButton from "../../ui/LogoutButton"
 
 const Lobby = observer(() => {
   const maxNumberOfPlayers = 5
-  const navigate = useNavigate()
-  const { startPollPlayers, players, logout } = usePlayers()
+  const { startPollPlayers, players } = usePlayers()
   const { startPollGames, games } = useGames()
 
   useEffect(() => {
@@ -30,10 +28,6 @@ const Lobby = observer(() => {
       [playersSubscription, gamesSubscription].forEach((sub) => sub.cancel())
   }, [startPollGames, startPollPlayers])
 
-  const doLogout = async () => {
-    await logout()
-    navigate(Paths.CREATE_PLAYER)
-  }
   // filtering all the active games to only show the ones that have not started yet
   const searchingGames = games.filter(
     (game) =>
@@ -87,10 +81,20 @@ const Lobby = observer(() => {
               </div>
             </div>
           </Tooltip>
-          <div className="lobby-button-div">
-            <button className="lobby-button" onClick={() => doLogout()}>
-              Logout
-            </button>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <LogoutButton
+              style={{
+                color: "white",
+                marginTop: "10px",
+                marginLeft: "25%",
+              }}
+            />
           </div>
         </Grid>
       </Grid>

@@ -1,6 +1,5 @@
 .color-buttons {
   text-align: center;
-  color: white;
   z-index: 10;
   cursor: pointer;
   width: 100%;
@@ -8,8 +7,7 @@
   border-radius: 15%;
   align-items: center;
   margin-top: 5%;
-
-  background-size: 300% 100%;
+  background-size: 400% 100%;
   -moz-transition: all .4s ease-in-out;
   -o-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
@@ -20,11 +18,17 @@
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
+    color: #e8e8e8;
   }
+
 }
 .bucolor-lightblue{
   background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a);
   box-shadow: 0 4px 5px 0 rgba(49, 196, 190, 0.5);
+  &:disabled{
+    background-image: linear-gradient(to right,rgba(100,100,100,.5), rgba(100,100,105,.5));
+    box-shadow: none
+  }
 }
 .bucolor-darkblue{
   background-image: linear-gradient(to right, #0a0f96,  #0a74c2, #163a8e);
