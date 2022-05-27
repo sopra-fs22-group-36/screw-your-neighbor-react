@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import "./HamburgerMenu.scss"
 import { Tooltip, Slide } from "@mui/material"
-import RulesButton from "./RulesButton"
-import LeaveButton from "./LeaveButton"
+import RulesButton from "./ColorButtons/RulesButton"
+import LeaveButton from "./ColorButtons/LeaveButton"
 
 const HamburgerMenu = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false)

@@ -1,10 +1,10 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import { useCurrentGame } from "../../hooks/api/useCurrentGame"
-import { Paths } from "../routing/routers/Paths"
-import SendIcon from "@mui/icons-material/Send"
+import { useCurrentGame } from "../../../hooks/api/useCurrentGame"
+import { Paths } from "../../routing/routers/Paths"
 import { Button } from "@mui/material"
 import "./ColorButtons.scss"
+import LogoutIcon from "@mui/icons-material/Logout"
 
 const LeaveButton = (props: { style }) => {
   const navigate = useNavigate()
@@ -20,7 +20,7 @@ const LeaveButton = (props: { style }) => {
       onClick={clickLeave}
       className="color-buttons bucolor-darkblue"
       style={props.style}
-      endIcon={<SendIcon />}
+      endIcon={<LogoutIcon />}
     >
       Leave Game
     </Button>

@@ -4,7 +4,7 @@ import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import Button from "@mui/material/Button"
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"
 import { Tooltip } from "@mui/material"
-import RulesButton from "../../../ui/RulesButton"
+import RulesButton from "../../../ui/ColorButtons/RulesButton"
 import BaseContainer from "../../../ui/BaseContainer"
 import "./Room.scss"
 

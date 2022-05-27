@@ -14,7 +14,7 @@ import "../../../styles/ui/Lists.scss"
 import "../../../styles/ui/images.scss"
 import "../lobby/Lobby.scss"
 import { Game } from "../../../generated"
-import LogoutButton from "../../ui/LogoutButton"
+import LogoutButton from "../../ui/ColorButtons/LogoutButton"
 
 const Lobby = observer(() => {
   const maxNumberOfPlayers = 5
@@ -92,7 +92,7 @@ const Lobby = observer(() => {
               style={{
                 color: "white",
                 marginTop: "10px",
-                marginLeft: "25%",
+                marginLeft: "35%",
               }}
             />
           </div>

@@ -2,7 +2,7 @@ import Button from "@mui/material/Button"
 import React from "react"
 import StartIcon from "@mui/icons-material/Start"
 import "./ColorButtons.scss"
-import { useCurrentGame } from "../../hooks/api/useCurrentGame"
+import { useCurrentGame } from "../../../hooks/api/useCurrentGame"
 
 const StartButton = (props: { style; disabled }) => {
   const { playGame } = useCurrentGame()
