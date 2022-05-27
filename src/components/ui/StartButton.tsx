@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button"
 import React from "react"
-import ListAltIcon from "@mui/icons-material/ListAlt"
+import StartIcon from "@mui/icons-material/Start"
 import "./ColorButtons.scss"
 import { useCurrentGame } from "../../hooks/api/useCurrentGame"
 
@@ -9,10 +9,10 @@ const StartButton = (props: { style; disabled }) => {
   return (
     <div>
       <Button
-        className="color-buttons bucolor-lightblue"
+        className="color-buttons bucolor-green"
         style={props.style}
         disabled={props.disabled}
-        endIcon={<ListAltIcon />}
+        endIcon={<StartIcon />}
         onClick={playGame}
       >
         Start Game
