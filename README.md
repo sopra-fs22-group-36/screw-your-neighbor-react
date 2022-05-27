@@ -19,7 +19,8 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sopra-fs22-group-36_screw-your-neighbor-react&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=sopra-fs22-group-36_screw-your-neighbor-react)
 
 ## Introduction
-We are developing an online version of the world famous card game "Härdöpfle" also known as "Screw your neighbour" played with the 36 Swiss "Jasskarten". 
+We are developing an online version of the world famous card game "Härdöpfle" also known as "Screw your neighbour" played with the 36 Swiss "Jasskarten". Main feature are
+implemented aswell as the stack rule and the special round with only one card. The game is made for two up to five players. 
 
 ## Technologies
 These are the main technologies we used: 
@@ -83,6 +84,7 @@ to fulfill the requirements given to us by the SoPra Team.
 
 ## Roadmap
 ### Top features to contribute
+- Clear visualisation who's turn is right now
 - Create your own avatar 
 - Choose backside image for cards
 - Change frontend to socket.io solution 
