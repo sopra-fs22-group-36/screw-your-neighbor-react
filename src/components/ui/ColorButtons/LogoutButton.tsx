@@ -1,10 +1,10 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import { Paths } from "../routing/routers/Paths"
-import SendIcon from "@mui/icons-material/Send"
+import { Paths } from "../../routing/routers/Paths"
+import LogoutIcon from "@mui/icons-material/Logout"
 import { Button } from "@mui/material"
 import "./ColorButtons.scss"
-import { usePlayers } from "../../hooks/api/usePlayers"
+import { usePlayers } from "../../../hooks/api/usePlayers"
 
 const LogoutButton = (props: { style }) => {
   const navigate = useNavigate()
@@ -20,7 +20,7 @@ const LogoutButton = (props: { style }) => {
       onClick={doLogout}
       className="color-buttons bucolor-darkblue"
       style={props.style}
-      endIcon={<SendIcon />}
+      endIcon={<LogoutIcon />}
     >
       Logout
     </Button>

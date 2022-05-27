@@ -2,8 +2,8 @@ import React from "react"
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import Box from "@mui/material/Box"
 import { Tooltip } from "@mui/material"
-import StartButton from "../../../ui/StartButton"
-import LeaveButton from "../../../ui/LeaveButton"
+import StartButton from "../../../ui/ColorButtons/StartButton"
+import LeaveButton from "../../../ui/ColorButtons/LeaveButton"
 
 export const ControlPanel = () => {
   const { activeParticipations } = useCurrentGame()

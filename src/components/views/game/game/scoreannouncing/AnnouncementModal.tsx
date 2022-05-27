@@ -11,7 +11,7 @@ import { CardComponent } from "../../../../ui/CardComponent"
 import { Chip, Grid, Modal, Tooltip } from "@mui/material"
 import Button from "@mui/material/Button"
 import "./AnnouncementModal.scss"
-import LeaveButton from "../../../../ui/LeaveButton"
+import LeaveButton from "../../../../ui/ColorButtons/LeaveButton"
 import { ConfiguredAvatar } from "../../../../ui/ConfiguredAvatar"
 
 const matchState = Match.matchState
