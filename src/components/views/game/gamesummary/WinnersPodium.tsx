@@ -16,9 +16,10 @@ export const WinnersPodium = () => {
   if (sortedPlayers[0].player.name === me.name)
     imageURL = trophy //change to link later - for now it's alright
   else imageURL = lost
+  const styling = imageURL ? trophy : lost
 
   return (
-    <div className={"winnerspodium"}>
+    <div className={"winners-podium"}>
       <div
         style={{
           marginLeft: "auto",
@@ -59,7 +60,7 @@ export const WinnersPodium = () => {
           id="didYouWin"
           src={imageURL}
           alt="Spielleistung"
-          className="trophy"
+          className={styling}
           style={{ width: "40%", paddingBottom: "10px" }}
         />
       </Tooltip>
