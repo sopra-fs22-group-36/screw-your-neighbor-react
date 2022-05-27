@@ -2,7 +2,6 @@ import React from "react"
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import trophy from "../../../../img/winnerwinnerchickendinner.png"
 import lost from "../../../../img/betterluck.png"
-
 import "./WinnersPodium.scss"
 import { usePlayers } from "../../../../hooks/api/usePlayers"
 import { Tooltip } from "@mui/material"
