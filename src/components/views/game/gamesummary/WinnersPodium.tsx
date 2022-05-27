@@ -1,9 +1,7 @@
 import React from "react"
-import BaseContainer from "../../../ui/BaseContainer"
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
 import trophy from "../../../../img/winnerwinnerchickendinner.png"
 import lost from "../../../../img/betterluck.png"
-
 import "./WinnersPodium.scss"
 import { usePlayers } from "../../../../hooks/api/usePlayers"
 import { Tooltip } from "@mui/material"
@@ -21,8 +19,20 @@ export const WinnersPodium = () => {
 
   return (
     <div className={"winnerspodium"}>
-      <BaseContainer>
-        <h1>ScoreBoard</h1>
+      <div
+        style={{
+          marginLeft: "auto",
+          marginRight: "auto",
+          paddingBottom: "10px",
+        }}
+      >
+        <h1
+          style={{
+            textAlign: "center",
+          }}
+        >
+          ScoreBoard
+        </h1>
         <ol className={"player-list"}>
           {sortedPlayers.map((participation) => {
             return (
@@ -35,7 +45,7 @@ export const WinnersPodium = () => {
             )
           })}
         </ol>
-      </BaseContainer>
+      </div>
       <Tooltip
         title={
           imageURL === trophy
@@ -50,7 +60,7 @@ export const WinnersPodium = () => {
           src={imageURL}
           alt="Spielleistung"
           className="trophy"
-          style={{ width: "40%" }}
+          style={{ width: "40%", paddingBottom: "10px" }}
         />
       </Tooltip>
     </div>
