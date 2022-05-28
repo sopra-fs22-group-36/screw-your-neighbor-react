@@ -33,25 +33,25 @@ These are the main technologies we used:
 ![prettier and linter](doc/img/eslint.png)
 ![npm](doc/img/npm.png)
 
-## Launch & Deployment
-After download use clean install.[^2]
+## High-level components
 
-`npm ci`
+### Components
 
-[^2]: Project has an existing package-lock.json, all scripts are listed in package.json
+* [Views](src/components/views)  
+Here are the different views of the application. Components only used in these views reside in the folder
+of corresponding view.
+* Requests to the Api  
+The DOM and the classes to send requests to the api are generated with `openapi-typescript-codegen`.
+How the DOM looks and what operations are possible is described in
+[screw-your-neighbor-server-openapi.json](screw-your-neighbor-server-openapi.json).
+The corresponding classes are generated into the src/generated folder. How they should be used is described in the
+"State Management" chapter.
 
+* State Management  
+The state of the application is saved in the [stores](src/stores).
+For more information, read the State Management Chapter.
 
-### Generate the classes of the api:
-
-`npm run openapi-generate`
-
-### Update the classes of the api:
-
-Add the properties you need to  [screw-your-neighbor-server-openapi.json](screw-your-neighbor-server-openapi.json)
-
-Then run again `npm run openapi-generate`
-
-### Architecture
+### State Management
 
 This app uses [MobX](https://github.com/mobxjs/mobx) as state management.  
 The api is provided in [api.ts](src/api/api.ts), but then wrapped with the hook [useApi()](src/hooks/api/useApi.ts)
@@ -66,6 +66,50 @@ but wrapped together with api calls in custom hooks like in [usePlayers()](src/h
 
 If you want to use values from the store, don't forget to wrap your component in an observer(), like shown
 in [Lobby](src/components/views/lobby/Lobby.tsx).
+
+## Launch & Deployment
+
+### Launch
+
+This is just the frontend.
+To get started, you also need the backend from [screw-your-neighbor-server](../screw-your-neighbor-server)
+You find all scripts in [package.json](package.json).
+To get started, run:  
+
+```
+npm ci
+npm run openapi-generate
+npm run start
+```
+
+If you are using windows, you may have to check some settings.
+See the steps with the condition `runner.os == 'Windows'` in [checks.yml](.github/workflows/checks.yml).
+
+Tests can be run with:
+
+```
+npm run test
+```
+
+### Deployment
+
+This project has a heroku deployment setup. Required are the following repository secrets:
+```yaml
+      HEROKU_KEY: ${{ secrets.HEROKU_API_KEY }}
+      HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+```
+Then every merge on main with passing status checks gets deployed on the configured heroku (if available).
+
+### Generate the classes of the api:
+
+`npm run openapi-generate`
+
+### Update the classes of the api:
+
+Add the properties you need to  [screw-your-neighbor-server-openapi.json](screw-your-neighbor-server-openapi.json)
+
+Then run again `npm run openapi-generate`
 
 ### Jitsi API
 We implemented the Jitsi API into our game to give the players an option to video chat and 
