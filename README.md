@@ -74,7 +74,7 @@ to fulfill the requirements given to us by the SoPra Team.
 
 ## Illustrations
 
-### Lobby & Lobby
+### Lobby & Room
 
 ### Game announcing round
 
@@ -88,6 +88,7 @@ to fulfill the requirements given to us by the SoPra Team.
 - Create your own avatar 
 - Choose backside image for cards
 - Change frontend to socket.io solution 
+- Add soundeffects & potentially music
 
 ## Contributors
 The "Screw your neighbor" application was developed in context of the SoPra (Software Praktikum / Software Engineerin Lab) module at the Institut für Informatik at the University of Zurich by Lucius Bachmann, Beat Furrer, Carmen Kirchdorfer, Moris Camporesi and Salome Wildermuth.
