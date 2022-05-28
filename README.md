@@ -139,14 +139,35 @@ to fulfill the requirements given to us by the SoPra Team.
 
 
 ## Illustrations
+The illustrations are based on a resolution of 1366 x 768px on the target platform Google Chrome Version 99. We have limited ourselves to the essential views.
+
+### Landing page
+![Landing page](./src/img/views_screeshots/Landing_page.png)
 
 ### Lobby & Room
+![Lobby](./src/img/views_screeshots/Lobby.png)
 
 ### Game announcing round
+![Game announcing round](./src/img/views_screeshots/Announcing_stage.png)
 
 ### Game playing
+There are main three different types of game rounds. This are the standard round, where the highest card win the round. Afterwards is a stacked round where two cards have the same rank and the next round will determine who has win both (or more) rounds. At the end there is the special round with only one card, where each player can't see his own card but all other ones. 
+
+#### Standard round
+![Game playing](./src/img/views_screeshots/Standard_round.png)
+
+#### Stacked round
+![Game playing](./src/img/views_screeshots/Stacked_round.png)
+
+#### One-card-round
+![Game playing](./src/img/views_screeshots/Round_with_one_card.png)
 
 ### Winner :tada: / Looser :screwdriver::facepalm: page 
+![Winner page end of game](./src/img/views_screeshots/Winner_screen.png)[^4]
+
+![Looser page end of game](./src/img/views_screeshots/Loser_screen.png)[^4]
+
+[^4]: Design by Carmen Kirchdorfer @CarmenUZH
 
 ## Roadmap
 ### Top features to contribute
