@@ -2,11 +2,11 @@ import React, { useState } from "react"
 import { observer } from "mobx-react-lite"
 import { usePlayers } from "../../../../../hooks/api/usePlayers"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
-import Button from "@mui/material/Button"
 import { Close, VideoCameraFront } from "@mui/icons-material"
 import { JitsiMeeting } from "@jitsi/react-sdk"
 import "./VideoChat.scss"
 import { Tooltip } from "@mui/material"
+import { SecondaryButton } from "../../../../ui/ColorButtons/SecondaryButton"
 
 const jitsiConfig = {
   disableModeratorIndicator: true,
@@ -46,14 +46,12 @@ export const VideoChat = observer(() => {
               placement={"bottom"}
             >
               <div className={"button-border"}>
-                <Button
-                  className={"toggle-camera"}
-                  variant="contained"
+                <SecondaryButton
                   endIcon={<VideoCameraFront />}
-                  onClick={() => setActive(true)}
+                  action={() => setActive(true)}
                 >
                   Activate video chat
-                </Button>
+                </SecondaryButton>
               </div>
             </Tooltip>
           )
@@ -62,9 +60,14 @@ export const VideoChat = observer(() => {
           <div className={"video-container"}>
             <Tooltip title={"Close the Video chat"}>
               <div className={"close-video-chat"}>
-                <Button variant="contained" onClick={() => setActive(false)}>
+                <SecondaryButton
+                  action={() => setActive(false)}
+                  style={{
+                    minWidth: "0",
+                  }}
+                >
                   <Close />
-                </Button>
+                </SecondaryButton>
               </div>
             </Tooltip>
             <JitsiMeeting
