@@ -5,6 +5,7 @@ import lost from "../../../../img/betterluck.png"
 import "./WinnersPodium.scss"
 import { usePlayers } from "../../../../hooks/api/usePlayers"
 import { Tooltip } from "@mui/material"
+import BaseContainer from "../../../ui/BaseContainer";
 
 export const WinnersPodium = () => {
   const { activeParticipations } = useCurrentGame()
@@ -20,22 +21,9 @@ export const WinnersPodium = () => {
 
   return (
     <div className={"winners-podium"}>
-      <div
-        style={{
-          marginLeft: "auto",
-          marginRight: "auto",
-          paddingBottom: "10px",
-          height: "60%",
-        }}
-      >
-        <h1
-          style={{
-            textAlign: "center",
-          }}
-        >
-          ScoreBoard
-        </h1>
-        <ol className={"player-list"}>
+      <BaseContainer>
+        <h1>ScoreBoard</h1>
+        <ol className={"gameSummary-individual-playerlist"}>
           {sortedPlayers.map((participation) => {
             return (
               <li key={participation._links.self.href}>
@@ -47,33 +35,25 @@ export const WinnersPodium = () => {
             )
           })}
         </ol>
-      </div>
-      <div
-        style={{
-          height: "40%",
-        }}
+      </BaseContainer>
+      <Tooltip
+        title={
+          imageURL === trophy
+            ? "Congratulation! you won!"
+            : "You lost, that's too bad! Try again!"
+        }
+        arrow={true}
+        placement={"right"}
       >
-        <Tooltip
-          title={
-            imageURL === trophy
-              ? "Congratulation! you won!"
-              : "You lost, that's too bad! Try again!"
-          }
-          arrow={true}
-          placement={"right"}
-        >
-          <img
-            id="didYouWin"
-            src={imageURL}
-            alt="Spielleistung"
-            className={styling}
-            style={{
-              height: "30vh",
-              paddingBottom: "10px",
-            }}
-          />
-        </Tooltip>
-      </div>
+        <img
+          id="didYouWin"
+          src={imageURL}
+          alt="Spielleistung"
+          className={styling}
+          style={{ width: "40%" }}
+        />
+      </Tooltip>
     </div>
   )
 }
+
