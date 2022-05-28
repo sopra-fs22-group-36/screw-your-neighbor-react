@@ -120,7 +120,6 @@ export const YourHand = observer(() => {
 
   return (
     <div className="your-hand">
-      <p>These are the Cards for Match {activeMatch?.matchNumber}:</p>
       {notYetPlayed.map((card) => (
         <div key={card._links.self.href}>
           <CardComponent card={card} onClick={() => clickCard(card)} />
