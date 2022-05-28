@@ -12,7 +12,14 @@ export const GameSummary = observer(() => {
     <div className="gameSummary-div">
       <ReactConfetti gravity={0.01} opacity={0.5} tweenDuration={5000} />
       <div className="gameSummary-box">
-        <WinnersPodium />
+        <div
+          style={{
+            height: "80%",
+            maxHeight: "80vh",
+          }}
+        >
+          <WinnersPodium />
+        </div>
         <Box className="gameSummary-button-box">
           <NewGameButton
             style={{

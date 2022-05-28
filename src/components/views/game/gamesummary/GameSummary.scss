@@ -30,22 +30,19 @@
 
 
 }
-.trophy-loss
-{
+.trophy-loss {
   -webkit-filter: drop-shadow(0 0 100px rgb(237, 211, 83,0.6));
   margin-left: auto;
   margin-right: auto;
-  max-width: 300px;
-}
-.trophy-win
-{
-  -webkit-filter: drop-shadow(0 0 100px rgb(237, 211, 83,0.6));
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 120px;
 }
 
-.gameSummary-individual-playerlist{
+.trophy-win {
+  -webkit-filter: drop-shadow(0 0 100px rgb(237, 211, 83,0.6));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gameSummary-individual-playerlist {
   width: 50%;
   text-align: center;
   margin: 0.5em;
