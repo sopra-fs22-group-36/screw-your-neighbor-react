@@ -29,8 +29,7 @@
     border-radius: $borderRadius;
     width: available;
     padding: 30px 100px;
-
-
+    list-style-position: inside;
   }
   li {
     background-color: #b96262;
@@ -39,10 +38,13 @@
     border-radius: $borderRadius;
     padding: 3px 0;
     margin: 3px 0;
+    padding-left: 20px;
   }
 
   .player-name {
-    margin-left: $borderRadius;
+    margin-left: 20px;
+
+
   }
 
   .points {
@@ -51,6 +53,13 @@
   }
 
 }
+
+.gameSummary-individual-playerlist{
+  width: 50%;
+  text-align: left;
+  border-radius: 2em;
+}
+
 .trophy-loss
 {
   -webkit-filter: drop-shadow(0 0 100px rgb(237, 211, 83,0.6));
@@ -66,12 +75,6 @@
   max-width: 120px;
 }
 
-.gameSummary-individual-playerlist{
-  width: 50%;
-  text-align: center;
-  margin: 0.5em;
-  border-radius: 2em;
-}
 
 
 
