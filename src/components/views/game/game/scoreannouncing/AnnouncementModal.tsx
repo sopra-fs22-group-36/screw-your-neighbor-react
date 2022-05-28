@@ -92,10 +92,10 @@ export const AnnouncementModal = observer(() => {
         b.participation.participationNumber
     )
 
-  const active = !loading && yourActiveHand.turnActive
+  const active = !loading && yourActiveHand?.turnActive
   //Validate the illegal announcing score only for the last player in the queue
   const illegalNumber = lastPlayerAnnouncing
-    ? yourActiveHand.cards.length - sumOfAnnouncedScores
+    ? (yourActiveHand?.cards.length ?? 0) - sumOfAnnouncedScores
     : null
 
   useEffect(() => {
@@ -103,16 +103,16 @@ export const AnnouncementModal = observer(() => {
       setMatchForModal(activeMatch)
     }
     const matchStateChangedToPlaying =
-      matchForModal.matchState === matchState.ANNOUNCING &&
-      activeMatch.matchState === matchState.PLAYING
+      matchForModal?.matchState === matchState.ANNOUNCING &&
+      activeMatch?.matchState === matchState.PLAYING
 
     const matchStateChangedToAnnouncing =
-      matchForModal.matchState === matchState.PLAYING &&
-      activeMatch.matchState === matchState.ANNOUNCING
+      matchForModal?.matchState === matchState.PLAYING &&
+      activeMatch?.matchState === matchState.ANNOUNCING
 
     const matchChanged = !iriMatch(
-      matchForModal._links.self,
-      activeMatch._links.self
+      matchForModal?._links.self ?? "link1",
+      activeMatch?._links.self ?? "link2"
     )
     if (
       matchStateChangedToPlaying ||
@@ -128,18 +128,18 @@ export const AnnouncementModal = observer(() => {
     }
   }, [
     activeMatch,
-    activeMatch._links.self,
-    activeMatch.matchState,
-    matchForModal._links.self,
-    matchForModal.matchState,
+    activeMatch?._links.self,
+    activeMatch?.matchState,
+    matchForModal?._links.self,
+    matchForModal?.matchState,
     yourActiveHand,
   ])
   let cards = []
   const isMatchNumber5 = activeMatch?.matchNumber === 5
   if (!isMatchNumber5) {
-    cards = yourActiveHand?.cards.filter((value) => value.round === null)
+    cards = yourActiveHand?.cards.filter((value) => value.round === null) ?? []
   } else {
-    const otherHands = activeMatch?.hands
+    const otherHands = activeMatch?.hands ?? []
     cards = otherHands.flatMap((enemyhands) => enemyhands.cards)
   }
 
@@ -164,8 +164,8 @@ export const AnnouncementModal = observer(() => {
                     const avatarConfig = getAvatarConfigFor(hand.participation)
 
                     const isOwnCard = iriMatch(
-                      yourActiveHand?._links.self,
-                      hand._links.self
+                      yourActiveHand?._links.self ?? "yourActiveHand",
+                      hand?._links.self ?? "hand"
                     )
 
                     const toolTipText = getCardToolTipText(
