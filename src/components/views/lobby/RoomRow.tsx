@@ -6,8 +6,8 @@ import { useGames } from "../../../hooks/api/useGames"
 import { extractId } from "../../../util/extractId"
 
 import { Grid, Tooltip } from "@mui/material"
-import Button from "@mui/material/Button"
 import { Login } from "@mui/icons-material"
+import { SecondaryButton } from "../../ui/ColorButtons/SecondaryButton"
 import "../lobby/RoomRow.scss"
 import "../../../styles/ui/Button.scss"
 
@@ -40,14 +40,18 @@ export const RoomRow = (props: { game: EntityModelGame }) => {
             {participationCount} Players
           </Grid>
           <Grid item xs={3}>
-            <Button
+            <SecondaryButton
+              action={clickJoin}
               disabled={loading}
-              variant="contained"
               endIcon={<Login />}
-              onClick={clickJoin}
+              style={{
+                minWidth: "0px",
+                minHeight: "0px",
+                margin: "unset",
+              }}
             >
               join
-            </Button>
+            </SecondaryButton>
           </Grid>
         </Grid>
       </div>

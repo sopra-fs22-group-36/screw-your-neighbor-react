@@ -1,3 +1,5 @@
+@import "src/styles/theme";
+
 .lobby-rooms {
   text-align: center;
   font-size: 20px;
@@ -10,4 +12,5 @@
   background: red;
   border-radius: 10px;
   margin-bottom: 5px;
+  padding-right: $borderRadius;
 }
