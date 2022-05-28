@@ -20,18 +20,18 @@
 
 ## Introduction
 We are developing an online version of the world famous card game "Härdöpfle" also known as "Screw your neighbour" played with the 36 Swiss "Jasskarten". Main feature are
-implemented aswell as the stack rule and the special round with only one card. The game is made for two up to five players. 
+implemented as well as the stack rule and the special round with only one card. The game is made for 2 to 5 players. 
 
 ## Technologies
 These are the main technologies we used: 
 
-![react](./src/img/readme/react.png)
-![matrial ui](./src/img/readme/mi.png)
-![MobX](./src/img/readme/mobx.png)
-![Typescript](./src/img/readme/tsx.png)
+![react](doc/img/react.png)
+![matrial ui](doc/img/mi.png)
+![MobX](doc/img/mobx.png)
+![Typescript](doc/img/tsx.png)
 
-![prettier and linter](./src/img/readme/exlint.png)
-![npm](./src/img/readme/npm.png)
+![prettier and linter](doc/img/exlint.png)
+![npm](doc/img/npm.png)
 
 ## Launch & Deployment
 After download use clean install.[^2]
