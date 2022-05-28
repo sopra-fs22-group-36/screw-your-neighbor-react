@@ -25,7 +25,6 @@ export const ControlPanel = () => {
             style={{
               minWidth: "250px",
               minHeight: "60px",
-              borderRadius: 15,
               color: shouldDisable === true ? "rgb(45,45,45,0.8)" : "white",
             }}
             disabled={shouldDisable}
@@ -38,8 +37,6 @@ export const ControlPanel = () => {
           style={{
             minWidth: "250px",
             minHeight: "60px",
-            borderRadius: 15,
-            color: "white",
           }}
         />
       </Box>

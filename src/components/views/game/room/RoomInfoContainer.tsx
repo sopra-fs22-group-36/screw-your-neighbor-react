@@ -40,12 +40,7 @@ export const RoomInfoContainer = observer(() => {
         </div>
         <div style={{ marginTop: "20%" }}>
           Don't know the rules?
-          <RulesButton
-            style={{
-              color: "white",
-              maxWidth: "200px",
-            }}
-          ></RulesButton>
+          <RulesButton />
         </div>
       </div>
     </BaseContainer>

@@ -21,24 +21,10 @@ export const GameSummary = observer(() => {
           <WinnersPodium />
         </div>
         <Box className="gameSummary-button-box">
-          <NewGameButton
-            style={{
-              minWidth: "200px",
-              minHeight: "40px",
-              borderRadius: 20,
-              margin: "10px",
-              color: "white",
-            }}
-          />
+          <NewGameButton />
           <LeaveButton
             style={{
               display: "flex",
-              minWidth: "100px",
-              maxWidth: "200px",
-              minHeight: "40px",
-              borderRadius: 15,
-              margin: "10px",
-              color: "white",
             }}
           />
         </Box>
