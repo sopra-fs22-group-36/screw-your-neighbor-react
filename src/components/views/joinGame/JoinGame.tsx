@@ -1,6 +1,5 @@
 import BaseContainer from "../../ui/BaseContainer"
 import React, { useEffect, useState } from "react"
-import Button from "@mui/material/Button"
 import SendIcon from "@mui/icons-material/Send"
 
 import { useGames } from "../../../hooks/api/useGames"
@@ -11,6 +10,7 @@ import { useCurrentGame } from "../../../hooks/api/useCurrentGame"
 import { iriMatch } from "../../../util/iriMatch"
 import { ApiError, Game } from "../../../generated"
 import { Loading } from "../../ui/Loading"
+import { SecondaryButton } from "../../ui/ColorButtons/SecondaryButton"
 
 const JoinGame = observer(() => {
   const { joinGame } = useGames()
@@ -59,13 +59,9 @@ const JoinGame = observer(() => {
           return (
             <BaseContainer>
               <h1> Game not found </h1>
-              <Button
-                variant="contained"
-                endIcon={<SendIcon />}
-                onClick={goBack}
-              >
+              <SecondaryButton action={goBack} endIcon={<SendIcon />}>
                 Go to lobby
-              </Button>
+              </SecondaryButton>
             </BaseContainer>
           )
         }
@@ -91,14 +87,15 @@ const JoinGame = observer(() => {
 
               <BaseContainer>
                 <h4>{headerText}</h4>
-                <Button
-                  onClick={unavailableGame ? goBack : clickJoin}
-                  type={"submit"}
-                  variant="contained"
+                <SecondaryButton
+                  action={unavailableGame ? goBack : clickJoin}
                   endIcon={<SendIcon />}
+                  style={{
+                    minWidth: "250px",
+                  }}
                 >
                   {buttonText}
-                </Button>
+                </SecondaryButton>
               </BaseContainer>
               <div className="background-img"></div>
             </div>
