@@ -30,7 +30,7 @@ These are the main technologies we used:
 ![MobX](doc/img/mobx.png)
 ![Typescript](doc/img/tsx.png)
 
-![prettier and linter](doc/img/exlint.png)
+![prettier and linter](doc/img/eslint.png)
 ![npm](doc/img/npm.png)
 
 ## Launch & Deployment
