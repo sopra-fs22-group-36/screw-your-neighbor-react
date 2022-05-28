@@ -1,12 +1,12 @@
 import React from "react"
 import { observer } from "mobx-react-lite"
 import { useCurrentGame } from "../../../../hooks/api/useCurrentGame"
-import Button from "@mui/material/Button"
 import ContentCopyIcon from "@mui/icons-material/ContentCopy"
 import { Tooltip } from "@mui/material"
 import RulesButton from "../../../ui/ColorButtons/RulesButton"
 import BaseContainer from "../../../ui/BaseContainer"
 import "./Room.scss"
+import { SecondaryButton } from "../../../ui/ColorButtons/SecondaryButton"
 
 export const RoomInfoContainer = observer(() => {
   const { game, activeParticipations, id } = useCurrentGame()
@@ -27,15 +27,16 @@ export const RoomInfoContainer = observer(() => {
             arrow={true}
             placement={"bottom"}
           >
-            <Button
-              onClick={() => {
-                navigator.clipboard.writeText(inviteLink)
-              }}
-              variant="contained"
-              endIcon={<ContentCopyIcon />}
-            >
-              Copy invite Link
-            </Button>
+            <div>
+              <SecondaryButton
+                action={() => {
+                  navigator.clipboard.writeText(inviteLink)
+                }}
+                endIcon={<ContentCopyIcon />}
+              >
+                Copy invite Link
+              </SecondaryButton>
+            </div>
           </Tooltip>
         </div>
         <div style={{ marginTop: "20%" }}>
