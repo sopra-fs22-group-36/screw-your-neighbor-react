@@ -97,10 +97,6 @@ export const AnnouncementModal = observer(() => {
   const illegalNumber = lastPlayerAnnouncing
     ? yourActiveHand.cards.length - sumOfAnnouncedScores
     : null
-  const activatedNumberInfo = !illegalNumber
-    ? `Here you can choose how many tricks you think you will win!`
-    : `Here you can choose how many tricks you think you will win! As per the rules you are not allowed to choose
-         ${illegalNumber} as the total of announced tricks would equal the amount of cards!`
 
   useEffect(() => {
     const updateMatch = async () => {
@@ -190,31 +186,40 @@ export const AnnouncementModal = observer(() => {
                     )
                   })}
                 </div>
-                <Tooltip
-                  title={
-                    !active
-                      ? "It's not your turn to announce yet!"
-                      : `${activatedNumberInfo}`
-                  }
-                  placement={"bottom"}
-                  arrow={true}
-                  enterDelay={750}
-                >
-                  <div className={"announce-buttons"}>
-                    {range(0, handSize + 3).map((number) => {
-                      return (
-                        <Button
-                          key={number}
-                          disabled={!active || illegalNumber === number}
-                          onClick={(_) => announceScore(number)}
-                          variant={"contained"}
-                        >
-                          {number}
-                        </Button>
-                      )
-                    })}
-                  </div>
-                </Tooltip>
+                <div className={"announce-buttons"}>
+                  {range(0, handSize + 3).map((number) => {
+                    const announceOne = "Click to announce 1 trick."
+                    const announceOther = `Click to announce ${number} tricks.`
+                    const legalAnnounce =
+                      number === 1 ? announceOne : announceOther
+                    const illegalAnnounce = `You are not allowed to choose ${illegalNumber} as the total of announced
+                      tricks would equal the amount of cards!`
+                    const onNumberAnnounce =
+                      illegalNumber !== number ? legalAnnounce : illegalAnnounce
+                    const buttonTooltip = !active
+                      ? "It's not your turn to announce!"
+                      : onNumberAnnounce
+                    return (
+                      <Tooltip
+                        title={buttonTooltip}
+                        arrow={true}
+                        placement={"top"}
+                        enterDelay={750}
+                      >
+                        <div className={"announce-buttons"}>
+                          <Button
+                            key={number}
+                            disabled={!active || illegalNumber === number}
+                            onClick={(_) => announceScore(number)}
+                            variant={"contained"}
+                          >
+                            {number}
+                          </Button>
+                        </div>
+                      </Tooltip>
+                    )
+                  })}
+                </div>
               </div>
             </BaseContainer>
           </Grid>
