@@ -55,7 +55,7 @@ export const GameTable = observer(() => {
   } = useCurrentGame()
 
   const cards =
-    activeRound.cards.length >= 1 ? activeRound.cards : lastRound.cards
+    activeRound?.cards.length >= 1 ? activeRound?.cards : lastRound?.cards
 
   const participationSlots = distributeOpponents(
     myParticipation,
@@ -86,7 +86,7 @@ export const GameTable = observer(() => {
         ) : (
           <></>
         )}
-        <PlayedCards cards={cards} ref={playedCardsRef} />
+        <PlayedCards cards={cards ?? []} ref={playedCardsRef} />
 
         {participationSlots.slot1 ? (
           <PlayerHand

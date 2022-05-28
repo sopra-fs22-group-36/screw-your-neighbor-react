@@ -17,16 +17,17 @@ const PlayerRow = observer((props: PlayerRowProps) => {
   const { participation } = props
   const { activeMatch, myParticipation } = useCurrentGame()
   const { getAvatarConfigFor } = useParticipationAvatars()
-  const participationLink = participation._links.self
-  const turnActive = activeMatch.hands
-    .filter((hand) =>
-      iriMatch(hand.participation._links.self, participationLink)
-    )
-    .some((hand) => hand.turnActive)
+  const participationLink = participation?._links.self ?? "participationLink"
+  const turnActive =
+    activeMatch?.hands
+      .filter((hand) =>
+        iriMatch(hand.participation._links.self, participationLink)
+      )
+      .some((hand) => hand.turnActive) ?? false
 
   const isOwnParticipation = iriMatch(
     participationLink,
-    myParticipation._links.self
+    myParticipation?._links.self ?? "myParticipation"
   )
 
   const avatarConfig = getAvatarConfigFor(participation)

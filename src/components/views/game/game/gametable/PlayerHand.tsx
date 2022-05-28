@@ -21,13 +21,13 @@ export const PlayerHand = observer((props: PlayerHandProps) => {
   const useCurrentGameHook = useCurrentGame()
   const { getAvatarConfigFor } = useParticipationAvatars()
 
-  const currentHand = useCurrentGameHook.activeMatch.hands
+  const currentHand = useCurrentGameHook.activeMatch?.hands
     .filter((value) =>
       iriMatch(props.participation._links.self, value.participation._links.self)
     )
     .slice(-1)[0]
 
-  const notPlayedCards = currentHand.cards.filter((card) => !card.round)
+  const notPlayedCards = currentHand?.cards.filter((card) => !card.round) ?? []
 
   const cardsContainer = useRef<HTMLDivElement>()
 
@@ -53,7 +53,7 @@ export const PlayerHand = observer((props: PlayerHandProps) => {
                 borderRadius: 15,
               },
             }}
-            badgeContent={<span>{currentHand.numberOfWonTricks}</span>}
+            badgeContent={<span>{currentHand?.numberOfWonTricks}</span>}
             color={"primary"}
             className={"number-of-won-tricks"}
           >

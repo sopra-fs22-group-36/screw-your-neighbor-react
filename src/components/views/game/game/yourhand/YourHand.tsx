@@ -25,9 +25,8 @@ export const YourHand = observer(() => {
   const { updatecards } = useCards()
   const { activeMatch, yourActiveHand } = useCurrentGame()
   const [wrongTurn, setWrongTurn] = useState(false)
-  const notYetPlayed = yourActiveHand?.cards.filter(
-    (value) => value.round === null
-  )
+  const notYetPlayed =
+    yourActiveHand?.cards.filter((value) => value.round === null) ?? []
 
   const onIdle = () => {
     setStart(Date.now)

@@ -1,5 +1,11 @@
 import { action, computed, makeAutoObservable, observable } from "mobx"
-import { EntityModelGame, EntityModelParticipation, Hand } from "../generated"
+import {
+  EntityModelGame,
+  EntityModelParticipation,
+  Hand,
+  Match,
+  Round,
+} from "../generated"
 import { KeepOnlyOneInterval } from "../util/KeepOnlyOneInterval"
 import { embedProxy } from "../util/embedProxy"
 
@@ -44,7 +50,7 @@ export class CurrentGameStore {
     )
   }
 
-  @computed get activeMatch() {
+  @computed get activeMatch(): Match | null {
     if (this.sortedMatches.length === 0) {
       return null
     }
@@ -74,21 +80,21 @@ export class CurrentGameStore {
       .sort((a, b) => a.roundNumber - b.roundNumber)
   }
 
-  @computed get activeRound() {
+  @computed get activeRound(): Round | null {
     if (this.sortedRoundsOfActiveMatch.length === 0) {
       return null
     }
     return this.sortedRoundsOfActiveMatch.slice(-1)[0]
   }
 
-  @computed get lastRound() {
+  @computed get lastRound(): Round | null {
     if (this.sortedRoundsOfActiveMatch.length === 0) {
       return null
     }
     return this.sortedRoundsOfActiveMatch.slice(-2)[0]
   }
 
-  @computed get yourActiveHand() {
+  @computed get yourActiveHand(): Hand | null {
     if (!this.participation) {
       return null
     }
