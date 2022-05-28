@@ -5,7 +5,7 @@ import lost from "../../../../img/betterluck.png"
 import "./WinnersPodium.scss"
 import { usePlayers } from "../../../../hooks/api/usePlayers"
 import { Tooltip } from "@mui/material"
-import BaseContainer from "../../../ui/BaseContainer";
+import BaseContainer from "../../../ui/BaseContainer"
 
 export const WinnersPodium = () => {
   const { activeParticipations } = useCurrentGame()
@@ -35,25 +35,24 @@ export const WinnersPodium = () => {
             )
           })}
         </ol>
+        <Tooltip
+          title={
+            imageURL === trophy
+              ? "Congratulation! you won!"
+              : "You lost, that's too bad! Try again!"
+          }
+          arrow={true}
+          placement={"right"}
+        >
+          <img
+            id="didYouWin"
+            src={imageURL}
+            alt="Spielleistung"
+            className={styling}
+            style={{ width: "40%" }}
+          />
+        </Tooltip>
       </BaseContainer>
-      <Tooltip
-        title={
-          imageURL === trophy
-            ? "Congratulation! you won!"
-            : "You lost, that's too bad! Try again!"
-        }
-        arrow={true}
-        placement={"right"}
-      >
-        <img
-          id="didYouWin"
-          src={imageURL}
-          alt="Spielleistung"
-          className={styling}
-          style={{ width: "40%" }}
-        />
-      </Tooltip>
     </div>
   )
 }
-
