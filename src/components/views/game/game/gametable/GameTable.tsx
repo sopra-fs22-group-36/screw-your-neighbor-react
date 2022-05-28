@@ -8,6 +8,7 @@ import { distributeOpponents } from "./distributeOpponents"
 import { Alert } from "@mui/material"
 import "./GameTable.scss"
 import { Card } from "../../../../../generated"
+import { borderRadius } from "../../../../../styles/styleConstants"
 
 type PlayedCardsProps = {
   cards: Card[]
@@ -79,7 +80,14 @@ export const GameTable = observer(() => {
       <div className={"game-table absolute-wrapper"}>
         {stackedRounds > 0 ? (
           <div className={"stacked-indicator"}>
-            <Alert variant={"filled"} severity={"warning"}>
+            <Alert
+              variant={"filled"}
+              severity={"info"}
+              style={{
+                borderRadius,
+                padding: `3px ${borderRadius}`,
+              }}
+            >
               Round was stacked, rounds in stack: {stackedRounds}
             </Alert>
           </div>

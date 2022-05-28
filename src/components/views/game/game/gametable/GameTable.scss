@@ -19,8 +19,16 @@
 
   .stacked-indicator {
     position: absolute;
-    bottom: 55%;
+    bottom: 51%;
     left: 65%;
+
+    .MuiAlert-icon {
+      padding: 2px 0;
+    }
+
+    .MuiAlert-message {
+      padding: 3px 0;
+    }
   }
 
   .card-table {
