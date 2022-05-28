@@ -26,12 +26,34 @@ implemented as well as the stack rule and the special round with only one card. 
 These are the main technologies we used: 
 
 ![react](doc/img/react.png)
-![matrial ui](doc/img/mi.png)
-![MobX](doc/img/mobx.png)
-![Typescript](doc/img/tsx.png)
+
+React is a Java Script web framework. Components are hierarchically structured in React and can be represented in its syntax as self-defined JSX tags. With the concepts of unidirectional data flow and the Virtual DOM, the React model promises the simple yet high-performance structure of even 
+complex applications. React, together with Typescript, forms the basis of our web application.
 
 ![prettier and linter](doc/img/eslint.png)
+
+ESLint is a tool for static source code analysis. It identifies problematic spots and patterns in lines of JavaScript code. It is a linting tool where we could create our own rules and defined additional rules. It helped us in the sense that we could keep a consistent programming style as everyone contributed to the front end.
+
+![MobX](doc/img/mobx.png)
+
+MobX is inspired by reactive programming principles as found in the spreadsheets. It is inspired by MVVM frameworks like MeteorJS tracker, knockout and Vue.js, but MobX brings Transparent Functional Reactive Programming to the next level and provides a standalone implementation. It implements TFRP in a glitch-free, synchronous, predictable and efficient manner. [^2]
+
+[^2]: Source and more information on https://mobx.js.org/README.html
+
+![Typescript](doc/img/tsx.png)
+
+We chose TypeScript to type our methods, classes, and modules. It supports us in development and languages between the different modules in the frontend.
+
+![matrial ui](doc/img/mi.png)
+
+The design is based on material-like, map-like surfaces and the flat design style, which is known for its minimalism, but still uses a lot of animations and shadows to present objects as "materials" with behavior that corresponds to the laws of physics (e.g. a slight depth effect ) and let the user immediately see which areas contain important information or are interactive and what this interaction will achieve. [^3]
+
+[^3]: Source and more information on https://material.io/
+
 ![npm](doc/img/npm.png)
+
+The node package manager is widely used and used as the default tool for the Node.js JavaScript runtime environment. We used the package manager to install packages into our application and to start, build and test. 
+
 
 ## High-level components
 
