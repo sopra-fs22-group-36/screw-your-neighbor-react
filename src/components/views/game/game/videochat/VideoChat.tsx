@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite"
 import { usePlayers } from "../../../../../hooks/api/usePlayers"
 import { useCurrentGame } from "../../../../../hooks/api/useCurrentGame"
 import Button from "@mui/material/Button"
-import { VideoCameraFront } from "@mui/icons-material"
+import { Close, VideoCameraFront } from "@mui/icons-material"
 import { JitsiMeeting } from "@jitsi/react-sdk"
 import "./VideoChat.scss"
 import { Tooltip } from "@mui/material"
@@ -60,6 +60,13 @@ export const VideoChat = observer(() => {
         }
         return (
           <div className={"video-container"}>
+            <Tooltip title={"Close the Video chat"}>
+              <div className={"close-video-chat"}>
+                <Button variant="contained" onClick={() => setActive(false)}>
+                  <Close />
+                </Button>
+              </div>
+            </Tooltip>
             <JitsiMeeting
               roomName={game.videoChatName}
               configOverwrite={jitsiConfig}
@@ -79,16 +86,6 @@ export const VideoChat = observer(() => {
                 iframe.style.width = "100%"
               }}
             />
-
-            <div> </div>
-            <Button
-              className={"toggle-camera"}
-              variant="contained"
-              endIcon={<VideoCameraFront />}
-              onClick={() => setActive(false)}
-            >
-              End video chat
-            </Button>
           </div>
         )
       })()}

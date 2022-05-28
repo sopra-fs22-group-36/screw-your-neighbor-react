@@ -30,6 +30,11 @@
       width: 100%;
     }
   }
+
+  .close-video-chat {
+    position: absolute;
+    right: 3%;
+  }
 }
 
 .videochat.inactive {
