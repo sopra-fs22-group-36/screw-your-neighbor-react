@@ -25,6 +25,7 @@ export const WinnersPodium = () => {
           marginLeft: "auto",
           marginRight: "auto",
           paddingBottom: "10px",
+          height: "60%",
         }}
       >
         <h1
@@ -47,23 +48,32 @@ export const WinnersPodium = () => {
           })}
         </ol>
       </div>
-      <Tooltip
-        title={
-          imageURL === trophy
-            ? "Congratulation! you won!"
-            : "You lost, that's too bad! Try again!"
-        }
-        arrow={true}
-        placement={"right"}
+      <div
+        style={{
+          height: "40%",
+        }}
       >
-        <img
-          id="didYouWin"
-          src={imageURL}
-          alt="Spielleistung"
-          className={styling}
-          style={{ width: "40%", paddingBottom: "10px" }}
-        />
-      </Tooltip>
+        <Tooltip
+          title={
+            imageURL === trophy
+              ? "Congratulation! you won!"
+              : "You lost, that's too bad! Try again!"
+          }
+          arrow={true}
+          placement={"right"}
+        >
+          <img
+            id="didYouWin"
+            src={imageURL}
+            alt="Spielleistung"
+            className={styling}
+            style={{
+              height: "30vh",
+              paddingBottom: "10px",
+            }}
+          />
+        </Tooltip>
+      </div>
     </div>
   )
 }
