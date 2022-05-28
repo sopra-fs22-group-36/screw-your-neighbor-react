@@ -1,5 +1,4 @@
-@import 'src/styles/theme';
-
+@import "src/styles/theme";
 
 .gameSummary-box{
   justify-content: center;
@@ -29,22 +28,4 @@
   margin-right: 25%;
 
 
-}
-.trophy-loss {
-  -webkit-filter: drop-shadow(0 0 100px rgb(237, 211, 83,0.6));
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.trophy-win {
-  -webkit-filter: drop-shadow(0 0 100px rgb(237, 211, 83,0.6));
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.gameSummary-individual-playerlist {
-  width: 50%;
-  text-align: center;
-  margin: 0.5em;
-  border-radius: 2em;
 }
