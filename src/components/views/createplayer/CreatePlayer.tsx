@@ -9,10 +9,10 @@ import Oberin from "../../../img/oberin.png"
 import BaseContainer from "../../ui/BaseContainer"
 import { TextField } from "@mui/material"
 import Box from "@mui/material/Box"
+import { SecondaryButton } from "../../ui/ColorButtons/SecondaryButton"
 import "../../../styles/fonts.scss"
 import "../../../styles/ui/Box.scss"
 import "../../../styles/ui/Divs.scss"
-import "../../../styles/ui/Button.scss"
 import "../../../styles/ui/images.scss"
 import "./CreatePlayer.scss"
 
@@ -69,10 +69,16 @@ const CreatePlayer = () => {
                   value={name}
                   onChange={changeName}
                 />
-                <p></p>
-                <button className="button" disabled={loading} onClick={submit}>
+                <SecondaryButton
+                  action={submit}
+                  disabled={loading}
+                  style={{
+                    width: "93%",
+                    maxWidth: "unset",
+                  }}
+                >
                   TAKE ME TO THE LOBBY
-                </button>
+                </SecondaryButton>
               </Box>
             </form>
           </Box>
