@@ -147,6 +147,8 @@ The illustrations are based on a resolution of 1366 x 768px on the target platfo
 ### Lobby & Room
 ![Lobby](./src/img/views_screeshots/Lobby.png)
 
+![Room](./src/img/views_screeshots/Room.png)
+
 ### Game announcing round
 ![Game announcing round](./src/img/views_screeshots/Announcing_stage.png)
 
