@@ -45,4 +45,14 @@
     width: 30%;
     margin-bottom: 15px;
   }
+
+  .points-overview {
+    position: absolute;
+    left: 10px;
+    bottom: 30px;
+    background-color: #620606;
+    border-radius: $borderRadius;
+    padding: 0 $borderRadius;
+    font-size: x-large;
+  }
 }
