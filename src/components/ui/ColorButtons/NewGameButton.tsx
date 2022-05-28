@@ -6,8 +6,9 @@ import { extractId } from "../../../util/extractId"
 import { Paths } from "../../routing/routers/Paths"
 import { useNavigate } from "react-router-dom"
 import { useGames } from "../../../hooks/api/useGames"
+import { defaultButtonStyle } from "../../../styles/styleConstants"
 
-const NewGameButton = (props: { style }) => {
+const NewGameButton = (props: { style? }) => {
   const navigate = useNavigate()
   const { createOrJoinNextGame } = useGames()
   const clickStartNewGame = async () => {
@@ -16,11 +17,16 @@ const NewGameButton = (props: { style }) => {
     navigate(Paths.GAME + `/${nextGameId}`)
   }
 
+  const style = {
+    ...defaultButtonStyle,
+    ...(props.style ?? {}),
+  }
+
   return (
     <div>
       <Button
         className="color-buttons bucolor-green"
-        style={props.style}
+        style={style}
         endIcon={<StartIcon />}
         onClick={clickStartNewGame}
       >

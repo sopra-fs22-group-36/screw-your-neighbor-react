@@ -42,7 +42,6 @@ const HamburgerMenu = () => {
           <RulesButton
             style={{
               marginTop: "50%",
-              color: "white",
               left: "5%",
               width: "80%",
             }}
@@ -50,7 +49,6 @@ const HamburgerMenu = () => {
           <LeaveButton
             style={{
               marginTop: "10%",
-              color: "white",
               left: "5%",
               width: "80%",
             }}

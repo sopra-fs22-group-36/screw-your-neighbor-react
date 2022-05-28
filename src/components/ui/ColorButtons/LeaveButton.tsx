@@ -5,8 +5,9 @@ import { Paths } from "../../routing/routers/Paths"
 import { Button } from "@mui/material"
 import "./ColorButtons.scss"
 import LogoutIcon from "@mui/icons-material/Logout"
+import { defaultButtonStyle } from "../../../styles/styleConstants"
 
-const LeaveButton = (props: { style }) => {
+const LeaveButton = (props: { style? }) => {
   const navigate = useNavigate()
   const { leaveGame } = useCurrentGame()
 
@@ -15,11 +16,16 @@ const LeaveButton = (props: { style }) => {
     navigate(Paths.LOBBY)
   }
 
+  const style = {
+    ...defaultButtonStyle,
+    ...(props.style ?? {}),
+  }
+
   return (
     <Button
       onClick={clickLeave}
       className="color-buttons bucolor-darkblue"
-      style={props.style}
+      style={style}
       endIcon={<LogoutIcon />}
     >
       Leave Game
