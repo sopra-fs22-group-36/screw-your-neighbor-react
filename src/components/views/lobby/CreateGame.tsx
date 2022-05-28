@@ -4,12 +4,12 @@ import { useGames } from "../../../hooks/api/useGames"
 import { extractId } from "../../../util/extractId"
 
 import { TextField, Tooltip } from "@mui/material"
-import Button from "@mui/material/Button"
 import SendIcon from "@mui/icons-material/Send"
 import Box from "@mui/material/Box"
 import { Paths } from "../../routing/routers/Paths"
 import "../../../styles/ui/Box.scss"
 import "../lobby/CreateGame.scss"
+import { SecondaryButton } from "../../ui/ColorButtons/SecondaryButton"
 
 export const CreateGame = () => {
   const navigate = useNavigate()
@@ -45,14 +45,18 @@ export const CreateGame = () => {
           placement={"left"}
           enterDelay={500}
         >
-          <Button
-            type={"submit"}
-            disabled={loading}
-            variant="contained"
-            endIcon={<SendIcon />}
-          >
-            create game
-          </Button>
+          <div>
+            <SecondaryButton
+              disabled={loading}
+              endIcon={<SendIcon />}
+              action={submit}
+              style={{
+                width: "93%",
+              }}
+            >
+              create game
+            </SecondaryButton>
+          </div>
         </Tooltip>
       </Box>
     </form>
