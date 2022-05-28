@@ -17,7 +17,7 @@ export const WinnersPodium = () => {
   if (sortedPlayers[0].player.name === me.name)
     imageURL = trophy //change to link later - for now it's alright
   else imageURL = lost
-  const styling = imageURL ? trophy : lost
+  const styling = imageURL === trophy ? "trophy-win" : "trophy-loss"
 
   return (
     <div className={"winners-podium"}>
