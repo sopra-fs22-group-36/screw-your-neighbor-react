@@ -20,7 +20,7 @@
 
 ## Introduction
 We are developing an online version of the world famous card game "Härdöpfle" also known as "Screw your neighbour" played with the 36 Swiss "Jasskarten". Main feature are
-implemented as well as the stack rule and the special round with only one card. The game is made for 2 to 5 players. 
+implemented as well as the stack rule and the special round with only one card. The game is made for two up to five players. 
 
 ## Technologies
 These are the main technologies we used: 
@@ -175,7 +175,7 @@ There are main three different types of game rounds. This are the standard round
 ### Top features to contribute
 - Clear visualisation who's turn is right now
 - Create your own avatar 
-- Choose backside image for cards
+- Choose your own backside image for cards
 - Change frontend to socket.io solution 
 - Add soundeffects & potentially music
 
