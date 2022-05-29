@@ -139,7 +139,7 @@ to fulfill the requirements given to us by the SoPra Team.
 
 
 ## Illustrations
-The illustrations are based on a resolution of 1366 x 768px on the target platform Google Chrome Version 99. We have limited ourselves to the essential views.
+The illustrations have been taken with a resolution of 1366 x 768px on the target platform Google Chrome Version 99. We have limited ourselves to the essential views.
 
 ### Landing page
 ![Landing page](./src/img/views_screeshots/Landing_page.png)
@@ -172,7 +172,7 @@ There are main three different types of game rounds. This are the standard round
 [^4]: Design by Carmen Kirchdorfer @CarmenUZH
 
 ## Roadmap
-### Top features to contribute
+### Top features to implement
 - Clear visualisation who's turn is right now
 - Create your own avatar 
 - Choose your own backside image for cards
